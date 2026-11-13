@@ -23,7 +23,7 @@ Numerical validation: all 1,095 daily ET₀ results agree with independent `pyet
 
 ## 2. Candidate generation and filters
 
-Enumerate the catalog's winter × summer × optional Nili crops: 32 candidates with the nine-record catalog. Longest observed BSW>32 days, or the farmer's explicit “Explore a conditional Nili cover” switch, requires Nili and yields 16 candidates. The switch is a hypothetical planting opportunity, not a new satellite observation.
+Enumerate the catalog's winter × summer × optional Nili crops: 32 candidates with the nine-record catalog. Only the farmer's explicit “Explore a conditional Nili cover” switch requires Nili and yields 16 candidates. A longest historical low-cover proxy >32 days suggests exploration only; it does not confirm bare soil or a viable planting window. This is an intentional decision change documented in [the farmer-first audit](../product/FARMER_FIRST_UX.md). The switch is a hypothetical planting opportunity, not a new satellite observation.
 
 Hard exclusions: duplicate crop IDs, invalid/missing water traits, and explicit farmer exclusions. Season slots come from the catalog. Calendar overlap is **not hard-validated** because sowing/harvest dates are absent; all Nili options stay conditional and need local review. Barley is not generated because the accepted catalog has no reviewed barley record.
 
@@ -35,7 +35,7 @@ The established prototype water/N/market/forage subscore formulas remain, with e
 
 Select the best water candidate distinct from baseline, then the best soil candidate distinct from both. Objective ties use lower water volume / higher N balance, then stable sequence ID. The three displayed suitability scores and global ranks are **recomputed with the same farmer weights** so unlike objectives are not compared as one scale. Objective scores/weights and full candidate rankings are separately inspectable. No alternative is fabricated if constraints leave fewer distinct choices.
 
-Gross water follows the user's original formula `round(Σ(baseWaterMm×Kc)×4.2/η)`, η=.55/.68/.75/.88. Unit: m³/feddan/**rotation**, not an exact measured annual quantity. The supplied 2,500–5,200 reference band is displayed as a review flag when exceeded; outputs are never clipped or rescaled to look plausible. Whether baseWaterMm already includes stage-specific Kc remains a calibration question. Nitrogen and market indices are ordinal, not fertilizer or profit estimates.
+Gross water follows the user's original formula `round(Σ(baseWaterMm×Kc)×4.2/η)`, η=.55/.68/.75/.88. Unit: m³/feddan/**rotation**, not an exact measured annual quantity. The supplied 2,500–5,200 annual reference band cannot validate per-rotation estimates. A calibration warning is always displayed in technical details, with no invented replacement range; outputs are never clipped or rescaled to look plausible. Whether baseWaterMm already includes stage-specific Kc remains a calibration question. Nitrogen and market indices are ordinal, not fertilizer or profit estimates.
 
 ## 4. Explanations and uncertainty
 
