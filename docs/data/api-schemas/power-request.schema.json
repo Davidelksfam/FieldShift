@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "POWER query-building object for selected research route",
+  "type": "object",
+  "required": [
+    "parameters",
+    "community",
+    "latitude",
+    "longitude",
+    "start",
+    "end",
+    "format",
+    "time-standard"
+  ],
+  "properties": {
+    "parameters": {
+      "type": "string",
+      "pattern": "^[A-Z0-9_]+(,[A-Z0-9_]+)*$"
+    },
+    "community": {
+      "const": "AG"
+    },
+    "latitude": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "start": {
+      "type": "string",
+      "pattern": "^[0-9]{8}$"
+    },
+    "end": {
+      "type": "string",
+      "pattern": "^[0-9]{8}$"
+    },
+    "format": {
+      "const": "JSON"
+    },
+    "time-standard": {
+      "const": "UTC"
+    }
+  },
+  "additionalProperties": false
+}

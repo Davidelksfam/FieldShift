@@ -1,0 +1,7 @@
+{
+  "scope": "Exploratory Giza-area point only; not an accepted farm or pilot",
+  "point": {"longitude": 31.15, "latitude": 29.9},
+  "startDate": "2025-01-01",
+  "endDateInclusive": "2025-01-07",
+  "soilSubsetWidthM": 1000
+}

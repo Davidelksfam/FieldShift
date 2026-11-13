@@ -1,0 +1,22 @@
+{
+  "sourceId": "soilgrids",
+  "retrievedAt": "2026-11-13T12:13:23.754046+00:00",
+  "status": "http_error",
+  "scienceDownloaded": false,
+  "artifacts": [],
+  "scope": {
+    "scope": "Exploratory Giza-area point only; not an accepted farm or pilot",
+    "point": {
+      "longitude": 31.15,
+      "latitude": 29.9
+    },
+    "startDate": "2025-01-01",
+    "endDateInclusive": "2025-01-07",
+    "soilSubsetWidthM": 1000
+  },
+  "eligibilityStatus": "pending_resources_tab_verification",
+  "acquisitionScriptSha256": "f1a952334f6e83a06d4960c5050f68d757fd5cecac2868e0fd84f14716046f23",
+  "processingNote": "Bounded acquisition and inspection only; no approved feature/model outputs",
+  "sourceDocumentation": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_02.html",
+  "errorCode": "HTTP_503"
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WCS query-building object; SUBSET is serialized as repeated query keys",
+  "type": "object",
+  "required": [
+    "map",
+    "SERVICE",
+    "VERSION",
+    "REQUEST",
+    "COVERAGEID"
+  ],
+  "properties": {
+    "map": {
+      "type": "string",
+      "minLength": 1
+    },
+    "SERVICE": {
+      "const": "WCS"
+    },
+    "VERSION": {
+      "const": "2.0.1"
+    },
+    "REQUEST": {
+      "enum": [
+        "DescribeCoverage",
+        "GetCoverage"
+      ]
+    },
+    "COVERAGEID": {
+      "type": "string",
+      "minLength": 1
+    },
+    "SUBSET": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "FORMAT": {
+      "const": "image/tiff"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "REQUEST": {
+            "const": "GetCoverage"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "SUBSET",
+          "FORMAT"
+        ]
+      }
+    }
+  ]
+}

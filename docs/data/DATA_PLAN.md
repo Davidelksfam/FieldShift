@@ -1,6 +1,6 @@
 # Data and scientific methodology proposal
 
-Status: candidate plan; no data retrieved, no eligible resource verified. Full detail: strategy guide §§3–7 and 10 in the [source archive](../reference/README.md).
+Status: candidate scientific plan; user-requested bounded research acquisition is now available in the [seven-source access kit](DATASET_ACCESS_GUIDE.md). [Actual status](DOWNLOAD_STATUS.md): POWER, MOD13Q1 and SoilGrids science subsets acquired; IMERG, SMAP, HLS and ECOSTRESS require Earthdata Login. No challenge-resource eligibility or model-feature validity is claimed. Full strategy background: [source archive](../reference/README.md).
 
 ## Candidate sources
 
