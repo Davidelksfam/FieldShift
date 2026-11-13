@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "prototype-deployment-1.0",
+  "verifiedOn": "2026-11-13",
+  "timezone": "Africa/Cairo",
+  "provider": "Vercel",
+  "url": "https://fieldshift-tau.vercel.app",
+  "deploymentId": "dpl_BBibxqFXgBDr2yN6BEaM5Jqp7yUg",
+  "projectId": "prj_gp7dDiWbJCGwz0wEUbyC2Mu6WAsf",
+  "teamId": "team_9MQ2NHLNFUGr7O6THEefhY1U",
+  "target": "production",
+  "state": "READY",
+  "publicAccess": "explicitly_authorized_by_user",
+  "applicationCommit": "d05c080f7473b0c6087b45a0191597a29a0f6110",
+  "implementationPR": 8,
+  "rootDirectory": "web",
+  "framework": "Next.js",
+  "nodeVersion": "24.x",
+  "buildDurationSeconds": 24.231,
+  "checks": {
+    "unauthenticatedHttpStatus": 200,
+    "appTests": 13,
+    "pythonDataTests": 44,
+    "browserLanguages": [
+      "ar",
+      "en"
+    ],
+    "browserViewportWidths": [
+      390,
+      768,
+      1440
+    ],
+    "browserFlows": [
+      "field inputs",
+      "eight crop choices",
+      "plan edits",
+      "water scenario",
+      "unknown demand and supply",
+      "browser save and reload",
+      "JSON export",
+      "source weather CSV"
+    ],
+    "pageErrors": 0,
+    "runtimeErrorQuery": "no error/fatal entries in queried 15-minute window"
+  },
+  "scientificStatus": "Historical modeled context plus synthetic interface assumptions; agronomic suitability unreviewed"
+}

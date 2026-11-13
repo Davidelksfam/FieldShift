@@ -1,5 +1,7 @@
 # Field Shift rapid prototype
 
+[Open the live prototype](https://fieldshift-tau.vercel.app) · Vercel production, verified READY.
+
 Runnable Next.js + TypeScript baseline, explicitly requested by the user. Four screens cover field inputs, illustrative crop comparison, hypothetical water scenarios and evidence. Arabic RTL / English LTR, approved light-green branding, browser-local field saving and JSON export are included.
 
 ```sh
