@@ -73,3 +73,7 @@ For later water-demand work, use [FAO Irrigation and Drainage Paper 56](https://
 | UI/UX | Explain input origin, unknown states, scale and observation dates using approved brand guidance | Avoid presenting historical point context as live farm readings |
 
 No source-data import or form-completeness check should produce a successful crop-feasibility result by itself. The next scientific deliverable is the reviewed eight-crop calendar/rule sheet; the next integration deliverable is a contract review using the files in this checkpoint.
+
+## Crop-rule evidence follow-up
+
+The [eight crop review sheets](crop-rules/README.md) now record candidate evidence, applicability, unresolved local rules and a validator for model enablement. Eight crops × two regions are tracked separately. Source access and age limitations remain explicit; no local agronomic approval is claimed.

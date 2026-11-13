@@ -39,7 +39,9 @@
       "rotationConstraints": null,
       "modelEnabled": false,
       "reviewStatus": "candidate_only",
-      "harvestUse": "grain"
+      "harvestUse": "grain",
+      "ruleEvidencePath": "data/manifests/crop-rule-evidence.json",
+      "reviewSheetPath": "docs/data/crop-rules/wheat.md"
     },
     {
       "cropId": "barley",
@@ -62,7 +64,9 @@
       "rotationConstraints": null,
       "modelEnabled": false,
       "reviewStatus": "candidate_only",
-      "harvestUse": "grain"
+      "harvestUse": "grain",
+      "ruleEvidencePath": "data/manifests/crop-rule-evidence.json",
+      "reviewSheetPath": "docs/data/crop-rules/barley.md"
     },
     {
       "cropId": "faba_bean",
@@ -86,7 +90,9 @@
       "rotationConstraints": null,
       "modelEnabled": false,
       "reviewStatus": "candidate_only",
-      "harvestUse": "dry_grain"
+      "harvestUse": "dry_grain",
+      "ruleEvidencePath": "data/manifests/crop-rule-evidence.json",
+      "reviewSheetPath": "docs/data/crop-rules/faba_bean.md"
     },
     {
       "cropId": "berseem",
@@ -110,7 +116,9 @@
       "rotationConstraints": null,
       "modelEnabled": false,
       "reviewStatus": "candidate_only",
-      "harvestUse": "forage"
+      "harvestUse": "forage",
+      "ruleEvidencePath": "data/manifests/crop-rule-evidence.json",
+      "reviewSheetPath": "docs/data/crop-rules/berseem.md"
     },
     {
       "cropId": "maize",
@@ -134,7 +142,9 @@
       "rotationConstraints": null,
       "modelEnabled": false,
       "reviewStatus": "candidate_only",
-      "harvestUse": "grain"
+      "harvestUse": "grain",
+      "ruleEvidencePath": "data/manifests/crop-rule-evidence.json",
+      "reviewSheetPath": "docs/data/crop-rules/maize.md"
     },
     {
       "cropId": "sorghum",
@@ -157,7 +167,9 @@
       "rotationConstraints": null,
       "modelEnabled": false,
       "reviewStatus": "candidate_only",
-      "harvestUse": "grain"
+      "harvestUse": "grain",
+      "ruleEvidencePath": "data/manifests/crop-rule-evidence.json",
+      "reviewSheetPath": "docs/data/crop-rules/sorghum.md"
     },
     {
       "cropId": "soybean",
@@ -180,7 +192,9 @@
       "rotationConstraints": null,
       "modelEnabled": false,
       "reviewStatus": "candidate_only",
-      "harvestUse": "grain"
+      "harvestUse": "grain",
+      "ruleEvidencePath": "data/manifests/crop-rule-evidence.json",
+      "reviewSheetPath": "docs/data/crop-rules/soybean.md"
     },
     {
       "cropId": "sunflower",
@@ -203,7 +217,9 @@
       "rotationConstraints": null,
       "modelEnabled": false,
       "reviewStatus": "candidate_only",
-      "harvestUse": "oilseed"
+      "harvestUse": "oilseed",
+      "ruleEvidencePath": "data/manifests/crop-rule-evidence.json",
+      "reviewSheetPath": "docs/data/crop-rules/sunflower.md"
     }
   ]
 }

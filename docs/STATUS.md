@@ -43,3 +43,5 @@ All four regional Harmony jobs succeeded and 2,738 daily subsets were collected 
 See [decision 0002](decisions/0002-approved-light-green-identity.md) and the [brand guide](brand/README.md). Clean, light, white-card green-accented dashboard styling has user approval; product, data, model and event decisions remain separate and pending verification.
 
 Fixture/data handoff: a separate [implementation checkpoint](data/IMPLEMENTATION_CHECKPOINT.md) proposes eight core crop choices (expanded at the user’s request) and per-metric context. Four real POWER query-point/year examples are available for review; local crop calendars, water-demand rules and acceptance of shared contract changes remain pending.
+
+Eight-crop rule research: [review sheets](data/crop-rules/README.md) and sixteen regional rule records now track source-supported candidates and missing approvals. Model rule enablement stays false pending current local/cultivar/harvest and water-method review.
