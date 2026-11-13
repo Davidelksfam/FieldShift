@@ -39,3 +39,7 @@ Codex implemented daily historical FAO reference ETc and independent published c
 ## 2026-11-14 — Scientific V2 PR 4 indicator audit
 
 Codex audited qualitative crop taxonomy, laboratory-only salinity outcome matching, historical heat screening and unavailable nitrogen/economics. Official Kew references were independently checked. QA hardened source identities, units, sample point/date and matching endpoints. Legacy points and heuristic penalties are not scientific ranking criteria; no field fertility, profit or heat-risk accuracy is claimed.
+
+## 2026-11-14 — Scientific V2 PR 5 orchestration and comparison
+
+Codex integrated calendars, explicit Nili modes, crop-only ETc aggregation, qualitative evidence and feasibility-first selection into a flag-gated bilingual Expert inspector. Independent QA exercised numerical totals, baseline arithmetic, missing data and hard exclusions, prompting fixes for trace replay and contradictory units. All release gates remain fixed to their actual pending status. No farmer-default activation, independently validated water savings or agronomic optimality is claimed.

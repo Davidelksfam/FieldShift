@@ -36,3 +36,7 @@ The deliberately artificial unit/browser fixture supplies eight-day crop stages 
 No independent whole-season CROPWAT/field comparison, full Egyptian crop calendar or independent agronomic approval is claimed. Historical 2025 observations are not forecasts; arbitrary map clicks cannot borrow a benchmark's weather. Local scenario entries are recorded assumptions, not proof of scientific validity. External sources/maps may fail; scientific availability must remain explicit.
 
 The production farmer UI keeps the legacy engine. Omit `VITE_SCIENTIFIC_V2=true` to remove the experimental inspector, or revert this staged PR. No data migration or backend rollback is needed.
+
+## Complete stacked verification
+
+Root integration passes **113 unit tests**, production build and documentation checks, plus **10 default browser tests** and **3 flagged V2 browser tests** on the tracked configuration. Policy regressions additionally reject relabeled model methods, non-model quantities, foreign weather points/periods and incomplete source lineage. Unknown values never enter comparison as zero; incompatible comparison groups produce no arbitrary overall winner. Baseline references remain in the audit even when outside the three displayed alternatives. All five scientific release gates remain pending.
