@@ -17,3 +17,7 @@ Complete POWER years and QA-screened MODIS are bundled for all three exact centr
 ## Post-processing implementation — issue #16
 
 PR #15 is merged into main. The next stage adds six diagnostic outputs, modeled FAO-56 reference ET₀ from new drivers, same-pixel 2020–24 NDVI anomalies, full catalog candidate ranking, bilingual evidence/support explanations, conditional-cover exploration and five-step JSON/formula inspection in Judge Mode. Real data is now in the canonical offline demoPresets.json; synthetic test fixtures moved to syntheticFixtures.json. See [post-processing contract](engineering/POSTPROCESSING.md) and [pitch](pitch/THREE_MINUTE_DEMO.md). No field validation or deployment is claimed.
+
+## Production demo release — issue #18
+
+PR #17 is merged into main as ebdc83d. The canonical public demo is [fieldshift-tau.vercel.app](https://fieldshift-tau.vercel.app), connected to this repository through the existing NASAspaceAPPS/fieldshift Vercel Git integration. Stale Next.js settings were corrected to root Vite. All seven production browser scenarios and an unmocked NASA/map visit passed; see [release evidence and repeatable checks](delivery/VERCEL_RELEASE.md).

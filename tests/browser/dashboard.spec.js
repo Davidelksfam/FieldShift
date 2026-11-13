@@ -1,6 +1,11 @@
 import { test, expect } from "@playwright/test";
 const blockRemote = async (page) =>
-  page.route(/^https:\/\//, (route) => route.abort());
+  page.route(/^https:\/\//, (route) =>
+    new URL(route.request().url()).origin ===
+    new URL(test.info().project.use.baseURL).origin
+      ? route.continue()
+      : route.abort(),
+  );
 async function english(page) {
   await page.getByRole("button", { name: "English", exact: true }).click();
 }
@@ -105,6 +110,11 @@ test("incomplete live POWER cannot overwrite an audited snapshot", async ({
   page,
 }) => {
   await page.route(/^https:\/\//, async (route) => {
+    if (
+      new URL(route.request().url()).origin ===
+      new URL(test.info().project.use.baseURL).origin
+    )
+      return route.continue();
     if (route.request().url().includes("power.larc"))
       return route.fulfill({
         json: {
