@@ -17,8 +17,8 @@ These are explicit engineering study envelopes, **not official administrative bo
 | --- | --- | --- | --- |
 | POWER | 18 sampling locations × 731 days × 8 variables | 6 sampling locations × 731 days × 8 variables | Full date series at all 24 sampled locations; units, unique dates and missing values checked |
 | SoilGrids | 108 native region-envelope rasters | 108 native region-envelope rasters | Six properties × six depths × three statistics, all downloaded; static predictions, not 2024–2025 soil measurements |
-| IMERG | 561 local grid records in cached daily extract | 130 local grid records in cached daily extract | Science snapshot imported; complete two-year daily series remains pending |
-| SMAP | 161 local retrieval records in cached AM/PM extract | 101 local retrieval records in cached AM/PM extract | Actual in-envelope retrievals, not distant substitutes; full dates and native QA coverage pending |
+| IMERG | 639 daily regional values + 92 explicit inventory gaps | 639 daily regional values + 92 explicit inventory gaps | All 639 listed daily subsets per region collected; 731-row calendars preserve provider gaps |
+| SMAP | 902 valid AM/PM rows, 558 QA-empty, 2 inventory-gap rows | 719 valid AM/PM rows, 741 QA-empty, 2 inventory-gap rows | All 730 listed daily subsets per region collected; each 731-day calendar has separate AM/PM rows; QA-empty is unavailable |
 | HLS | New matching local red/NIR/Fmask acquisition | New matching local red/NIR/Fmask acquisition | Scene overlap only; complete regional mosaic, full sequence and reviewed QA pending |
 | MOD13Q1 | New local composite with all returned QA bands | New local composite with all returned QA bands | One local sample; full spatial mosaic and two-year composite series pending |
 | ECOSTRESS | New matching local LST/error/QC/cloud/water acquisition | New matching local LST/error/QC/cloud/water acquisition | Scene overlap only; regional/temporal coverage and valid thermal observations pending |
@@ -84,4 +84,18 @@ python3 scripts/data/poll_harmony_regions.py --download
 python3 scripts/data/poll_appeears_regions.py
 ```
 
-Both tokens were tested successfully for their respective services. No additional credential is requested at this stage. Cloud tasks are queued/processing; their result inventories and scientific QA remain separate completion gates. Downloaded regional subsets include quality variables; compact QA-derived daily/monthly inputs must retain valid counts, masked fractions, observation windows, units and parent checksums. Preserve explicit calendar gaps rather than interpolating unsupported observations.
+Both tokens were tested successfully for their respective services. No additional credential is requested at this stage. All four Harmony jobs succeeded and all 2,738 listed daily subsets were collected. The six AppEEARS tasks are processing/queued; their result inventories and scientific QA remain separate completion gates. Downloaded regional subsets include quality variables; compact QA-derived daily/monthly inputs must retain valid counts, masked fractions, observation windows, units and parent checksums. Preserve explicit calendar gaps rather than interpolating unsupported observations.
+
+## Compact daily publication and measured missingness
+
+[Daily inputs](../../web/public/data/regions/harmony-daily/) now contain four CSVs plus metadata. IMERG has 731 rows/region; SMAP has 1,462 day/pass rows/region. All downloaded parent artifacts have SHA-256 records in the Harmony manifest. Native units, valid bounds, quality flags and in-envelope cell centers are checked. The SMAP ratio cm3/cm3 is numerically equivalent to m3/m3; native valid_min/max are honored. Valid fractions use native cell centers inside the envelope, including non-cropland.
+
+QA-empty SMAP observations are substantial, particularly in Fayoum; download success does not establish usable daily soil moisture. Metadata reports monthly row-status counts and the exact QA recipe. No inventory-gap or QA-empty row contains a fabricated value. IMERG uses cosine-latitude weights; SMAP uses its native equal-area cells. Independent QA-method and land-mask review remains required.
+
+```sh
+.venv/bin/python scripts/data/summarize_harmony_regions.py
+python3 scripts/data/refresh_regional_readiness.py
+python3 scripts/data/validate_regions.py
+```
+
+The full pipeline, proposed schema mapping and role handoffs are in the [Markdown report](PIPELINE_REPORT.md) and [PDF report](PIPELINE_REPORT.pdf). AppEEARS science-output extraction is still pending provider completion and inspection; the polling helper records bundle inventories, not completed scientific imports.

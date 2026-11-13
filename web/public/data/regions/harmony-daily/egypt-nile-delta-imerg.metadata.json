@@ -1,0 +1,95 @@
+{
+  "regionId": "egypt-nile-delta",
+  "sourceId": "imerg",
+  "period": [
+    "2024-01-01",
+    "2025-12-31"
+  ],
+  "interpretation": "Study-envelope context; no cultivated-field mask; not field measurements or an irrigation recommendation",
+  "qaRecipe": "IMERG finite nonnegative daily rain and 48 valid half-hour samples, spherical area weights cos(latitude)",
+  "jobID": "81bfe30f-4649-4b4e-9bf9-eeb88f432039",
+  "parentManifest": "data/manifests/regions/harmony-requests.json",
+  "nativeOutputs": 639,
+  "gapPolicy": "Missing granules and dates with zero QA-valid pixels are unavailable, never zero or interpolated",
+  "spatialDenominator": "Native cell centers inside the study envelope, including non-cropland",
+  "csvSha256": "7aac5554ba1cbdd00f671d06c0e7a422710eac66d7b05505de17fd66f14eb48b",
+  "rowStatusCounts": {
+    "valid_regional_context": 639,
+    "provider_inventory_gap": 92
+  },
+  "monthlyRowStatusCounts": {
+    "2024-01": {
+      "valid_regional_context": 31
+    },
+    "2024-02": {
+      "valid_regional_context": 29
+    },
+    "2024-03": {
+      "valid_regional_context": 31
+    },
+    "2024-04": {
+      "valid_regional_context": 30
+    },
+    "2024-05": {
+      "valid_regional_context": 31
+    },
+    "2024-06": {
+      "valid_regional_context": 30
+    },
+    "2024-07": {
+      "valid_regional_context": 31
+    },
+    "2024-08": {
+      "valid_regional_context": 31
+    },
+    "2024-09": {
+      "valid_regional_context": 30
+    },
+    "2024-10": {
+      "valid_regional_context": 31
+    },
+    "2024-11": {
+      "valid_regional_context": 30
+    },
+    "2024-12": {
+      "valid_regional_context": 31
+    },
+    "2025-01": {
+      "valid_regional_context": 31
+    },
+    "2025-02": {
+      "valid_regional_context": 28
+    },
+    "2025-03": {
+      "valid_regional_context": 31
+    },
+    "2025-04": {
+      "valid_regional_context": 30
+    },
+    "2025-05": {
+      "valid_regional_context": 31
+    },
+    "2025-06": {
+      "valid_regional_context": 30
+    },
+    "2025-07": {
+      "valid_regional_context": 31
+    },
+    "2025-08": {
+      "valid_regional_context": 31
+    },
+    "2025-09": {
+      "valid_regional_context": 30
+    },
+    "2025-10": {
+      "provider_inventory_gap": 31
+    },
+    "2025-11": {
+      "provider_inventory_gap": 30
+    },
+    "2025-12": {
+      "provider_inventory_gap": 31
+    }
+  },
+  "countInterpretation": "Counts are day/pass rows, not independent farm samples or cultivated area"
+}

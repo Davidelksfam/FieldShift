@@ -35,3 +35,5 @@ See [accepted directory decision](decisions/0001-workstream-directory-layout.md)
 
 
 Regional follow-up: the user selected **Nile Delta and Fayoum, 2024–2025**. See [regional coverage and import status](data/REGIONAL_COVERAGE.md). The earlier Giza snapshots are source-access evidence, not complete regional datasets.
+
+All four regional Harmony jobs succeeded and 2,738 daily subsets were collected for IMERG/SMAP. Compact QA-derived calendars and monthly missingness are published; substantial SMAP QA gaps and 92 IMERG inventory-gap dates remain explicit. Six AppEEARS tasks are processing/queued. The [pipeline report](data/PIPELINE_REPORT.md) is also available as [PDF](data/PIPELINE_REPORT.pdf). No full production-readiness claim is made.

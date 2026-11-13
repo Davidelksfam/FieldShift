@@ -69,16 +69,20 @@
         {
           "sourceId": "imerg",
           "schemaStatus": "complete",
-          "spatialStatus": "partial",
-          "temporalStatus": "snapshot_only",
-          "qualityStatus": "QA_review_required",
+          "spatialStatus": "study_envelope_native_centers_without_cropland_mask",
+          "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+          "qualityStatus": "documented_research_QA_applied_pending_independent_review",
           "fullProductionReady": false,
           "evidencePaths": [
             "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-imerg.json",
-            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+            "data/manifests/regions/20261113T123805653050Z/import-index.json",
+            "web/public/data/regions/harmony-daily/egypt-nile-delta-imerg.csv",
+            "web/public/data/regions/harmony-daily/egypt-nile-delta-imerg.metadata.json"
           ],
           "missingRequirements": [
-            "Full regional mosaic and full-period acquisition; source-native QA filtering"
+            "Reviewed field/cropland mask and spatial interpretation",
+            "Independent review of source-specific QA recipe and seasonal coverage thresholds",
+            "Resolve or explicitly accept inventory gaps and QA-empty day/pass rows; see monthly counts"
           ],
           "catalogMonthsChecked": 24,
           "catalogMonthsWithoutMatches": [
@@ -88,32 +92,45 @@
           ],
           "providerProcessing": {
             "service": "NASA Harmony",
-            "status": "running",
-            "progress": 57,
+            "status": "successful",
+            "progress": 100,
             "requestManifest": "data/manifests/regions/harmony-requests.json"
+          },
+          "compactRowStatusCounts": {
+            "valid_regional_context": 639,
+            "provider_inventory_gap": 92
           }
         },
         {
           "sourceId": "smap",
           "schemaStatus": "complete",
-          "spatialStatus": "partial",
-          "temporalStatus": "snapshot_only",
-          "qualityStatus": "QA_review_required",
+          "spatialStatus": "study_envelope_native_centers_without_cropland_mask",
+          "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+          "qualityStatus": "documented_research_QA_applied_pending_independent_review",
           "fullProductionReady": false,
           "evidencePaths": [
             "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-smap.json",
-            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+            "data/manifests/regions/20261113T123805653050Z/import-index.json",
+            "web/public/data/regions/harmony-daily/egypt-nile-delta-smap.csv",
+            "web/public/data/regions/harmony-daily/egypt-nile-delta-smap.metadata.json"
           ],
           "missingRequirements": [
-            "Full regional mosaic and full-period acquisition; source-native QA filtering"
+            "Reviewed field/cropland mask and spatial interpretation",
+            "Independent review of source-specific QA recipe and seasonal coverage thresholds",
+            "Resolve or explicitly accept inventory gaps and QA-empty day/pass rows; see monthly counts"
           ],
           "catalogMonthsChecked": 24,
           "catalogMonthsWithoutMatches": [],
           "providerProcessing": {
             "service": "NASA Harmony",
-            "status": "running",
-            "progress": 44,
+            "status": "successful",
+            "progress": 100,
             "requestManifest": "data/manifests/regions/harmony-requests.json"
+          },
+          "compactRowStatusCounts": {
+            "valid_regional_context": 902,
+            "no_QA_valid_pixels": 558,
+            "provider_inventory_gap": 2
           }
         },
         {
@@ -239,16 +256,20 @@
         {
           "sourceId": "imerg",
           "schemaStatus": "complete",
-          "spatialStatus": "partial",
-          "temporalStatus": "snapshot_only",
-          "qualityStatus": "QA_review_required",
+          "spatialStatus": "study_envelope_native_centers_without_cropland_mask",
+          "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+          "qualityStatus": "documented_research_QA_applied_pending_independent_review",
           "fullProductionReady": false,
           "evidencePaths": [
             "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-imerg.json",
-            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+            "data/manifests/regions/20261113T123805653050Z/import-index.json",
+            "web/public/data/regions/harmony-daily/egypt-fayoum-imerg.csv",
+            "web/public/data/regions/harmony-daily/egypt-fayoum-imerg.metadata.json"
           ],
           "missingRequirements": [
-            "Full regional mosaic and full-period acquisition; source-native QA filtering"
+            "Reviewed field/cropland mask and spatial interpretation",
+            "Independent review of source-specific QA recipe and seasonal coverage thresholds",
+            "Resolve or explicitly accept inventory gaps and QA-empty day/pass rows; see monthly counts"
           ],
           "catalogMonthsChecked": 24,
           "catalogMonthsWithoutMatches": [
@@ -258,32 +279,45 @@
           ],
           "providerProcessing": {
             "service": "NASA Harmony",
-            "status": "running",
-            "progress": 74,
+            "status": "successful",
+            "progress": 100,
             "requestManifest": "data/manifests/regions/harmony-requests.json"
+          },
+          "compactRowStatusCounts": {
+            "valid_regional_context": 639,
+            "provider_inventory_gap": 92
           }
         },
         {
           "sourceId": "smap",
           "schemaStatus": "complete",
-          "spatialStatus": "partial",
-          "temporalStatus": "snapshot_only",
-          "qualityStatus": "QA_review_required",
+          "spatialStatus": "study_envelope_native_centers_without_cropland_mask",
+          "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+          "qualityStatus": "documented_research_QA_applied_pending_independent_review",
           "fullProductionReady": false,
           "evidencePaths": [
             "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-smap.json",
-            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+            "data/manifests/regions/20261113T123805653050Z/import-index.json",
+            "web/public/data/regions/harmony-daily/egypt-fayoum-smap.csv",
+            "web/public/data/regions/harmony-daily/egypt-fayoum-smap.metadata.json"
           ],
           "missingRequirements": [
-            "Full regional mosaic and full-period acquisition; source-native QA filtering"
+            "Reviewed field/cropland mask and spatial interpretation",
+            "Independent review of source-specific QA recipe and seasonal coverage thresholds",
+            "Resolve or explicitly accept inventory gaps and QA-empty day/pass rows; see monthly counts"
           ],
           "catalogMonthsChecked": 24,
           "catalogMonthsWithoutMatches": [],
           "providerProcessing": {
             "service": "NASA Harmony",
-            "status": "running",
-            "progress": 51,
+            "status": "successful",
+            "progress": 100,
             "requestManifest": "data/manifests/regions/harmony-requests.json"
+          },
+          "compactRowStatusCounts": {
+            "valid_regional_context": 719,
+            "no_QA_valid_pixels": 741,
+            "provider_inventory_gap": 2
           }
         },
         {

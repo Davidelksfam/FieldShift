@@ -8,7 +8,7 @@
     },
     {
       "requestPath": "scripts/data/config/regions/appeears/egypt-fayoum-hls.json",
-      "status": "queued",
+      "status": "processing",
       "taskID": "1a021fbb-51f4-4078-bb23-b5dbb093b2c3",
       "progress": null
     },

@@ -45,3 +45,5 @@ Validation: fourteen acquisition boundary tests (including bearer stripping on N
 
 
 Regional follow-up: the user selected **Nile Delta and Fayoum, 2024–2025**. See [regional coverage and import status](REGIONAL_COVERAGE.md). The earlier Giza snapshots are source-access evidence, not complete regional datasets.
+
+Regional processing update: all four Harmony jobs succeeded; 2,738 region-only daily outputs were collected and four compact QA-derived calendars are published. IMERG has 92 inventory-gap dates; SMAP has one inventory-gap day plus substantial QA-empty passes. HLS/MODIS/ECOSTRESS AppEEARS tasks are processing/queued, so full seven-source production readiness remains false. See the [regional coverage](REGIONAL_COVERAGE.md) and [pipeline report](PIPELINE_REPORT.md), also available as [PDF](PIPELINE_REPORT.pdf).
