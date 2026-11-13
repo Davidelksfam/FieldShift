@@ -104,4 +104,4 @@ Work is ready to start when the team can point to **one input fixture, one crop/
 
 ## Implementation follow-up
 
-See the [implementation checkpoint](IMPLEMENTATION_CHECKPOINT.md) for the recommended three-crop shortlist, proposed per-metric real-weather handoff and cross-year calendar issue. These additions are reviewable artifacts; no crop rules or team approvals are fabricated.
+See the [implementation checkpoint](IMPLEMENTATION_CHECKPOINT.md) for the eight-choice crop catalog, proposed per-metric real-weather handoff and cross-year calendar issue. These additions are reviewable artifacts; no crop rules or team approvals are fabricated.

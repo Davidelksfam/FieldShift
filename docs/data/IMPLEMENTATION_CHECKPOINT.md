@@ -4,11 +4,30 @@ Working recommendations, 13 November 2026. User asked to resolve the fixture/dat
 
 ## Recommended crop scope
 
-Start with **wheat, maize and faba bean**. Wheat and maize supply winter/summer cereal baselines; faba bean supplies a winter grain-legume comparison. Add **berseem** later when cutting dates and forage management are represented. This is a choice to keep the first implementation small, not a ranking of agricultural profitability, water savings or field suitability.
+The user requested at least eight choices. The working product catalog now has **eight core choices**, four winter and four summer candidates:
 
-[FAO's Egypt production-systems chapter](https://www.fao.org/4/y5863e/y5863e07.htm) supports their broad seasonal membership. It is historical national evidence, not a current Fayoum/Delta planting prescription. Exact local sowing windows, varieties, durations and rotation rules still need review. The [machine-readable shortlist](../../data/manifests/crop-shortlist.proposed.json) records these missing fields as null and keeps every crop modelEnabled=false.
+| Broad season | Crop | Intended harvest/use | Comparison role |
+| --- | --- | --- | --- |
+| Winter | Wheat | Grain | Cereal baseline |
+| Winter | Barley | Grain | Alternative cereal |
+| Winter | Faba bean | Dry grain | Grain-legume option |
+| Winter | Berseem | Forage | Forage-legume option; cutting schedule required |
+| Summer | Maize | Grain | Cereal baseline |
+| Summer | Sorghum | Grain | Alternative cereal; do not use forage coefficients |
+| Summer | Soybean | Grain | Grain-legume/oilseed option |
+| Summer | Sunflower | Oilseed | Oilseed option |
 
-Rice, cotton, vegetables and perennial crops are outside the initial implementation scope. This keeps locality/eligibility checks, commodity-specific management and more complex calendars out of the first calculation path; it does not assert that those crops are unsuitable everywhere. Do not create three ranked alternatives simply by asserting that one listed crop uses less water.
+The [ICAR Egypt report, section 4.1](https://www.icar.org.in/sites/default/files/Circulars/Egypt_BRICS_Agriculture_Report.pdf) supports broad crop/season membership; [FAO's historical national production-systems chapter](https://www.fao.org/4/y5863e/y5863e07.htm) also supports wheat, maize, faba bean and berseem. Exact local sowing windows, varieties, harvest use, durations and rotation rules still need review separately for Delta and Fayoum. National cultivation does not establish suitability of all eight at every field.
+
+The [machine-readable catalog](../../data/manifests/crop-shortlist.proposed.json) now records all eight as core scope, with explicit harvest use. Local agronomic fields remain null and modelEnabled=false until supported rules exist. The former three-crop limit and deferred status for berseem are superseded by the user's request. Forage cutting management is now a required rule task within scope.
+
+Rice, cotton, vegetables and perennials remain extension candidates. Scope can grow through catalog records and reviewed rules without changing the farmer form.
+
+## What the site adds
+
+The intended experience starts with eight choices, filters sequences using reviewed locality, planting-window, crop-history and water constraints, then explains the remaining trade-offs. The farmer can compare a baseline against alternatives and see which constraints change under a clearly hypothetical water scenario. Historical environmental evidence and its missingness must remain visible beside the result.
+
+This requires more than a menu: each crop needs a reviewable local rule sheet, every excluded sequence needs a reason, missing critical inputs must produce unknown states, and any claimed water difference must come from comparable demand calculations. Do not promise yield, profit, soil-fertility gains or water savings from crop names or satellite proxies alone. The menu, rule engine and comparison UI are still proposed product work; current deliverables are fixtures, evidence and research context.
 
 ## Working input defaults
 
@@ -49,8 +68,8 @@ For later water-demand work, use [FAO Irrigation and Drainage Paper 56](https://
 | Integration | Review input proposal and context proposal as separately versioned contracts; align consumer types | Review pending; no silent replacement |
 | Data | Use existing imports, hashes and date/QA status; resolve native spatial support before assigning context to a farm | Query-point context available; field matching pending |
 | Feature | Reproduce temperature/rainfall summaries, then apply reviewed crop intervals | Real examples and missingness behavior implemented |
-| Model/domain | Fill local crop windows, duration, rotation and water-method evidence for the three core crops | Crop rules remain unavailable; suitability/water checks unknown |
+| Model/domain | Fill local crop windows, duration, rotation and water-method evidence for the eight core crops | Crop rules remain unavailable; suitability/water checks unknown |
 | Frontend | Wire known/unknown/zero synthetic forms and render real research context separately | No recommendations or real farmer persistence implied |
 | UI/UX | Explain input origin, unknown states, scale and observation dates using approved brand guidance | Avoid presenting historical point context as live farm readings |
 
-No source-data import or form-completeness check should produce a successful crop-feasibility result by itself. The next scientific deliverable is the reviewed three-crop calendar/rule sheet; the next integration deliverable is a contract review using the files in this checkpoint.
+No source-data import or form-completeness check should produce a successful crop-feasibility result by itself. The next scientific deliverable is the reviewed eight-crop calendar/rule sheet; the next integration deliverable is a contract review using the files in this checkpoint.

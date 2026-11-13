@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "crop-shortlist-proposal-0.1",
-  "status": "assistant_recommendation_pending_team_and_domain_review",
+  "schemaVersion": "crop-shortlist-proposal-0.2",
+  "status": "user_requested_eight_choice_catalog_local_rules_pending",
   "scope": "Implementation shortlist; no claim these are optimal crops for an individual farm",
   "sources": [
     {
@@ -8,6 +8,12 @@
       "url": "https://www.fao.org/4/y5863e/y5863e07.htm",
       "checkedOn": "2026-11-13",
       "scope": "Historical national crop production systems; supports broad season membership, not current local calendars, prices or suitability"
+    },
+    {
+      "sourceId": "icar-egypt-cropping-systems",
+      "url": "https://www.icar.org.in/sites/default/files/Circulars/Egypt_BRICS_Agriculture_Report.pdf",
+      "checkedOn": "2026-11-13",
+      "scope": "ICAR BRICS Agriculture Egypt report, section 4.1; national winter/summer crop membership only; no field-specific eligibility or water-use coefficients"
     }
   ],
   "crops": [
@@ -19,6 +25,7 @@
       "implementationPriority": "core",
       "comparisonRole": "Winter cereal baseline",
       "evidenceRefs": [
+        "icar-egypt-cropping-systems",
         "fao-egypt-production-systems"
       ],
       "regionalSuitability": {
@@ -31,17 +38,18 @@
       "stageCoefficients": null,
       "rotationConstraints": null,
       "modelEnabled": false,
-      "reviewStatus": "candidate_only"
+      "reviewStatus": "candidate_only",
+      "harvestUse": "grain"
     },
     {
-      "cropId": "maize",
-      "nameEn": "Maize",
-      "nameAr": "ذرة شامية",
-      "broadSeason": "summer",
+      "cropId": "barley",
+      "nameEn": "Barley",
+      "nameAr": "شعير",
+      "broadSeason": "winter",
       "implementationPriority": "core",
-      "comparisonRole": "Summer cereal baseline",
+      "comparisonRole": "Alternative winter cereal",
       "evidenceRefs": [
-        "fao-egypt-production-systems"
+        "icar-egypt-cropping-systems"
       ],
       "regionalSuitability": {
         "egypt-nile-delta": "unreviewed",
@@ -53,7 +61,8 @@
       "stageCoefficients": null,
       "rotationConstraints": null,
       "modelEnabled": false,
-      "reviewStatus": "candidate_only"
+      "reviewStatus": "candidate_only",
+      "harvestUse": "grain"
     },
     {
       "cropId": "faba_bean",
@@ -63,6 +72,7 @@
       "implementationPriority": "core",
       "comparisonRole": "Winter grain-legume alternative",
       "evidenceRefs": [
+        "icar-egypt-cropping-systems",
         "fao-egypt-production-systems"
       ],
       "regionalSuitability": {
@@ -75,16 +85,18 @@
       "stageCoefficients": null,
       "rotationConstraints": null,
       "modelEnabled": false,
-      "reviewStatus": "candidate_only"
+      "reviewStatus": "candidate_only",
+      "harvestUse": "dry_grain"
     },
     {
       "cropId": "berseem",
       "nameEn": "Egyptian clover (berseem)",
       "nameAr": "برسيم مصري",
       "broadSeason": "winter",
-      "implementationPriority": "deferred",
-      "comparisonRole": "Forage extension; cutting schedule requires extra modeling",
+      "implementationPriority": "core",
+      "comparisonRole": "Winter forage-legume option; requires a cutting schedule",
       "evidenceRefs": [
+        "icar-egypt-cropping-systems",
         "fao-egypt-production-systems"
       ],
       "regionalSuitability": {
@@ -97,7 +109,101 @@
       "stageCoefficients": null,
       "rotationConstraints": null,
       "modelEnabled": false,
-      "reviewStatus": "candidate_only"
+      "reviewStatus": "candidate_only",
+      "harvestUse": "forage"
+    },
+    {
+      "cropId": "maize",
+      "nameEn": "Maize",
+      "nameAr": "ذرة شامية",
+      "broadSeason": "summer",
+      "implementationPriority": "core",
+      "comparisonRole": "Summer cereal baseline",
+      "evidenceRefs": [
+        "icar-egypt-cropping-systems",
+        "fao-egypt-production-systems"
+      ],
+      "regionalSuitability": {
+        "egypt-nile-delta": "unreviewed",
+        "egypt-fayoum": "unreviewed"
+      },
+      "plantingWindow": null,
+      "durationDays": null,
+      "cropWaterMethod": null,
+      "stageCoefficients": null,
+      "rotationConstraints": null,
+      "modelEnabled": false,
+      "reviewStatus": "candidate_only",
+      "harvestUse": "grain"
+    },
+    {
+      "cropId": "sorghum",
+      "nameEn": "Grain sorghum",
+      "nameAr": "ذرة رفيعة للحبوب",
+      "broadSeason": "summer",
+      "implementationPriority": "core",
+      "comparisonRole": "Alternative summer cereal; distinguish from forage sorghum",
+      "evidenceRefs": [
+        "icar-egypt-cropping-systems"
+      ],
+      "regionalSuitability": {
+        "egypt-nile-delta": "unreviewed",
+        "egypt-fayoum": "unreviewed"
+      },
+      "plantingWindow": null,
+      "durationDays": null,
+      "cropWaterMethod": null,
+      "stageCoefficients": null,
+      "rotationConstraints": null,
+      "modelEnabled": false,
+      "reviewStatus": "candidate_only",
+      "harvestUse": "grain"
+    },
+    {
+      "cropId": "soybean",
+      "nameEn": "Soybean",
+      "nameAr": "فول صويا",
+      "broadSeason": "summer",
+      "implementationPriority": "core",
+      "comparisonRole": "Summer grain-legume/oilseed option",
+      "evidenceRefs": [
+        "icar-egypt-cropping-systems"
+      ],
+      "regionalSuitability": {
+        "egypt-nile-delta": "unreviewed",
+        "egypt-fayoum": "unreviewed"
+      },
+      "plantingWindow": null,
+      "durationDays": null,
+      "cropWaterMethod": null,
+      "stageCoefficients": null,
+      "rotationConstraints": null,
+      "modelEnabled": false,
+      "reviewStatus": "candidate_only",
+      "harvestUse": "grain"
+    },
+    {
+      "cropId": "sunflower",
+      "nameEn": "Sunflower",
+      "nameAr": "عباد الشمس",
+      "broadSeason": "summer",
+      "implementationPriority": "core",
+      "comparisonRole": "Summer oilseed option",
+      "evidenceRefs": [
+        "icar-egypt-cropping-systems"
+      ],
+      "regionalSuitability": {
+        "egypt-nile-delta": "unreviewed",
+        "egypt-fayoum": "unreviewed"
+      },
+      "plantingWindow": null,
+      "durationDays": null,
+      "cropWaterMethod": null,
+      "stageCoefficients": null,
+      "rotationConstraints": null,
+      "modelEnabled": false,
+      "reviewStatus": "candidate_only",
+      "harvestUse": "oilseed"
     }
   ]
 }
