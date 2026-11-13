@@ -52,7 +52,9 @@ export default function SatelliteEvidenceDrawer({
     day: Math.floor((Date.parse(p.date) - Date.UTC(2025, 0, 1)) / 86400000) + 1,
     coverScenario:
       p.date >= "2025-09-01" && p.date < "2025-12-01"
-        ? Math.max(p.ndvi, 0.42)
+        ? valid(p.ndvi)
+          ? Math.max(p.ndvi, 0.42)
+          : null
         : p.ndvi,
   }));
   const climate = monthlyClimate(data.climateDaily).map((p) => ({
@@ -169,8 +171,8 @@ export default function SatelliteEvidenceDrawer({
               </div>
               <p className="chart-note">
                 {t(
-                  "Shaded: Sep–Nov. Dashed: illustrative 0.42 NDVI floor with Nili cover, not a predicted crop response. Low NDVI alone cannot establish erosion or a harvest date. No MODIS QA-band screening in this prototype.",
-                  "التظليل: سبتمبر–نوفمبر. الخط المتقطع: حد افتراضي ٠٫٤٢ مع الغطاء النيلي، وليس تنبؤاً باستجابة المحصول. انخفاض NDVI وحده لا يثبت التعرية أو موعد الحصاد. لم تُطبق تصفية نطاق جودة MODIS.",
+                  "Shaded: Sep–Nov. Dashed: illustrative 0.42 NDVI floor with Nili cover, not a predicted crop response. Low NDVI alone cannot establish erosion or a harvest date. Observed NDVI accepts only pixel reliability 0 (good). Rejected dates stay missing; gaps are not interpolated.",
+                  "التظليل: سبتمبر–نوفمبر. الخط المتقطع: حد افتراضي ٠٫٤٢ مع الغطاء النيلي، وليس تنبؤاً باستجابة المحصول. انخفاض NDVI وحده لا يثبت التعرية أو موعد الحصاد. نقبل الرصد المصنف جيداً فقط (٠). التواريخ المستبعدة تظل مفقودة دون استيفاء.",
                 )}
               </p>
             </article>
@@ -260,8 +262,12 @@ export default function SatelliteEvidenceDrawer({
                   {vegetation.map((p) => (
                     <tr key={p.date}>
                       <td>{p.date}</td>
-                      <td>{p.ndvi.toFixed(3)}</td>
-                      <td>{p.coverScenario.toFixed(3)}</td>
+                      <td>{p.ndvi == null ? "—" : p.ndvi.toFixed(3)}</td>
+                      <td>
+                        {p.coverScenario == null
+                          ? "—"
+                          : p.coverScenario.toFixed(3)}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

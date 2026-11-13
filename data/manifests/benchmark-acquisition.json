@@ -1,0 +1,2618 @@
+{
+  "schemaVersion": 1,
+  "period": "2025-01-01/2025-12-31",
+  "requests": [
+    {
+      "key": "delta_kafr_el_sheikh/250m_16_days_NDVI-001-145",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_NDVI&startDate=A2025001&endDate=A2025145&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/250m_16_days_NDVI-001-145.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:54.938880+00:00",
+      "sha256": "b057d07e14f28da5dcb9c7414b27150164d99f30021aa9bb095b223649057006",
+      "bytes": 1952,
+      "contentType": "application/json"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/250m_16_days_NDVI-161-305",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_NDVI&startDate=A2025161&endDate=A2025305&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/250m_16_days_NDVI-161-305.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:00.822652+00:00",
+      "sha256": "7cfd75fb292e6186d5d68477363849f9ce7f7181274834dba8bed71d981f3f20",
+      "bytes": 1952,
+      "contentType": "application/json"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/250m_16_days_NDVI-321-353",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_NDVI&startDate=A2025321&endDate=A2025353&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/250m_16_days_NDVI-321-353.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:57.059527+00:00",
+      "sha256": "fd94689cfc759a5ae3c73f036ad9bb4760bfdf6fa802ede537c53d0a05459bdf",
+      "bytes": 888,
+      "contentType": "application/json"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/250m_16_days_pixel_reliability-001-145",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_pixel_reliability&startDate=A2025001&endDate=A2025145&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/250m_16_days_pixel_reliability-001-145.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:05.815014+00:00",
+      "sha256": "28e56682f1ece3b495858560c7091e16238a569e81d0e41154a558437c439d28",
+      "bytes": 2068,
+      "contentType": "application/json"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/250m_16_days_pixel_reliability-161-305",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_pixel_reliability&startDate=A2025161&endDate=A2025305&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/250m_16_days_pixel_reliability-161-305.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:08.719153+00:00",
+      "sha256": "ca6e387e1159dee9afa904f73f3f793a33be572a892a76422764091c9a5b5b18",
+      "bytes": 2068,
+      "contentType": "application/json"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/250m_16_days_pixel_reliability-321-353",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_pixel_reliability&startDate=A2025321&endDate=A2025353&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/250m_16_days_pixel_reliability-321-353.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:10.425718+00:00",
+      "sha256": "e4f5d5eb386b922f252a991778e606daf9429d766015da61a34981744c6b3f0d",
+      "bytes": 934,
+      "contentType": "application/json"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/power",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.9388&latitude=31.1107&start=20250101&end=20251231&format=JSON",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/power.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:12.825729+00:00",
+      "sha256": "c6b691b115ef3a65bf5c5bd4d3e2f047ec0cd630e8703806a76a5daac962c622",
+      "bytes": 35860,
+      "contentType": "application/json"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/soil",
+      "url": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=30.9388&lat=31.1107&property=clay&property=sand&property=soc&property=nitrogen&property=phh2o&depth=0-5cm&depth=5-15cm&value=mean&value=Q0.05&value=Q0.95",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/soil.json",
+      "status": "unavailable",
+      "error": "The read operation timed out"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/clay_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/clay_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:26.028640+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/clay_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/clay_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:26.033534+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/clay_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/clay_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:25.923148+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/clay_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/clay_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:26.338281+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/clay_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/clay_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:26.462796+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/clay_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/clay_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:26.182522+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/nitrogen_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/nitrogen_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:28.228373+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/nitrogen_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/nitrogen_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:28.374452+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/nitrogen_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/nitrogen_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:28.148982+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/nitrogen_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/nitrogen_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:28.650866+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/nitrogen_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/nitrogen_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:28.680905+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/nitrogen_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/nitrogen_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:28.483905+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/phh2o_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/phh2o_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:28.971326+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/phh2o_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/phh2o_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:29.071451+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/phh2o_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/phh2o_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:28.771691+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/phh2o_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/phh2o_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:29.240664+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/phh2o_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/phh2o_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:29.455263+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/phh2o_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/phh2o_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:29.120988+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/sand_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/sand_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:26.666075+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/sand_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/sand_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:26.756153+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/sand_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/sand_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:26.519249+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/sand_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/sand_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:28.074353+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/sand_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/sand_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:27.108147+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/sand_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/sand_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:26.940361+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/soc_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/soc_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:27.418752+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/soc_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/soc_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:27.504880+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/soc_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/soc_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:27.192409+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/soc_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/soc_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:27.854281+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/soc_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/soc_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:27.963653+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "delta_kafr_el_sheikh/wcs/soc_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3429000,3429250)&SUBSET=y(3463000,3463250)",
+      "localPath": "data/raw/benchmark-2025/delta_kafr_el_sheikh/wcs/soc_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:27.682204+00:00",
+      "sha256": "c98596c4aaa4eb2ea63ec4b0d243930573314c19b3fb627097440adc8e81e899",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3429000.0,
+        3463000.0,
+        3429250.0,
+        3463250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/250m_16_days_NDVI-001-145",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_NDVI&startDate=A2025001&endDate=A2025145&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/250m_16_days_NDVI-001-145.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:32.690133+00:00",
+      "sha256": "e1a18c69d5dbf78a5c20d8ec88f3b85820ae1f359681cdec8158402df32441aa",
+      "bytes": 1952,
+      "contentType": "application/json"
+    },
+    {
+      "key": "fayoum_etsa/250m_16_days_NDVI-161-305",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_NDVI&startDate=A2025161&endDate=A2025305&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/250m_16_days_NDVI-161-305.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:33.143397+00:00",
+      "sha256": "32f41443d478051cd5c04b5038b785e76fbc27926ac7fd3faa65bbbcaff85723",
+      "bytes": 1952,
+      "contentType": "application/json"
+    },
+    {
+      "key": "fayoum_etsa/250m_16_days_NDVI-321-353",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_NDVI&startDate=A2025321&endDate=A2025353&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/250m_16_days_NDVI-321-353.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:28.161673+00:00",
+      "sha256": "b8434527ebda5b4867d451f8ef08926d4d27cd4a0102c0fc1c4a864ce6b86dae",
+      "bytes": 888,
+      "contentType": "application/json"
+    },
+    {
+      "key": "fayoum_etsa/250m_16_days_pixel_reliability-001-145",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_pixel_reliability&startDate=A2025001&endDate=A2025145&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/250m_16_days_pixel_reliability-001-145.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:35.993976+00:00",
+      "sha256": "ea8ae7cd7fdfc7e4405562c656328cf25d6ade77c43651a3da9cac29ff6f49f6",
+      "bytes": 2068,
+      "contentType": "application/json"
+    },
+    {
+      "key": "fayoum_etsa/250m_16_days_pixel_reliability-161-305",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_pixel_reliability&startDate=A2025161&endDate=A2025305&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/250m_16_days_pixel_reliability-161-305.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:42.272635+00:00",
+      "sha256": "8f6b699d0e6472129703fbf511b855b168bd66692b86c4f120eb00790af6cf3b",
+      "bytes": 2068,
+      "contentType": "application/json"
+    },
+    {
+      "key": "fayoum_etsa/250m_16_days_pixel_reliability-321-353",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_pixel_reliability&startDate=A2025321&endDate=A2025353&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/250m_16_days_pixel_reliability-321-353.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:43.142779+00:00",
+      "sha256": "02139b0871260d2c34324a7d7890d7e277b1313ce3e66a9a8fc0d5e809b3b024",
+      "bytes": 934,
+      "contentType": "application/json"
+    },
+    {
+      "key": "fayoum_etsa/power",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.7952&latitude=29.2315&start=20250101&end=20251231&format=JSON",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/power.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:12.951771+00:00",
+      "sha256": "0b724e2e4e5416a05648036fcc21ed59485b7dc510ed23b55ef9eb5882d69c97",
+      "bytes": 35807,
+      "contentType": "application/json"
+    },
+    {
+      "key": "fayoum_etsa/soil",
+      "url": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=30.7952&lat=29.2315&property=clay&property=sand&property=soc&property=nitrogen&property=phh2o&depth=0-5cm&depth=5-15cm&value=mean&value=Q0.05&value=Q0.95",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/soil.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T19:00:15.303749+00:00",
+      "sha256": "0712afa7b97c005efaf55c4472ea070c3eb90dc38b2f48485fa2db98a6959e75",
+      "bytes": 1984,
+      "contentType": "application/json"
+    },
+    {
+      "key": "fayoum_etsa/wcs/clay_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/clay_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:21.333013+00:00",
+      "sha256": "7466ea39054504ce080b42b8a7e39d0c1356f792f0ca357eef3798670ef8eafb",
+      "bytes": 1065,
+      "rawValue": 18,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/clay_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/clay_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:21.262618+00:00",
+      "sha256": "f623532056e98b6d3fb64f680b8ac90478372d9af5b11bde1441540eefb0ce5b",
+      "bytes": 1068,
+      "rawValue": 809,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/clay_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/clay_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:21.741180+00:00",
+      "sha256": "793a96a3ca16aec31d772350a86e91b7a7f99ee38691b0d1dfa6dd43f3fb63ef",
+      "bytes": 1067,
+      "rawValue": 263,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/clay_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/clay_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:21.925545+00:00",
+      "sha256": "7466ea39054504ce080b42b8a7e39d0c1356f792f0ca357eef3798670ef8eafb",
+      "bytes": 1065,
+      "rawValue": 18,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/clay_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/clay_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:22.030557+00:00",
+      "sha256": "f623532056e98b6d3fb64f680b8ac90478372d9af5b11bde1441540eefb0ce5b",
+      "bytes": 1068,
+      "rawValue": 809,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/clay_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/clay_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:21.797435+00:00",
+      "sha256": "b56b98f07f89131082d58809b639f08b373f3444c1340b6747febb162bbc07e0",
+      "bytes": 1067,
+      "rawValue": 272,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/nitrogen_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/nitrogen_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:24.481088+00:00",
+      "sha256": "f868cae541ca7da967653a70059aaf5f8d385625a57a77e28d905f81026a902b",
+      "bytes": 1065,
+      "rawValue": 12,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/nitrogen_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/nitrogen_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:24.623346+00:00",
+      "sha256": "faf6dbe179ac7526005778a80634172b262d22b767564fb198ddf17911aaad86",
+      "bytes": 1067,
+      "rawValue": 1129,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/nitrogen_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/nitrogen_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:24.311260+00:00",
+      "sha256": "33f5b3f82d77cb7998efa598b61f6d1f53cdc8bfc9a89b49bb5cacb58eecbce7",
+      "bytes": 1067,
+      "rawValue": 289,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/nitrogen_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/nitrogen_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:24.807184+00:00",
+      "sha256": "6cd8f36dc2fdbedd077b20add2c810c1f0490d61ddb033caf87eb05a5c290cf3",
+      "bytes": 1061,
+      "rawValue": 0,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/nitrogen_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/nitrogen_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:24.975527+00:00",
+      "sha256": "0f5c6e3c10777948f4d89bc782bd748f485f3c40d3d989ce01bbc237d20af041",
+      "bytes": 1067,
+      "rawValue": 462,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/nitrogen_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/nitrogen_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:24.697891+00:00",
+      "sha256": "cc5115e6f7cc1c37e5859968e590c343f9b03859e1a86c2c3385846f02044756",
+      "bytes": 1064,
+      "rawValue": 157,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/phh2o_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/phh2o_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:25.157406+00:00",
+      "sha256": "85b019126c583032ec4cb62dc009d34d350fbea4134c046ab3966c47be040b63",
+      "bytes": 1065,
+      "rawValue": 48,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/phh2o_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/phh2o_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:25.294075+00:00",
+      "sha256": "194d15cbed4d88abd33c9a4358049d4ca441f6ae4e1f17be4024b346082f1429",
+      "bytes": 1064,
+      "rawValue": 89,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/phh2o_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/phh2o_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:25.012954+00:00",
+      "sha256": "b9ef7fa4f7c1953227605cd8b4aa8db0f5854200c4eb6a467382034d424452ad",
+      "bytes": 1064,
+      "rawValue": 73,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/phh2o_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/phh2o_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:25.632793+00:00",
+      "sha256": "623cbe68d4c047cfe5970cefd25c79cb0ebfe8738a4d2e9fe41f5ca7a4266905",
+      "bytes": 1065,
+      "rawValue": 47,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/phh2o_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/phh2o_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:25.689920+00:00",
+      "sha256": "194d15cbed4d88abd33c9a4358049d4ca441f6ae4e1f17be4024b346082f1429",
+      "bytes": 1064,
+      "rawValue": 89,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/phh2o_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/phh2o_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:25.641452+00:00",
+      "sha256": "b9ef7fa4f7c1953227605cd8b4aa8db0f5854200c4eb6a467382034d424452ad",
+      "bytes": 1064,
+      "rawValue": 73,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/sand_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/sand_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:22.336466+00:00",
+      "sha256": "d2bdd7baea9eab63700a6774de28c7d11c3f270928d35488c84df059ad43ca85",
+      "bytes": 1064,
+      "rawValue": 82,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/sand_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/sand_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:22.659100+00:00",
+      "sha256": "dab46844c6661024b821604c8c80b6beefac42f99fc74b64b15613aeb4f2c38c",
+      "bytes": 1067,
+      "rawValue": 913,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/sand_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/sand_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:22.538201+00:00",
+      "sha256": "7f22bbde19e9f7cc99bb8eda9f15e94c025b5ead2301b6b4f8ca656b2aafd13d",
+      "bytes": 1068,
+      "rawValue": 539,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/sand_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/sand_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:23.254083+00:00",
+      "sha256": "6783a3d162d0c5a2a9b220a8e6a75c2db091ea9bd9f1d5c71014165054aa881f",
+      "bytes": 1065,
+      "rawValue": 40,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/sand_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/sand_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:23.162166+00:00",
+      "sha256": "c71d2386df9ffd8cc6987b80fb1cff7e9cb6fdedadeec8adb9bbb943354d537f",
+      "bytes": 1067,
+      "rawValue": 903,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/sand_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/sand_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:22.684273+00:00",
+      "sha256": "0f20cae414dd77a7df4131bdbad3d63bd835b2378e5ea0143ccde5b42ad1ef06",
+      "bytes": 1068,
+      "rawValue": 527,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/soc_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/soc_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:23.441195+00:00",
+      "sha256": "7466ea39054504ce080b42b8a7e39d0c1356f792f0ca357eef3798670ef8eafb",
+      "bytes": 1065,
+      "rawValue": 18,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/soc_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/soc_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:23.540768+00:00",
+      "sha256": "19038648d373d98118d9a3dbb613d68e4122de258cd070d098826d965a13c916",
+      "bytes": 1067,
+      "rawValue": 1662,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/soc_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/soc_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:24.179103+00:00",
+      "sha256": "81b0d8e781efd7d936e96a26eee18b336854f9c2c99f14d8a30be050393f65de",
+      "bytes": 1066,
+      "rawValue": 340,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/soc_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/soc_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:23.850000+00:00",
+      "sha256": "267a1a76c34e144fd49490ebc20cbba87b6beec4f3468b4f40391032a41d46a0",
+      "bytes": 1065,
+      "rawValue": 20,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/soc_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/soc_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:24.180845+00:00",
+      "sha256": "7ee57cee808885fc6f3c01295ac1afdb617d47ecba0dc9d059a1933a831686cc",
+      "bytes": 1066,
+      "rawValue": 432,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "fayoum_etsa/wcs/soc_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3416750,3417000)&SUBSET=y(3254000,3254250)",
+      "localPath": "data/raw/benchmark-2025/fayoum_etsa/wcs/soc_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:24.042103+00:00",
+      "sha256": "f5a52e76ba4c0f29004eea1c3348d07729bd2b57cad84af3a1334d0ccb821e19",
+      "bytes": 1064,
+      "rawValue": 186,
+      "nativeBounds": [
+        3416750.0,
+        3254000.0,
+        3417000.0,
+        3254250.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/250m_16_days_NDVI-001-145",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_NDVI&startDate=A2025001&endDate=A2025145&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/250m_16_days_NDVI-001-145.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:19.237241+00:00",
+      "sha256": "8c4be7c61e5ce0a841ecab42b5394a171d87f1f124545a30c63ffee9711c4792",
+      "bytes": 1948,
+      "contentType": "application/json"
+    },
+    {
+      "key": "west_delta_nubariya/250m_16_days_NDVI-161-305",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_NDVI&startDate=A2025161&endDate=A2025305&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/250m_16_days_NDVI-161-305.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:19.450552+00:00",
+      "sha256": "56c5912e97a2b90edec76fef9846b302645c0c33e6dac9ef9c3f50bfefc38a1a",
+      "bytes": 1948,
+      "contentType": "application/json"
+    },
+    {
+      "key": "west_delta_nubariya/250m_16_days_NDVI-321-353",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_NDVI&startDate=A2025321&endDate=A2025353&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/250m_16_days_NDVI-321-353.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:18.992060+00:00",
+      "sha256": "6e6af6e0e9c1291db372e375c7aad07d051d75b8131e0ff980d56c0ebd0281fa",
+      "bytes": 884,
+      "contentType": "application/json"
+    },
+    {
+      "key": "west_delta_nubariya/250m_16_days_pixel_reliability-001-145",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_pixel_reliability&startDate=A2025001&endDate=A2025145&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/250m_16_days_pixel_reliability-001-145.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:33.951558+00:00",
+      "sha256": "d6721eb5cca5ede59f80ec1d15d801079fc7ae454c930e3d9ead4cbfda211c03",
+      "bytes": 2064,
+      "contentType": "application/json"
+    },
+    {
+      "key": "west_delta_nubariya/250m_16_days_pixel_reliability-161-305",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_pixel_reliability&startDate=A2025161&endDate=A2025305&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/250m_16_days_pixel_reliability-161-305.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:32.493161+00:00",
+      "sha256": "affe18287bee1b07ad91c49edc8903c58f7c657375bcf68bcc07ca64931a873d",
+      "bytes": 2064,
+      "contentType": "application/json"
+    },
+    {
+      "key": "west_delta_nubariya/250m_16_days_pixel_reliability-321-353",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_pixel_reliability&startDate=A2025321&endDate=A2025353&kmAboveBelow=0&kmLeftRight=0",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/250m_16_days_pixel_reliability-321-353.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:54:33.053312+00:00",
+      "sha256": "f74ce389d298e8f3d48bc39535945143ee7c01927dad6cbe5be99a210f60079c",
+      "bytes": 930,
+      "contentType": "application/json"
+    },
+    {
+      "key": "west_delta_nubariya/power",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.068&latitude=30.665&start=20250101&end=20251231&format=JSON",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/power.json",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:53:12.785624+00:00",
+      "sha256": "701f0e18ae403e01cdd62166fc0e096eac5b1f274ed0d3f0ae11a67704b1c12c",
+      "bytes": 35860,
+      "contentType": "application/json"
+    },
+    {
+      "key": "west_delta_nubariya/soil",
+      "url": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=30.068&lat=30.665&property=clay&property=sand&property=soc&property=nitrogen&property=phh2o&depth=0-5cm&depth=5-15cm&value=mean&value=Q0.05&value=Q0.95",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/soil.json",
+      "status": "unavailable",
+      "error": "The read operation timed out"
+    },
+    {
+      "key": "west_delta_nubariya/wcs/clay_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/clay_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:29.637903+00:00",
+      "sha256": "4dc9af4ea6c0dd1c49b57a1537927c1331e9973312fe303063c362e6fc84b81d",
+      "bytes": 1065,
+      "rawValue": 9,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/clay_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/clay_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:29.745504+00:00",
+      "sha256": "b2df22824ddccee323df9920f375ca7a0761ee231a3c885b50845c77142eff4a",
+      "bytes": 1068,
+      "rawValue": 780,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/clay_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/clay_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:29.496117+00:00",
+      "sha256": "2148dcdb68870b3696867e6ffead2c94e1fda3e3e937a1eacac6fe2d23edda83",
+      "bytes": 1065,
+      "rawValue": 247,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/clay_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/clay_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.048672+00:00",
+      "sha256": "e1ee2817b7184f542cac4ed7c723f5583a9a84da070d971e0f9abac69a6dbebb",
+      "bytes": 1065,
+      "rawValue": 10,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/clay_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/clay_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.075086+00:00",
+      "sha256": "ae8658a4a3dbeec6127bd4594fd8f50e54c365371dd72c719fa51baf0fd532d1",
+      "bytes": 1067,
+      "rawValue": 850,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/clay_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/clay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/clay_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:29.881707+00:00",
+      "sha256": "04ea119582afa559ef400e6c6c3f722e297975c67a2db378bdeea67952562cec",
+      "bytes": 1063,
+      "rawValue": 255,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/nitrogen_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/nitrogen_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:31.679537+00:00",
+      "sha256": "e1ee2817b7184f542cac4ed7c723f5583a9a84da070d971e0f9abac69a6dbebb",
+      "bytes": 1065,
+      "rawValue": 10,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/nitrogen_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/nitrogen_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:31.878590+00:00",
+      "sha256": "7553eeb14e868beee178e1198bd004af1bd6549783935c132ce775d000933795",
+      "bytes": 1066,
+      "rawValue": 337,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/nitrogen_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/nitrogen_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:31.664501+00:00",
+      "sha256": "1e929137d1dafdf01d60ae8c95c32721a43896226f0e8cb216b73cb339c8219a",
+      "bytes": 1064,
+      "rawValue": 115,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/nitrogen_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/nitrogen_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:31.955026+00:00",
+      "sha256": "08ff4bd5323e986f15a93a6452817a978347514cd353c69a70a9ff3ad0dba8fb",
+      "bytes": 1063,
+      "rawValue": 2,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/nitrogen_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/nitrogen_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:32.211272+00:00",
+      "sha256": "3bded3ac228b210a30d4961f34787e0ca1f814be53a72845e6391a90b232df0d",
+      "bytes": 1065,
+      "rawValue": 200,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/nitrogen_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/nitrogen.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=nitrogen_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/nitrogen_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:32.007334+00:00",
+      "sha256": "1f7fcbb419d65bd84b6887589ec806990960d24fa7faf660d2c3ee0492d19158",
+      "bytes": 1064,
+      "rawValue": 71,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/phh2o_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/phh2o_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:32.351681+00:00",
+      "sha256": "ea3fecddfeb0496252d2c1c391d6f672c92c8401c7ce869bc0cd30b77dfa4ea3",
+      "bytes": 1064,
+      "rawValue": 72,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/phh2o_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/phh2o_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:32.531035+00:00",
+      "sha256": "79bac9170459ea29f34ef396b96025683fd47408b7ba249431e1ad9594885ffa",
+      "bytes": 1064,
+      "rawValue": 89,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/phh2o_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/phh2o_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:32.236437+00:00",
+      "sha256": "8a3625f4977c8429eee17f1f3a1de0c871bfe9547fa9edd272557cdde27cf82d",
+      "bytes": 1064,
+      "rawValue": 80,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/phh2o_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/phh2o_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:32.807287+00:00",
+      "sha256": "ea3fecddfeb0496252d2c1c391d6f672c92c8401c7ce869bc0cd30b77dfa4ea3",
+      "bytes": 1064,
+      "rawValue": 72,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/phh2o_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/phh2o_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:32.844696+00:00",
+      "sha256": "dfa814c4a1a2f3be3d7281be876f0e0f9602966bc8f86529ee2c70cafd4d1de1",
+      "bytes": 1064,
+      "rawValue": 90,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/phh2o_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/phh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/phh2o_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:32.633930+00:00",
+      "sha256": "8a3625f4977c8429eee17f1f3a1de0c871bfe9547fa9edd272557cdde27cf82d",
+      "bytes": 1064,
+      "rawValue": 80,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/sand_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/sand_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.388199+00:00",
+      "sha256": "61d42f981f7672e7d32dcb0bb089cad100d4d2275cbb94a06d043038677a2f9e",
+      "bytes": 1065,
+      "rawValue": 26,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/sand_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/sand_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.466928+00:00",
+      "sha256": "a0aade2f2052cc1d7c4190a95d0066c3f805c4a3f5f5f2c87cfdf79c67b35cf7",
+      "bytes": 1067,
+      "rawValue": 755,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/sand_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/sand_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.143453+00:00",
+      "sha256": "eb33cd3c20717b3eebc7a80b0e5980d4724de870214dcc42b8d2756fbbc15f62",
+      "bytes": 1066,
+      "rawValue": 418,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/sand_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/sand_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.672691+00:00",
+      "sha256": "61d42f981f7672e7d32dcb0bb089cad100d4d2275cbb94a06d043038677a2f9e",
+      "bytes": 1065,
+      "rawValue": 26,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/sand_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/sand_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.890444+00:00",
+      "sha256": "108f118f9ad7663e25283707666ed357942ab9482dc4ba1368009a10e9a8f4fc",
+      "bytes": 1068,
+      "rawValue": 754,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/sand_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/sand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/sand_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.499903+00:00",
+      "sha256": "0b7f5111e85d401888cacf63f88e418afcc418c8a9ea8d3ce8f1c716b7d4bcd2",
+      "bytes": 1066,
+      "rawValue": 410,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/soc_0-5cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/soc_0-5cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.969238+00:00",
+      "sha256": "08ff4bd5323e986f15a93a6452817a978347514cd353c69a70a9ff3ad0dba8fb",
+      "bytes": 1063,
+      "rawValue": 2,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/soc_0-5cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/soc_0-5cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:31.271697+00:00",
+      "sha256": "baaaf28bd114d4fd568902538271c4afa3e0b145109a95de776353f63f654b0b",
+      "bytes": 1065,
+      "rawValue": 219,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/soc_0-5cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/soc_0-5cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:30.905983+00:00",
+      "sha256": "24945cc09f6150d4848d85cabbc14779169cdf57ab977b8c4bbb79208c3fb566",
+      "bytes": 1064,
+      "rawValue": 69,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/soc_5-15cm_Q0.05",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_Q0.05&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/soc_5-15cm_Q0.05.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:31.295066+00:00",
+      "sha256": "08ff4bd5323e986f15a93a6452817a978347514cd353c69a70a9ff3ad0dba8fb",
+      "bytes": 1063,
+      "rawValue": 2,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/soc_5-15cm_Q0.95",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_Q0.95&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/soc_5-15cm_Q0.95.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:31.573649+00:00",
+      "sha256": "baaaf28bd114d4fd568902538271c4afa3e0b145109a95de776353f63f654b0b",
+      "bytes": 1065,
+      "rawValue": 219,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "west_delta_nubariya/wcs/soc_5-15cm_mean",
+      "url": "https://maps.isric.org/mapserv?map=/map/soc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_mean&FORMAT=image/tiff&SUBSET=x(3346000,3346250)&SUBSET=y(3413500,3413750)",
+      "localPath": "data/raw/benchmark-2025/west_delta_nubariya/wcs/soc_5-15cm_mean.tif",
+      "status": "downloaded",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-13T18:55:31.285532+00:00",
+      "sha256": "ea22198b7d8d8951da209b559786254cde75346bf768c5d28fb889ded7cdab66",
+      "bytes": 1064,
+      "rawValue": 68,
+      "nativeBounds": [
+        3346000.0,
+        3413500.0,
+        3346250.0,
+        3413750.0
+      ],
+      "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "shape": [
+        1,
+        1
+      ]
+    }
+  ],
+  "referenceAccessAttempts": [
+    {
+      "source": "FAO Irrigation and Drainage Paper 56",
+      "url": "https://www.fao.org/4/X0490E/x0490e0b.htm",
+      "httpStatus": 403,
+      "attemptedAt": "2026-11-13T19:04:53.845751+00:00",
+      "outcome": "Blocked; crop coefficients not independently verified"
+    },
+    {
+      "source": "FAO Irrigation and Drainage Paper 29",
+      "url": "https://www.fao.org/4/t0234e/T0234E03.htm",
+      "httpStatus": 403,
+      "attemptedAt": "2026-11-13T19:04:53.845763+00:00",
+      "outcome": "Blocked; crop salinity constants not independently verified"
+    }
+  ]
+}

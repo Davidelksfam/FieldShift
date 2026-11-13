@@ -34,3 +34,11 @@ Explicit form label associations were added for select and slider controls. Offl
 Review user-supplied crop assumptions, water coefficient interpretation, local calibration, repeated legumes, overlapping Nili calendars and salinity inference. Bare-soil days are a low-NDVI composite proxy, not an erosion measurement. Soil EC/drainage/contracts need local checks. PixelGust units/schema still need live audit; unknown schemas are rejected safely. MODIS QA-band screening is disclosed as absent. External imagery requires network even when the local planning shell is offline.
 
 CI runs `npm ci`, checks, installs Chromium and runs the five browser scenarios. Preserve historical branches; integrate the PR through normal review.
+
+## Dataset acquisition verification — issue #14
+
+Actual 2025 source data now supersedes synthetic values at the exact three benchmark centroids. Acquisition captured 112 successful small responses (3 POWER, 18 MODIS NDVI/QA, 90 soil TIFFs, 1 Fayoum point-soil response). Two other point-soil requests timed out. All 30 Fayoum soil means/quantiles and scale factors matched across the WCS and point interfaces. Delta WCS requests succeeded in transport but returned zero-filled profiles; these failed data-quality gates and were excluded.
+
+The deterministic preparation command verifies raw SHA-256, calendar/unit/range constraints, native grid geometry, depth weighting and MODIS QA. It publishes complete climate years, 21/15/22 good MODIS observations out of 23 respectively, and valid soil predictions only for Fayoum/Nubariya. Rejected NDVI dates stay null and autumn coverage is displayed. Raw files remain ignored; the accompanying dataset ZIP preserves them for offline reproduction.
+
+Updated automated checks: 16 unit tests (including output hash, actual coverage, rejected Delta soil, mandatory QA and six-request NDVI success), successful production build with separate benchmark chunk, repository link check, and five production-browser scenarios covering audited offline values, partial refresh rejection, visible soil fallback, Arabic/English and offline shell reload. These checks establish pipeline behavior, not field-scale scientific accuracy. See the [quality report](../../data/processed/QUALITY_REPORT.md) and [reproduction guide](../../data/processed/README.md).

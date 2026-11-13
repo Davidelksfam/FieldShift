@@ -1,7 +1,9 @@
 import presets from "../data/demoPresets.json" with { type: "json" };
 
+import observedBenchmarks from "../data/observedBenchmarks.json" with { type: "json" };
+
 export const REQUEST_TIMEOUT_MS = 4500;
-const CACHE_VERSION = "fieldshift-v1";
+const CACHE_VERSION = "fieldshift-v2";
 const CACHE_MAX_AGE = 7 * 24 * 60 * 60 * 1000;
 const validNumber = (value) =>
   typeof value === "number" && Number.isFinite(value);
@@ -23,7 +25,7 @@ export function nearestPreset(lat, lon) {
   );
 }
 
-export function parsePower(payload) {
+export function parsePower(payload, { requireComplete = false } = {}) {
   const parameters = payload?.properties?.parameter;
   if (!parameters?.T2M_MAX) throw new Error("Missing POWER temperature series");
   const names = {
@@ -34,6 +36,19 @@ export function parsePower(payload) {
     rootWetness: "GWETROOT",
     topWetness: "GWETTOP",
   };
+  if (requireComplete) {
+    const units = {
+      T2M_MAX: "C",
+      T2M_MIN: "C",
+      PRECTOTCORR: "mm/day",
+      EVPTRNS: "MJ/m^2/day",
+      GWETROOT: "1",
+      GWETTOP: "1",
+    };
+    for (const [key, unit] of Object.entries(units))
+      if (payload.parameters?.[key]?.units !== unit)
+        throw new Error("Unrecognized POWER units");
+  }
   const dates = [
     ...new Set(Object.values(parameters).flatMap((p) => Object.keys(p))),
   ]
@@ -44,7 +59,18 @@ export function parsePower(payload) {
     ...Object.fromEntries(
       Object.entries(names).map(([key, name]) => [
         key,
-        cleanPowerValue(parameters[name]?.[d]),
+        (() => {
+          const value = cleanPowerValue(parameters[name]?.[d]);
+          const [low, high] = {
+            tmax: [-90, 65],
+            tmin: [-90, 60],
+            precipitation: [0, 500],
+            evapotranspiration: [-50, 50],
+            rootWetness: [0, 1],
+            topWetness: [0, 1],
+          }[key];
+          return value !== null && value >= low && value <= high ? value : null;
+        })(),
       ]),
     ),
   }));
@@ -53,6 +79,28 @@ export function parsePower(payload) {
   );
   if (!summer.some((d) => d.tmax !== null))
     throw new Error("Missing POWER summer observations");
+  if (
+    climateDaily.some(
+      (d) => d.tmax !== null && d.tmin !== null && d.tmax < d.tmin,
+    )
+  )
+    throw new Error("POWER Tmax below Tmin");
+  if (
+    requireComplete &&
+    (dates.length !== 365 ||
+      dates.some((d) => {
+        const iso = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`;
+        return (
+          !Number.isFinite(Date.parse(iso)) ||
+          new Date(iso).toISOString().slice(0, 10) !== iso
+        );
+      }) ||
+      summer.filter((d) => d.tmax !== null).length !== 153 ||
+      Object.keys(names).some(
+        (key) => climateDaily.filter((d) => d[key] !== null).length < 347,
+      ))
+  )
+    throw new Error("Incomplete POWER coverage; retaining fallback");
   return {
     climateDaily,
     summerMaxTemps: summer.map((d) => d.tmax).filter(validNumber),
@@ -99,14 +147,16 @@ function validateSoil(soil) {
     if (!validNumber(soil?.[name]))
       throw new Error(`Missing soil property: ${name}`);
   if (
-    soil.phh2o < 0 ||
+    soil.phh2o <= 0 ||
     soil.phh2o > 14 ||
     soil.clay < 0 ||
     soil.clay > 100 ||
     soil.sand < 0 ||
     soil.sand > 100 ||
     soil.soc < 0 ||
-    soil.nitrogen < 0
+    soil.nitrogen < 0 ||
+    soil.sand + soil.clay <= 0 ||
+    soil.sand + soil.clay > 100
   )
     throw new Error("Invalid soil units");
   return soil;
@@ -134,18 +184,43 @@ export function parsePixelGust(payload) {
   );
 }
 
-export function parseModis(payload) {
+export function parseModis(payload, qualityPayload) {
+  if (!qualityPayload?.subset?.length)
+    throw new Error("MODIS pixel reliability is required");
+  const qa = new Map(
+    qualityPayload.subset.map((row) => [row.calendar_date, row]),
+  );
+  const seen = new Set();
   const series = (payload?.subset ?? [])
-    .flatMap((entry) => {
-      const pixels = (entry.data ?? []).filter(
-        (v) => validNumber(v) && v >= -2000 && v <= 10000,
+    .map((entry) => {
+      if (
+        !/^2025-\d{2}-\d{2}$/.test(entry.calendar_date) ||
+        seen.has(entry.calendar_date)
+      )
+        throw new Error("Duplicate/invalid MODIS date");
+      seen.add(entry.calendar_date);
+      const quality = qa.get(entry.calendar_date);
+      if (
+        !quality ||
+        quality.data.length !== entry.data.length ||
+        quality.tile !== entry.tile
+      )
+        throw new Error("MODIS QA alignment mismatch");
+      const pixels = entry.data.filter(
+        (value, i) =>
+          validNumber(value) &&
+          value >= -2000 &&
+          value <= 10000 &&
+          quality.data[i] === 0,
       );
-      if (!pixels.length || !/^2025-\d{2}-\d{2}$/.test(entry.calendar_date))
-        return [];
-      return [{ date: entry.calendar_date, ndvi: mean(pixels) * 0.0001 }];
+      return {
+        date: entry.calendar_date,
+        ndvi: pixels.length ? mean(pixels) * 0.0001 : null,
+      };
     })
     .sort((a, b) => a.date.localeCompare(b.date));
-  if (!series.length) throw new Error("No valid MODIS pixels");
+  if (!series.some((p) => p.ndvi !== null))
+    throw new Error("No good-quality MODIS pixels");
   return series;
 }
 
@@ -170,7 +245,7 @@ function readCache(lat, lon) {
       globalThis.localStorage?.getItem(cacheKey(lat, lon)) ?? "null",
     );
     if (
-      cached?.version !== 1 ||
+      cached?.version !== 2 ||
       Date.now() - cached.savedAt > CACHE_MAX_AGE ||
       !cached.data?.sources
     )
@@ -202,7 +277,7 @@ function writeCache(lat, lon, data) {
   try {
     globalThis.localStorage?.setItem(
       cacheKey(lat, lon),
-      JSON.stringify({ version: 1, savedAt: Date.now(), data }),
+      JSON.stringify({ version: 2, savedAt: Date.now(), data }),
     );
   } catch {
     /* Private mode / full storage: bundled fallback still works. */
@@ -212,7 +287,7 @@ function writeCache(lat, lon, data) {
 export function getInitialFarmData(lat, lon, presetId) {
   const preset = presets[presetId] ?? nearestPreset(lat, lon);
   const cached = readCache(lat, lon);
-  return cached
+  const initial = cached
     ? {
         ...cached,
         lat,
@@ -257,6 +332,28 @@ export function getInitialFarmData(lat, lon, presetId) {
           ]),
         ),
       };
+  // Audited historical snapshots are permanent release artifacts, not live cache.
+  // Never attribute a benchmark observation to another map centroid.
+  const snapshot = Object.values(observedBenchmarks).find(
+    (p) => Math.abs(p.lat - lat) < 1e-7 && Math.abs(p.lon - lon) < 1e-7,
+  );
+  if (!cached && snapshot) {
+    for (const key of [
+      "climateDaily",
+      "summerMaxTemps",
+      "avgRootWetness",
+      "ndviSeries",
+      "soil",
+    ]) {
+      if (snapshot[key] !== undefined)
+        initial[key] = structuredClone(snapshot[key]);
+    }
+    Object.assign(initial.sources, structuredClone(snapshot.sources));
+    if (!snapshot.soil)
+      initial.sources.soil.reason =
+        "Exact centroid has an invalid zero-filled SoilGrids profile; synthetic soil fallback is not a measurement.";
+  }
+  return initial;
 }
 
 async function fetchJson(url, signal) {
@@ -294,7 +391,7 @@ export async function fetchUnifiedFarmData(
   const snapshots = [];
   const tasks = [
     fetchJson(powerUrl, signal)
-      .then(parsePower)
+      .then((payload) => parsePower(payload, { requireComplete: true }))
       .then((value) => ({ value, provider: "NASA POWER", url: powerUrl })),
     (async () => {
       try {
@@ -312,29 +409,58 @@ export async function fetchUnifiedFarmData(
         };
       }
     })(),
-    // ORNL permits at most ten 16-day composites per request: split the year.
+    // Retrieve QA alongside NDVI; never replace audited data with unscreened pixels.
     Promise.all(
-      [
-        ["001", "145"],
-        ["161", "305"],
-        ["321", "353"],
-      ].map(([start, end]) =>
-        fetchJson(
-          modisUrl
-            .replace("A2025001", `A2025${start}`)
-            .replace("A2025365", `A2025${end}`),
-          signal,
-        ),
+      ["250m_16_days_NDVI", "250m_16_days_pixel_reliability"].map((band) =>
+        Promise.all(
+          [
+            ["001", "145"],
+            ["161", "305"],
+            ["321", "353"],
+          ].map(([start, end]) =>
+            fetchJson(
+              modisUrl
+                .replace("250m_16_days_NDVI", band)
+                .replace("A2025001", `A2025${start}`)
+                .replace("A2025365", `A2025${end}`),
+              signal,
+            ),
+          ),
+        ).then((chunks) => {
+          if (chunks.some((c) => c.nrows !== 1 || c.ncols !== 1))
+            throw new Error("Unexpected MODIS grid");
+          const keys = ["xllcorner", "yllcorner", "cellsize", "nrows", "ncols"];
+          const grid = Object.fromEntries(
+            keys.map((key) => [key, chunks[0][key]]),
+          );
+          if (chunks.some((c) => keys.some((key) => c[key] !== grid[key])))
+            throw new Error("Inconsistent MODIS chunk grids");
+          if (
+            band === "250m_16_days_NDVI" &&
+            chunks.some((c) => Number(c.scale) !== 0.0001)
+          )
+            throw new Error("Unrecognized MODIS scale");
+          return { subset: chunks.flatMap((c) => c.subset ?? []), grid };
+        }),
       ),
     )
-      .then((chunks) =>
-        parseModis({ subset: chunks.flatMap((c) => c.subset ?? []) }),
-      )
+      .then(([ndvi, qa]) => {
+        if (JSON.stringify(ndvi.grid) !== JSON.stringify(qa.grid))
+          throw new Error("MODIS QA pixel grid mismatch");
+        const value = parseModis(ndvi, qa);
+        const expected = new Set(
+          Array.from({ length: 23 }, (_, i) =>
+            new Date(Date.UTC(2025, 0, 1 + i * 16)).toISOString().slice(0, 10),
+          ),
+        );
+        if (value.length !== 23 || value.some((p) => !expected.has(p.date)))
+          throw new Error("Incomplete MODIS calendar");
+        return value;
+      })
       .then((value) => ({
         value,
-        provider: "ORNL MODIS MOD13Q1",
-        url: modisUrl,
-        requestNote: "Year split into <=10-composite requests.",
+        provider: "ORNL MODIS MOD13Q1 · QA screened",
+        url: "https://modis.ornl.gov/data/modis_webservice.html",
       })),
   ].map((task, index) =>
     task.then(

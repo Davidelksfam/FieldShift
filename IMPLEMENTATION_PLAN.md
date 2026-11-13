@@ -177,3 +177,7 @@ Set native max zoom to 9/7 respectively, explain coarse-raster resampling, retai
 5. Publish a reviewable PR to the pivot integration branch; preserve main/history and do not deploy or merge automatically.
 
 See [data audit](docs/data/DATA_PLAN.md), [contract](docs/engineering/CONTRACTS.md) and [validation notes](docs/delivery/PLAN.md) for limitations and actual verification evidence.
+
+## Dataset acquisition amendment (2026-11-13)
+
+The initial synthetic benchmarks remain test fixtures. Actual acquisitions now take precedence at the three exact centroids: complete POWER years, QA-screened MODIS and two valid native SoilGrids WCS profiles. The Delta zero-filled soil profile was rejected. Live MODIS requires pixel reliability 0; masked dates stay null. Live POWER requires verified units, a full-year calendar, complete summer maxima and at least 95% valid values per variable. See the [quality report and reproduction steps](data/processed/QUALITY_REPORT.md). PR #13 merged the application into main; new data PRs now target main.

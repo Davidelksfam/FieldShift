@@ -40,6 +40,18 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
     const to = Math.min(start + 16 * 86400000, Date.UTC(2025, 11, 1));
     return sum + Math.max(0, (to - from) / 86400000);
   }, 0);
+  const autumnObservedDays = (nasaData.ndviSeries ?? []).reduce((sum, pt) => {
+    if (!isNumber(pt.ndvi) || pt.ndvi < -0.2 || pt.ndvi > 1) return sum;
+    return (
+      sum +
+      Math.max(
+        0,
+        (Math.min(Date.parse(pt.date) + 16 * 86400000, Date.UTC(2025, 11, 1)) -
+          Math.max(Date.parse(pt.date), Date.UTC(2025, 8, 1))) /
+          86400000,
+      )
+    );
+  }, 0);
   const soilPh = nasaData.soil?.phh2o ?? 8;
   const soilClay = nasaData.soil?.clay ?? 40;
   let salinityRisk =
@@ -217,6 +229,8 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
   return {
     diagnostics: {
       heatStressDays,
+      autumnObservedDays,
+      autumnMissingDays: Math.max(0, 91 - autumnObservedDays),
       bareSoilDays: Math.round(bareSoilDays),
       salinityRisk,
       rootZoneWetnessAvg: nasaData.avgRootWetness ?? null,

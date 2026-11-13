@@ -22,6 +22,36 @@ const inputs = {
   weights: { water: 50, soil: 30, market: 20 },
 };
 const field = presets.fayoum_etsa;
+function completePower(tmax) {
+  const parameters = {};
+  const units = {
+    T2M_MAX: "C",
+    T2M_MIN: "C",
+    PRECTOTCORR: "mm/day",
+    EVPTRNS: "MJ/m^2/day",
+    GWETROOT: "1",
+    GWETTOP: "1",
+  };
+  for (const key of Object.keys(units))
+    parameters[key] = Object.fromEntries(
+      field.climateDaily.map((d) => [
+        d.date.replaceAll("-", ""),
+        key === "T2M_MAX"
+          ? tmax
+          : key === "T2M_MIN"
+            ? 20
+            : key.startsWith("GWET")
+              ? 0.33
+              : 1,
+      ]),
+    );
+  return {
+    properties: { parameter: parameters },
+    parameters: Object.fromEntries(
+      Object.entries(units).map(([k, units]) => [k, { units }]),
+    ),
+  };
+}
 const response = (payload) => ({ ok: true, json: async () => payload });
 
 test("nine-crop catalog and three benchmarks have complete, explicitly synthetic inputs", () => {
@@ -83,17 +113,18 @@ test("ISRIC scales all five units and weights soil layers by thickness; incomple
   assert.throws(() => parseIsric(payload), /Incomplete/);
   assert.throws(() => parsePixelGust({ clay: 400, phh2o: 82 }), /units/);
 });
-test("MODIS masks fill/out-of-range/null pixels before NDVI scale conversion", () => {
+test("MODIS masks invalid raw values and requires matched QA", () => {
+  const row = {
+    calendar_date: "2025-09-01",
+    tile: "h20v06",
+    data: [-3000, null, 1600, 2400, 32767],
+  };
   assert.deepEqual(
-    parseModis({
-      subset: [
-        { calendar_date: "2025-09-01", data: [-3000, null, 1600, 2400, 32767] },
-      ],
-    }),
+    parseModis(
+      { subset: [row] },
+      { subset: [{ ...row, data: [0, 0, 0, 0, 0] }] },
+    ),
     [{ date: "2025-09-01", ndvi: 0.2 }],
-  );
-  assert.throws(() =>
-    parseModis({ subset: [{ calendar_date: "2025-09-01", data: [-3000] }] }),
   );
 });
 test("Fayoum baseline matches blueprint arithmetic; qirats and irrigation affect water estimates", () => {
@@ -166,16 +197,7 @@ test("null soil/root wetness handling preserves valid zero instead of substituti
 test("service retains successful POWER when other sources hang past the global deadline", async (t) => {
   t.mock.method(globalThis, "fetch", (url) =>
     url.includes("power.larc")
-      ? Promise.resolve(
-          response({
-            properties: {
-              parameter: {
-                T2M_MAX: { 20250701: 41 },
-                GWETROOT: { 20250701: 0.33 },
-              },
-            },
-          }),
-        )
+      ? Promise.resolve(response(completePower(41)))
       : new Promise(() => {}),
   );
   const started = Date.now();
@@ -184,8 +206,9 @@ test("service retains successful POWER when other sources hang past the global d
   });
   assert.ok(Date.now() - started < 500);
   assert.equal(result.sources.climate.status, "live");
-  assert.equal(result.sources.soil.status, "demo");
-  assert.deepEqual(result.summerMaxTemps, [41]);
+  assert.equal(result.sources.soil.status, "snapshot");
+  assert.equal(result.summerMaxTemps.length, 153);
+  assert.ok(result.summerMaxTemps.every((t) => t === 41));
   assert.equal(result.harmonizationMeta.centroid.lat, 29.2315);
 });
 test("all network failures return nearest-region fixtures, soil primary falls through to ISRIC", async (t) => {
@@ -198,7 +221,7 @@ test("all network failures return nearest-region fixtures, soil primary falls th
   assert.equal(result.sources.soil.regionalPreset, "west_delta_nubariya");
   assert.equal(result.soil.sand, 74);
   assert.ok(urls.some((url) => url.includes("rest.isric.org")));
-  assert.equal(urls.filter((url) => url.includes("modis.ornl")).length, 3);
+  assert.equal(urls.filter((url) => url.includes("modis.ornl")).length, 6);
 });
 test("exact coordinate cache survives unavailable storage and labels cached observations", async (t) => {
   const memory = new Map();
@@ -215,10 +238,7 @@ test("exact coordinate cache survives unavailable storage and labels cached obse
     else delete globalThis.localStorage;
   });
   t.mock.method(globalThis, "fetch", async (url) => {
-    if (url.includes("power.larc"))
-      return response({
-        properties: { parameter: { T2M_MAX: { 20250701: 40 } } },
-      });
+    if (url.includes("power.larc")) return response(completePower(40));
     throw new Error("offline");
   });
   await fetchUnifiedFarmData(29.2315, 30.7952, "fayoum_etsa");
@@ -237,7 +257,7 @@ test("exact coordinate cache survives unavailable storage and labels cached obse
   memory.set(key, JSON.stringify(stale));
   assert.equal(
     getInitialFarmData(29.2315, 30.7952).sources.climate.status,
-    "demo",
+    "snapshot",
   );
 });
 test("cancelled and out-of-country requests never populate a wrong location", async (t) => {
