@@ -33,7 +33,11 @@ export default function HeaderBar({
           aria-pressed={judgeMode}
         >
           <FlaskConical size={17} />
-          {text(lang, "Judge mode", "وضع التحكيم")}
+          {text(
+            lang,
+            judgeMode ? "Farmer mode" : "Expert mode",
+            judgeMode ? "وضع المزارع" : "وضع الخبير",
+          )}
         </button>
         <button
           className="button"

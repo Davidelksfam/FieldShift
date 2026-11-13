@@ -21,3 +21,9 @@ PR #15 is merged into main. The next stage adds six diagnostic outputs, modeled 
 ## Production demo release — issue #18
 
 PR #17 is merged into main as ebdc83d. The canonical public demo is [fieldshift-tau.vercel.app](https://fieldshift-tau.vercel.app), connected to this repository through the existing NASAspaceAPPS/fieldshift Vercel Git integration. Stale Next.js settings were corrected to root Vite. All seven production browser scenarios and an unmocked NASA/map visit passed; see [release evidence and repeatable checks](delivery/VERCEL_RELEASE.md).
+
+## Farmer-first UX redesign
+
+The active root SPA now defaults to a four-question farmer journey and a progressive comparison, alternatives and explanation view. Expert Mode retains technical controls, all diagnostics, evidence, references and pipeline inspection. Region selection preserves user inputs. Whole-field totals require explicit valid area; otherwise results compare per feddan. Goal presets set deterministic, uncalibrated MCDA preferences; manual weights explicitly activate a custom goal.
+
+Intentional engine change: long pixel low-cover periods suggest Nili exploration but no longer force it. The existing optional-cover candidate set remains available; explicit Nili opt-in still requires conditional cover. The invalid annual/per-rotation water-band comparison is replaced by a calibration warning. Original datasets, crop constants and irrigation efficiencies are unchanged. See [audit, defaults and tests](product/FARMER_FIRST_UX.md).

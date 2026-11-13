@@ -6,6 +6,9 @@ export default defineConfig({
   use: {
     baseURL: remoteBaseUrl || "http://127.0.0.1:4173",
     headless: true,
+    launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+      ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH }
+      : {},
     viewport: { width: 1440, height: 1000 },
     reducedMotion: "reduce",
   },

@@ -72,6 +72,36 @@ export default function FarmerInputPanel({
           ))}
         </div>
       </div>
+      {presetId && (
+        <button
+          className="button"
+          onClick={() =>
+            setInputs((p) => ({ ...p, ...presets[presetId].defaults }))
+          }
+        >
+          {t(
+            "Apply region demo context and irrigation",
+            "طبّق سياق وري عرض المنطقة",
+          )}
+        </button>
+      )}
+      <p className="small-note">
+        {t(
+          "Expert controls · weight edits activate a custom goal. Region changes preserve inputs.",
+          "أدوات الخبير · تعديل الأوزان يفعّل هدفاً مخصصاً. تغيير المنطقة يحافظ على المدخلات.",
+        )}
+      </p>
+      <label className="checkbox-label">
+        <input
+          type="checkbox"
+          checked={inputs.estimateArea}
+          onChange={(e) => update("estimateArea", e.target.checked)}
+        />
+        {t(
+          "Estimate water for my whole field",
+          "أحسب تقدير المياه لأرضي بالكامل",
+        )}
+      </label>
       <div className="form-section">
         <h3>
           <Sprout size={16} />
@@ -128,16 +158,27 @@ export default function FarmerInputPanel({
           ])}
         </div>
         <label className="field-label">
-          {t("Measured soil ECe (dS/m) · optional lab result", "ملوحة التربة ECe (dS/m) · تحليل معمل اختياري")}
+          {t(
+            "Measured soil ECe (dS/m) · optional lab result",
+            "ملوحة التربة ECe (dS/m) · تحليل معمل اختياري",
+          )}
           <input
             aria-label={t("Measured soil ECe", "ECe المقاس للتربة")}
             type="number"
             min="0"
             max="100"
             step="0.1"
-            placeholder={t("Leave blank if not tested", "اتركه فارغاً دون تحليل")}
+            placeholder={t(
+              "Leave blank if not tested",
+              "اتركه فارغاً دون تحليل",
+            )}
             value={inputs.soilEceDsm ?? ""}
-            onChange={(e) => update("soilEceDsm", e.target.value === "" ? null : Number(e.target.value))}
+            onChange={(e) =>
+              update(
+                "soilEceDsm",
+                e.target.value === "" ? null : Number(e.target.value),
+              )
+            }
           />
         </label>
         <p className="small-note">
@@ -198,6 +239,7 @@ export default function FarmerInputPanel({
             </span>
             <input
               id={`priority-${key}`}
+              aria-label={label}
               type="range"
               min="0"
               max="100"
@@ -206,6 +248,7 @@ export default function FarmerInputPanel({
               onChange={(e) =>
                 setInputs((current) => ({
                   ...current,
+                  goal: "custom",
                   weights: {
                     ...current.weights,
                     [key]: Number(e.target.value),

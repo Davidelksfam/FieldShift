@@ -15,7 +15,7 @@ npm ci
 npm run dev
 ```
 
-Open the printed URL. Arabic RTL is the default; switch to English in the header. Choose Fayoum, North Delta or Nubariya, change priorities and irrigation, or click the map. Judge Mode opens satellite evidence and source details.
+Open the printed URL. Arabic RTL is the default; switch to English in the header. Answer four questions: supported region, current winter/summer crops, irrigation and main goal. Then inspect the proposed rotation, compact comparisons and local checks. Optional details include livestock, conditional Nili, lab ECe and whole-field area. Expert Mode retains manual weights, optional map, satellite evidence, raw scores and the pipeline. Region changes preserve your inputs. See the [farmer-first UX specification and dependency audit](docs/product/FARMER_FIRST_UX.md).
 
 ```bash
 npm run check
@@ -49,4 +49,4 @@ npm run test:browser
 
 Work is tracked in [issue #12](https://github.com/Davidelksfam/FieldShift/issues/12). The dashboard was merged into main through PR #13. Dataset acquisition is tracked in issue #14; previous branches and history are preserved.
 
-Judge Mode now includes an interactive five-stage pipeline explorer. Open all six field indices for modeled FAO-56 reference ET₀ and same-pixel historical NDVI anomalies. Real flagship payloads are in `demoPresets.json`; `syntheticFixtures.json` preserves original illustrative tests. An optional Nili switch explores a conditional planting window. Soil-adjusted nitrogen remains unavailable without calibration; water figures remain modeled m³/feddan/rotation.
+Expert Mode includes an interactive five-stage pipeline explorer. Open all six field indices for modeled FAO-56 reference ET₀ and same-pixel historical NDVI anomalies. Real flagship payloads are in `demoPresets.json`; `syntheticFixtures.json` preserves original illustrative tests. An optional Nili switch explores a conditional planting window. Soil-adjusted nitrogen remains unavailable without calibration; water figures remain modeled m³/feddan/rotation.

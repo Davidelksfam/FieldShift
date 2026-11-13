@@ -1,16 +1,29 @@
 import { test, expect } from "@playwright/test";
-const blockRemote = async (page) =>
+const blockRemote = (page) =>
   page.route(/^https:\/\//, (route) =>
     new URL(route.request().url()).origin ===
     new URL(test.info().project.use.baseURL).origin
       ? route.continue()
       : route.abort(),
   );
-async function english(page) {
-  await page.getByRole("button", { name: "English", exact: true }).click();
+const english = (page) =>
+  page.getByRole("button", { name: "English", exact: true }).click();
+const expert = (page) =>
+  page.getByRole("button", { name: "Expert mode", exact: true }).click();
+async function complete(page, ar = false) {
+  for (let i = 0; i < 3; i++)
+    await page
+      .getByRole("button", { name: ar ? "كمّل" : "Continue", exact: true })
+      .click();
+  await page
+    .getByRole("button", {
+      name: ar ? "قارن دورتي الزراعية" : "Compare my rotation",
+      exact: true,
+    })
+    .click();
 }
 
-test("presets, inputs, rankings and both language directions work with all remote sources down", async ({
+test("four questions preserve choices, optional totals and goal changes update a score-free farmer result", async ({
   page,
 }) => {
   const errors = [];
@@ -18,98 +31,239 @@ test("presets, inputs, rankings and both language directions work with all remot
   await blockRemote(page);
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
-  await expect(page.getByTestId("strategy-baseline")).toBeVisible();
+  await expect(page.locator(".map-panel")).toHaveCount(0);
+  await expect(page.locator(".diagnostics-grid")).toHaveCount(0);
   await english(page);
-  await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
-  await expect(page.getByText("Historical observations · 2025")).toBeVisible();
-  await expect(page.getByTestId("water-baseline")).toContainText("10,813");
+  await expect(
+    page.getByRole("heading", { name: "Where is your field?", exact: true }),
+  ).toBeVisible();
   await page
-    .getByRole("button", { name: "North Delta · Kafr El-Sheikh", exact: true })
-    .click();
-  await expect(page.getByText("31.1107° N, 30.9388° E")).toBeVisible();
-  await expect(page.getByLabel("Known salinity")).toHaveValue("high");
-  await expect(page.locator(".diagnostic-2")).toContainText(
-    "Illustrative demo fixture",
+    .getByRole("radio", { name: "West Delta · Nubariya", exact: true })
+    .check();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page
+    .getByLabel("Winter crop", { exact: true })
+    .selectOption("faba_bean");
+  await page.getByLabel("Summer crop", { exact: true }).selectOption("sesame");
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.getByRole("radio", { name: "Drip", exact: true }).check();
+  await page.getByRole("button", { name: "Back", exact: true }).click();
+  await expect(page.getByLabel("Summer crop", { exact: true })).toHaveValue(
+    "sesame",
   );
-  await expect(page.locator(".diagnostic-0 .metric")).toContainText("70");
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await expect(
+    page.getByRole("radio", { name: "Drip", exact: true }),
+  ).toBeChecked();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page
-    .getByRole("button", { name: "West Delta · Nubariya", exact: true })
+    .getByRole("radio", { name: "Improve soil condition", exact: true })
+    .check();
+  await page
+    .getByRole("button", { name: "Compare my rotation", exact: true })
     .click();
-  await expect(page.getByLabel("Land type", { exact: true })).toHaveValue(
-    "new_sandy",
+  await expect(
+    page.getByRole("heading", {
+      name: "A proposed rotation for your goal",
+      exact: true,
+    }),
+  ).toBeFocused();
+  await expect(page.getByTestId("farmer-total")).toHaveCount(0);
+  await expect(page.locator(".suitability")).toHaveCount(0);
+  await expect(
+    page.getByText("Historical observations · 2025", { exact: true }),
+  ).toBeVisible();
+  await page
+    .getByLabel("Change your goal", { exact: true })
+    .selectOption("market");
+  await expect(page.locator(".goal-context")).toHaveText(
+    "Consider market / forage return",
   );
-  await expect(page.getByLabel("Irrigation system")).toHaveValue("drip");
   await page
-    .getByRole("button", { name: "Fayoum · Etsa tail-end", exact: true })
+    .getByRole("button", { name: "Compare options", exact: true })
     .click();
-  await page.getByLabel("Water conservation").fill("100");
-  await page.getByLabel("Soil & nitrogen recovery").fill("0");
-  await page.getByLabel("Cash & forage return").fill("0");
-  await expect(page.getByTestId("strategy-water")).toContainText("Rank 1");
-  await page.getByLabel("Water conservation").fill("0");
-  await page.getByLabel("Soil & nitrogen recovery").fill("100");
-  await expect(page.getByTestId("strategy-soil")).toContainText("Rank 1");
-  const water = await page.getByTestId("water-baseline").textContent();
-  await page.getByLabel("Irrigation system").selectOption("drip");
-  await expect(page.getByTestId("water-baseline")).not.toHaveText(water);
-  await page.getByLabel("Area in feddans").fill("0");
+  await expect(page.getByTestId("farmer-option-baseline")).toContainText(
+    "Sesame",
+  );
+  await expect(page.locator(".compact-option")).toHaveCount(3);
+  await page
+    .getByRole("button", { name: "Why this suggestion?", exact: true })
+    .click();
+  await expect(
+    page.getByText("Check locally before planting", { exact: true }),
+  ).toBeVisible();
+  await page
+    .getByText("Optional details about your field", { exact: true })
+    .click();
+  await page
+    .getByLabel("Estimate water for my whole field", { exact: true })
+    .check();
+  await page.getByLabel("Area in feddans", { exact: true }).fill("0");
   await expect(page.getByRole("alert")).toContainText(
     "total area greater than zero",
   );
-  await expect(page.getByTestId("strategy-baseline")).toHaveCount(0);
-  await page.getByLabel("Area in feddans").fill("5");
-  await page.getByLabel("Seifi · summer crop").selectOption("sesame");
-  await expect(page.getByTestId("strategy-baseline")).toContainText(
-    "Sesame (Semsem)",
+  await expect(page.getByTestId("farmer-total")).toHaveCount(0);
+  await page.getByLabel("Area in feddans", { exact: true }).fill("2");
+  await expect(page.getByTestId("farmer-total")).toContainText(
+    "Whole field model estimate",
   );
-  await page.getByRole("button", { name: "Judge mode", exact: true }).focus();
-  await page.keyboard.press("Enter");
-  await expect(
-    page.getByText("Shared coordinates, different scales"),
-  ).toBeVisible();
-  await page.getByText("View chart values as tables").click();
-  await expect(page.getByRole("table")).toHaveCount(2);
-  await expect(
-    page
-      .getByTestId("strategy-water")
-      .getByText("Verify locally before planting"),
-  ).toBeVisible();
-  await page
-    .getByTestId("strategy-water")
-    .getByText("Verify locally before planting")
-    .click();
-  await expect(page.getByTestId("strategy-water")).toContainText("broomrape");
   expect(errors).toEqual([]);
 });
 
-test("map selection, historical overlay and coordinate validation", async ({
+test("expert mode retains shared state, exact scores, diagnostics, measured ECe, references and pipeline", async ({
   page,
 }) => {
   await blockRemote(page);
   await page.goto("/");
   await english(page);
-  await page.getByLabel("Satellite layer").selectOption("ndvi");
-  await expect(page.getByText("12 JUL 2025")).toBeVisible();
+  await complete(page);
+  await expert(page);
+  await expect(page.getByTestId("water-baseline")).toContainText("10,813");
+  await page.getByLabel("Water conservation", { exact: true }).fill("100");
+  await page.getByLabel("Soil & nitrogen recovery", { exact: true }).fill("0");
+  await page.getByLabel("Cash & forage return", { exact: true }).fill("0");
+  await expect(page.getByTestId("strategy-water")).toContainText("Rank 1");
+  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
+  await expect(
+    page.getByLabel("Change your goal", { exact: true }),
+  ).toHaveValue("custom");
+  await page
+    .getByLabel("Change your goal", { exact: true })
+    .selectOption("soil");
+  await expert(page);
+  await expect(
+    page.getByLabel("Soil & nitrogen recovery", { exact: true }),
+  ).toHaveValue("70");
+  await page
+    .getByRole("button", { name: "North Delta · Kafr El-Sheikh", exact: true })
+    .click();
+  await expect(page.locator(".diagnostic-2")).toContainText(
+    "Illustrative demo fixture",
+  );
+  await expect(page.locator(".diagnostic-0 .metric")).toContainText("70");
+  // Region changes no longer overwrite the user's intentional irrigation choice.
+  await expect(
+    page.getByLabel("Irrigation system", { exact: true }),
+  ).toHaveValue("flood");
+  await page
+    .getByRole("button", {
+      name: "Apply region demo context and irrigation",
+      exact: true,
+    })
+    .click();
+  await expect(
+    page.getByLabel("Irrigation system", { exact: true }),
+  ).toHaveValue("modified_surface");
+  await page.getByLabel("Measured soil ECe", { exact: true }).fill("12");
+  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Compare options", exact: true })
+    .click();
+  await page.getByTestId("farmer-option-baseline").getByRole("button").click();
+  await expect(page.locator(".farmer-cautions")).toContainText(
+    "measured soil ECe",
+  );
+  await expert(page);
+  await page
+    .getByText("Inspect all six field indices", { exact: true })
+    .click();
+  await expect(
+    page.getByText("Seasonal reference ET₀", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Canopy anomaly · ZNDVI", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Shared coordinates, different scales", { exact: true }),
+  ).toBeVisible();
+  await page.getByText("View chart values as tables", { exact: true }).click();
+  await expect(page.getByRole("table")).toHaveCount(2);
+  await page
+    .getByLabel("Explore a conditional Nili cover", { exact: true })
+    .check();
+  await expect(page.getByTestId("strategy-water")).toContainText(
+    "NILI · CONDITIONAL COVER",
+  );
+  const explorer = page.getByRole("region", {
+    name: "Post-processing pipeline explorer",
+    exact: true,
+  });
+  for (const label of [
+    "1 · Field indices",
+    "2 · Candidates",
+    "3 · MCDA ranking",
+    "4 · Explanation",
+    "5 · Farmer output",
+  ]) {
+    await explorer.getByRole("button", { name: label, exact: true }).click();
+    await expect(explorer.getByLabel("Stage JSON output")).toBeVisible();
+  }
+  await expect(explorer.getByLabel("Stage JSON output")).toContainText(
+    "hypotheticalSummerSwitch",
+  );
+  await page
+    .getByTestId("strategy-water")
+    .getByText("FAO references & unverified inputs", { exact: true })
+    .click();
+  await expect(
+    page
+      .getByTestId("strategy-water")
+      .getByRole("link", { name: "FAO ECe", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByTestId("strategy-water")
+    .getByText("Verify locally before planting", { exact: true })
+    .click();
+  await expect(page.getByTestId("strategy-water")).toContainText("broomrape");
+});
+
+test("optional map, custom location, missing support and coordinate validation", async ({
+  page,
+}) => {
+  await blockRemote(page);
+  await page.goto("/");
+  await english(page);
+  await complete(page);
+  await page
+    .getByRole("button", { name: "View location on map", exact: true })
+    .click();
+  await page
+    .getByLabel("Satellite layer", { exact: true })
+    .selectOption("ndvi");
+  await expect(page.getByText("12 JUL 2025", { exact: true })).toBeVisible();
+  await page.getByLabel("Latitude", { exact: true }).fill("0");
+  await page
+    .getByRole("button", { name: "Analyze location", exact: true })
+    .click();
+  await expect(page.getByRole("alert")).toContainText("within Egypt");
+  await page.getByLabel("Latitude", { exact: true }).fill("30.666");
+  await page.getByLabel("Longitude", { exact: true }).fill("30.068");
+  await page
+    .getByRole("button", { name: "Analyze location", exact: true })
+    .click();
+  await expect(
+    page.getByText("30.6660° N, 30.0680° E", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Illustrative fallback data is in use", { exact: true }),
+  ).toBeVisible();
+  await expect(page.locator(".farmer-cautions")).toContainText(
+    "illustrative fallback",
+  );
+  await page.getByRole("button", { name: "Close map", exact: true }).click();
+  await expert(page);
   await page
     .locator(".leaflet-container")
     .click({ position: { x: 210, y: 100 } });
   await expect(
     page.getByRole("button", { name: "Fayoum · Etsa tail-end", exact: true }),
   ).toHaveAttribute("aria-pressed", "false");
-  await page.getByLabel("Latitude", { exact: true }).fill("0");
-  await page.getByRole("button", { name: "Analyze location" }).click();
-  await expect(page.getByRole("alert")).toContainText("within Egypt");
-  await page.getByLabel("Latitude", { exact: true }).fill("30.665");
-  await page.getByLabel("Longitude", { exact: true }).fill("30.068");
-  await page.getByRole("button", { name: "Analyze location" }).click();
-  await expect(page.getByText("30.6650° N, 30.0680° E")).toBeVisible();
-  await expect(page.getByRole("alert")).toHaveCount(0);
 });
 
-test("incomplete live POWER cannot overwrite an audited snapshot", async ({
+test("incomplete live POWER cannot overwrite audited historical evidence", async ({
   page,
 }) => {
-  await page.route(/^https:\/\//, async (route) => {
+  await page.route(/^https:\/\//, (route) => {
     if (
       new URL(route.request().url()).origin ===
       new URL(test.info().project.use.baseURL).origin
@@ -120,7 +274,7 @@ test("incomplete live POWER cannot overwrite an audited snapshot", async ({
         json: {
           properties: {
             parameter: {
-              T2M_MAX: { 20250701: 40, 20250702: -999, 20250703: 39 },
+              T2M_MAX: { 20250701: 40, 20250702: -999 },
               GWETROOT: { 20250701: 0.33 },
               EVPTRNS: { 20250701: 8.5 },
             },
@@ -131,7 +285,7 @@ test("incomplete live POWER cannot overwrite an audited snapshot", async ({
   });
   await page.goto("/");
   await english(page);
-  await expect(page.getByText("Historical observations · 2025")).toBeVisible();
+  await expert(page);
   await expect(page.locator(".diagnostic-0 .metric")).toContainText("58");
   await expect(page.locator(".diagnostic-0")).toContainText(
     "Audited historical snapshot",
@@ -141,36 +295,59 @@ test("incomplete live POWER cannot overwrite an audited snapshot", async ({
   );
 });
 
-test("mobile Arabic and English remain within viewport with keyboard-accessible evidence", async ({
+test("mobile Arabic RTL and English LTR journeys and results fit viewport and keyboard works", async ({
   page,
 }) => {
   await blockRemote(page);
   for (const width of [390, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await page.screenshot({
+      path: `test-results/journey-ar-${width}.png`,
+      fullPage: true,
+    });
+    await complete(page, true);
+    await expect(page.locator(".recommendation")).toBeVisible();
     expect(
       await page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
+        () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
     await page.screenshot({
-      path: `test-results/dashboard-ar-${width}.png`,
+      path: `test-results/results-ar-${width}.png`,
       fullPage: true,
     });
     await english(page);
+    await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
     expect(
       await page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
+        () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
     await page.screenshot({
-      path: `test-results/dashboard-en-${width}.png`,
+      path: `test-results/results-en-${width}.png`,
+      fullPage: true,
+    });
+    await page
+      .getByRole("button", { name: "Compare options", exact: true })
+      .focus();
+    await page.keyboard.press("Enter");
+    await expect(page.getByTestId("farmer-option-baseline")).toBeVisible();
+    await expert(page);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await page.screenshot({
+      path: `test-results/expert-en-${width}.png`,
       fullPage: true,
     });
   }
 });
 
-test("production shell reloads offline after a completed first online visit", async ({
+test("production shell reloads offline and all three regional journeys remain available", async ({
   page,
   context,
 }) => {
@@ -182,74 +359,35 @@ test("production shell reloads offline after a completed first online visit", as
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
   await context.setOffline(true);
   await page.reload();
-  await expect(page.getByTestId("strategy-baseline")).toBeVisible();
   await english(page);
-  await expect(page.getByText("Historical observations · 2025")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Where is your field?", exact: true }),
+  ).toBeVisible();
   await page
-    .getByRole("button", { name: "West Delta · Nubariya", exact: true })
+    .getByRole("radio", { name: "North Delta · Kafr El-Sheikh", exact: true })
+    .check();
+  await complete(page);
+  await expect(
+    page.getByText("Illustrative fallback data is in use", { exact: true }),
+  ).toBeVisible();
+  await expect(page.locator(".farmer-cautions")).toContainText(
+    "illustrative fallback",
+  );
+  await page
+    .getByRole("button", { name: "Back to field questions", exact: true })
     .click();
-  await expect(page.getByLabel("Irrigation system")).toHaveValue("drip");
+  for (let i = 0; i < 3; i++)
+    await page.getByRole("button", { name: "Back", exact: true }).click();
+  await page
+    .getByRole("radio", { name: "West Delta · Nubariya", exact: true })
+    .check();
+  await complete(page);
+  await expect(
+    page.getByText("Historical observations · 2025", { exact: true }),
+  ).toBeVisible();
 });
 
-test("six indices, conditional cover and five explorer stages use current field data", async ({
-  page,
-}) => {
-  await blockRemote(page);
-  await page.goto("/");
-  await english(page);
-  await page
-    .getByText("Inspect all six field indices", { exact: true })
-    .click();
-  await expect(
-    page.getByText("Seasonal reference ET₀", { exact: true }),
-  ).toBeVisible();
-  await expect(
-    page.getByText("Canopy anomaly · ZNDVI", { exact: true }),
-  ).toBeVisible();
-  await page.getByLabel("Explore a conditional Nili cover").check();
-  await expect(page.getByTestId("strategy-water")).toContainText(
-    "NILI · CONDITIONAL COVER",
-  );
-  await page.getByRole("button", { name: "Judge mode", exact: true }).click();
-  const explorer = page.getByRole("region", {
-    name: "Post-processing pipeline explorer",
-  });
-  for (const label of [
-    "1 · Field indices",
-    "2 · Candidates",
-    "3 · MCDA ranking",
-    "4 · Explanation",
-    "5 · Farmer output",
-  ]) {
-    await explorer.getByRole("button", { name: label, exact: true }).click();
-    await expect(
-      explorer.getByRole("button", { name: label, exact: true }),
-    ).toHaveAttribute("aria-pressed", "true");
-    await expect(explorer.getByLabel("Stage JSON output")).toBeVisible();
-  }
-  await expect(explorer.getByLabel("Stage JSON output")).toContainText(
-    "hypotheticalSummerSwitch",
-  );
-  await page.setViewportSize({ width: 390, height: 900 });
-  expect(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= innerWidth,
-    ),
-  ).toBe(true);
-  await page.getByRole("button", { name: "العربية", exact: true }).click();
-  await expect(
-    page.getByRole("heading", {
-      name: "مستكشف خط المعالجة بعد التنظيف",
-      exact: true,
-    }),
-  ).toBeVisible();
-  await page.screenshot({
-    path: "test-results/pipeline-mobile-ar.png",
-    fullPage: true,
-  });
-});
-
-test("slider updates paint within the local 100 ms target and do not trigger API fetches", async ({
+test("expert sliders repaint within 100 ms without additional source requests", async ({
   page,
 }) => {
   const requests = [];
@@ -260,17 +398,18 @@ test("slider updates paint within the local 100 ms target and do not trigger API
   await blockRemote(page);
   await page.goto("/");
   await english(page);
+  await expert(page);
   await expect(
-    page.getByRole("button", { name: "Refresh sources" }),
+    page.getByRole("button", { name: "Refresh sources", exact: true }),
   ).toBeEnabled();
   const before = requests.length;
   const durations = await page.evaluate(async () => {
-    const range = document.querySelector("#priority-water");
-    const setter = Object.getOwnPropertyDescriptor(
-      HTMLInputElement.prototype,
-      "value",
-    ).set;
-    const times = [];
+    const range = document.querySelector("#priority-water"),
+      setter = Object.getOwnPropertyDescriptor(
+        HTMLInputElement.prototype,
+        "value",
+      ).set,
+      times = [];
     for (let i = 0; i < 12; i++) {
       const start = performance.now();
       setter.call(range, String(10 + i * 7));

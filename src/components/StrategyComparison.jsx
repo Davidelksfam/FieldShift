@@ -8,8 +8,15 @@ import {
   Sprout,
 } from "lucide-react";
 import { text, formatNumber } from "../i18n";
-import { getCropEvidence, CROP_REFERENCE_SOURCES } from "../engine/cropEvidence.js";
-export default function StrategyComparison({ lang, strategies }) {
+import {
+  getCropEvidence,
+  CROP_REFERENCE_SOURCES,
+} from "../engine/cropEvidence.js";
+export default function StrategyComparison({
+  lang,
+  strategies,
+  showTotals = false,
+}) {
   const t = (en, ar) => text(lang, en, ar);
   const n = (value) => formatNumber(value, lang, { maximumFractionDigits: 0 });
   return (
@@ -148,9 +155,16 @@ export default function StrategyComparison({ lang, strategies }) {
                 </span>
                 <strong data-testid={`water-${s.id}`}>
                   {n(s.grossWaterM3Feddan)}{" "}
-                  <small>{t("m³ / feddan", "م³ / فدان")}</small>
+                  <small>
+                    {t("m³ / feddan / rotation", "م³ / فدان / دورة")}
+                  </small>
                 </strong>
-                <small>{t("Uncalibrated crop-water model; FAO-stage ETc is not yet the active comparison.", "نموذج مياه المحاصيل غير معاير؛ حساب FAO المرحلي لم يُفعّل للمقارنة بعد.")}</small>
+                <small>
+                  {t(
+                    "Uncalibrated crop-water model; FAO-stage ETc is not yet the active comparison.",
+                    "نموذج مياه المحاصيل غير معاير؛ حساب FAO المرحلي لم يُفعّل للمقارنة بعد.",
+                  )}
+                </small>
                 {s.id === "baseline" ? (
                   <small>
                     {t(
@@ -192,12 +206,14 @@ export default function StrategyComparison({ lang, strategies }) {
                 </small>
               </div>
             </div>
-            <p className="farm-total">
-              {t("Whole field:", "الحقل بالكامل:")}{" "}
-              <strong>
-                {n(s.totalFarmWaterM3)} {t("m³ / rotation", "م³ / دورة")}
-              </strong>
-            </p>
+            {showTotals && (
+              <p className="farm-total">
+                {t("Whole field:", "الحقل بالكامل:")}{" "}
+                <strong>
+                  {n(s.totalFarmWaterM3)} {t("m³ / rotation", "م³ / دورة")}
+                </strong>
+              </p>
+            )}
             {s.id !== "baseline" && (
               <p className="farm-total">
                 {t("Modeled saving", "الوفر المقدر")}:{" "}
@@ -207,16 +223,25 @@ export default function StrategyComparison({ lang, strategies }) {
                 </strong>
               </p>
             )}
-            {(s.grossWaterM3Feddan < 2500 || s.grossWaterM3Feddan > 5200) && (
-              <p className="local-warning">
-                {t(
-                  "Outside the supplied 2,500–5,200 m³/feddan/year demo band. This per-rotation estimate is uncalibrated; verify crop dates, base water and irrigation efficiency.",
-                  "خارج نطاق العرض المقدم ٢٥٠٠–٥٢٠٠ م³/فدان/سنة. هذا تقدير للدورة غير معاير؛ تحقق من المواعيد والمياه الأساسية وكفاءة الري.",
-                )}
-              </p>
-            )}
+            <p className="local-warning">
+              {t(
+                "Per-rotation water is uncalibrated; the supplied annual reference band cannot validate it. Verify crop dates, base water and irrigation efficiency. No validated acceptable range is available.",
+                "مياه الدورة غير معايرة؛ لا يمكن تقييمها بالنطاق المرجعي السنوي. تحقق من المواعيد والمياه الأساسية وكفاءة الري. لا يوجد نطاق مقبول معتمد.",
+              )}
+            </p>
+            <p className="small-note">
+              {t(
+                `Penalty: ${s.penalty} · Weights: ${JSON.stringify(s.scoringWeights)} · Objective weights: ${JSON.stringify(s.objectiveWeights ?? s.scoringWeights)}`,
+                `خصم النقاط: ${s.penalty} · الأوزان: ${JSON.stringify(s.scoringWeights)} · أوزان الهدف: ${JSON.stringify(s.objectiveWeights ?? s.scoringWeights)}`,
+              )}
+            </p>
             <details className="local-checks">
-              <summary>{t("FAO references & unverified inputs", "مراجع FAO والمدخلات غير الموثقة")}</summary>
+              <summary>
+                {t(
+                  "FAO references & unverified inputs",
+                  "مراجع FAO والمدخلات غير الموثقة",
+                )}
+              </summary>
               <ul>
                 {s.crops.map((crop) => {
                   const evidence = getCropEvidence(crop.id);
@@ -225,25 +250,50 @@ export default function StrategyComparison({ lang, strategies }) {
                   return (
                     <li key={crop.id}>
                       <span>
-                        <strong>{lang === "ar" ? crop.nameAr : crop.nameEn}</strong>
+                        <strong>
+                          {lang === "ar" ? crop.nameAr : crop.nameEn}
+                        </strong>
                         {" — "}
                         {refKc?.status === "published_reference"
                           ? `FAO Kc(mid): ${refKc.kcMid}`
-                          : t("Kc not verified for this cover use", "Kc غير موثق لاستخدامه كغطاء نيلي")}
+                          : t(
+                              "Kc not verified for this cover use",
+                              "Kc غير موثق لاستخدامه كغطاء نيلي",
+                            )}
                         {" · "}
                         {refSalt?.status === "published_reference"
                           ? `FAO ECe: ${refSalt.eceThresholdDsm} dS/m (${refSalt.outcome})`
-                          : t("No outcome-matched numeric soil-salinity threshold", "لا يوجد حد ملوحة رقمي مطابق لغرض المحصول")}
+                          : t(
+                              "No outcome-matched numeric soil-salinity threshold",
+                              "لا يوجد حد ملوحة رقمي مطابق لغرض المحصول",
+                            )}
                       </span>
                     </li>
                   );
                 })}
               </ul>
-              <p>{t("These are published reference entries, NOT locally calibrated crop recommendations. Water, heat, nitrogen, market and forage scores remain prototype assumptions.", "هذه قيم مرجعية منشورة وليست توصيات زراعية معايرة محلياً. حسابات المياه والحرارة والنيتروجين والسوق والأعلاف لا تزال افتراضات تجريبية.")}</p>
               <p>
-                <a href={CROP_REFERENCE_SOURCES.fao56_1998_table12.url} target="_blank" rel="noreferrer">FAO-56 Kc</a>
+                {t(
+                  "These are published reference entries, NOT locally calibrated crop recommendations. Water, heat, nitrogen, market and forage scores remain prototype assumptions.",
+                  "هذه قيم مرجعية منشورة وليست توصيات زراعية معايرة محلياً. حسابات المياه والحرارة والنيتروجين والسوق والأعلاف لا تزال افتراضات تجريبية.",
+                )}
+              </p>
+              <p>
+                <a
+                  href={CROP_REFERENCE_SOURCES.fao56_1998_table12.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  FAO-56 Kc
+                </a>
                 {" · "}
-                <a href={CROP_REFERENCE_SOURCES.fao_salinity_annex_a1_1.url} target="_blank" rel="noreferrer">FAO ECe</a>
+                <a
+                  href={CROP_REFERENCE_SOURCES.fao_salinity_annex_a1_1.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  FAO ECe
+                </a>
               </p>
             </details>
             <div className="score-bars">
