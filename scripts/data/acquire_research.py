@@ -20,12 +20,23 @@ NASA_HOSTS = {
     'data.nsidc.earthdatacloud.nasa.gov',
     'data.gesdisc.earthdata.nasa.gov', 'urs.earthdata.nasa.gov',
 }
+NASA_DELIVERY_HOSTS = {
+    'd1nklfio7vscoe.cloudfront.net',  # LP DAAC redirect observed 2026-11-13
+    'd2b3c3wh8s6en5.cloudfront.net',  # GES DISC
+    'd3h5e2j7riftk6.cloudfront.net',  # NSIDC
+}
 
 
 class RestrictedRedirect(HTTPRedirectHandler):
     """Never forward a NASA bearer token to an unrelated redirect destination."""
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         target = urlsplit(newurl)
+        if (target.scheme == 'https' and target.hostname in NASA_DELIVERY_HOSTS
+                and urlsplit(req.full_url).hostname in NASA_HOSTS):
+            redirected = super().redirect_request(req, fp, code, msg, headers, newurl)
+            if redirected:
+                redirected.remove_header('Authorization')
+            return redirected
         if req.has_header('Authorization') and (
             target.scheme != 'https' or target.hostname not in NASA_HOSTS
         ):

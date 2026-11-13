@@ -68,7 +68,7 @@ python3 scripts/data/acquire_research.py \
   --sources hls,ecostress --download-earthdata --max-file-mb 64
 ```
 
-The code reads the token from the environment, restricts authenticated download/redirect destinations to the selected NASA hosts, and never stores it in a manifest. The authenticated path could not be tested without a configured credential. The default public run sends no token and records the observed HTTP access result.
+The code reads the token from the environment, restricts bearer-authenticated destinations to the selected NASA hosts, and strips the header on specifically approved NASA delivery-CDN redirects, and never stores it in a manifest. The authenticated path has now succeeded for all four protected sources using the user-authorized credential; delivery-CDN redirects strip Authorization. The default public run sends no token and records the observed HTTP access result.
 
 **CMR discovery filters files; it does not spatially clip them.** SMAP's selected daily global file is hundreds of MB. The default 64 MiB/file ceiling deliberately refuses it. Use a provider-supported spatial/variable subset after checking that the chosen collection supports that service, or consciously budget full-granule downloads. Raising `--max-file-mb` is an explicit size decision, not a way to increase spatial detail. The downloader selects only required HLS/ECOSTRESS bands but those bands are still complete tiles.
 

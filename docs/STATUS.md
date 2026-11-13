@@ -11,7 +11,7 @@ Updated: 2026-11-13 (Africa/Cairo).
 
 ## Proposed direction
 
-Research acquisition now includes three real public science subsets (POWER, MOD13Q1, SoilGrids), exact access/provenance records for all seven sources, and four Earthdata authentication blockers. A later SoilGrids 503 is retained alongside the earlier successful artifact. Small derived public inspection excerpts are labeled **not validated for decisions**. Shared application contracts, product decisions and brand files remain unchanged.
+Research acquisition now includes verified science downloads from all seven sources, exact access/provenance records and small inspection extracts. Authenticated retrieval succeeds; SMAP local retrieval, ECOSTRESS point nodata and HLS aerosol limitations remain visible in download status. A later SoilGrids 503 is retained alongside the earlier successful artifact. Small derived public inspection excerpts are labeled **not validated for decisions**. Shared application contracts, product decisions and brand files remain unchanged.
 
 The supplied guide recommends “Rotation Rehearsal”: Arabic-first comparison of a two-year baseline plus two alternatives, feasibility before ranking, water stress testing and inspectable evidence. This is a proposal awaiting team acceptance, not an implemented feature or official requirement.
 

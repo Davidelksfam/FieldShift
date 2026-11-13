@@ -49,4 +49,4 @@ The organizational layout is prepared for **data engineering**, **feature engine
 
 ## Seven-source research access kit
 
-The user-requested [dataset connection and schema guide](docs/data/DATASET_ACCESS_GUIDE.md) organizes POWER, IMERG, SMAP, HLS, MOD13Q1, ECOSTRESS and SoilGrids. See [actual download/access status](docs/data/DOWNLOAD_STATUS.md): three small public science subsets were acquired; four protected sources require Earthdata Login. Raw/interim files stay ignored; compact research excerpts and provenance are reviewable in Git. This is research acquisition, not an approved model feature pipeline.
+The user-requested [dataset connection and schema guide](docs/data/DATASET_ACCESS_GUIDE.md) organizes POWER, IMERG, SMAP, HLS, MOD13Q1, ECOSTRESS and SoilGrids. See [actual download/access status](docs/data/DOWNLOAD_STATUS.md): all seven source connections now have successful science downloads; native QA and full-season coverage remain explicit gates. Raw/interim files stay ignored; compact research excerpts and provenance are reviewable in Git. This is research acquisition, not an approved model feature pipeline.

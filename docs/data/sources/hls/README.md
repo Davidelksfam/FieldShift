@@ -1,5 +1,7 @@
 # HLS: L30/S30 discovery, selected bands and raster schema
 
+**Authenticated follow-up:** science bytes have now been acquired and inspected. Earlier unauthenticated findings below are retained as historical access context; see [current readiness and limitations](../../DOWNLOAD_STATUS.md). The inspection reader is `scripts/data/inspect_protected_samples.py`; missing/flagged point observations are not silently promoted into model features.
+
 [Seven-source index](../../DATASET_ACCESS_GUIDE.md) · [Actual download status](../../DOWNLOAD_STATUS.md)
 
 Use: observed vegetation timing/greenness proxies. [NASA HLS products](https://hls.gsfc.nasa.gov/data-products/) and [V2 user guide](https://lpdaac.usgs.gov/documents/1698/HLS_User_Guide_V2.pdf). The first reproducible route selects `HLSL30`, version `2.0`. S30 is an explicit alternative, not a different name for the same band layout.

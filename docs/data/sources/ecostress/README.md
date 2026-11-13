@@ -1,5 +1,7 @@
 # ECOSTRESS: surface-temperature route and native raster schema
 
+**Authenticated follow-up:** science bytes have now been acquired and inspected. Earlier unauthenticated findings below are retained as historical access context; see [current readiness and limitations](../../DOWNLOAD_STATUS.md). The inspection reader is `scripts/data/inspect_protected_samples.py`; missing/flagged point observations are not silently promoted into model features.
+
 [Seven-source index](../../DATASET_ACCESS_GUIDE.md) · [Actual download status](../../DOWNLOAD_STATUS.md)
 
 Use: thermal surface context. Selected **historical** candidate: `ECO_L2T_LSTE` version `002`. This is an explicit reproducibility choice for the sample period, not a claim that 002 is the latest collection. [Official product/guide table](https://ecostress.jpl.nasa.gov/data/atbds-summary-table).

@@ -1,5 +1,7 @@
 # SMAP Enhanced L3: discovery, authentication and HDF5 schema
 
+**Authenticated follow-up:** science bytes have now been acquired and inspected. Earlier unauthenticated findings below are retained as historical access context; see [current readiness and limitations](../../DOWNLOAD_STATUS.md). The inspection reader is `scripts/data/inspect_protected_samples.py`; missing/flagged point observations are not silently promoted into model features.
+
 [Seven-source index](../../DATASET_ACCESS_GUIDE.md) · [Actual download status](../../DOWNLOAD_STATUS.md)
 
 Use: **regional near-surface wetness context**, not fertility or root-zone water storage. Selected candidate: `SPL3SMP_E`, version `006`, daily Enhanced L3 with 9 km posting. [NSIDC product and guide](https://nsidc.org/data/spl3smp_e/versions/6).

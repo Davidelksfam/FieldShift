@@ -93,6 +93,11 @@ class ResearchAcquisitionTests(unittest.TestCase):
         with patch.object(acquire,'build_opener',return_value=opener):
             with self.assertRaises(ValueError): acquire.read_http('https://example.com/file',limit=4)
 
+    def test_nasa_delivery_redirect_strips_bearer(self):
+        request = Request('https://data.lpdaac.earthdatacloud.nasa.gov/file',headers={'Authorization':'Bearer SYNTHETIC_TEST_ONLY'})
+        redirected = acquire.RestrictedRedirect().redirect_request(request,None,302,'Found',{},'https://d1nklfio7vscoe.cloudfront.net/file')
+        self.assertFalse(redirected.has_header('Authorization'))
+
     def test_nonfinite_json_rejected(self):
         with self.assertRaises(ValueError): acquire.decode_json(b'{"value":NaN}')
 

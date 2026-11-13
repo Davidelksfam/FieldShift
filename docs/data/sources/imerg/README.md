@@ -1,5 +1,7 @@
 # GPM IMERG: catalog API and science-file schema
 
+**Authenticated follow-up:** science bytes have now been acquired and inspected. Earlier unauthenticated findings below are retained as historical access context; see [current readiness and limitations](../../DOWNLOAD_STATUS.md). The inspection reader is `scripts/data/inspect_protected_samples.py`; missing/flagged point observations are not silently promoted into model features.
+
 [Seven-source index](../../DATASET_ACCESS_GUIDE.md) · [Actual download status](../../DOWNLOAD_STATUS.md)
 
 Use: rainfall history and comparisons with the chosen weather backbone. Selected historical candidate: **GPM_3IMERGDF, collection version 07, Final daily**. Granules can additionally name an algorithm revision such as V07B; retain it. [NASA technical documentation](https://gpm.nasa.gov/resources/documents/imerg-v07-technical-documentation) and [daily dataset description](https://disc.gsfc.nasa.gov/datasets/GPM_3IMERGDF_07/summary).

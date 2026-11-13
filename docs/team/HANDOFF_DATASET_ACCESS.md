@@ -1,5 +1,7 @@
 # Handoff: seven-source research acquisition / issue 2
 
+**Follow-up:** all seven science sources now downloaded; consult [current readiness](../data/DOWNLOAD_STATUS.md). Earlier credential blockers below describe the initial handoff and are superseded. Full pilot-season coverage and QA remain pending.
+
 - Date/tool: 2026-11-13, Codex assistant assisting the requesting repository owner; human reviewer unassigned.
 - Branch: `data/seven-source-access-kit`; base commit `e38718f4c0097e26469db46c1c43a8ee73e3dc2a`. See the PR for the resulting commit.
 - Goal: organize the seven selected datasets, acquire bounded subsets where accessible, document API input/output schemas and preserve provenance without committing raw/private data.

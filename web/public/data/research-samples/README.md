@@ -6,7 +6,7 @@ These tiny derived inspection samples let teammates examine real provider output
 - POWER is gridded model/reanalysis context; MOD13Q1 is a composite; SoilGrids is a prediction.
 - MODIS quality flags remain present but are not yet filtered into a decision feature.
 - `qualityStatus=not_validated_for_decisions` is deliberate. Do not import these into a rotation recommendation as SeasonalFeatures.
-- Four Earthdata-protected sources have catalog/access manifests only until authentication succeeds; no placeholder measurements are fabricated.
+- All seven sources now have science acquisitions and extracts. SMAP local-retrieval gaps and ECOSTRESS point nodata are represented as unavailable values; no placeholder measurements are fabricated.
 
 Attribution: POWER data are from [NASA POWER](https://power.larc.nasa.gov/); MOD13Q1 subsets are from NASA LP DAAC via [ORNL DAAC TESViS](https://modis.ornl.gov/data/modis_webservice.html); soil predictions are from [ISRIC SoilGrids](https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_02.html), distributed under CC BY 4.0. Excerpts include format normalization and unit decoding described in the source guides; retain source attribution when reusing them.
 

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "research-inspection-1.0",
+  "warning": "PUBLIC EXPLORATORY SAMPLE; not approved SeasonalFeatures or farmer advice",
+  "qualityStatus": "not_validated_for_decisions",
+  "manifestPath": "data/manifests/research-runs/20261113T122709746832Z/ecostress.json",
+  "sourceArtifacts": [
+    {
+      "sha256": "63fc219bfd872c0b8d4b00aa8f50966a134f79c2102202b8f34fb15bbefc8ef0",
+      "sourceUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/ECO_L2T_LSTE.002/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_LST.tif"
+    },
+    {
+      "sha256": "618d211ecc0ee12c881634cc956a7295f1d3ab69190550b41c88c21442794e96",
+      "sourceUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/ECO_L2T_LSTE.002/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_LST_err.tif"
+    },
+    {
+      "sha256": "b6503eec76163ecddfb7efe60266712d74f3bde7e8c6d611b1969b524ab0427b",
+      "sourceUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/ECO_L2T_LSTE.002/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_QC.tif"
+    },
+    {
+      "sha256": "bc6755848f97a87a04a0f30fc5aa2abd83012a602b3a60f3fae0514567243166",
+      "sourceUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/ECO_L2T_LSTE.002/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_cloud.tif"
+    },
+    {
+      "sha256": "a3d5246e4bc02ad92d0cb919191a3f320e40b7fca8adb0cb88dab5d310e71c46",
+      "sourceUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/ECO_L2T_LSTE.002/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01/ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_water.tif"
+    }
+  ],
+  "inspection": {
+    "scope": "EXPLORATORY RESEARCH SAMPLE; not an accepted farm pilot",
+    "sourceId": "ecostress",
+    "point": {
+      "longitude": 31.15,
+      "latitude": 29.9
+    },
+    "qaApplied": false,
+    "granule": {
+      "id": "G3357876969-LPCLOUD",
+      "title": "ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01",
+      "time_start": "2025-01-02T04:36:08.454Z",
+      "time_end": "2025-01-02T04:37:00.424Z",
+      "granule_size": "3.27"
+    },
+    "layers": {
+      "ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_LST.tif": {
+        "rawValue": null,
+        "scale": 1.0,
+        "offset": 0.0,
+        "unitAttribute": null,
+        "crs": "EPSG:32636",
+        "pixelSize": [
+          70.0,
+          70.0
+        ],
+        "row": 1298,
+        "column": 305,
+        "nodata": null
+      },
+      "ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_LST_err.tif": {
+        "rawValue": null,
+        "scale": 1.0,
+        "offset": 0.0,
+        "unitAttribute": null,
+        "crs": "EPSG:32636",
+        "pixelSize": [
+          70.0,
+          70.0
+        ],
+        "row": 1298,
+        "column": 305,
+        "nodata": null
+      },
+      "ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_QC.tif": {
+        "rawValue": 0,
+        "scale": 1.0,
+        "offset": 0.0,
+        "unitAttribute": null,
+        "crs": "EPSG:32636",
+        "pixelSize": [
+          70.0,
+          70.0
+        ],
+        "row": 1298,
+        "column": 305,
+        "nodata": null
+      },
+      "ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_cloud.tif": {
+        "rawValue": 0,
+        "scale": 1.0,
+        "offset": 0.0,
+        "unitAttribute": null,
+        "crs": "EPSG:32636",
+        "pixelSize": [
+          70.0,
+          70.0
+        ],
+        "row": 1298,
+        "column": 305,
+        "nodata": null
+      },
+      "ECOv002_L2T_LSTE_36806_017_36RUU_20250102T043608_0713_01_water.tif": {
+        "rawValue": 0,
+        "scale": 1.0,
+        "offset": 0.0,
+        "unitAttribute": null,
+        "crs": "EPSG:32636",
+        "pixelSize": [
+          70.0,
+          70.0
+        ],
+        "row": 1298,
+        "column": 305,
+        "nodata": null
+      }
+    },
+    "note": "Raw point values plus masks; product guide supplies variable meaning when TIFF unit attributes are absent. No QA-filtered NDVI, ET or model feature is asserted."
+  }
+}
