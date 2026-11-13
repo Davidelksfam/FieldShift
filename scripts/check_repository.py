@@ -39,9 +39,9 @@ if tokens_path.exists():
     tokens_text = tokens_path.read_text()
     for token in ('--fs-brand-primary', '--fs-action-bg', '--fs-bg-surface',
                   '--fs-bg-canvas', '--fs-text-primary', '--fs-border'):
-        if not re.search(r'^\\s*' + re.escape(token) + r'\\s*:', tokens_text, re.M):
+        if not re.search(r'^\s*' + re.escape(token) + r'\s*:', tokens_text, re.M):
             errors.append(f'Missing canonical UI token: {token}')
-    defined_tokens = re.findall(r'^\\s*(--fs-[\\w-]+)\\s*:', tokens_text, re.M)
+    defined_tokens = re.findall(r'^\s*(--fs-[\w-]+)\s*:', tokens_text, re.M)
     if len(defined_tokens) != len(set(defined_tokens)):
         errors.append('Duplicate Field Shift CSS design token name')
 
