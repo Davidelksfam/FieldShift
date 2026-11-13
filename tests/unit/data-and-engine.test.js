@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import crops from "../../src/data/egyptCrops.json" with { type: "json" };
-import presets from "../../src/data/demoPresets.json" with { type: "json" };
+import presets from "../../src/data/syntheticFixtures.json" with { type: "json" };
 import { evaluateFieldAndRotations } from "../../src/engine/rotationEngine.js";
 import {
   parsePower,
@@ -160,7 +160,10 @@ test("weights can change ranking, and zero weights use the documented default", 
     { ...inputs, weights: { water: 0, soil: 100, market: 0 } },
     crops,
   );
-  assert.notDeepEqual(water.rankedStrategyIds, soil.rankedStrategyIds);
+  assert.notDeepEqual(
+    water.strategies.map((s) => [s.sequenceKey, s.finalSuitability]),
+    soil.strategies.map((s) => [s.sequenceKey, s.finalSuitability]),
+  );
   assert.deepEqual(
     evaluateFieldAndRotations(
       field,
@@ -183,7 +186,8 @@ test("bare soil diagnostic excludes winter dormancy and clips composites to autu
     inputs,
     crops,
   );
-  assert.equal(result.diagnostics.bareSoilDays, 15);
+  assert.equal(result.diagnostics.bareSoilDays, 9);
+  assert.equal(result.diagnostics.bareSoilTotalDays, 15);
 });
 test("null soil/root wetness handling preserves valid zero instead of substituting defaults", () => {
   const result = evaluateFieldAndRotations(

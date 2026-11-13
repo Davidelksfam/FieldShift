@@ -13,3 +13,7 @@ See [delivery and validation](delivery/PLAN.md) for actual check results and [da
 ## Dataset acquisition update
 
 Complete POWER years and QA-screened MODIS are bundled for all three exact centroids. Two native SoilGrids profiles passed validation; the Kafr El-Sheikh profile was zero-filled and rejected, retaining a synthetic soil fallback. See [actual quality and gaps](../data/processed/QUALITY_REPORT.md). The synthetic benchmarks are retained separately for tests.
+
+## Post-processing implementation — issue #16
+
+PR #15 is merged into main. The next stage adds six diagnostic outputs, modeled FAO-56 reference ET₀ from new drivers, same-pixel 2020–24 NDVI anomalies, full catalog candidate ranking, bilingual evidence/support explanations, conditional-cover exploration and five-step JSON/formula inspection in Judge Mode. Real data is now in the canonical offline demoPresets.json; synthetic test fixtures moved to syntheticFixtures.json. See [post-processing contract](engineering/POSTPROCESSING.md) and [pitch](pitch/THREE_MINUTE_DEMO.md). No field validation or deployment is claimed.

@@ -1,0 +1,131 @@
+{
+  "fayoum_etsa": {
+    "lat": 29.2315,
+    "lon": 30.7952,
+    "years": [
+      {
+        "year": 2020,
+        "validComposites": 9,
+        "expectedComposites": 10,
+        "peak": 0.7399,
+        "accepted": true
+      },
+      {
+        "year": 2021,
+        "validComposites": 10,
+        "expectedComposites": 10,
+        "peak": 0.7405,
+        "accepted": true
+      },
+      {
+        "year": 2022,
+        "validComposites": 10,
+        "expectedComposites": 10,
+        "peak": 0.7021,
+        "accepted": true
+      },
+      {
+        "year": 2023,
+        "validComposites": 9,
+        "expectedComposites": 10,
+        "peak": 0.7531,
+        "accepted": true
+      },
+      {
+        "year": 2024,
+        "validComposites": 10,
+        "expectedComposites": 10,
+        "peak": 0.7358,
+        "accepted": true
+      }
+    ],
+    "policy": "2020\u20132024 annual May\u2013Sep peak; >=8/10 good QA=0 composites/year; same native pixel; >=3 accepted years for sample z-score. Baseline excludes 2025.",
+    "retrievedAt": "2026-11-13T19:11:25.408651+00:00"
+  },
+  "delta_kafr_el_sheikh": {
+    "lat": 31.1107,
+    "lon": 30.9388,
+    "years": [
+      {
+        "year": 2020,
+        "validComposites": 7,
+        "expectedComposites": 10,
+        "peak": null,
+        "accepted": false
+      },
+      {
+        "year": 2021,
+        "validComposites": 8,
+        "expectedComposites": 10,
+        "peak": 0.1375,
+        "accepted": true
+      },
+      {
+        "year": 2022,
+        "validComposites": 10,
+        "expectedComposites": 10,
+        "peak": 0.1388,
+        "accepted": true
+      },
+      {
+        "year": 2023,
+        "validComposites": 8,
+        "expectedComposites": 10,
+        "peak": 0.1588,
+        "accepted": true
+      },
+      {
+        "year": 2024,
+        "validComposites": 9,
+        "expectedComposites": 10,
+        "peak": 0.1362,
+        "accepted": true
+      }
+    ],
+    "policy": "2020\u20132024 annual May\u2013Sep peak; >=8/10 good QA=0 composites/year; same native pixel; >=3 accepted years for sample z-score. Baseline excludes 2025.",
+    "retrievedAt": "2026-11-13T19:11:47.144151+00:00"
+  },
+  "west_delta_nubariya": {
+    "lat": 30.665,
+    "lon": 30.068,
+    "years": [
+      {
+        "year": 2020,
+        "validComposites": 10,
+        "expectedComposites": 10,
+        "peak": 0.2063,
+        "accepted": true
+      },
+      {
+        "year": 2021,
+        "validComposites": 10,
+        "expectedComposites": 10,
+        "peak": 0.1808,
+        "accepted": true
+      },
+      {
+        "year": 2022,
+        "validComposites": 10,
+        "expectedComposites": 10,
+        "peak": 0.2177,
+        "accepted": true
+      },
+      {
+        "year": 2023,
+        "validComposites": 9,
+        "expectedComposites": 10,
+        "peak": 0.1904,
+        "accepted": true
+      },
+      {
+        "year": 2024,
+        "validComposites": 10,
+        "expectedComposites": 10,
+        "peak": 0.2194,
+        "accepted": true
+      }
+    ],
+    "policy": "2020\u20132024 annual May\u2013Sep peak; >=8/10 good QA=0 composites/year; same native pixel; >=3 accepted years for sample z-score. Baseline excludes 2025.",
+    "retrievedAt": "2026-11-13T19:11:58.480270+00:00"
+  }
+}

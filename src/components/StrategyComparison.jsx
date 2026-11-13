@@ -36,6 +36,14 @@ export default function StrategyComparison({ lang, strategies }) {
           {t("Scores respond to your priorities", "الدرجات تتغير حسب أولوياتك")}
         </span>
       </div>
+      {strategies.length < 3 && (
+        <p role="status" className="local-warning">
+          {t(
+            "No distinct alternatives passed the current catalog and exclusion constraints. Review the inputs locally.",
+            "لم تجتز بدائل مميزة قيود الدليل والاستبعاد الحالية. راجع المدخلات محلياً.",
+          )}
+        </p>
+      )}
       <div className="strategy-grid">
         {strategies.map((s) => (
           <article
@@ -68,6 +76,33 @@ export default function StrategyComparison({ lang, strategies }) {
                 <small>{t("Needs local review", "تحتاج مراجعة محلية")}</small>
               </span>
             </div>
+            <div className="strategy-explanation">
+              <h4>{t("Why this was suggested", "لماذا اقتُرحت هذه الخطة")}</h4>
+              <p>
+                {lang === "ar" ? s.explanation.why.ar : s.explanation.why.en}
+              </p>
+              <strong>
+                {t("Data support", "دعم البيانات")}:{" "}
+                {
+                  {
+                    high: t("High", "مرتفع"),
+                    medium: t("Medium", "متوسط"),
+                    low: t("Low", "منخفض"),
+                  }[s.explanation.confidence]
+                }
+              </strong>
+              <p>
+                {lang === "ar"
+                  ? s.explanation.confidenceMeaning.ar
+                  : s.explanation.confidenceMeaning.en}
+              </p>
+              <details>
+                <summary>{t("Confidence factors", "عوامل الثقة")}</summary>
+                {s.explanation.confidenceReasons.map((r) => (
+                  <p key={r.en}>{lang === "ar" ? r.ar : r.en}</p>
+                ))}
+              </details>
+            </div>
             <ol className="crop-timeline">
               {s.crops.map((crop) => (
                 <li key={crop.id}>
@@ -96,8 +131,8 @@ export default function StrategyComparison({ lang, strategies }) {
                     </small>
                     <strong>
                       {t(
-                        "No cover crop in this baseline",
-                        "لا يوجد غطاء في الدورة الحالية",
+                        "No Nili cover in this sequence",
+                        "لا يوجد غطاء نيلي في هذه الدورة",
                       )}
                     </strong>
                   </div>
@@ -115,7 +150,12 @@ export default function StrategyComparison({ lang, strategies }) {
                   <small>{t("m³ / feddan", "م³ / فدان")}</small>
                 </strong>
                 {s.id === "baseline" ? (
-                  <small>{t("Comparison reference", "مرجع المقارنة")}</small>
+                  <small>
+                    {t(
+                      "Comparison reference · modeled, not measured",
+                      "مرجع المقارنة · تقدير وليس قياساً",
+                    )}
+                  </small>
                 ) : (
                   <small className="water-saving">
                     {s.waterSavedPercent >= 0 ? (
@@ -156,6 +196,23 @@ export default function StrategyComparison({ lang, strategies }) {
                 {n(s.totalFarmWaterM3)} {t("m³ / rotation", "م³ / دورة")}
               </strong>
             </p>
+            {s.id !== "baseline" && (
+              <p className="farm-total">
+                {t("Modeled saving", "الوفر المقدر")}:{" "}
+                <strong>
+                  {n(s.waterSavedM3Feddan)}{" "}
+                  {t("m³ / feddan / rotation", "م³ / فدان / دورة")}
+                </strong>
+              </p>
+            )}
+            {(s.grossWaterM3Feddan < 2500 || s.grossWaterM3Feddan > 5200) && (
+              <p className="local-warning">
+                {t(
+                  "Outside the supplied 2,500–5,200 m³/feddan/year demo band. This per-rotation estimate is uncalibrated; verify crop dates, base water and irrigation efficiency.",
+                  "خارج نطاق العرض المقدم ٢٥٠٠–٥٢٠٠ م³/فدان/سنة. هذا تقدير للدورة غير معاير؛ تحقق من المواعيد والمياه الأساسية وكفاءة الري.",
+                )}
+              </p>
+            )}
             <div className="score-bars">
               {[
                 [t("Water", "المياه"), s.waterScore],

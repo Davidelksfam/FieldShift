@@ -1,0 +1,274 @@
+{
+  "requests": [
+    {
+      "key": "delta_kafr_el_sheikh/2020/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_NDVI&startDate=A2020129&endDate=A2020273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2020/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:20.835056+00:00",
+      "bytes": 1952,
+      "sha256": "4bc1f38e24adc901e4dd31582f24d6af676046f1c0a02dba68f1fbce754ca166"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/2020/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_pixel_reliability&startDate=A2020129&endDate=A2020273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2020/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:24.040843+00:00",
+      "bytes": 2068,
+      "sha256": "31f714de7b668127b1561dca6582309a929e976e445e2d67c044216be47e511a"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/2021/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_NDVI&startDate=A2021129&endDate=A2021273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2021/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:44.391067+00:00",
+      "bytes": 1952,
+      "sha256": "99acda4e5f47ba29203af97aa81d5a5f18a9ab5ee40f4cc0863d704b52ec3a6b"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/2021/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_pixel_reliability&startDate=A2021129&endDate=A2021273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2021/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:44.356019+00:00",
+      "bytes": 2068,
+      "sha256": "f16fc5f99122e63f22eb13ba78a6daf464f9d69c2cf79ecff003263490f2d1d8"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/2022/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_NDVI&startDate=A2022129&endDate=A2022273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2022/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:29.232534+00:00",
+      "bytes": 1952,
+      "sha256": "6c8f360dad9cee003b4a652fa94a254328ce8b6dd51915d393fb55baeecd3905"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/2022/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_pixel_reliability&startDate=A2022129&endDate=A2022273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2022/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:32.683630+00:00",
+      "bytes": 2068,
+      "sha256": "e0da69c84d6936a25480e8eb8cde9ef0dfea06caef141b1b557c146839885d69"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/2023/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_NDVI&startDate=A2023129&endDate=A2023273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2023/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:36.123621+00:00",
+      "bytes": 1952,
+      "sha256": "05314b6328282bd2c62f923c989c5290965672d13ea7ddf50c612017a444a319"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/2023/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_pixel_reliability&startDate=A2023129&endDate=A2023273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2023/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:39.333429+00:00",
+      "bytes": 2068,
+      "sha256": "7927a75b59b2dc6dee138e789162e2145e517ea37301c211c7260908d4183bc7"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/2024/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_NDVI&startDate=A2024129&endDate=A2024273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2024/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:43.546120+00:00",
+      "bytes": 1952,
+      "sha256": "38631fae293390b15928b1b031b820adc5f3e853b13b7bb26004fe48feb42417"
+    },
+    {
+      "key": "delta_kafr_el_sheikh/2024/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=31.1107&longitude=30.9388&band=250m_16_days_pixel_reliability&startDate=A2024129&endDate=A2024273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/delta_kafr_el_sheikh/2024/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:47.144151+00:00",
+      "bytes": 2068,
+      "sha256": "9dfec11e57a4db0401f1188bbe4042b03c9486295f149197b0ee4f1a9f42696e"
+    },
+    {
+      "key": "fayoum_etsa/2020/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_NDVI&startDate=A2020129&endDate=A2020273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2020/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:10:29.335006+00:00",
+      "bytes": 1952,
+      "sha256": "5dee3088dc771b6d4f20cfe3534ecd9f0ec8ac78cd307e6687211d4d1cf55e70"
+    },
+    {
+      "key": "fayoum_etsa/2020/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_pixel_reliability&startDate=A2020129&endDate=A2020273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2020/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:10:29.326297+00:00",
+      "bytes": 2068,
+      "sha256": "268272e4a676b14f2279d7d321f74fc4df0324a410f6c69fb013b38b2152d2b8"
+    },
+    {
+      "key": "fayoum_etsa/2021/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_NDVI&startDate=A2021129&endDate=A2021273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2021/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:10:28.655492+00:00",
+      "bytes": 1952,
+      "sha256": "b6749413d99fff53400b4155c8719ff6aee41e7ea36ee370f7d388b851e29b0b"
+    },
+    {
+      "key": "fayoum_etsa/2021/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_pixel_reliability&startDate=A2021129&endDate=A2021273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2021/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:10:31.746586+00:00",
+      "bytes": 2068,
+      "sha256": "c2f308cb70c0a1a0ce35d75bc60137c7002c6d6b2640778270231a7701b4b52d"
+    },
+    {
+      "key": "fayoum_etsa/2022/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_NDVI&startDate=A2022129&endDate=A2022273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2022/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:10:58.599618+00:00",
+      "bytes": 1952,
+      "sha256": "2082f76f4e19af92634ac852a3d82c898dd54d3b7537dbc7efd29daa3449d798"
+    },
+    {
+      "key": "fayoum_etsa/2022/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_pixel_reliability&startDate=A2022129&endDate=A2022273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2022/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:10:58.598984+00:00",
+      "bytes": 2068,
+      "sha256": "a72c43ee6f9a5b42519d1b10a65b0873cce445fa4396ca4c8d5a0a5f5b18976a"
+    },
+    {
+      "key": "fayoum_etsa/2023/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_NDVI&startDate=A2023129&endDate=A2023273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2023/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:10:59.251138+00:00",
+      "bytes": 1952,
+      "sha256": "94a9aa263c5bd9bc4862a61d8daac0bbece627f2f2d388a304214b4a0274b898"
+    },
+    {
+      "key": "fayoum_etsa/2023/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_pixel_reliability&startDate=A2023129&endDate=A2023273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2023/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:01.704430+00:00",
+      "bytes": 2068,
+      "sha256": "d3b01bb52663bf9abf1bd53c8489e892482cd218573d398401a0a8ee664ee830"
+    },
+    {
+      "key": "fayoum_etsa/2024/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_NDVI&startDate=A2024129&endDate=A2024273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2024/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:25.408651+00:00",
+      "bytes": 1952,
+      "sha256": "9a63b7ec3fa2d960a59011a42fa99f4f3377179e12b332bdee47e551da500fb0"
+    },
+    {
+      "key": "fayoum_etsa/2024/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.2315&longitude=30.7952&band=250m_16_days_pixel_reliability&startDate=A2024129&endDate=A2024273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/fayoum_etsa/2024/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:25.398963+00:00",
+      "bytes": 2068,
+      "sha256": "460c3fc2ceee533f16f3b8c63aaa388d8f78a511af1485a5f46a92d5ca67a00c"
+    },
+    {
+      "key": "west_delta_nubariya/2020/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_NDVI&startDate=A2020129&endDate=A2020273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2020/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:47.742035+00:00",
+      "bytes": 1948,
+      "sha256": "d1a28a9b07030a4e435250f8d6b068c7e16f44cf46446a0068bbb72565ec2f12"
+    },
+    {
+      "key": "west_delta_nubariya/2020/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_pixel_reliability&startDate=A2020129&endDate=A2020273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2020/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:47.697279+00:00",
+      "bytes": 2064,
+      "sha256": "b18a015911d14b61b0f1702ebe1d022881223c4729a44bc1262502e6231c08e2"
+    },
+    {
+      "key": "west_delta_nubariya/2021/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_NDVI&startDate=A2021129&endDate=A2021273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2021/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:50.751660+00:00",
+      "bytes": 1948,
+      "sha256": "dcda7b91797b314d4ed41fe61b56a62ded07f54b2d1596e313eb340785456523"
+    },
+    {
+      "key": "west_delta_nubariya/2021/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_pixel_reliability&startDate=A2021129&endDate=A2021273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2021/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:51.191086+00:00",
+      "bytes": 2064,
+      "sha256": "72c969a26e4406fc1339f6145d74f8274b8136ce2d847447569f37763a602bda"
+    },
+    {
+      "key": "west_delta_nubariya/2022/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_NDVI&startDate=A2022129&endDate=A2022273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2022/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:51.522583+00:00",
+      "bytes": 1948,
+      "sha256": "4ef2141e8076128e55874813d7390798d9593cfe9bcdf747b776d1075b2a06a0"
+    },
+    {
+      "key": "west_delta_nubariya/2022/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_pixel_reliability&startDate=A2022129&endDate=A2022273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2022/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:54.551278+00:00",
+      "bytes": 2064,
+      "sha256": "f7b70be7dff226e39eafbfef9e693e5b0f5fca405045c10e6254117418c3235f"
+    },
+    {
+      "key": "west_delta_nubariya/2023/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_NDVI&startDate=A2023129&endDate=A2023273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2023/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:54.935528+00:00",
+      "bytes": 1948,
+      "sha256": "792c9fee2033afa4407eea27305e486026dd5c0367f84688b1240e8d573d371d"
+    },
+    {
+      "key": "west_delta_nubariya/2023/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_pixel_reliability&startDate=A2023129&endDate=A2023273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2023/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:54.917650+00:00",
+      "bytes": 2064,
+      "sha256": "eaab8520753bb47aef4e56045daac5d563a19c6c4b345872b5a1ee1ca3a8b101"
+    },
+    {
+      "key": "west_delta_nubariya/2024/250m_16_days_NDVI",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_NDVI&startDate=A2024129&endDate=A2024273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2024/250m_16_days_NDVI.json",
+      "retrievedAt": "2026-11-13T19:11:58.340347+00:00",
+      "bytes": 1948,
+      "sha256": "80e8a71304c1639a30ce2e80894ede71ad7941beae55b1069db2fa6e6a7d3dd8"
+    },
+    {
+      "key": "west_delta_nubariya/2024/250m_16_days_pixel_reliability",
+      "url": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=30.665&longitude=30.068&band=250m_16_days_pixel_reliability&startDate=A2024129&endDate=A2024273&kmAboveBelow=0&kmLeftRight=0",
+      "status": "downloaded",
+      "localPath": "data/raw/ndvi-history/west_delta_nubariya/2024/250m_16_days_pixel_reliability.json",
+      "retrievedAt": "2026-11-13T19:11:58.480270+00:00",
+      "bytes": 2064,
+      "sha256": "56f92dc45af8bd88e0bb3cea6d7edc4009aac95a72552e66430d966d036f05cd"
+    }
+  ]
+}

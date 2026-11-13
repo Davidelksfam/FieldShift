@@ -31,3 +31,14 @@ The accompanying dataset ZIP contains the raw responses and the repository-relat
 - ISRIC SoilGrids 2.0, [WCS maps](https://maps.isric.org/) and [documentation](https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs.html); Poggio et al. (2021), [DOI:10.5194/soil-7-217-2021](https://doi.org/10.5194/soil-7-217-2021). SoilGrids predictions are distributed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); retain attribution and identify our unit conversions/extraction. Quantiles are predictions, not an accuracy guarantee at a farm.
 
 No Esri/GIBS raster tiles are repackaged. They are contextual map services, not numerical inputs to the engine. Crop traits/market/N scores remain separately labeled user-supplied assumptions; gathering these environmental inputs does not validate the recommender.
+
+## Reproduce post-processing inputs
+
+```bash
+python3 scripts/data/acquire_ndvi_history.py
+python3 scripts/data/acquire_reference_et.py --offline
+```
+
+Historical acquisition reuses raw bytes only when hashes match; driver acquisition supports `--offline` and keeps existing release artifacts if retrieval is incomplete. Remove `--offline` when gathering missing driver files. `prepare_benchmarks.py` now also generates the canonical `demoPresets.json` from observed data and `syntheticFixtures.json`; include both when rebuilding from a dataset archive.
+
+Optional independent ET₀ numerical comparison requires `pyet==1.3.1` and pandas in the Python environment, then `.venv/bin/python scripts/data/validate_reference_et.py`. The JavaScript unit tests use fixed pyet golden values without needing that Python dependency in CI. See [post-processing contract](../../docs/engineering/POSTPROCESSING.md) and [demo story](../../docs/pitch/THREE_MINUTE_DEMO.md).

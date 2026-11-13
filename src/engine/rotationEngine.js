@@ -1,3 +1,5 @@
+import { computeFieldIndices } from "./fieldIndices.js";
+import { explainStrategy } from "./strategyExplanations.js";
 const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 const isNumber = (n) => typeof n === "number" && Number.isFinite(n);
 
@@ -28,38 +30,9 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
     { flood: 0.55, modified_surface: 0.68, sprinkler: 0.75, drip: 0.88 }[
       irrigationType
     ] ?? 0.55;
-  const heatStressDays = (nasaData.summerMaxTemps ?? []).filter(
-    (t) => isNumber(t) && t > 38,
-  ).length;
-  // Only the post-summer Sep–Nov window; count actual clipped composite support.
-  // Annual low vegetation is not equivalent to an autumn harvest-to-sowing gap.
-  const bareSoilDays = (nasaData.ndviSeries ?? []).reduce((sum, pt) => {
-    if (!isNumber(pt.ndvi) || pt.ndvi < -0.2 || pt.ndvi >= 0.22) return sum;
-    const start = Date.parse(pt.date);
-    const from = Math.max(start, Date.UTC(2025, 8, 1));
-    const to = Math.min(start + 16 * 86400000, Date.UTC(2025, 11, 1));
-    return sum + Math.max(0, (to - from) / 86400000);
-  }, 0);
-  const autumnObservedDays = (nasaData.ndviSeries ?? []).reduce((sum, pt) => {
-    if (!isNumber(pt.ndvi) || pt.ndvi < -0.2 || pt.ndvi > 1) return sum;
-    return (
-      sum +
-      Math.max(
-        0,
-        (Math.min(Date.parse(pt.date) + 16 * 86400000, Date.UTC(2025, 11, 1)) -
-          Math.max(Date.parse(pt.date), Date.UTC(2025, 8, 1))) /
-          86400000,
-      )
-    );
-  }, 0);
+  const diagnostics = computeFieldIndices(nasaData, userInputs, cropsCatalog);
+  const { heatStressDays, bareSoilDays, salinityRisk } = diagnostics;
   const soilPh = nasaData.soil?.phh2o ?? 8;
-  const soilClay = nasaData.soil?.clay ?? 40;
-  let salinityRisk =
-    (soilPh > 8 ? (soilPh - 7.5) * 35 : 15) + (soilClay > 42 ? 15 : 0);
-  if (salinityLevel === "high") salinityRisk += 35;
-  if (salinityLevel === "moderate") salinityRisk += 18;
-  if (canalPosition === "tail") salinityRisk += 12;
-  salinityRisk = clamp(Math.round(salinityRisk), 0, 100);
   const normalizedWeights = Object.fromEntries(
     ["water", "soil", "market"].map((k) => [
       k,
@@ -69,7 +42,14 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
   if (!Object.values(normalizedWeights).some(Boolean))
     Object.assign(normalizedWeights, { water: 50, soil: 30, market: 20 });
 
-  function scoreSequence(id, labelEn, labelAr, badge, cropIds) {
+  function scoreSequence(
+    id,
+    labelEn,
+    labelAr,
+    badge,
+    cropIds,
+    scoringWeights = normalizedWeights,
+  ) {
     const crops = cropIds.map((cropId) =>
       cropsCatalog.find((c) => c.id === cropId),
     );
@@ -110,6 +90,27 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
         "Consecutive cereals deplete the modeled nitrogen index.",
         "تعاقب الحبوب يخفض مؤشر النيتروجين في النموذج.",
       );
+    const families = [
+      ...[currentWinterId, currentSummerId].map(
+        (id) => cropsCatalog.find((c) => c.id === id)?.family,
+      ),
+      ...crops.map((c) => c.family),
+    ];
+    if (
+      families.some(
+        (f, i) =>
+          i >= 2 &&
+          f === "Poaceae" &&
+          families[i - 1] === f &&
+          families[i - 2] === f,
+      )
+    ) {
+      penalty += 18;
+      addWarning(
+        "Three or more consecutive cereals across the known history and proposed sequence; include a broadleaf break.",
+        "ثلاثة محاصيل حبوب متتالية أو أكثر عبر التاريخ والدورة المقترحة؛ أضف محصولاً عريض الأوراق.",
+      );
+    }
     for (const c of crops) {
       if (salinityRisk > 65 && c.salinityToleranceDsm < 3) {
         penalty += 15;
@@ -148,20 +149,23 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
         "Nili cover is conditional: confirm early summer harvest and winter sowing dates. Catalog windows overlap; this is not a verified planting calendar. Avoid repeating Fabaceae without a pest review.",
         "الغطاء النيلي مشروط بحصاد صيفي مبكر وموعد الشتوي؛ الفترات متداخلة وليست جدولاً زراعياً معتمداً. راجع مخاطر تكرار البقوليات.",
       );
-    const totalWeight = Object.values(normalizedWeights).reduce(
+    const totalWeight = Object.values(scoringWeights).reduce(
       (a, b) => a + b,
       0,
     );
     const rawComposite =
-      (normalizedWeights.water * waterScore +
-        normalizedWeights.soil * soilScore +
-        normalizedWeights.market * marketForageScore) /
+      (scoringWeights.water * waterScore +
+        scoringWeights.soil * soilScore +
+        scoringWeights.market * marketForageScore) /
       totalWeight;
     return {
       id,
       labelEn,
       labelAr,
       badge,
+      scoringWeights,
+      sequenceKey: cropIds.join("/"),
+      conditionalNili: crops.length === 3,
       crops,
       grossWaterM3Feddan,
       totalFarmWaterM3: Math.round(grossWaterM3Feddan * feddans),
@@ -182,30 +186,94 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
     "Baseline",
     [currentWinterId, currentSummerId],
   );
-  const waterSmart = scoreSequence(
+  const pitchCounterfactual = scoreSequence(
+    "counterfactual",
+    "Illustrative summer switch + conditional cover",
+    "تبديل صيفي توضيحي مع غطاء مشروط",
+    "Counterfactual",
+    [currentWinterId, "sorghum", "cowpea_nili"],
+  );
+  const search = generateCandidateRotations(
+    cropsCatalog,
+    diagnostics,
+    userInputs,
+  );
+  const waterWeights = {
+    ...normalizedWeights,
+    water: Math.max(...Object.values(normalizedWeights)) + 50,
+  };
+  const soilWeights = {
+    ...normalizedWeights,
+    soil: Math.max(...Object.values(normalizedWeights)) + 50,
+  };
+  const scoreCandidates = (objective, objectiveWeights) =>
+    search.candidates
+      .map((ids, i) =>
+        scoreSequence(
+          `${objective}-${i}`,
+          "",
+          "",
+          objective,
+          ids,
+          objectiveWeights,
+        ),
+      )
+      .sort(
+        (a, b) =>
+          b.finalSuitability - a.finalSuitability ||
+          (objective === "water"
+            ? a.grossWaterM3Feddan - b.grossWaterM3Feddan
+            : b.nitrogenBalance - a.nitrogenBalance) ||
+          a.sequenceKey.localeCompare(b.sequenceKey),
+      );
+  const waterRanked = scoreCandidates("water", waterWeights);
+  const soilRanked = scoreCandidates("soil", soilWeights);
+  const choose = (ranked, excluded) =>
+    ranked.find((c) => !excluded.includes(c.sequenceKey)) ?? null;
+  const waterChoice = choose(waterRanked, [baseline.sequenceKey]);
+  const soilChoice = choose(soilRanked, [
+    baseline.sequenceKey,
+    waterChoice?.sequenceKey,
+  ]);
+  const asCard = (choice, id, en, ar, badge) =>
+    choice
+      ? {
+          ...scoreSequence(
+            id,
+            en,
+            ar,
+            badge,
+            choice.crops.map((c) => c.id),
+            normalizedWeights,
+          ),
+          objectiveSuitability: choice.finalSuitability,
+          objectiveWeights: choice.scoringWeights,
+        }
+      : null;
+  const waterSmart = asCard(
+    waterChoice,
     "water",
     "Water-smart & heat-resilient",
     "ترشيد المياه وتحمل الحرارة",
     "Water scarcity",
-    [
-      hasLivestock ? "berseem" : "faba_bean",
-      canalPosition === "tail" || heatStressDays > 12 ? "sorghum" : "sesame",
-      "cowpea_nili",
-    ],
   );
-  const soilBuilder = scoreSequence(
+  const soilBuilder = asCard(
+    soilChoice,
     "soil",
     "Soil recovery & salinity adaptation",
     "تعافي التربة والتكيف مع الملوحة",
     "Soil & nitrogen",
-    [salinityRisk > 60 ? "sugar_beet" : "berseem", "soybean", "cowpea_nili"],
   );
-  const strategies = [baseline, waterSmart, soilBuilder].map((s) => ({
-    ...s,
-    waterSavedPercent: Math.round(
-      (1 - s.grossWaterM3Feddan / baseline.grossWaterM3Feddan) * 100,
-    ),
-  }));
+  const strategies = [baseline, waterSmart, soilBuilder]
+    .filter(Boolean)
+    .map((s) => ({
+      ...s,
+      waterSavedM3Feddan: baseline.grossWaterM3Feddan - s.grossWaterM3Feddan,
+      waterSavedPercent: Math.round(
+        (1 - s.grossWaterM3Feddan / baseline.grossWaterM3Feddan) * 100,
+      ),
+      explanation: explainStrategy(s, nasaData, userInputs, diagnostics),
+    }));
   // Clamped/rounded scores can tie (especially flood-irrigated water scores).
   // Resolve ties using the dominant farmer priority's underlying indicator.
   const dominantPriority = Object.keys(normalizedWeights).sort(
@@ -227,18 +295,78 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
     s.rank = ranked.findIndex((r) => r.id === s.id) + 1;
   });
   return {
-    diagnostics: {
-      heatStressDays,
-      autumnObservedDays,
-      autumnMissingDays: Math.max(0, 91 - autumnObservedDays),
-      bareSoilDays: Math.round(bareSoilDays),
-      salinityRisk,
-      rootZoneWetnessAvg: nasaData.avgRootWetness ?? null,
-      soilOrganicCarbon: nasaData.soil?.soc ?? null,
-      summerObservationDays: (nasaData.summerMaxTemps ?? []).length,
+    diagnostics,
+    pitchCounterfactual: {
+      ...pitchCounterfactual,
+      waterSavedM3Feddan:
+        baseline.grossWaterM3Feddan - pitchCounterfactual.grossWaterM3Feddan,
+      status: "hypothetical, not the selected recommendation",
+    },
+    candidateAudit: {
+      ...search,
+      candidates: undefined,
+      waterWeights,
+      soilWeights,
+      waterRanking: waterRanked.map((c) => ({
+        sequence: c.sequenceKey,
+        score: c.finalSuitability,
+        water: c.grossWaterM3Feddan,
+        penalty: c.penalty,
+      })),
+      soilRanking: soilRanked.map((c) => ({
+        sequence: c.sequenceKey,
+        score: c.finalSuitability,
+        nitrogen: c.nitrogenBalance,
+        penalty: c.penalty,
+      })),
     },
     strategies,
     rankedStrategyIds: ranked.map((s) => s.id),
     effectiveWeights: normalizedWeights,
+  };
+}
+
+export function generateCandidateRotations(catalog, diagnostics, inputs) {
+  const winter = catalog.filter((c) => c.season === "Shitwi");
+  const summer = catalog.filter((c) => c.season === "Seifi");
+  const covers = catalog.filter((c) => c.season === "Nili");
+  const coverOptions =
+    diagnostics.bareSoilDays > 32 || inputs.forceNiliCover
+      ? covers
+      : [null, ...covers];
+  const candidates = [];
+  const rejected = [];
+  for (const w of winter)
+    for (const s of summer)
+      for (const n of coverOptions) {
+        const crops = [w, s, n].filter(Boolean);
+        const ids = crops.map((c) => c.id);
+        const reasons = [];
+        if (new Set(ids).size !== ids.length)
+          reasons.push("Repeated crop identifier");
+        if (
+          crops.some(
+            (c) =>
+              !Number.isFinite(c.baseWaterMm) ||
+              c.baseWaterMm <= 0 ||
+              !Number.isFinite(c.kc) ||
+              c.kc <= 0,
+          )
+        )
+          reasons.push("Missing or invalid water traits");
+        if (crops.some((c) => inputs.excludedCropIds?.includes(c.id)))
+          reasons.push("Farmer-excluded crop");
+        if (reasons.length) rejected.push({ ids, reasons });
+        else candidates.push(ids);
+      }
+  return {
+    generated: candidates.length + rejected.length,
+    retained: candidates.length,
+    rejected,
+    coverRequired:
+      diagnostics.bareSoilDays > 32 || Boolean(inputs.forceNiliCover),
+    candidates,
+    calendarStatus:
+      "Nili candidates are conditional, not hard-validated calendars; dates require local review.",
   };
 }
