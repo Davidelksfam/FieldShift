@@ -1,0 +1,158 @@
+[
+  {
+    "id": "fayoum_etsa",
+    "inputs": {
+      "landType": "old_clay",
+      "irrigationType": "flood",
+      "canalPosition": "tail",
+      "salinityLevel": "moderate",
+      "feddans": 5,
+      "qirats": 0,
+      "currentWinterId": "wheat",
+      "currentSummerId": "maize",
+      "hasLivestock": false,
+      "weights": {
+        "water": 50,
+        "soil": 30,
+        "market": 20
+      }
+    },
+    "generated": 32,
+    "coverRequired": false,
+    "rankedStrategyIds": [
+      "water",
+      "soil",
+      "baseline"
+    ],
+    "strategies": [
+      {
+        "id": "baseline",
+        "sequenceKey": "wheat/maize",
+        "finalSuitability": 10,
+        "grossWaterM3Feddan": 10813,
+        "penalty": 48,
+        "rank": 3
+      },
+      {
+        "id": "water",
+        "sequenceKey": "faba_bean/sesame",
+        "finalSuitability": 60,
+        "grossWaterM3Feddan": 4998,
+        "penalty": 0,
+        "rank": 1
+      },
+      {
+        "id": "soil",
+        "sequenceKey": "faba_bean/soybean/cowpea_nili",
+        "finalSuitability": 52,
+        "grossWaterM3Feddan": 7904,
+        "penalty": 0,
+        "rank": 2
+      }
+    ]
+  },
+  {
+    "id": "delta_kafr_el_sheikh",
+    "inputs": {
+      "landType": "old_clay",
+      "irrigationType": "modified_surface",
+      "canalPosition": "middle",
+      "salinityLevel": "high",
+      "feddans": 5,
+      "qirats": 0,
+      "currentWinterId": "wheat",
+      "currentSummerId": "maize",
+      "hasLivestock": false,
+      "weights": {
+        "water": 50,
+        "soil": 30,
+        "market": 20
+      }
+    },
+    "generated": 16,
+    "coverRequired": true,
+    "rankedStrategyIds": [
+      "water",
+      "soil",
+      "baseline"
+    ],
+    "strategies": [
+      {
+        "id": "baseline",
+        "sequenceKey": "wheat/maize",
+        "finalSuitability": 10,
+        "grossWaterM3Feddan": 8746,
+        "penalty": 48,
+        "rank": 3
+      },
+      {
+        "id": "water",
+        "sequenceKey": "faba_bean/sesame/cowpea_nili",
+        "finalSuitability": 62,
+        "grossWaterM3Feddan": 5228,
+        "penalty": 0,
+        "rank": 1
+      },
+      {
+        "id": "soil",
+        "sequenceKey": "faba_bean/sorghum/cowpea_nili",
+        "finalSuitability": 54,
+        "grossWaterM3Feddan": 5738,
+        "penalty": 0,
+        "rank": 2
+      }
+    ]
+  },
+  {
+    "id": "west_delta_nubariya",
+    "inputs": {
+      "landType": "new_sandy",
+      "irrigationType": "drip",
+      "canalPosition": "head",
+      "salinityLevel": "none",
+      "feddans": 5,
+      "qirats": 0,
+      "currentWinterId": "wheat",
+      "currentSummerId": "maize",
+      "hasLivestock": false,
+      "weights": {
+        "water": 50,
+        "soil": 30,
+        "market": 20
+      }
+    },
+    "generated": 16,
+    "coverRequired": true,
+    "rankedStrategyIds": [
+      "water",
+      "soil",
+      "baseline"
+    ],
+    "strategies": [
+      {
+        "id": "baseline",
+        "sequenceKey": "wheat/maize",
+        "finalSuitability": 10,
+        "grossWaterM3Feddan": 6758,
+        "penalty": 48,
+        "rank": 3
+      },
+      {
+        "id": "water",
+        "sequenceKey": "faba_bean/sesame/cowpea_nili",
+        "finalSuitability": 77,
+        "grossWaterM3Feddan": 4040,
+        "penalty": 0,
+        "rank": 1
+      },
+      {
+        "id": "soil",
+        "sequenceKey": "faba_bean/sorghum/cowpea_nili",
+        "finalSuitability": 72,
+        "grossWaterM3Feddan": 4434,
+        "penalty": 0,
+        "rank": 2
+      }
+    ]
+  }
+]

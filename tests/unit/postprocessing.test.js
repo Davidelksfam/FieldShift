@@ -83,15 +83,17 @@ test("anomaly uses sample SD of distinct earlier peaks; missing/constant baselin
 });
 test("cover attachment and actual hard exclusions follow explicit rules", () => {
   const yes = generateCandidateRotations(catalog, { bareSoilDays: 48 }, inputs);
-  assert.equal(yes.retained, 16);
-  assert.ok(yes.candidates.every((ids) => ids.length === 3));
+  assert.equal(yes.retained, 32);
+  assert.ok(yes.candidates.some((ids) => ids.length === 2));
+  assert.equal(yes.coverRequired, false);
+  assert.equal(yes.lowCoverExplorationSuggested, true);
   const no = generateCandidateRotations(catalog, { bareSoilDays: 0 }, inputs);
   assert.equal(no.retained, 32);
   assert.ok(no.candidates.some((ids) => ids.length === 2));
   const excluded = generateCandidateRotations(
     catalog,
     { bareSoilDays: 48 },
-    { ...inputs, excludedCropIds: ["cowpea_nili"] },
+    { ...inputs, forceNiliCover: true, excludedCropIds: ["cowpea_nili"] },
   );
   assert.equal(excluded.retained, 0);
   assert.equal(excluded.rejected.length, 16);
