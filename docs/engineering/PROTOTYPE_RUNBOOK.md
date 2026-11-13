@@ -2,6 +2,12 @@
 
 The user authorized a working baseline and Vercel deployment on 13 November 2026. [Decision 0003](../decisions/0003-rapid-prototype-baseline.md) records the scope and scientific boundaries.
 
+## Live deployment
+
+Public URL: [https://fieldshift-tau.vercel.app](https://fieldshift-tau.vercel.app). Vercel status: READY. Project: `fieldshift` (`prj_gp7dDiWbJCGwz0wEUbyC2Mu6WAsf`), team `nasa-space-apps3`, root `web/`, Node 24. Deployed application commit: `d05c080f7473b0c6087b45a0191597a29a0f6110`; integrated through PR #8. The user explicitly authorized making this new prototype public.
+
+The complete browser workflow passed against the live URL in both languages at 390/768/1440 widths, including export and source CSV retrieval. Unauthenticated HTTP returned 200. Error/fatal runtime-log query returned no entries; this is not a claim of comprehensive monitoring. See the [deployment record](../../data/manifests/deployments/prototype-20261113.json).
+
 ## Run locally
 
 ```sh

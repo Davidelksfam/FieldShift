@@ -101,12 +101,12 @@ const baseURL = process.env.BASE_URL || "http://localhost:3000";
     .waitFor();
   if ((await page.locator(".source-row").count()) !== 7)
     throw Error("Missing evidence");
-  const response = await page.request.get(
-    baseURL +
-      "/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.75-29.55.csv",
-  );
-  if (!response.ok() || !(await response.text()).includes("2025-12-31"))
-    throw Error("CSV inaccessible");
+  // Use the same browser network stack as the app (including managed proxies).
+  const response = await page.evaluate(async () => {
+    const r = await fetch('/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.75-29.55.csv');
+    return { ok: r.ok, text: await r.text() };
+  });
+  if (!response.ok || !response.text.includes('2025-12-31')) throw Error('CSV inaccessible');
   for (const width of [390, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
     for (const lang of ["en", "ar"]) {

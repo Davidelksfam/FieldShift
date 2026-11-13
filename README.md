@@ -4,6 +4,8 @@ Shared project context for our NASA Space Apps 2026 team at Zewail City, Giza, E
 
 **Stage:** research plus a user-authorized rapid web prototype; see the [runbook](docs/engineering/PROTOTYPE_RUNBOOK.md). **Working proposal:** an Arabic-first, evidence-aware crop-rotation planner, provisionally called “Rotation Rehearsal.” The team has not yet accepted a final product or technology stack.
 
+**Live prototype:** [fieldshift-tau.vercel.app](https://fieldshift-tau.vercel.app) — public research baseline, with illustrative planning assumptions.
+
 ## Start here
 
 1. Read [AGENTS.md](AGENTS.md), the shared instructions for coding agents.
