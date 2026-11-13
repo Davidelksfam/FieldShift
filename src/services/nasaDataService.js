@@ -1,6 +1,10 @@
-import presets from "../data/demoPresets.json" with { type: "json" };
+import presets from "../data/syntheticFixtures.json" with { type: "json" };
 
-import observedBenchmarks from "../data/observedBenchmarks.json" with { type: "json" };
+import observedBenchmarks from "../data/demoPresets.json" with { type: "json" };
+
+import ndviHistory from "../data/ndviHistory.json" with { type: "json" };
+
+import referenceEtDrivers from "../data/referenceEtDrivers.json" with { type: "json" };
 
 export const REQUEST_TIMEOUT_MS = 4500;
 const CACHE_VERSION = "fieldshift-v2";
@@ -353,6 +357,17 @@ export function getInitialFarmData(lat, lon, presetId) {
       initial.sources.soil.reason =
         "Exact centroid has an invalid zero-filled SoilGrids profile; synthetic soil fallback is not a measurement.";
   }
+  if (snapshot && initial.sources.ndvi.kind === "observed")
+    initial.ndviHistory = structuredClone(
+      Object.values(ndviHistory).find((p) => p.lat === lat && p.lon === lon) ??
+        null,
+    );
+  if (snapshot)
+    initial.referenceEtDrivers = structuredClone(
+      Object.values(referenceEtDrivers).find(
+        (p) => p.lat === lat && p.lon === lon,
+      ) ?? null,
+    );
   return initial;
 }
 

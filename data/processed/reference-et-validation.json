@@ -1,0 +1,78 @@
+{
+  "reference": "pyet 1.3.1 pm_fao56",
+  "scope": "Independent numerical implementation comparison, not field validation. Same input data and mean RH approximation.",
+  "regions": {
+    "fayoum_etsa": {
+      "maxDailyDifferenceMm": 4.3094150470324166e-10,
+      "meanDifferenceMm": 2.3518647303627897e-10,
+      "pyetAnnualMm": 2172.0093442448638,
+      "ourAnnualMm": 2172.009344330707,
+      "samples": [
+        {
+          "date": "2025-01-01",
+          "expectedPyet": 1.9979027147996458
+        },
+        {
+          "date": "2025-04-11",
+          "expectedPyet": 4.992984707205723
+        },
+        {
+          "date": "2025-06-30",
+          "expectedPyet": 8.809788612360432
+        },
+        {
+          "date": "2025-10-28",
+          "expectedPyet": 4.164007752771824
+        }
+      ]
+    },
+    "west_delta_nubariya": {
+      "maxDailyDifferenceMm": 3.7466385549578263e-10,
+      "meanDifferenceMm": 1.999041005788432e-10,
+      "pyetAnnualMm": 1843.5449991693208,
+      "ourAnnualMm": 1843.5449992422862,
+      "samples": [
+        {
+          "date": "2025-01-01",
+          "expectedPyet": 1.9808662299608288
+        },
+        {
+          "date": "2025-04-11",
+          "expectedPyet": 4.116349278580002
+        },
+        {
+          "date": "2025-06-30",
+          "expectedPyet": 7.561304607321162
+        },
+        {
+          "date": "2025-10-28",
+          "expectedPyet": 3.3693450950768895
+        }
+      ]
+    },
+    "delta_kafr_el_sheikh": {
+      "maxDailyDifferenceMm": 3.062687881083548e-10,
+      "meanDifferenceMm": 1.9414421972650826e-10,
+      "pyetAnnualMm": 1873.3945737752047,
+      "ourAnnualMm": 1873.3945738460675,
+      "samples": [
+        {
+          "date": "2025-01-01",
+          "expectedPyet": 1.869032741009705
+        },
+        {
+          "date": "2025-04-11",
+          "expectedPyet": 4.539352419816397
+        },
+        {
+          "date": "2025-06-30",
+          "expectedPyet": 8.281146606487411
+        },
+        {
+          "date": "2025-10-28",
+          "expectedPyet": 3.5383573659251972
+        }
+      ]
+    }
+  }
+}

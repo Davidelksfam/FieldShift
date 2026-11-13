@@ -181,3 +181,7 @@ See [data audit](docs/data/DATA_PLAN.md), [contract](docs/engineering/CONTRACTS.
 ## Dataset acquisition amendment (2026-11-13)
 
 The initial synthetic benchmarks remain test fixtures. Actual acquisitions now take precedence at the three exact centroids: complete POWER years, QA-screened MODIS and two valid native SoilGrids WCS profiles. The Delta zero-filled soil profile was rejected. Live MODIS requires pixel reliability 0; masked dates stay null. Live POWER requires verified units, a full-year calendar, complete summer maxima and at least 95% valid values per variable. See the [quality report and reproduction steps](data/processed/QUALITY_REPORT.md). PR #13 merged the application into main; new data PRs now target main.
+
+## Post-processing implementation amendment
+
+Following the user's six-stage instruction, [post-processing contracts](docs/engineering/POSTPROCESSING.md) now define the six diagnostics, full catalog candidate search, objective-specific MCDA, bilingual evidence/support/checklists, five-stage Judge Mode explorer and [three-minute demo](docs/pitch/THREE_MINUTE_DEMO.md). Additional 2020–24 same-pixel MODIS and FAO-56 driver acquisitions support actual anomalies and modeled reference ET₀. EVPTRNS remains energy flux. Soil-adjusted N remains unavailable without a calibrated conversion; source N/SOC are reported separately. Real offline flagship payloads now live in demoPresets.json, with original illustrative data moved to syntheticFixtures.json. PR #15 is merged into main; this implementation is a separate reviewable branch.

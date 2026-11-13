@@ -28,3 +28,11 @@ Run the app and use Refresh or select a map point. The service uses a shared 4.5
 ## Audited acquisition update — 2026-11-13
 
 The initial access findings above are superseded for the three benchmarks by the [completed acquisition report](../../data/processed/QUALITY_REPORT.md). All three have complete real POWER years and QA-screened MODIS. Official native SoilGrids WCS extraction succeeded at two centroids; the Delta profile was zero-filled and rejected. `src/data/observedBenchmarks.json` now takes precedence at exact benchmark coordinates; `demoPresets.json` remains synthetic test/emergency input. Live MODIS now requires matching pixel reliability, and incomplete POWER cannot override a validated snapshot. See [reproduction and attribution](../../data/processed/README.md).
+
+## Historical canopy and reference ET₀ drivers
+
+Additional acquisitions for issue #16: 30 ORNL requests (2020–24 summer NDVI and pixel reliability at three exact centroids) and three full 2025 POWER driver requests with humidity, 2 m wind, solar radiation, pressure and temperatures. Manifests retain URLs, raw hashes and retrieval dates; raw files stay ignored. Same native grids, QA=0 and >=8/10 accepted composites/year are required for the historical peak baseline. At least three prior accepted years and eight current summer observations are needed for ZNDVI. Baseline counts are 5/4/5 for Fayoum/Delta/Nubariya; no 2025 values leak into the historical baseline.
+
+`referenceEtDrivers.json` contains the normalized full years; `referenceEt.js` derives FAO-56 daily reference ET with explicit assumptions. All 1,095 values matched independent pyet numerical results within 0.000001 mm/day. This is numerical verification, not reference field measurement. Neither regional ET₀ nor the z-score validates crop demand or stress causality. See [full definitions](../engineering/POSTPROCESSING.md).
+
+The preparation script now generates **demoPresets.json containing the real flagship data and per-source labels**. The original illustrative series remain in **syntheticFixtures.json**. The prior standalone cleaned artifact and its integrity hash remain unchanged.

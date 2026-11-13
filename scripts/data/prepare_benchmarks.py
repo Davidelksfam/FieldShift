@@ -115,6 +115,15 @@ def main():
    quality['soil']['pointApiCrossCheck']={'matchedValues':matched,'status':'all matched','note':'Two interfaces to the same model; not independent field validation.'}
   snapshots[region]=snapshot;report[region]=quality
  out=ROOT/'src/data/observedBenchmarks.json';write(out,snapshots)
+ # Canonical offline preset bundle: exact historical observations plus explicit gaps.
+ fixtures=json.loads((ROOT/'src/data/syntheticFixtures.json').read_text())
+ demos={}
+ for region,fixture in fixtures.items():
+  observed=snapshots[region]
+  sources=dict(observed['sources'])
+  if 'soil' not in observed:sources['soil']={'provider':'SoilGrids','kind':'synthetic','status':'demo','regionalPreset':region,'reason':'Exact centroid SoilGrids profile is zero-filled and rejected; synthetic fallback is not a measurement.'}
+  demos[region]={**fixture,**observed,'fixture':False,'description':f'{region}: exact benchmark centroid. Land type, irrigation, canal position and salinity defaults are demo farmer scenarios, not remotely measured facts.','sources':sources,'provenance':'Audited historical observations with per-source provenance; any unavailable soil source remains explicitly synthetic.'}
+ write(ROOT/'src/data/demoPresets.json',demos)
  write(ROOT/'data/processed/soil-profiles.json',profiles)
  write(ROOT/'data/processed/quality-report.json',{'schemaVersion':1,'period':'2025','noInterpolation':True,'regions':report,'cleanedSha256':sha(out),'limitations':['Point subset is not field representativeness validation.','Reanalysis and soil predictions are model estimates, not farm measurements.','QA screening reduces cloud contamination; it does not prove every retained pixel is correct.','Crop thresholds and scores are not validated by this dataset audit.']})
  print(json.dumps({k:{'heatDays':q['climate']['heatDaysAbove38C'],'ndviValid':q['ndvi']['validComposites'],'soilCells':q['soil']['validCells']} for k,q in report.items()},indent=2))

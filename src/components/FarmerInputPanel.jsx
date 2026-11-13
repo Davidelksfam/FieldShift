@@ -205,6 +205,14 @@ export default function FarmerInputPanel({
           </p>
         )}
       </div>
+      <label className="checkbox-label">
+        <input
+          type="checkbox"
+          checked={Boolean(inputs.forceNiliCover)}
+          onChange={(e) => update("forceNiliCover", e.target.checked)}
+        />
+        {t("Explore a conditional Nili cover", "استكشف غطاءً نيلياً مشروطاً")}
+      </label>
       <div className="input-footer">
         <Droplets size={16} />
         <span>

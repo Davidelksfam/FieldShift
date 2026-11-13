@@ -40,6 +40,8 @@ export default function SatelliteEvidenceDrawer({
   data,
   open,
   onToggle,
+  diagnostics,
+  hasRecommendedCover,
 }) {
   const t = (en, ar) => text(lang, en, ar);
   const month = (value) =>
@@ -50,8 +52,9 @@ export default function SatelliteEvidenceDrawer({
   const vegetation = data.ndviSeries.map((p) => ({
     ...p,
     day: Math.floor((Date.parse(p.date) - Date.UTC(2025, 0, 1)) / 86400000) + 1,
-    coverScenario:
-      p.date >= "2025-09-01" && p.date < "2025-12-01"
+    coverScenario: !hasRecommendedCover
+      ? null
+      : p.date >= "2025-09-01" && p.date < "2025-12-01"
         ? valid(p.ndvi)
           ? Math.max(p.ndvi, 0.42)
           : null
@@ -131,12 +134,25 @@ export default function SatelliteEvidenceDrawer({
                       }
                     />
                     <Legend wrapperStyle={{ fontSize: 11 }} />
-                    <ReferenceArea
-                      x1={244}
-                      x2={334}
-                      fill="var(--fs-caution-soft)"
-                      fillOpacity={0.8}
-                    />
+                    {(diagnostics?.bareSoilRuns ?? []).map((run) => (
+                      <ReferenceArea
+                        key={run.start}
+                        x1={
+                          Math.floor(
+                            (Date.parse(run.start) - Date.UTC(2025, 0, 1)) /
+                              86400000,
+                          ) + 1
+                        }
+                        x2={
+                          Math.floor(
+                            (Date.parse(run.end) - Date.UTC(2025, 0, 1)) /
+                              86400000,
+                          ) + 1
+                        }
+                        fill="var(--fs-threshold)"
+                        fillOpacity={0.12}
+                      />
+                    ))}
                     <ReferenceLine
                       y={0.22}
                       stroke="var(--fs-threshold)"
@@ -156,23 +172,25 @@ export default function SatelliteEvidenceDrawer({
                       strokeWidth={2}
                       isAnimationActive={false}
                     />
-                    <Line
-                      type="monotone"
-                      dataKey="coverScenario"
-                      name={t("Hypothetical cover", "غطاء افتراضي")}
-                      stroke="var(--fs-brand-primary)"
-                      strokeWidth={2}
-                      strokeDasharray="6 4"
-                      dot={false}
-                      isAnimationActive={false}
-                    />
+                    {hasRecommendedCover && (
+                      <Line
+                        type="monotone"
+                        dataKey="coverScenario"
+                        name={t("Hypothetical cover", "غطاء افتراضي")}
+                        stroke="var(--fs-brand-primary)"
+                        strokeWidth={2}
+                        strokeDasharray="6 4"
+                        dot={false}
+                        isAnimationActive={false}
+                      />
+                    )}
                   </ComposedChart>
                 </ResponsiveContainer>
               </div>
               <p className="chart-note">
                 {t(
-                  "Shaded: Sep–Nov. Dashed: illustrative 0.42 NDVI floor with Nili cover, not a predicted crop response. Low NDVI alone cannot establish erosion or a harvest date. Observed NDVI accepts only pixel reliability 0 (good). Rejected dates stay missing; gaps are not interpolated.",
-                  "التظليل: سبتمبر–نوفمبر. الخط المتقطع: حد افتراضي ٠٫٤٢ مع الغطاء النيلي، وليس تنبؤاً باستجابة المحصول. انخفاض NDVI وحده لا يثبت التعرية أو موعد الحصاد. نقبل الرصد المصنف جيداً فقط (٠). التواريخ المستبعدة تظل مفقودة دون استيفاء.",
+                  "Red shading: observed consecutive autumn NDVI<0.22 intervals. Dashed: illustrative 0.42 floor only when a conditional Nili cover is selected, not a predicted crop response. Low NDVI alone cannot establish erosion or a harvest date. Observed NDVI accepts only pixel reliability 0 (good). Rejected dates stay missing; gaps are not interpolated.",
+                  "التظليل الأحمر: فترات الخريف المتصلة المرصودة تحت ٠٫٢٢. المتقطع: حد افتراضي ٠٫٤٢ عند اختيار غطاء نيلي مشروط، وليس تنبؤاً بالمحصول. انخفاض NDVI وحده لا يثبت التعرية أو موعد الحصاد. نقبل الرصد المصنف جيداً فقط (٠). التواريخ المستبعدة تظل مفقودة دون استيفاء.",
                 )}
               </p>
             </article>

@@ -1454,3 +1454,121 @@ html[lang="ar"] .strategy-card h3 {
     scroll-behavior: auto;
   }
 }
+.indices-panel {
+  margin: 0 0 22px;
+  padding: 14px 20px;
+}
+.indices-panel > summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+.indices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  padding: 12px 0;
+}
+.indices-grid article {
+  padding: 12px;
+  background: var(--fs-brand-pale);
+  border-radius: 9px;
+}
+.indices-grid h3 {
+  font-size: 13px;
+}
+.indices-grid strong {
+  display: block;
+  font-size: 15px;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+.indices-grid p,
+.strategy-explanation p {
+  font-size: 11px;
+  line-height: 1.8;
+}
+.strategy-explanation {
+  padding: 12px;
+  background: var(--fs-brand-pale);
+  border-radius: 9px;
+  margin: 12px 0;
+}
+.strategy-explanation h4 {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 0 5px;
+}
+.strategy-explanation strong {
+  display: block;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.strategy-explanation summary {
+  font-size: 11px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.pipeline-explorer {
+  padding: 20px;
+  margin-top: 20px;
+}
+.pipeline-explorer > p {
+  font-size: 13px;
+  margin: 8px 0;
+}
+.pipeline-steps {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.pipeline-explorer h3 {
+  margin: 10px 0;
+}
+.pipeline-explorer article > p {
+  font-size: 12px;
+}
+.pipeline-formula {
+  background: var(--fs-brand-pale);
+  border-radius: 9px;
+  padding: 12px;
+  margin: 10px 0;
+  line-height: 1.8;
+}
+.pipeline-explorer pre {
+  max-height: 360px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--fs-bg-canvas);
+  padding: 16px;
+  border: 1px solid var(--fs-border);
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.pipeline-explorer pre:focus-visible {
+  outline: 3px solid var(--fs-action-bg);
+}
+@media (max-width: 980px) {
+  .indices-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .indices-grid {
+    grid-template-columns: 1fr;
+  }
+  .pipeline-steps > .button {
+    flex: 1;
+    white-space: normal;
+  }
+  .pipeline-explorer {
+    padding: 16px;
+  }
+}

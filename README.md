@@ -35,6 +35,8 @@ npm run test:browser
 ## Project guide
 
 - [Implementation blueprint](IMPLEMENTATION_PLAN.md)
+- [Post-processing formulas and assumptions](docs/engineering/POSTPROCESSING.md)
+- [Three-minute demo story](docs/pitch/THREE_MINUTE_DEMO.md)
 - [Current status](docs/STATUS.md) and [accepted direction](docs/decisions/0003-client-first-egypt-dashboard.md)
 - [Data audit and access findings](docs/data/DATA_PLAN.md)
 - [Payload contract](docs/engineering/CONTRACTS.md) and [architecture](docs/engineering/ARCHITECTURE.md)
@@ -43,3 +45,5 @@ npm run test:browser
 - [Contribution rules](CONTRIBUTING.md), [agent instructions](AGENTS.md), [AI assistance](docs/AI_USAGE.md)
 
 Work is tracked in [issue #12](https://github.com/Davidelksfam/FieldShift/issues/12). The dashboard was merged into main through PR #13. Dataset acquisition is tracked in issue #14; previous branches and history are preserved.
+
+Judge Mode now includes an interactive five-stage pipeline explorer. Open all six field indices for modeled FAO-56 reference ET₀ and same-pixel historical NDVI anomalies. Real flagship payloads are in `demoPresets.json`; `syntheticFixtures.json` preserves original illustrative tests. An optional Nili switch explores a conditional planting window. Soil-adjusted nitrogen remains unavailable without calibration; water figures remain modeled m³/feddan/rotation.

@@ -1,0 +1,98 @@
+{
+  "fayoum_etsa": {
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,RH2M,WS2M,ALLSKY_SFC_SW_DWN,PS&community=AG&longitude=30.7952&latitude=29.2315&start=20250101&end=20251231&format=JSON",
+    "retrievedAt": "2026-11-13T19:15:22.725030+00:00",
+    "sha256": "6da1fa2e1c2be82fe89a8cc250a1fa85d0f657b1891648d5b8481b04c484a8c9",
+    "localPath": "data/raw/reference-et/fayoum_etsa.json",
+    "units": {
+      "T2M_MAX": {
+        "units": "C",
+        "longname": "Temperature at 2 Meters Maximum"
+      },
+      "T2M_MIN": {
+        "units": "C",
+        "longname": "Temperature at 2 Meters Minimum"
+      },
+      "RH2M": {
+        "units": "%",
+        "longname": "Relative Humidity at 2 Meters"
+      },
+      "WS2M": {
+        "units": "m/s",
+        "longname": "Wind Speed at 2 Meters"
+      },
+      "ALLSKY_SFC_SW_DWN": {
+        "units": "MJ/m^2/day",
+        "longname": "All Sky Surface Shortwave Downward Irradiance"
+      },
+      "PS": {
+        "units": "kPa",
+        "longname": "Surface Pressure"
+      }
+    }
+  },
+  "west_delta_nubariya": {
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,RH2M,WS2M,ALLSKY_SFC_SW_DWN,PS&community=AG&longitude=30.068&latitude=30.665&start=20250101&end=20251231&format=JSON",
+    "retrievedAt": "2026-11-13T19:15:22.410306+00:00",
+    "sha256": "eb03fa6026a01b69a86a74e2582a6ce7ae59e39c94ab3c02b17be133056ac633",
+    "localPath": "data/raw/reference-et/west_delta_nubariya.json",
+    "units": {
+      "T2M_MAX": {
+        "units": "C",
+        "longname": "Temperature at 2 Meters Maximum"
+      },
+      "T2M_MIN": {
+        "units": "C",
+        "longname": "Temperature at 2 Meters Minimum"
+      },
+      "RH2M": {
+        "units": "%",
+        "longname": "Relative Humidity at 2 Meters"
+      },
+      "WS2M": {
+        "units": "m/s",
+        "longname": "Wind Speed at 2 Meters"
+      },
+      "ALLSKY_SFC_SW_DWN": {
+        "units": "MJ/m^2/day",
+        "longname": "All Sky Surface Shortwave Downward Irradiance"
+      },
+      "PS": {
+        "units": "kPa",
+        "longname": "Surface Pressure"
+      }
+    }
+  },
+  "delta_kafr_el_sheikh": {
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,RH2M,WS2M,ALLSKY_SFC_SW_DWN,PS&community=AG&longitude=30.9388&latitude=31.1107&start=20250101&end=20251231&format=JSON",
+    "retrievedAt": "2026-11-13T19:15:22.719958+00:00",
+    "sha256": "b0654c190b8d5dc2004ee205b0881acfee9ba480d008708fae24a515285fdcf1",
+    "localPath": "data/raw/reference-et/delta_kafr_el_sheikh.json",
+    "units": {
+      "T2M_MAX": {
+        "units": "C",
+        "longname": "Temperature at 2 Meters Maximum"
+      },
+      "T2M_MIN": {
+        "units": "C",
+        "longname": "Temperature at 2 Meters Minimum"
+      },
+      "RH2M": {
+        "units": "%",
+        "longname": "Relative Humidity at 2 Meters"
+      },
+      "WS2M": {
+        "units": "m/s",
+        "longname": "Wind Speed at 2 Meters"
+      },
+      "ALLSKY_SFC_SW_DWN": {
+        "units": "MJ/m^2/day",
+        "longname": "All Sky Surface Shortwave Downward Irradiance"
+      },
+      "PS": {
+        "units": "kPa",
+        "longname": "Surface Pressure"
+      }
+    }
+  }
+}

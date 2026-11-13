@@ -73,9 +73,7 @@ test("presets, inputs, rankings and both language directions work with all remot
     .getByTestId("strategy-water")
     .getByText("Verify locally before planting")
     .click();
-  await expect(page.getByTestId("strategy-water")).toContainText(
-    "Catalog windows overlap",
-  );
+  await expect(page.getByTestId("strategy-water")).toContainText("broomrape");
   expect(errors).toEqual([]);
 });
 
@@ -181,4 +179,104 @@ test("production shell reloads offline after a completed first online visit", as
     .getByRole("button", { name: "West Delta · Nubariya", exact: true })
     .click();
   await expect(page.getByLabel("Irrigation system")).toHaveValue("drip");
+});
+
+test("six indices, conditional cover and five explorer stages use current field data", async ({
+  page,
+}) => {
+  await blockRemote(page);
+  await page.goto("/");
+  await english(page);
+  await page
+    .getByText("Inspect all six field indices", { exact: true })
+    .click();
+  await expect(
+    page.getByText("Seasonal reference ET₀", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Canopy anomaly · ZNDVI", { exact: true }),
+  ).toBeVisible();
+  await page.getByLabel("Explore a conditional Nili cover").check();
+  await expect(page.getByTestId("strategy-water")).toContainText(
+    "NILI · CONDITIONAL COVER",
+  );
+  await page.getByRole("button", { name: "Judge mode", exact: true }).click();
+  const explorer = page.getByRole("region", {
+    name: "Post-processing pipeline explorer",
+  });
+  for (const label of [
+    "1 · Field indices",
+    "2 · Candidates",
+    "3 · MCDA ranking",
+    "4 · Explanation",
+    "5 · Farmer output",
+  ]) {
+    await explorer.getByRole("button", { name: label, exact: true }).click();
+    await expect(
+      explorer.getByRole("button", { name: label, exact: true }),
+    ).toHaveAttribute("aria-pressed", "true");
+    await expect(explorer.getByLabel("Stage JSON output")).toBeVisible();
+  }
+  await expect(explorer.getByLabel("Stage JSON output")).toContainText(
+    "hypotheticalSummerSwitch",
+  );
+  await page.setViewportSize({ width: 390, height: 900 });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  await page.getByRole("button", { name: "العربية", exact: true }).click();
+  await expect(
+    page.getByRole("heading", {
+      name: "مستكشف خط المعالجة بعد التنظيف",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await page.screenshot({
+    path: "test-results/pipeline-mobile-ar.png",
+    fullPage: true,
+  });
+});
+
+test("slider updates paint within the local 100 ms target and do not trigger API fetches", async ({
+  page,
+}) => {
+  const requests = [];
+  page.on("request", (r) => {
+    if (/power.larc|pixelgust|rest.isric|modis.ornl/.test(r.url()))
+      requests.push(r.url());
+  });
+  await blockRemote(page);
+  await page.goto("/");
+  await english(page);
+  await expect(
+    page.getByRole("button", { name: "Refresh sources" }),
+  ).toBeEnabled();
+  const before = requests.length;
+  const durations = await page.evaluate(async () => {
+    const range = document.querySelector("#priority-water");
+    const setter = Object.getOwnPropertyDescriptor(
+      HTMLInputElement.prototype,
+      "value",
+    ).set;
+    const times = [];
+    for (let i = 0; i < 12; i++) {
+      const start = performance.now();
+      setter.call(range, String(10 + i * 7));
+      range.dispatchEvent(new Event("input", { bubbles: true }));
+      await new Promise((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve)),
+      );
+      times.push(performance.now() - start);
+    }
+    return times;
+  });
+  await expect(page.locator('label[for="priority-water"] output')).toHaveText(
+    "87",
+  );
+  durations.sort((a, b) => a - b);
+  expect(durations[10]).toBeLessThan(100);
+  expect(requests.length).toBe(before);
+  console.log(`Slider input-to-paint p90: ${durations[10].toFixed(1)} ms`);
 });

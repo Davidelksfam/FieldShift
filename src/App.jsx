@@ -23,6 +23,9 @@ import VulnerabilityBanner from "./components/VulnerabilityBanner";
 import StrategyComparison from "./components/StrategyComparison";
 import SatelliteEvidenceDrawer from "./components/SatelliteEvidenceDrawer";
 
+import FieldIndicesPanel from "./components/FieldIndicesPanel";
+import PipelineExplorer from "./components/PipelineExplorer";
+
 const initialPreset = presets.fayoum_etsa;
 const initialInputs = {
   ...initialPreset.defaults,
@@ -270,6 +273,12 @@ export default function App() {
               data={data}
             />
           )}
+          {evaluation && (
+            <FieldIndicesPanel
+              lang={lang}
+              diagnostics={evaluation.diagnostics}
+            />
+          )}
           <FarmMap
             lang={lang}
             lat={location.lat}
@@ -324,12 +333,19 @@ export default function App() {
           )}
           <div ref={evidenceRef}>
             <SatelliteEvidenceDrawer
+              diagnostics={evaluation?.diagnostics}
+              hasRecommendedCover={evaluation?.strategies.some(
+                (s) => s.id !== "baseline" && s.conditionalNili,
+              )}
               lang={lang}
               data={data}
               open={evidenceOpen}
               onToggle={setEvidenceOpen}
             />
           </div>
+          {judgeMode && evaluation && (
+            <PipelineExplorer lang={lang} data={data} evaluation={evaluation} />
+          )}
           <footer className="page-footer">
             <span dir="ltr">
               fieldshift. <span>© 2026</span>
