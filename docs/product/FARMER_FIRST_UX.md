@@ -1,60 +1,64 @@
-# Farmer-first interaction and audit
+# Farmer workspace: map and three numerical strategy cards
 
-## Scope and acceptance
+## Current accepted layout
 
-Implement the user-supplied farmer-first plan in the active root React SPA. Four questions, Arabic RTL by default, English LTR, progressive results, preserved shared input state, and a secondary Expert Mode. No production deployment or merge. Keep the existing MCDA, crop constants, irrigation efficiencies, datasets, source metadata, cache and offline shell.
+The user selected **Map + three cards** after rejecting the question-per-screen journey. This specification supersedes that interaction, while preserving the scientific audit and engine decisions from PR #23.
 
-Before: all inputs, map, diagnostics and dense ranked cards appear together. After: location → current crops → irrigation → main goal → proposed comparison → alternatives / explanation. Expert Mode retains controls, diagnostics, source provenance, FAO references and the pipeline.
+The active application remains root `src/`. The default Arabic RTL workspace has:
+
+1. A visible interactive map beside all primary inputs: current winter crop, summer crop, irrigation and goal. English switches to LTR. Optional details stay on the same page.
+2. Saved benchmark locations as shortcuts, plus accessible coordinate entry. Clicking the map requests data for that point. This selects a centroid, not a field boundary.
+3. A source-status strip for climate, soil and vegetation, with request progress, source type and a retry/stop action.
+4. Three equal cards: current rotation, water-oriented strategy and soil-oriented strategy. No promoted winner or score-led recommendation page.
+
+Each card displays the engine's actual crop sequence, gross modeled water in **m³ / feddan / rotation**, absolute modeled difference from baseline, and ordinal nitrogen balance in **index points**. Whole-field water in m³/rotation appears only for an explicit valid area. Exact model score, components, penalties, weights and formula stay in expandable calculation details. They are not success probabilities. Crop-specific cautions remain beside each option; common data limitations are stated once above all cards. Expert Mode retains the full diagnostics, provenance, reference registry, raw candidate audit and pipeline.
+
+The compare button scrolls/focuses the cards. Inputs update quantities immediately without requesting source APIs again. There are no Back/Continue pages. Mobile stacks the same map, form and cards; it does not hide options behind a carousel.
 
 ## Verified dependency matrix
 
 | Input / metric | Ranking | Water estimate | Warnings / interpretation | Visibility |
 | --- | --- | --- | --- | --- |
-| Exact location | Indirect via source heat | No | Source support, pH, low cover | Question 1; map secondary |
-| Winter / summer history | Baseline, cereal penalties, distinct candidates | Baseline | Crop / family context | Question 2 |
-| Irrigation | Water component | Gross volume via efficiency | Sandy-surface context | Question 3 |
-| Weights | MCDA and objective candidate evaluation | No | Explain priority | Question 4; manual in Expert |
+| Exact location | Indirect via source heat | No direct effect | Source support, pH, low cover | Primary map / coordinate alternative |
+| Winter / summer history | Baseline, cereal penalties, distinct candidates | Baseline | Crop / family context | Primary inputs |
+| Irrigation | Water component | Gross volume via efficiency | Sandy-surface context | Primary input |
+| Weights | MCDA and objective candidate evaluation | No | Preference interpretation | Primary goal; manual in Expert |
 | Livestock | Market/forage component | No | Forage interpretation | Optional |
-| Laboratory soil ECe | FAO-threshold penalty where supported | No | Threshold exceedance | Advanced; critical caution in result |
+| Laboratory soil ECe | FAO-threshold penalty where supported | No | Threshold exceedance | Advanced; critical caution in card |
 | Land type | No | No | Sandy-surface / source support | Advanced |
 | Canal / reported salinity | No | No | Heuristic salinity screening | Advanced |
 | Area | No | Whole-field scaling only | Invalid-entry message | Optional total request |
-| Heat days | Summer crop penalties | No | Historical regional heat | Plain summary / expert values |
-| Low-cover proxy | Candidate inclusion before this change | No | Conditional Nili exploration | Plain context / expert values |
-| Soil pH | No | No | Catalog-range warnings | Expert / contextual details |
-| Heuristic salinity index | No | No | Test-soil caution | Plain summary / expert values |
-| ET₀ / energy flux / anomaly / N / SOC / wetness | No direct effect (crop N traits do affect scores) | No | Diagnostics and support | Expert |
+| Heat days | Summer crop penalties | No | Historical regional heat | Source details / Expert |
+| Low-cover proxy | No required cover from proxy | No | Conditional Nili exploration | Context / Expert |
+| Soil pH | No | No | Catalog-range warnings | Card details / Expert |
+| Heuristic salinity index | No | No | Soil-test caution | Summary / Expert |
+| ET₀ / energy / anomaly / soil N / SOC / wetness | No direct effect | No | Diagnostics / support | Source availability / Expert |
+| Crop N traits | Soil component and penalties | No | Ordinal N index | Numerical cards / Expert |
 
-Audit difference: region selection previously overwrote irrigation and contextual defaults. New region selection preserves all intentional input values; only location and its sources change. Users can explicitly apply the selected region's demo context in Expert Mode.
+## Map requests, missing data and explicit examples
 
-## Traceable decision change: low cover
+`fetchUnifiedFarmData` requests the chosen point's 2025 POWER, soil and QA-screened MODIS data. The existing initial 4.5-second shared deadline and independent source fallback remain. Retry explicitly allows a 20-second shared deadline and can be stopped. Completed/failed source jobs report progress; old-location results are discarded on selection changes. A request that completes after cancellation/deadline cannot promote fallback into observed data. The deadline explanation reflects the actual configured budget.
 
-Pre-change baseline outputs were captured from main in `tests/fixtures/pre-farmer-ux-baselines.json` before edits. Historical pixel low cover no longer forces a Nili crop. Without explicit opt-in the existing candidate set allows both two-crop and conditional three-crop sequences (32 candidates); with opt-in it requires conditional cover (16). This preserves the former low-cover<=32 behavior. Kafr El-Sheikh and Nubariya previously forced cover from the proxy. `lowCoverExplorationSuggested` records the historical hint separately. Every included Nili crop still needs harvest/sowing compatibility and pest review; no planting calendar is validated. Baseline and forced-cover outputs can be compared directly with the recorded old outputs in regression tests.
+An exact benchmark can use its audited historical snapshot offline. A custom point cannot inherit that snapshot merely because it is nearby. Cached observations retain their source status and age; synthetic regional fallback remains synthetic.
 
-## Scientific presentation correction
+**Farmer numerical results are hidden whenever any required source uses illustrative fallback**, until the farmer explicitly chooses “Show illustrative comparison”. All three card placeholders remain visible. The acknowledgement resets on every location change, including a benchmark with unavailable soil. The illustrative banner remains visible with the resulting numbers. Expert Mode can still inspect the underlying fallback evaluation and provenance.
 
-Per-rotation modeled water cannot be tested against the supplied annual 2,500–5,200 reference band. Remove that invalid cross-period warning. Always disclose calibration limitations and verify crop dates, legacy base water and assumed irrigation efficiency, including large modeled values. No replacement acceptable range is invented. FAO references do not calibrate the legacy scoring model; ETc remains inactive.
+Source availability is not full observation coverage. Accepted MODIS imagery can still have missing dates; these remain disclosed. SoilGrids is a static regional soil prediction, not a laboratory measurement or a 2025 observation. Fresh soil-source metadata uses a non-year-specific period; climate and MODIS retain 2025. Climate is about 50 km resolution; vegetation/soil about 250 m. Source dates are historical, not a forecast.
 
-## Input contract and defaults
+The map pipeline does **not** yet fetch complete custom-point ET₀ weather drivers or multi-year same-pixel NDVI history. Those diagnostics explicitly show unavailable outside supported benchmark data. Water comparison still uses legacy crop constants and assumed irrigation efficiency; NASA ET₀ is not the active water model. No claim of a complete scientifically validated pipeline for every field is made.
 
-- Initial question values: Fayoum exact centroid, wheat / maize, flood irrigation, water goal. These are editable demo starting assumptions, not inferred farmer facts.
-- Goals set `{water, soil, market}` weights: water `{70,20,10}`, soil `{20,70,10}`, market/forage `{20,20,60}`. They are deterministic product preferences, not scientific calibration. Existing MCDA normalizes and boosts the candidate's target objective by `max(weights)+50`; final comparison uses farmer weights and existing dominant-priority ties. A selected goal may change scores without changing crop names.
-- Expert slider edits set `goal=custom` immediately. Returning to Farmer Mode discloses custom weights. Choosing any goal replaces all three weights atomically. Goal changes after results recalculate immediately with a visible explanation.
-- Optional defaults: livestock false; required Nili cover false; soil ECe absent; area absent and total estimates off. The engine's required positive area is supplied as **one feddan comparison basis** only when totals are off or the entered area is invalid. Invalid area retains the per-feddan comparison and an error, with totals hidden. Only explicit valid area produces totals. Feddans may be fractional; additional qirats are whole 0–23; total >0 and <=100,000.
-- Initial hidden context: old clay, canal tail, moderate reported salinity (Fayoum demo context). These are farmer scenario assumptions, not observations. Region changes preserve them and irrigation; Expert Mode has an explicit “Apply region demo context and irrigation” action. All context is editable under optional advanced details.
-- Measured ECe accepts 0–100 dS/m or missing. Only the separate laboratory input triggers the existing outcome-matched FAO penalties. Never fill it from the screening index. Invalid ECe blocks evaluation with an error.
-- Default candidate search can still select a conditional cover even without requiring it; every included cover is labeled conditional. The optional switch requires a cover for scenario exploration, never asserts planting feasibility.
+## Shared input defaults
 
-## Presentation and warnings
+- Initial editable example: Fayoum's exact centroid, wheat / maize, flood irrigation, water goal. These are starting assumptions, not inferred farmer facts.
+- Goal weights `{water, soil, market}`: water `{70,20,10}`, soil `{20,70,10}`, market/forage `{20,20,60}`. These deterministic preferences are uncalibrated. Existing MCDA boosts the candidate objective by `max(weights)+50`; final comparison uses farmer weights. Crop names need not change on every goal change.
+- Expert weight edits set `goal=custom`. Choosing a farmer goal replaces all weights atomically. Switching modes preserves inputs and location.
+- Livestock false; required Nili false; lab ECe absent; area absent and totals off. A one-feddan engine scale supplies a comparison basis, never an inferred farm area. Totals require >0 and <=100,000 feddans, with 0–23 whole additional qirats. Invalid area retains per-feddan results but hides totals.
+- Initial context: old clay, tail-end canal, moderate reported salinity, disclosed as demo assumptions. Region changes preserve these choices and irrigation. Expert Mode can explicitly apply a regional context.
+- Only laboratory saturated-paste ECe (0–100 dS/m or absent) is compared with outcome-matched FAO thresholds. Never populate it from heuristic salinity. Invalid ECe blocks evaluation.
+- Optional-cover search may choose a conditional third crop even when it is not required. Every Nili plan requires crop-calendar and pest review. See [the separately tested decision](../decisions/0004-low-cover-does-not-require-nili.md).
 
-Farmer presentation consumes engine results and `rankedStrategyIds`; React never ranks candidates independently. The primary card identifies the option leading the chosen model comparison, not a universally best or approved crop plan. It may be the baseline. Raw suitability, raw N index, score bars and data-support categories stay in Expert Mode. Compact options include the baseline and both available engine alternatives.
+## Scientific integrity and verification
 
-Critical warnings retain all measured ECe exceedances and unavailable outcome-matched salinity references, conditional Nili requirements, illustrative sources and incomplete important observations, deduplicated by message. Contextual crop/pH/infiltration cautions and crop-specific verification are in explanation details. Expert Mode retains all underlying warnings, exact scores, components, penalties, weights, candidates/rejections, raw diagnostics and source metadata. Observed regional history, missing coverage, modeled interpretations and synthetic fallback have distinct plain-language text. No green safe/verified badge is used.
+This layout changes presentation, request progress and illustrative-fallback visibility. It does not alter candidate generation, ranking, penalties, crop constants, efficiencies, datasets or ETc activation. Per-rotation water cannot be validated against an annual reference band. No replacement acceptable range is invented. N index points are not kg fertilizer; market components are not validated profit; published FAO values do not validate recommendations.
 
-## Accessibility and verification contract
-
-Use semantic radio groups, labeled selects, native details, >=44px targets, visible focus, focus on step/result headings, preserved Back/Continue state and reduced motion. Arabic RTL is default, English LTR switches in the header. Technical coordinates/charts keep native direction. Browser coverage must include widths 390/768/1440, both modes, keyboard activation, offline production reload, audited source retention after invalid live responses and synthetic custom-location fallback. No auth, database, backend or dependencies were added.
-
-## Review evidence
-
-See [actual verification results and screenshots](FARMER_FIRST_VALIDATION.md) and the separately committed [Nili decision](../decisions/0004-low-cover-does-not-require-nili.md). Scientific assumptions remain reviewable and uncalibrated.
+Use labeled selects, native details, >=44px controls, visible keyboard focus, focusable comparison heading and reduced motion. Verify Arabic RTL and English LTR at 390/768/1440px, no horizontal overflow, mode/state preservation, whole-field validation, explicit examples, complete and failed custom-coordinate responses, rapid selection/cancellation, incomplete source rejection and offline reload. [Verification and screenshots](MAP_CARDS_VALIDATION.md) record actual results; the earlier [first-redesign report](FARMER_FIRST_VALIDATION.md) is historical evidence of PR #23.

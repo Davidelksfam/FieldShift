@@ -15,3 +15,7 @@ Earlier historical AI contribution logs remain on `main`. Add one row for each n
 ## 2026-11-14 — Farmer-first UX implementation
 
 OpenAI Codex implemented the uploaded farmer-first plan: code dependency audit and captured pre-change regional outputs, shared input journey and goal adapters, focused recommendations and warning layers, Expert Mode retention, explicitly documented Nili candidate change, correction of cross-period water warnings, regression/browser tests and product documentation. No agronomic facts or calibrated constants were introduced. Scientific references and limitations require the same local review as before. No production deployment or merge was performed.
+
+## 2026-11-14 — Map and three numerical strategy cards
+
+Codex implemented the user-selected map-first layout: all inputs together, actual numerical comparisons for three strategies, explicit source-state and illustrative-example handling, bounded retry/cancellation and source progress. Removed the superseded journey/recommendation components. Added complete custom-point HTTP fixture tests and revised browser coverage; retained engine and data baselines. Scientific quantities remain modeled and uncalibrated; custom ET₀/history remain unavailable. Verification is recorded in `docs/product/MAP_CARDS_VALIDATION.md`.

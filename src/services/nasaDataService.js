@@ -7,6 +7,7 @@ import ndviHistory from "../data/ndviHistory.json" with { type: "json" };
 import referenceEtDrivers from "../data/referenceEtDrivers.json" with { type: "json" };
 
 export const REQUEST_TIMEOUT_MS = 4500;
+export const EXTENDED_REQUEST_TIMEOUT_MS = 20000;
 const CACHE_VERSION = "fieldshift-v2";
 const CACHE_MAX_AGE = 7 * 24 * 60 * 60 * 1000;
 const validNumber = (value) =>
@@ -381,7 +382,7 @@ export async function fetchUnifiedFarmData(
   lat,
   lon,
   presetId,
-  { signal: parentSignal, timeoutMs = REQUEST_TIMEOUT_MS } = {},
+  { signal: parentSignal, timeoutMs = REQUEST_TIMEOUT_MS, onSourceUpdate } = {},
 ) {
   if (
     !validNumber(lat) ||
@@ -481,10 +482,31 @@ export async function fetchUnifiedFarmData(
     task.then(
       (value) => {
         snapshots[index] = { status: "fulfilled", value };
+        if (!controller.signal.aborted)
+          onSourceUpdate?.({
+            key: ["climate", "soil", "ndvi"][index],
+            status: "fulfilled",
+            source: {
+              status: "live",
+              kind: "observed",
+              provider: value.provider,
+              url: value.url,
+              period:
+                index === 1
+                  ? "static soil prediction (not year-specific)"
+                  : "2025",
+            },
+          });
         return value;
       },
       (reason) => {
         snapshots[index] = { status: "rejected", reason };
+        if (!controller.signal.aborted)
+          onSourceUpdate?.({
+            key: ["climate", "soil", "ndvi"][index],
+            status: "rejected",
+            reason: reason.message,
+          });
         throw reason;
       },
     ),
@@ -512,14 +534,17 @@ export async function fetchUnifiedFarmData(
           provider,
           url,
           retrievedAt: new Date().toISOString(),
-          period: "2025",
+          period:
+            key === "soil"
+              ? "static soil prediction (not year-specific)"
+              : "2025",
         };
       } else
         data.sources[key] = {
           ...data.sources[key],
           reason:
             result?.reason?.message ??
-            "4.5-second deadline; using local fallback.",
+            `${timeoutMs / 1000}-second deadline; using local fallback.`,
         };
     }
     writeCache(lat, lon, data);

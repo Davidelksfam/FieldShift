@@ -71,3 +71,10 @@ export function warningLayers(strategy, data, diagnostics) {
     contextual: strategy.warnings.filter((w) => !critical.includes(w)),
   };
 }
+
+export function comparisonSourceSupport(data) {
+  const missing = ["climate", "soil", "ndvi"].filter(
+    (key) => data.sources?.[key]?.kind !== "observed",
+  );
+  return { missing, illustrative: missing.length > 0 };
+}

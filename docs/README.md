@@ -15,3 +15,5 @@ The root Vite/React SPA is the accepted implementation direction. Synthetic fixt
 
 - [Farmer-first UX specification and input audit](product/FARMER_FIRST_UX.md)
 - [Farmer-first verification and screenshots](product/FARMER_FIRST_VALIDATION.md)
+
+- [Map-first comparison validation](product/MAP_CARDS_VALIDATION.md)
