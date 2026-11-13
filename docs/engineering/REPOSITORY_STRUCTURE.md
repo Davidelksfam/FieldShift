@@ -1,6 +1,6 @@
 # Repository structure and ownership
 
-**Status:** Organizational directory layout accepted; application code, dependency installation, live NASA imports and deployment are **not** implemented.
+**Status:** Organizational directory layout accepted; application code, live app/NASA integration and deployment are **not** implemented. A separate user-requested [research data access kit](../data/DATASET_ACCESS_GUIDE.md) now provides bounded acquisition tools, optional local geospatial dependencies and tiny public inspection excerpts; these are not approved model inputs.
 
 | Path | Owner | What belongs here |
 | --- | --- | --- |

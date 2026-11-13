@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "regional-research-1.0",
+  "crs": "EPSG:4326",
+  "coordinateOrder": "longitude,latitude",
+  "startDate": "2024-01-01",
+  "endDateInclusive": "2025-12-31",
+  "periodStatus": "User-confirmed required historical period: 2024\u20132025",
+  "boundaryStatus": "Conservative study envelopes, not administrative or cultivated-field boundaries; exclude water/urban/desert with reviewed masks before field analysis",
+  "regions": [
+    {
+      "regionId": "egypt-nile-delta",
+      "name": "Egypt Nile Delta",
+      "bbox": [
+        29.5,
+        30.0,
+        32.75,
+        31.75
+      ],
+      "samplePoint": {
+        "longitude": 31.0,
+        "latitude": 30.8
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "name": "Egypt Fayoum basin",
+      "bbox": [
+        30.0,
+        28.8,
+        31.35,
+        29.8
+      ],
+      "samplePoint": {
+        "longitude": 30.65,
+        "latitude": 29.3
+      }
+    }
+  ],
+  "outputMode": "compact_region_only_with_QA_and_provenance"
+}

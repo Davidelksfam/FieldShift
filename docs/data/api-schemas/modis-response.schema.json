@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ORNL native grid response; grid-array length is a semantic check",
+  "type": "object",
+  "required": [
+    "xllcorner",
+    "yllcorner",
+    "cellsize",
+    "nrows",
+    "ncols",
+    "subset"
+  ],
+  "properties": {
+    "xllcorner": {
+      "type": [
+        "string",
+        "number"
+      ]
+    },
+    "yllcorner": {
+      "type": [
+        "string",
+        "number"
+      ]
+    },
+    "cellsize": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "nrows": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "ncols": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "subset": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "modis_date",
+          "calendar_date",
+          "band",
+          "tile",
+          "data"
+        ],
+        "properties": {
+          "modis_date": {
+            "type": "string",
+            "minLength": 1
+          },
+          "calendar_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "band": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tile": {
+            "type": "string",
+            "minLength": 1
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

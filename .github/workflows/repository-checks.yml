@@ -13,3 +13,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 scripts/check_repository.py
+      - name: Research acquisition boundary checks
+        run: python3 -m unittest discover -s tests/data -p 'test_*.py'
+      - name: Delta and Fayoum input structure and coverage gates
+        run: python3 scripts/data/validate_regions.py

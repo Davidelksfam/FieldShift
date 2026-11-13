@@ -45,4 +45,11 @@ The organizational layout is prepared for **data engineering**, **feature engine
 3. Select one GitHub issue, one branch/worktree, and task-scoped files; follow [contribution rules](CONTRIBUTING.md).
 4. Do not begin live product coding until event restrictions and stack decisions are resolved.
 
-`web/` is reserved for a future Vercel-friendly app, **not a runnable Next.js project yet**. No `package.json`, lockfile, NASA integration or deployment is claimed.
+`web/` is reserved for a future Vercel-friendly app, **not a runnable Next.js project yet**. No `package.json`, lockfile, live application/NASA integration or deployment is claimed.
+
+## Seven-source research access kit
+
+The user-requested [dataset connection and schema guide](docs/data/DATASET_ACCESS_GUIDE.md) organizes POWER, IMERG, SMAP, HLS, MOD13Q1, ECOSTRESS and SoilGrids. See [actual download/access status](docs/data/DOWNLOAD_STATUS.md): all seven source connections now have successful science downloads; native QA and full-season coverage remain explicit gates. Raw/interim files stay ignored; compact research excerpts and provenance are reviewable in Git. This is research acquisition, not an approved model feature pipeline.
+
+
+Regional follow-up: the user selected **Nile Delta and Fayoum, 2024–2025**. See [regional coverage and import status](docs/data/REGIONAL_COVERAGE.md). The earlier Giza snapshots are source-access evidence, not complete regional datasets.

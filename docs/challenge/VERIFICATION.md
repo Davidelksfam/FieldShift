@@ -1,6 +1,6 @@
 # Verification register
 
-**No current official event source was independently verified during this repository setup.** Checked/recorded: 2026-11-12. Use Africa/Cairo for local logistics; always include timezone with deadline times.
+**Initial setup had no independently verified official source.** A later research-access task checked the official organizer answer below on 2026-11-13; exact challenge resources and local logistics remain unresolved. Use Africa/Cairo for local logistics; always include timezone with deadline times.
 
 | ID | Claim/question | Evidence presently available | Status | Next evidence needed |
 | --- | --- | --- | --- | --- |
@@ -19,5 +19,9 @@
 Discovery starting point: [Space Apps](https://www.spaceappschallenge.org/). This portal alone does not verify any row. No dataset has been marked officially eligible.
 
 ## Recording a verification
+
+### Additional source checked 2026-11-13
+
+Source: [NASA Space Apps discussion #1827, answered by Paula-GO-Team on 5 November 2026](https://github.com/nasa/spaceapps/discussions/1827), issuing context: official `nasa/spaceapps` discussion, GO Team Answered. Relevant short excerpt: “review the resources, research the topic”. The answer distinguishes allowed advance research from project building at the normal November 14–15 event start, Saturday 09:00 local time. It also states the Global Awards requirement for at least one NASA source included in the challenge resources, with citation of all used resources. Scope: general/global guidance; not proof of a Zewail City exception, local deadline, or eligibility of any individual dataset. Verifier: Codex assistant; human reviewer pending. This partially informs V05/V07 and the global-date conflict but does not close the local-event questions. The user's current task explicitly authorizes bounded research dataset acquisition and access documentation; no product app/model is scaffolded.
 
 For each resolved row record exact URL/document title, issuing organization, relevant excerpt, publication/version date, access date, local/global scope, verifier and reviewer. Add a dated snapshot or permitted excerpt under `docs/reference/` with provenance. Change status only when supporting evidence is recorded. Keep previous conflicting claims with resolution notes rather than erasing their history. Update affected specs and deadlines in the same change.

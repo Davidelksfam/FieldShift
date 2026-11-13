@@ -1,0 +1,413 @@
+{
+  "schemaVersion": "regional-readiness-1.0",
+  "configPath": "scripts/data/config/regions/delta-fayoum.json",
+  "period": {
+    "startDate": "2024-01-01",
+    "endDateInclusive": "2025-12-31",
+    "status": "user_confirmed_2024_2025"
+  },
+  "allProductionComplete": false,
+  "regions": [
+    {
+      "regionId": "egypt-nile-delta",
+      "bbox": [
+        29.5,
+        30.0,
+        32.75,
+        31.75
+      ],
+      "sources": [
+        {
+          "sourceId": "power",
+          "schemaStatus": "complete",
+          "spatialStatus": "sampled_lattice_24_points_across_both_regions",
+          "temporalStatus": "complete_at_imported_points",
+          "qualityStatus": "units_dates_fill_validated",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-29.75-30.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-29.75-30.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.25-30.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.25-30.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.75-30.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.75-30.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.25-30.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.25-30.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.75-30.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.75-30.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-32.25-30.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-32.25-30.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-29.75-30.75.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-29.75-30.75.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.25-30.75.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.25-30.75.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.75-30.75.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.75-30.75.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.25-30.75.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.25-30.75.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.75-30.75.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.75-30.75.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-32.25-30.75.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-32.25-30.75.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-29.75-31.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-29.75-31.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.25-31.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.25-31.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.75-31.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-30.75-31.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.25-31.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.25-31.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.75-31.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-31.75-31.25.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-32.25-31.25.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-power-32.25-31.25.metadata.json"
+          ],
+          "missingRequirements": [
+            "Exact source-native spatial weighting and field/cropland mask; sampled grid is not independent field weather"
+          ]
+        },
+        {
+          "sourceId": "imerg",
+          "schemaStatus": "complete",
+          "spatialStatus": "study_envelope_native_centers_without_cropland_mask",
+          "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+          "qualityStatus": "documented_research_QA_applied_pending_independent_review",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-imerg.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json",
+            "web/public/data/regions/harmony-daily/egypt-nile-delta-imerg.csv",
+            "web/public/data/regions/harmony-daily/egypt-nile-delta-imerg.metadata.json"
+          ],
+          "missingRequirements": [
+            "Reviewed field/cropland mask and spatial interpretation",
+            "Independent review of source-specific QA recipe and seasonal coverage thresholds",
+            "Resolve or explicitly accept inventory gaps and QA-empty day/pass rows; see monthly counts"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [
+            "2025-10-01",
+            "2025-11-01",
+            "2025-12-01"
+          ],
+          "providerProcessing": {
+            "service": "NASA Harmony",
+            "status": "successful",
+            "progress": 100,
+            "requestManifest": "data/manifests/regions/harmony-requests.json"
+          },
+          "compactRowStatusCounts": {
+            "valid_regional_context": 639,
+            "provider_inventory_gap": 92
+          }
+        },
+        {
+          "sourceId": "smap",
+          "schemaStatus": "complete",
+          "spatialStatus": "study_envelope_native_centers_without_cropland_mask",
+          "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+          "qualityStatus": "documented_research_QA_applied_pending_independent_review",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-smap.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json",
+            "web/public/data/regions/harmony-daily/egypt-nile-delta-smap.csv",
+            "web/public/data/regions/harmony-daily/egypt-nile-delta-smap.metadata.json"
+          ],
+          "missingRequirements": [
+            "Reviewed field/cropland mask and spatial interpretation",
+            "Independent review of source-specific QA recipe and seasonal coverage thresholds",
+            "Resolve or explicitly accept inventory gaps and QA-empty day/pass rows; see monthly counts"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [],
+          "providerProcessing": {
+            "service": "NASA Harmony",
+            "status": "successful",
+            "progress": 100,
+            "requestManifest": "data/manifests/regions/harmony-requests.json"
+          },
+          "compactRowStatusCounts": {
+            "valid_regional_context": 902,
+            "no_QA_valid_pixels": 558,
+            "provider_inventory_gap": 2
+          }
+        },
+        {
+          "sourceId": "hls",
+          "schemaStatus": "complete",
+          "spatialStatus": "partial",
+          "temporalStatus": "snapshot_only",
+          "qualityStatus": "QA_review_required",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-hls.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+          ],
+          "missingRequirements": [
+            "Full regional mosaic and full-period acquisition; source-native QA filtering"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [],
+          "providerProcessing": {
+            "service": "NASA AppEEARS",
+            "status": "pending",
+            "requestManifest": "data/manifests/regions/appeears-tasks.json"
+          }
+        },
+        {
+          "sourceId": "modis_mod13q1",
+          "schemaStatus": "complete",
+          "spatialStatus": "partial",
+          "temporalStatus": "snapshot_only",
+          "qualityStatus": "QA_review_required",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-modis_mod13q1.json",
+            "data/manifests/research-runs/20261113T124126566536Z/modis_mod13q1.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+          ],
+          "missingRequirements": [
+            "Full native spatial mosaic and complete composite series; QA filtering"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [],
+          "providerProcessing": {
+            "service": "NASA AppEEARS",
+            "status": "pending",
+            "requestManifest": "data/manifests/regions/appeears-tasks.json"
+          }
+        },
+        {
+          "sourceId": "ecostress",
+          "schemaStatus": "complete",
+          "spatialStatus": "partial",
+          "temporalStatus": "snapshot_only",
+          "qualityStatus": "QA_review_required",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-ecostress.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+          ],
+          "missingRequirements": [
+            "Full regional mosaic and full-period acquisition; source-native QA filtering"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [
+            "2024-03-01"
+          ],
+          "providerProcessing": {
+            "service": "NASA AppEEARS",
+            "status": "pending",
+            "requestManifest": "data/manifests/regions/appeears-tasks.json"
+          }
+        },
+        {
+          "sourceId": "soilgrids",
+          "schemaStatus": "complete",
+          "spatialStatus": "all_108_native_envelope_layers_downloaded",
+          "temporalStatus": "static_not_a_seasonal_observation",
+          "qualityStatus": "CRS_fill_scale_depth_statistic_checked",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-nile-delta-soilgrids.json",
+            "data/manifests/regions/20261113T123805653050Z/soilgrids-import.completed.json"
+          ],
+          "missingRequirements": [
+            "Field/cropland mask; local soil validation. Do not average prediction quantiles into a calibrated regional interval."
+          ]
+        }
+      ]
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "bbox": [
+        30.0,
+        28.8,
+        31.35,
+        29.8
+      ],
+      "sources": [
+        {
+          "sourceId": "power",
+          "schemaStatus": "complete",
+          "spatialStatus": "sampled_lattice_24_points_across_both_regions",
+          "temporalStatus": "complete_at_imported_points",
+          "qualityStatus": "units_dates_fill_validated",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.25-29.05.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.25-29.05.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.75-29.05.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.75-29.05.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-31.25-29.05.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-31.25-29.05.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.25-29.55.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.25-29.55.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.75-29.55.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.75-29.55.metadata.json",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-31.25-29.55.csv",
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-31.25-29.55.metadata.json"
+          ],
+          "missingRequirements": [
+            "Exact source-native spatial weighting and field/cropland mask; sampled grid is not independent field weather"
+          ]
+        },
+        {
+          "sourceId": "imerg",
+          "schemaStatus": "complete",
+          "spatialStatus": "study_envelope_native_centers_without_cropland_mask",
+          "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+          "qualityStatus": "documented_research_QA_applied_pending_independent_review",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-imerg.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json",
+            "web/public/data/regions/harmony-daily/egypt-fayoum-imerg.csv",
+            "web/public/data/regions/harmony-daily/egypt-fayoum-imerg.metadata.json"
+          ],
+          "missingRequirements": [
+            "Reviewed field/cropland mask and spatial interpretation",
+            "Independent review of source-specific QA recipe and seasonal coverage thresholds",
+            "Resolve or explicitly accept inventory gaps and QA-empty day/pass rows; see monthly counts"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [
+            "2025-10-01",
+            "2025-11-01",
+            "2025-12-01"
+          ],
+          "providerProcessing": {
+            "service": "NASA Harmony",
+            "status": "successful",
+            "progress": 100,
+            "requestManifest": "data/manifests/regions/harmony-requests.json"
+          },
+          "compactRowStatusCounts": {
+            "valid_regional_context": 639,
+            "provider_inventory_gap": 92
+          }
+        },
+        {
+          "sourceId": "smap",
+          "schemaStatus": "complete",
+          "spatialStatus": "study_envelope_native_centers_without_cropland_mask",
+          "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+          "qualityStatus": "documented_research_QA_applied_pending_independent_review",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-smap.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json",
+            "web/public/data/regions/harmony-daily/egypt-fayoum-smap.csv",
+            "web/public/data/regions/harmony-daily/egypt-fayoum-smap.metadata.json"
+          ],
+          "missingRequirements": [
+            "Reviewed field/cropland mask and spatial interpretation",
+            "Independent review of source-specific QA recipe and seasonal coverage thresholds",
+            "Resolve or explicitly accept inventory gaps and QA-empty day/pass rows; see monthly counts"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [],
+          "providerProcessing": {
+            "service": "NASA Harmony",
+            "status": "successful",
+            "progress": 100,
+            "requestManifest": "data/manifests/regions/harmony-requests.json"
+          },
+          "compactRowStatusCounts": {
+            "valid_regional_context": 719,
+            "no_QA_valid_pixels": 741,
+            "provider_inventory_gap": 2
+          }
+        },
+        {
+          "sourceId": "hls",
+          "schemaStatus": "complete",
+          "spatialStatus": "partial",
+          "temporalStatus": "snapshot_only",
+          "qualityStatus": "QA_review_required",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-hls.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+          ],
+          "missingRequirements": [
+            "Full regional mosaic and full-period acquisition; source-native QA filtering"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [],
+          "providerProcessing": {
+            "service": "NASA AppEEARS",
+            "status": "queued",
+            "requestManifest": "data/manifests/regions/appeears-tasks.json"
+          }
+        },
+        {
+          "sourceId": "modis_mod13q1",
+          "schemaStatus": "complete",
+          "spatialStatus": "partial",
+          "temporalStatus": "snapshot_only",
+          "qualityStatus": "QA_review_required",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-modis_mod13q1.json",
+            "data/manifests/research-runs/20261113T124131617835Z/modis_mod13q1.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+          ],
+          "missingRequirements": [
+            "Full native spatial mosaic and complete composite series; QA filtering"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [],
+          "providerProcessing": {
+            "service": "NASA AppEEARS",
+            "status": "pending",
+            "requestManifest": "data/manifests/regions/appeears-tasks.json"
+          }
+        },
+        {
+          "sourceId": "ecostress",
+          "schemaStatus": "complete",
+          "spatialStatus": "partial",
+          "temporalStatus": "snapshot_only",
+          "qualityStatus": "QA_review_required",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-ecostress.json",
+            "data/manifests/regions/20261113T123805653050Z/import-index.json"
+          ],
+          "missingRequirements": [
+            "Full regional mosaic and full-period acquisition; source-native QA filtering"
+          ],
+          "catalogMonthsChecked": 24,
+          "catalogMonthsWithoutMatches": [
+            "2024-02-01",
+            "2024-03-01"
+          ],
+          "providerProcessing": {
+            "service": "NASA AppEEARS",
+            "status": "processing",
+            "requestManifest": "data/manifests/regions/appeears-tasks.json"
+          }
+        },
+        {
+          "sourceId": "soilgrids",
+          "schemaStatus": "complete",
+          "spatialStatus": "all_108_native_envelope_layers_downloaded",
+          "temporalStatus": "static_not_a_seasonal_observation",
+          "qualityStatus": "CRS_fill_scale_depth_statistic_checked",
+          "fullProductionReady": false,
+          "evidencePaths": [
+            "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-soilgrids.json",
+            "data/manifests/regions/20261113T123805653050Z/soilgrids-import.completed.json"
+          ],
+          "missingRequirements": [
+            "Field/cropland mask; local soil validation. Do not average prediction quantiles into a calibrated regional interval."
+          ]
+        }
+      ]
+    }
+  ],
+  "outputMode": "compact_region_only_with_QA_and_provenance",
+  "allSourceRequestsConfigured": true
+}

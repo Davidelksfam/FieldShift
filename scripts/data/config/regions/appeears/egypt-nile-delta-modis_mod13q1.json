@@ -1,0 +1,74 @@
+{
+  "task_type": "area",
+  "task_name": "FieldShift-egypt-nile-delta-modis_mod13q1-2024-2025",
+  "params": {
+    "dates": [
+      {
+        "startDate": "01-01-2024",
+        "endDate": "12-31-2025"
+      }
+    ],
+    "layers": [
+      {
+        "product": "MOD13Q1.061",
+        "layer": "_250m_16_days_NDVI"
+      },
+      {
+        "product": "MOD13Q1.061",
+        "layer": "_250m_16_days_EVI"
+      },
+      {
+        "product": "MOD13Q1.061",
+        "layer": "_250m_16_days_VI_Quality"
+      },
+      {
+        "product": "MOD13Q1.061",
+        "layer": "_250m_16_days_pixel_reliability"
+      }
+    ],
+    "geo": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "regionId": "egypt-nile-delta"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  29.5,
+                  30.0
+                ],
+                [
+                  32.75,
+                  30.0
+                ],
+                [
+                  32.75,
+                  31.75
+                ],
+                [
+                  29.5,
+                  31.75
+                ],
+                [
+                  29.5,
+                  30.0
+                ]
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "output": {
+      "format": {
+        "type": "netcdf4"
+      },
+      "projection": "native"
+    }
+  }
+}

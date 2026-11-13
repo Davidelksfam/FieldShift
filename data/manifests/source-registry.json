@@ -1,0 +1,116 @@
+{
+  "registryVersion": "1.0-research",
+  "status": "User-selected research sources; eligibility and production contracts not approved",
+  "sources": [
+    {
+      "id": "power",
+      "name": "NASA POWER",
+      "role": "Daily historical weather backbone",
+      "endpoint": "https://power.larc.nasa.gov/api/temporal/daily/point",
+      "authentication": "none",
+      "parameters": [
+        "T2M",
+        "T2M_MIN",
+        "T2M_MAX",
+        "RH2M",
+        "WS2M",
+        "ALLSKY_SFC_SW_DWN",
+        "PRECTOTCORR",
+        "PS"
+      ],
+      "guide": "docs/data/sources/power/README.md",
+      "citation": "https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    {
+      "id": "imerg",
+      "name": "GPM IMERG Final daily",
+      "role": "Rainfall context and weather-source comparison",
+      "shortName": "GPM_3IMERGDF",
+      "version": "07",
+      "scienceSuffixes": [
+        ".nc4"
+      ],
+      "authentication": "Earthdata Login for science files; public CMR metadata",
+      "guide": "docs/data/sources/imerg/README.md",
+      "citation": "https://gpm.nasa.gov/resources/documents/imerg-v07-technical-documentation"
+    },
+    {
+      "id": "smap",
+      "name": "SMAP Enhanced L3",
+      "role": "Regional near-surface moisture context",
+      "shortName": "SPL3SMP_E",
+      "version": "006",
+      "scienceSuffixes": [
+        ".h5"
+      ],
+      "authentication": "Earthdata Login for science files; public CMR metadata",
+      "guide": "docs/data/sources/smap/README.md",
+      "citation": "https://nsidc.org/data/spl3smp_e/versions/6"
+    },
+    {
+      "id": "hls",
+      "name": "Harmonized Landsat Sentinel-2, L30 route",
+      "role": "Vegetation timing and cover proxies",
+      "shortName": "HLSL30",
+      "version": "2.0",
+      "scienceSuffixes": [
+        ".B04.tif",
+        ".B05.tif",
+        ".Fmask.tif"
+      ],
+      "authentication": "Earthdata Login for science files; public CMR metadata",
+      "guide": "docs/data/sources/hls/README.md",
+      "citation": "https://hls.gsfc.nasa.gov/data-products/",
+      "alternative": {
+        "shortName": "HLSS30",
+        "version": "2.0",
+        "bands": [
+          "B04",
+          "B8A",
+          "Fmask"
+        ]
+      }
+    },
+    {
+      "id": "modis_mod13q1",
+      "name": "MODIS MOD13Q1 via ORNL TESViS",
+      "role": "Regional 16-day vegetation context",
+      "endpoint": "https://modis.ornl.gov/rst/api/v1/MOD13Q1",
+      "pinnedFullGranuleAlternative": {
+        "shortName": "MOD13Q1",
+        "version": "061"
+      },
+      "authentication": "No key for tested ORNL synchronous subset; Earthdata Login for full LPCLOUD HDF",
+      "guide": "docs/data/sources/modis_mod13q1/README.md",
+      "citation": "https://modis.ornl.gov/data/modis_webservice.html"
+    },
+    {
+      "id": "ecostress",
+      "name": "ECOSTRESS L2T LSTE",
+      "role": "Thermal surface context; no ET inferred from LST",
+      "shortName": "ECO_L2T_LSTE",
+      "version": "002",
+      "scienceSuffixes": [
+        "_LST.tif",
+        "_LST_err.tif",
+        "_QC.tif",
+        "_cloud.tif",
+        "_water.tif"
+      ],
+      "authentication": "Earthdata Login for science files; public CMR metadata",
+      "guide": "docs/data/sources/ecostress/README.md",
+      "citation": "https://ecostress.jpl.nasa.gov/data/atbds-summary-table",
+      "note": "Historical reproducibility selection, not assertion that 002 is latest; ET needs separately selected ECO_L3T_JET product"
+    },
+    {
+      "id": "soilgrids",
+      "name": "ISRIC SoilGrids",
+      "role": "Predicted soil-property fallback",
+      "endpoint": "https://maps.isric.org/mapserv",
+      "coverageId": "phh2o_0-5cm_mean",
+      "authentication": "No key for WCS; REST service currently reported paused",
+      "guide": "docs/data/sources/soilgrids/README.md",
+      "citation": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_02.html"
+    }
+  ]
+}

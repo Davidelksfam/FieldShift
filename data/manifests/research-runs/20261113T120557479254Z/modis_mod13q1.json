@@ -1,0 +1,42 @@
+{
+  "sourceId": "modis_mod13q1",
+  "retrievedAt": "2026-11-13T12:06:03.298422+00:00",
+  "status": "science_downloaded",
+  "scienceDownloaded": true,
+  "artifacts": [
+    {
+      "path": "data/raw/research/20261113T120557479254Z/modis_mod13q1/f373f0968cc8-dates.json",
+      "sha256": "f373f0968cc81004e2879ac14a266516a51d333daa31e369d70ed1775523f5f9",
+      "byteCount": 36238,
+      "kind": "catalog",
+      "sourceUrl": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/dates?latitude=29.9&longitude=31.15"
+    },
+    {
+      "path": "data/raw/research/20261113T120557479254Z/modis_mod13q1/d41dc06bed93-bands.json",
+      "sha256": "d41dc06bed934ea5f032e0eb88b047c1c3c65df1c46db58aa6420be791475303",
+      "byteCount": 2366,
+      "kind": "catalog",
+      "sourceUrl": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/bands"
+    },
+    {
+      "path": "data/raw/research/20261113T120557479254Z/modis_mod13q1/c74380b39383-subset.json",
+      "sha256": "c74380b39383c6eaa7f868aa01058454e6cf2f60f62134c750af7e319e1900d3",
+      "byteCount": 2275,
+      "kind": "science",
+      "sourceUrl": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.9&longitude=31.15&startDate=A2025001&endDate=A2025001&kmAboveBelow=0&kmLeftRight=0"
+    }
+  ],
+  "scope": {
+    "scope": "Exploratory Giza-area point only; not an accepted farm or pilot",
+    "point": {
+      "longitude": 31.15,
+      "latitude": 29.9
+    },
+    "startDate": "2025-01-01",
+    "endDateInclusive": "2025-01-07",
+    "soilSubsetWidthM": 1000
+  },
+  "eligibilityStatus": "pending_resources_tab_verification",
+  "observationMeaning": "One native 16-day composite; extends beyond a 7-day request",
+  "collectionVersion": "ORNL service version not asserted as pinned LPCLOUD 061"
+}

@@ -1,0 +1,45 @@
+{
+  "sourceId": "modis_mod13q1",
+  "retrievedAt": "2026-11-13T12:41:31.618061+00:00",
+  "status": "science_downloaded",
+  "scienceDownloaded": true,
+  "artifacts": [
+    {
+      "path": "data/raw/research/20261113T124131617835Z/modis_mod13q1/f373f0968cc8-dates.json",
+      "sha256": "f373f0968cc81004e2879ac14a266516a51d333daa31e369d70ed1775523f5f9",
+      "byteCount": 36238,
+      "kind": "catalog",
+      "sourceUrl": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/dates?latitude=29.3&longitude=30.65"
+    },
+    {
+      "path": "data/raw/research/20261113T124131617835Z/modis_mod13q1/d41dc06bed93-bands.json",
+      "sha256": "d41dc06bed934ea5f032e0eb88b047c1c3c65df1c46db58aa6420be791475303",
+      "byteCount": 2366,
+      "kind": "catalog",
+      "sourceUrl": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/bands"
+    },
+    {
+      "path": "data/raw/research/20261113T124131617835Z/modis_mod13q1/ea1df3076ffa-subset.json",
+      "sha256": "ea1df3076ffaee6c5d0aef5a7c28a8229bafa8670966e19107b3b5073e418cc1",
+      "byteCount": 2276,
+      "kind": "science",
+      "sourceUrl": "https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=29.3&longitude=30.65&startDate=A2025001&endDate=A2025001&kmAboveBelow=0&kmLeftRight=0"
+    }
+  ],
+  "scope": {
+    "scope": "Public regional access sample for Egypt Fayoum basin",
+    "point": {
+      "longitude": 30.65,
+      "latitude": 29.3
+    },
+    "startDate": "2025-01-01",
+    "endDateInclusive": "2025-01-07",
+    "soilSubsetWidthM": 1000
+  },
+  "eligibilityStatus": "pending_resources_tab_verification",
+  "acquisitionScriptSha256": "c3696a5b8c064c8fc5d57058021aa8f4103a5849a9681633bf13b2ac3f4bf6cf",
+  "processingNote": "Bounded acquisition and inspection only; no approved feature/model outputs",
+  "sourceDocumentation": "https://modis.ornl.gov/data/modis_webservice.html",
+  "observationMeaning": "One native 16-day composite; extends beyond a 7-day request",
+  "collectionVersion": "ORNL service version not asserted as pinned LPCLOUD 061"
+}

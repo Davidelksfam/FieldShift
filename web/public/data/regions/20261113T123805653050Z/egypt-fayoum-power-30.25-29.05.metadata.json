@@ -1,0 +1,25 @@
+{
+  "regionId": "egypt-fayoum",
+  "point": {
+    "longitude": 30.25,
+    "latitude": 29.05
+  },
+  "timeStandard": "UTC",
+  "qualityStatus": "research_weather_not_field_station",
+  "sourceArtifact": {
+    "path": "data/raw/regions/20261113T123805653050Z/d0e287344c14-power.json",
+    "sha256": "d0e287344c14e08c760c105faf99d4643b40a744bf852a27bb75fc3bda9963d2",
+    "byteCount": 97757,
+    "sourceUrl": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CRH2M%2CWS2M%2CALLSKY_SFC_SW_DWN%2CPRECTOTCORR%2CPS&community=AG&longitude=30.25&latitude=29.05&start=20240101&end=20251231&format=JSON&time-standard=UTC"
+  },
+  "units": {
+    "T2M": "degC",
+    "T2M_MIN": "degC",
+    "T2M_MAX": "degC",
+    "RH2M": "%",
+    "WS2M": "m/s",
+    "ALLSKY_SFC_SW_DWN": "MJ/m2/day",
+    "PRECTOTCORR": "mm/day",
+    "PS": "kPa"
+  }
+}

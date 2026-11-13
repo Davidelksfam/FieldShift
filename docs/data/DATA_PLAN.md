@@ -1,6 +1,6 @@
 # Data and scientific methodology proposal
 
-Status: candidate plan; no data retrieved, no eligible resource verified. Full detail: strategy guide §§3–7 and 10 in the [source archive](../reference/README.md).
+Status: candidate scientific plan; user-requested bounded research acquisition is now available in the [seven-source access kit](DATASET_ACCESS_GUIDE.md). [Actual status](DOWNLOAD_STATUS.md): all seven sources now have science downloads and attributable inspection extracts; authenticated retrieval verified. No challenge-resource eligibility or model-feature validity is claimed. Full strategy background: [source archive](../reference/README.md).
 
 ## Candidate sources
 
@@ -34,3 +34,6 @@ Compare estimated water burden, justified heat exposure, planned cover days, fam
 ## Required validation when implemented
 
 Check input integrity and units; independently reproduce one calculation; review sequences with local agronomic expertise; sweep budget/coefficients/preferences including boundary cases; test missing inputs; replace NASA context with a generic baseline to show its actual contribution. Record results and limitations, including any review that could not be completed.
+
+
+Regional follow-up: the user selected **Nile Delta and Fayoum, 2024–2025**. See [regional coverage and import status](REGIONAL_COVERAGE.md). The earlier Giza snapshots are source-access evidence, not complete regional datasets.

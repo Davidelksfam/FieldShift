@@ -6,6 +6,8 @@
 
 Also read [team](team/TEAM.md), [handoff template](team/HANDOFF_TEMPLATE.md), [decision records](decisions/README.md), [AI log](AI_USAGE.md), [approved visual brand](brand/README.md), and [source archive](reference/README.md).
 
+Research data access: [seven-source connection/schema guide](data/DATASET_ACCESS_GUIDE.md), [actual download status](data/DOWNLOAD_STATUS.md), and [native API schemas](data/api-schemas/README.md).
+
 ## One home for each kind of truth
 
 - Competition facts: verified official sources, tracked in the verification register. Official challenge requirements and local event logistics may have different authorities; record scope and conflicts.
