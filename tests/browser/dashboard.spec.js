@@ -6,11 +6,19 @@ const blockRemote = async (page) =>
       ? route.continue()
       : route.abort(),
   );
-async function english(page) {
-  await page.getByRole("button", { name: "English", exact: true }).click();
-}
+const english = (page) =>
+  page.getByRole("button", { name: "English", exact: true }).click();
+const step = (page, name) =>
+  page
+    .getByRole("navigation", { name: "Planning journey" })
+    .getByRole("button", { name, exact: true })
+    .click();
+const demo = (page) =>
+  page
+    .getByRole("button", { name: "Explore Fayoum demo", exact: true })
+    .click();
 
-test("presets, inputs, rankings and both language directions work with all remote sources down", async ({
+test("one-click demo, editable journey, presets, ranking and inputs survive navigation with all remote sources down", async ({
   page,
 }) => {
   const errors = [];
@@ -18,76 +26,104 @@ test("presets, inputs, rankings and both language directions work with all remot
   await blockRemote(page);
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
-  await expect(page.getByTestId("strategy-baseline")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "ماذا تزرع في الموسم القادم؟",
+  );
   await english(page);
-  await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
-  await expect(page.getByText("Historical observations · 2025")).toBeVisible();
+  await demo(page);
+  await expect(page.getByTestId("strategy-baseline")).toBeVisible();
   await expect(page.getByTestId("water-baseline")).toContainText("10,813");
+  await expect(
+    page.getByText("Historical observations · 2025", { exact: true }),
+  ).toBeVisible();
+  await step(page, "Field");
   await page
     .getByRole("button", { name: "North Delta · Kafr El-Sheikh", exact: true })
     .click();
-  await expect(page.getByText("31.1107° N, 30.9388° E")).toBeVisible();
+  await step(page, "Farm");
   await expect(page.getByLabel("Known salinity")).toHaveValue("high");
+  await step(page, "Evidence");
   await expect(page.locator(".diagnostic-2")).toContainText(
     "Illustrative demo fixture",
   );
   await expect(page.locator(".diagnostic-0 .metric")).toContainText("70");
+  await step(page, "Field");
   await page
     .getByRole("button", { name: "West Delta · Nubariya", exact: true })
     .click();
+  await step(page, "Farm");
   await expect(page.getByLabel("Land type", { exact: true })).toHaveValue(
     "new_sandy",
   );
   await expect(page.getByLabel("Irrigation system")).toHaveValue("drip");
+  await step(page, "Field");
   await page
     .getByRole("button", { name: "Fayoum · Etsa tail-end", exact: true })
     .click();
+  await step(page, "Goals");
+  await page.locator(".custom-goals > summary").click();
   await page.getByLabel("Water conservation").fill("100");
   await page.getByLabel("Soil & nitrogen recovery").fill("0");
   await page.getByLabel("Cash & forage return").fill("0");
+  await expect(
+    page.getByRole("region", { name: "Updated model preview" }),
+  ).toContainText("Rank 1");
+  await step(page, "Compare");
   await expect(page.getByTestId("strategy-water")).toContainText("Rank 1");
+  await step(page, "Goals");
+  await page.locator(".custom-goals > summary").click();
   await page.getByLabel("Water conservation").fill("0");
   await page.getByLabel("Soil & nitrogen recovery").fill("100");
+  await step(page, "Compare");
   await expect(page.getByTestId("strategy-soil")).toContainText("Rank 1");
   const water = await page.getByTestId("water-baseline").textContent();
+  await step(page, "Farm");
   await page.getByLabel("Irrigation system").selectOption("drip");
-  await expect(page.getByTestId("water-baseline")).not.toHaveText(water);
   await page.getByLabel("Area in feddans").fill("0");
   await expect(page.getByRole("alert")).toContainText(
     "total area greater than zero",
   );
+  await step(page, "Compare");
   await expect(page.getByTestId("strategy-baseline")).toHaveCount(0);
+  await step(page, "Farm");
   await page.getByLabel("Area in feddans").fill("5");
   await page.getByLabel("Seifi · summer crop").selectOption("sesame");
+  await step(page, "Compare");
+  await expect(page.getByTestId("water-baseline")).not.toHaveText(water);
   await expect(page.getByTestId("strategy-baseline")).toContainText(
     "Sesame (Semsem)",
   );
-  await page.getByRole("button", { name: "Judge mode", exact: true }).focus();
-  await page.keyboard.press("Enter");
-  await expect(
-    page.getByText("Shared coordinates, different scales"),
-  ).toBeVisible();
-  await page.getByText("View chart values as tables").click();
-  await expect(page.getByRole("table")).toHaveCount(2);
+  await page
+    .getByTestId("strategy-water")
+    .getByText("Verify locally before planting", { exact: true })
+    .click();
+  await expect(page.getByTestId("strategy-water")).toContainText("broomrape");
+  await page
+    .getByTestId("strategy-water")
+    .getByText("Why this plan? Evidence & confidence", { exact: true })
+    .click();
   await expect(
     page
       .getByTestId("strategy-water")
-      .getByText("Verify locally before planting"),
+      .getByText("Data support", { exact: false }),
   ).toBeVisible();
-  await page
-    .getByTestId("strategy-water")
-    .getByText("Verify locally before planting")
-    .click();
-  await expect(page.getByTestId("strategy-water")).toContainText("broomrape");
+  await page.getByRole("button", { name: "Judge mode", exact: true }).focus();
+  await page.keyboard.press("Enter");
+  await expect(
+    page.getByText("Shared coordinates, different scales", { exact: true }),
+  ).toBeVisible();
+  await page.getByText("View chart values as tables", { exact: true }).click();
+  await expect(page.getByRole("table")).toHaveCount(2);
   expect(errors).toEqual([]);
 });
 
-test("map selection, historical overlay and coordinate validation", async ({
+test("map selection, historical overlays, tile failure recovery and coordinate validation", async ({
   page,
 }) => {
   await blockRemote(page);
   await page.goto("/");
   await english(page);
+  await page.getByText("Choose a point on the map", { exact: true }).click();
   await page.getByLabel("Satellite layer").selectOption("ndvi");
   await expect(page.getByText("12 JUL 2025")).toBeVisible();
   await page
@@ -96,20 +132,29 @@ test("map selection, historical overlay and coordinate validation", async ({
   await expect(
     page.getByRole("button", { name: "Fayoum · Etsa tail-end", exact: true }),
   ).toHaveAttribute("aria-pressed", "false");
+  await page.getByText("Advanced: enter coordinates", { exact: true }).click();
   await page.getByLabel("Latitude", { exact: true }).fill("0");
-  await page.getByRole("button", { name: "Analyze location" }).click();
+  await page
+    .getByRole("button", { name: "Analyze location", exact: true })
+    .click();
   await expect(page.getByRole("alert")).toContainText("within Egypt");
   await page.getByLabel("Latitude", { exact: true }).fill("30.665");
   await page.getByLabel("Longitude", { exact: true }).fill("30.068");
-  await page.getByRole("button", { name: "Analyze location" }).click();
-  await expect(page.getByText("30.6650° N, 30.0680° E")).toBeVisible();
+  await page
+    .getByRole("button", { name: "Analyze location", exact: true })
+    .click();
+  await expect(
+    page.getByText("30.6650° N, 30.0680° E", { exact: true }),
+  ).toBeVisible();
   await expect(page.getByRole("alert")).toHaveCount(0);
+  await step(page, "Compare");
+  await expect(page.getByTestId("strategy-baseline")).toBeVisible();
 });
 
 test("incomplete live POWER cannot overwrite an audited snapshot", async ({
   page,
 }) => {
-  await page.route(/^https:\/\//, async (route) => {
+  await page.route(/^https:\/\//, (route) => {
     if (
       new URL(route.request().url()).origin ===
       new URL(test.info().project.use.baseURL).origin
@@ -131,7 +176,10 @@ test("incomplete live POWER cannot overwrite an audited snapshot", async ({
   });
   await page.goto("/");
   await english(page);
-  await expect(page.getByText("Historical observations · 2025")).toBeVisible();
+  await expect(
+    page.getByText("Historical observations · 2025", { exact: true }),
+  ).toBeVisible();
+  await step(page, "Evidence");
   await expect(page.locator(".diagnostic-0 .metric")).toContainText("58");
   await expect(page.locator(".diagnostic-0")).toContainText(
     "Audited historical snapshot",
@@ -141,36 +189,46 @@ test("incomplete live POWER cannot overwrite an audited snapshot", async ({
   );
 });
 
-test("mobile Arabic and English remain within viewport with keyboard-accessible evidence", async ({
+test("responsive English/Arabic journey at 390, 768, 1440 and 200% browser zoom equivalent", async ({
   page,
 }) => {
   await blockRemote(page);
-  for (const width of [390, 768, 1440]) {
+  // Chromium headless has no browser chrome zoom API. Halving the CSS viewport reproduces 200% reflow (1440→720, 768→384, 390→195).
+  for (const width of [390, 768, 1440, 720, 384, 195]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
-      ),
-    ).toBe(true);
-    await page.screenshot({
-      path: `test-results/dashboard-ar-${width}.png`,
-      fullPage: true,
-    });
-    await english(page);
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
-      ),
-    ).toBe(true);
-    await page.screenshot({
-      path: `test-results/dashboard-en-${width}.png`,
-      fullPage: true,
-    });
+    for (const lang of ["ar", "en"]) {
+      if (lang === "en") await english(page);
+      for (const [name, arName] of [
+        ["Field", "الحقل"],
+        ["Farm", "المزرعة"],
+        ["Goals", "الأولويات"],
+        ["Compare", "المقارنة"],
+        ["Evidence", "الأدلة"],
+      ]) {
+        await page
+          .getByRole("navigation")
+          .getByRole("button", {
+            name: lang === "ar" ? arName : name,
+            exact: true,
+          })
+          .click();
+        expect(
+          await page.evaluate(
+            () => document.documentElement.scrollWidth <= innerWidth,
+          ),
+          `${lang} ${name} at ${width}`,
+        ).toBe(true);
+      }
+      await page.screenshot({
+        path: `test-results/journey-${lang}-${width}.png`,
+        fullPage: true,
+      });
+    }
   }
 });
 
-test("production shell reloads offline after a completed first online visit", async ({
+test("production shell reloads offline and demo remains navigable", async ({
   page,
   context,
 }) => {
@@ -182,21 +240,33 @@ test("production shell reloads offline after a completed first online visit", as
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
   await context.setOffline(true);
   await page.reload();
-  await expect(page.getByTestId("strategy-baseline")).toBeVisible();
   await english(page);
-  await expect(page.getByText("Historical observations · 2025")).toBeVisible();
+  await demo(page);
+  await expect(page.getByTestId("strategy-baseline")).toBeVisible();
+  await expect(
+    page.getByText("Historical observations · 2025", { exact: true }),
+  ).toBeVisible();
+  await step(page, "Field");
   await page
     .getByRole("button", { name: "West Delta · Nubariya", exact: true })
     .click();
+  await step(page, "Farm");
   await expect(page.getByLabel("Irrigation system")).toHaveValue("drip");
 });
 
-test("six indices, conditional cover and five explorer stages use current field data", async ({
+test("six indices, conditional cover and five explorer stages retain current field JSON in both languages", async ({
   page,
 }) => {
   await blockRemote(page);
   await page.goto("/");
   await english(page);
+  await step(page, "Goals");
+  await page.getByLabel("Explore a conditional Nili cover").check();
+  await step(page, "Compare");
+  await expect(page.getByTestId("strategy-water")).toContainText(
+    "NILI · CONDITIONAL COVER",
+  );
+  await page.getByRole("button", { name: "Judge mode", exact: true }).click();
   await page
     .getByText("Inspect all six field indices", { exact: true })
     .click();
@@ -206,11 +276,6 @@ test("six indices, conditional cover and five explorer stages use current field 
   await expect(
     page.getByText("Canopy anomaly · ZNDVI", { exact: true }),
   ).toBeVisible();
-  await page.getByLabel("Explore a conditional Nili cover").check();
-  await expect(page.getByTestId("strategy-water")).toContainText(
-    "NILI · CONDITIONAL COVER",
-  );
-  await page.getByRole("button", { name: "Judge mode", exact: true }).click();
   const explorer = page.getByRole("region", {
     name: "Post-processing pipeline explorer",
   });
@@ -231,11 +296,6 @@ test("six indices, conditional cover and five explorer stages use current field 
     "hypotheticalSummerSwitch",
   );
   await page.setViewportSize({ width: 390, height: 900 });
-  expect(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= innerWidth,
-    ),
-  ).toBe(true);
   await page.getByRole("button", { name: "العربية", exact: true }).click();
   await expect(
     page.getByRole("heading", {
@@ -243,13 +303,14 @@ test("six indices, conditional cover and five explorer stages use current field 
       exact: true,
     }),
   ).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
   await page.screenshot({
     path: "test-results/pipeline-mobile-ar.png",
     fullPage: true,
   });
 });
 
-test("slider updates paint within the local 100 ms target and do not trigger API fetches", async ({
+test("goal changes paint within 100 ms and never fetch APIs; irrigation also updates locally", async ({
   page,
 }) => {
   const requests = [];
@@ -264,6 +325,9 @@ test("slider updates paint within the local 100 ms target and do not trigger API
     page.getByRole("button", { name: "Refresh sources" }),
   ).toBeEnabled();
   const before = requests.length;
+  await step(page, "Goals");
+  await page.locator(".custom-goals > summary").click();
+  const original = await page.getByTestId("preview-score-water").textContent();
   const durations = await page.evaluate(async () => {
     const range = document.querySelector("#priority-water");
     const setter = Object.getOwnPropertyDescriptor(
@@ -287,6 +351,119 @@ test("slider updates paint within the local 100 ms target and do not trigger API
   );
   durations.sort((a, b) => a - b);
   expect(durations[10]).toBeLessThan(100);
+  await expect(page.getByTestId("preview-score-water")).not.toHaveText(
+    original,
+  );
+  await step(page, "Farm");
+  const preview = page.getByRole("region", { name: "Updated model preview" });
+  const initial = await preview.textContent();
+  await page.getByLabel("Irrigation system").selectOption("drip");
+  await expect(preview).not.toHaveText(initial);
   expect(requests.length).toBe(before);
-  console.log(`Slider input-to-paint p90: ${durations[10].toFixed(1)} ms`);
+  console.log(`Goal input-to-paint p90: ${durations[10].toFixed(1)} ms`);
+});
+
+test("compare controls, goal presets, summary editing and back/next are non-blocking", async ({
+  page,
+}) => {
+  await blockRemote(page);
+  await page.goto("/");
+  await english(page);
+  await page.getByRole("button", { name: "Next: Farm", exact: true }).click();
+  await page.getByLabel("Area in feddans").fill("7");
+  await page.getByRole("button", { name: "Next: Goals", exact: true }).click();
+  await page.getByRole("button", { name: /Conserve water/ }).click();
+  await expect(
+    page.getByRole("button", { name: /Conserve water/ }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await page
+    .getByRole("button", { name: "Next: Compare", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Current + water", exact: true })
+    .click();
+  await expect(page.getByTestId("strategy-soil")).toHaveCount(0);
+  await expect(page.getByTestId("strategy-water")).toBeVisible();
+  await page.getByRole("button", { name: "All plans", exact: true }).click();
+  await expect(page.locator(".strategy-card")).toHaveCount(3);
+  await page
+    .getByText("Review farm settings", { exact: false })
+    .first()
+    .click();
+  await expect(
+    page.getByRole("region", { name: "Your scenario" }),
+  ).toContainText("7 feddans");
+  await page
+    .getByRole("region", { name: "Your scenario" })
+    .getByRole("button")
+    .nth(1)
+    .click();
+  await expect(page.getByLabel("Area in feddans")).toHaveValue("7");
+  await page.getByRole("button", { name: "Back", exact: true }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "What can you grow next?",
+  );
+  await step(page, "Goals");
+  await page.getByRole("button", { name: /Recover soil/ }).click();
+  await expect(
+    page.getByRole("button", { name: /Recover soil/ }),
+  ).toHaveAttribute("aria-pressed", "true");
+});
+
+test("keyboard focus, reduced motion and mobile touch targets", async ({
+  page,
+}) => {
+  await blockRemote(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/");
+  await page.keyboard.press("Tab");
+  await expect(
+    page.getByRole("link", { name: "انتقل إلى مساحة التخطيط" }),
+  ).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#main")).toBeFocused();
+  await english(page);
+  const nav = page.getByRole("navigation", { name: "Planning journey" });
+  await nav.getByRole("button", { name: "Farm", exact: true }).focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("heading", { level: 1 })).toBeFocused();
+  await page.getByLabel("Irrigation system").focus();
+  expect(
+    await page
+      .getByLabel("Irrigation system")
+      .evaluate((el) => getComputedStyle(el).outlineStyle),
+  ).not.toBe("none");
+  const smallTargets = await page
+    .locator("button:visible,summary:visible")
+    .evaluateAll((els) =>
+      els
+        .filter((el) => {
+          const r = el.getBoundingClientRect();
+          return r.width < 44 || r.height < 44;
+        })
+        .map((el) => el.textContent.trim()),
+    );
+  expect(smallTargets).toEqual([]);
+  expect(
+    await page
+      .locator(".stage-content")
+      .evaluate((el) => getComputedStyle(el).animationName),
+  ).toBe("none");
+  await nav.getByRole("button", { name: "Compare", exact: true }).click();
+  await expect(page.locator(".mobile-metric-comparison")).toBeVisible();
+  await page
+    .getByTestId("strategy-water")
+    .getByText("Why this plan? Evidence & confidence", { exact: true })
+    .click();
+  const comparisonTargets = await page
+    .locator("button:visible, summary:visible")
+    .evaluateAll((els) =>
+      els
+        .filter((el) => {
+          const r = el.getBoundingClientRect();
+          return r.width < 44 || r.height < 44;
+        })
+        .map((el) => el.textContent.trim()),
+    );
+  expect(comparisonTargets).toEqual([]);
 });

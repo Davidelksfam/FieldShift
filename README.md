@@ -49,3 +49,5 @@ npm run test:browser
 Work is tracked in [issue #12](https://github.com/Davidelksfam/FieldShift/issues/12). The dashboard was merged into main through PR #13. Dataset acquisition is tracked in issue #14; previous branches and history are preserved.
 
 Judge Mode now includes an interactive five-stage pipeline explorer. Open all six field indices for modeled FAO-56 reference ET₀ and same-pixel historical NDVI anomalies. Real flagship payloads are in `demoPresets.json`; `syntheticFixtures.json` preserves original illustrative tests. An optional Nili switch explores a conditional planting window. Soil-adjusted nitrogen remains unavailable without calibration; water figures remain modeled m³/feddan/rotation.
+
+The frontend uses a flexible **Field → Farm → Goals → Compare → Evidence** workspace. Start the Fayoum demo in one click, edit the scenario without losing your choices, and open Judge Mode for formulas and JSON. See the [journey/component guide](docs/ux/JOURNEY.md), [UX audit](docs/ux/AUDIT.md) and [verification record](docs/ux/VERIFICATION.md).

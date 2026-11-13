@@ -24,9 +24,15 @@ try {
     page.getByRole("button", { name: "Refresh sources" }),
   ).toBeEnabled({ timeout: 15000 });
   const status = await page.locator(".data-status").innerText();
-  const diagnostics = await page.locator(".diagnostics-grid").innerText();
+  const navigate = (name) =>
+    page
+      .getByRole("navigation", { name: "Planning journey" })
+      .getByRole("button", { name, exact: true })
+      .click();
+  await navigate("Goals");
   await page.getByLabel("Explore a conditional Nili cover").check();
   await page.getByRole("button", { name: "Judge mode", exact: true }).click();
+  const diagnostics = await page.locator(".diagnostics-grid").innerText();
   const explorer = page.getByRole("region", {
     name: "Post-processing pipeline explorer",
   });
@@ -38,6 +44,8 @@ try {
   );
   if (result.hypotheticalSummerSwitch.modeledSavingsM3Feddan !== 1970)
     throw new Error("Counterfactual does not match the tested model");
+  await navigate("Field");
+  await page.getByText("Choose a point on the map", { exact: true }).click();
   await page.getByLabel("Satellite layer").selectOption("ndvi");
   try {
     await page
