@@ -1,0 +1,74 @@
+{
+  "requests": [
+    {
+      "sourceId": "imerg",
+      "regionId": "egypt-nile-delta",
+      "requestUrl": "https://harmony.earthdata.nasa.gov/C2723754864-GES_DISC/ogc-api-coverages/1.0.0/collections/V3156651215-GES_DISC,V3156651217-GES_DISC,V3156651235-GES_DISC/coverage/rangeset?subset=lon%2829.5%3A32.75%29&subset=lat%2830.0%3A31.75%29&subset=time%28%222024-01-01T00%3A00%3A00Z%22%3A%222025-12-31T23%3A59%3A59Z%22%29&format=application%2Fnetcdf&forceAsync=true&skipPreview=true&ignoreErrors=false&label=fieldshift-egypt-nile-delta-imerg-2024-2025",
+      "variables": [
+        "precipitation",
+        "precipitation_cnt",
+        "randomError"
+      ],
+      "sourceCollectionId": "C2723754864-GES_DISC",
+      "status": "running",
+      "jobID": "81bfe30f-4649-4b4e-9bf9-eeb88f432039",
+      "progress": 57,
+      "numInputGranules": 639,
+      "availableResultLinks": 345
+    },
+    {
+      "sourceId": "imerg",
+      "regionId": "egypt-fayoum",
+      "requestUrl": "https://harmony.earthdata.nasa.gov/C2723754864-GES_DISC/ogc-api-coverages/1.0.0/collections/V3156651215-GES_DISC,V3156651217-GES_DISC,V3156651235-GES_DISC/coverage/rangeset?subset=lon%2830.0%3A31.35%29&subset=lat%2828.8%3A29.8%29&subset=time%28%222024-01-01T00%3A00%3A00Z%22%3A%222025-12-31T23%3A59%3A59Z%22%29&format=application%2Fnetcdf&forceAsync=true&skipPreview=true&ignoreErrors=false&label=fieldshift-egypt-fayoum-imerg-2024-2025",
+      "variables": [
+        "precipitation",
+        "precipitation_cnt",
+        "randomError"
+      ],
+      "sourceCollectionId": "C2723754864-GES_DISC",
+      "status": "running",
+      "jobID": "f58c9edb-af1f-4687-9898-a8501ac750e4",
+      "progress": 74,
+      "numInputGranules": 639,
+      "availableResultLinks": 464
+    },
+    {
+      "sourceId": "smap",
+      "regionId": "egypt-nile-delta",
+      "requestUrl": "https://harmony.earthdata.nasa.gov/C2938664763-NSIDC_CPRD/ogc-api-coverages/1.0.0/collections/V3707344264-NSIDC_CPRD,V3707344465-NSIDC_CPRD,V3707344551-NSIDC_CPRD,V3707344777-NSIDC_CPRD,V3707344804-NSIDC_CPRD,V3707344815-NSIDC_CPRD/coverage/rangeset?subset=lon%2829.5%3A32.75%29&subset=lat%2830.0%3A31.75%29&subset=time%28%222024-01-01T00%3A00%3A00Z%22%3A%222025-12-31T23%3A59%3A59Z%22%29&format=application%2Fnetcdf&forceAsync=true&skipPreview=true&ignoreErrors=false&label=fieldshift-egypt-nile-delta-smap-2024-2025",
+      "variables": [
+        "Soil_Moisture_Retrieval_Data_AM/soil_moisture",
+        "Soil_Moisture_Retrieval_Data_AM/retrieval_qual_flag",
+        "Soil_Moisture_Retrieval_Data_AM/surface_flag",
+        "Soil_Moisture_Retrieval_Data_PM/soil_moisture_pm",
+        "Soil_Moisture_Retrieval_Data_PM/retrieval_qual_flag_pm",
+        "Soil_Moisture_Retrieval_Data_PM/surface_flag_pm"
+      ],
+      "sourceCollectionId": "C2938664763-NSIDC_CPRD",
+      "status": "running",
+      "jobID": "0e33dbf4-6748-4e92-957a-1a895ddd619c",
+      "progress": 44,
+      "numInputGranules": 730,
+      "availableResultLinks": 319
+    },
+    {
+      "sourceId": "smap",
+      "regionId": "egypt-fayoum",
+      "requestUrl": "https://harmony.earthdata.nasa.gov/C2938664763-NSIDC_CPRD/ogc-api-coverages/1.0.0/collections/V3707344264-NSIDC_CPRD,V3707344465-NSIDC_CPRD,V3707344551-NSIDC_CPRD,V3707344777-NSIDC_CPRD,V3707344804-NSIDC_CPRD,V3707344815-NSIDC_CPRD/coverage/rangeset?subset=lon%2830.0%3A31.35%29&subset=lat%2828.8%3A29.8%29&subset=time%28%222024-01-01T00%3A00%3A00Z%22%3A%222025-12-31T23%3A59%3A59Z%22%29&format=application%2Fnetcdf&forceAsync=true&skipPreview=true&ignoreErrors=false&label=fieldshift-egypt-fayoum-smap-2024-2025",
+      "variables": [
+        "Soil_Moisture_Retrieval_Data_AM/soil_moisture",
+        "Soil_Moisture_Retrieval_Data_AM/retrieval_qual_flag",
+        "Soil_Moisture_Retrieval_Data_AM/surface_flag",
+        "Soil_Moisture_Retrieval_Data_PM/soil_moisture_pm",
+        "Soil_Moisture_Retrieval_Data_PM/retrieval_qual_flag_pm",
+        "Soil_Moisture_Retrieval_Data_PM/surface_flag_pm"
+      ],
+      "sourceCollectionId": "C2938664763-NSIDC_CPRD",
+      "status": "running",
+      "jobID": "69930efe-3bff-423e-bafc-ddbfe14ab7df",
+      "progress": 51,
+      "numInputGranules": 730,
+      "availableResultLinks": 364
+    }
+  ]
+}

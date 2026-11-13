@@ -98,6 +98,11 @@ class ResearchAcquisitionTests(unittest.TestCase):
         redirected = acquire.RestrictedRedirect().redirect_request(request,None,302,'Found',{},'https://d1nklfio7vscoe.cloudfront.net/file')
         self.assertFalse(redirected.has_header('Authorization'))
 
+    def test_soil_quantile_service_ids(self):
+        self.assertEqual(acquire.soil_coverage_id('phh2o','5-15','Q05'),'phh2o_5-15cm_Q0.05')
+        self.assertEqual(acquire.soil_coverage_id('clay','0-5','Q95'),'clay_0-5cm_Q0.95')
+        with self.assertRaises(ValueError):acquire.soil_coverage_id('clay','0-100','mean')
+
     def test_nonfinite_json_rejected(self):
         with self.assertRaises(ValueError): acquire.decode_json(b'{"value":NaN}')
 

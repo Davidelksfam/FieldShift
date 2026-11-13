@@ -88,3 +88,6 @@ python3 -m unittest discover -s tests/data -p 'test_*.py'
 ```
 
 The access status and per-source manifests are a dated snapshot. Reruns create a new run directory; do not erase the old manifest to hide service failures. Source URLs in a manifest are public metadata, but farmer inputs/geometry and credentials must stay private. Large/personal datasets are never published by this script. Record actual acquisition progress in STATUS and this contribution in AI_USAGE; obtain human scientific review before promoting any inspection sample into a demo feature.
+
+
+Regional follow-up: the user selected **Nile Delta and Fayoum, 2024–2025**. See [regional coverage and import status](REGIONAL_COVERAGE.md). The earlier Giza snapshots are source-access evidence, not complete regional datasets.

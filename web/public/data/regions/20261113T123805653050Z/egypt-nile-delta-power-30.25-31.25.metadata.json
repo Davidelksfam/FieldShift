@@ -1,0 +1,25 @@
+{
+  "regionId": "egypt-nile-delta",
+  "point": {
+    "longitude": 30.25,
+    "latitude": 31.25
+  },
+  "timeStandard": "UTC",
+  "qualityStatus": "research_weather_not_field_station",
+  "sourceArtifact": {
+    "path": "data/raw/regions/20261113T123805653050Z/6efabe011ced-power.json",
+    "sha256": "6efabe011ced54e487027d1486d408c74fd52a241a1fb926f766a6ca3b3ed7d7",
+    "byteCount": 98619,
+    "sourceUrl": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CRH2M%2CWS2M%2CALLSKY_SFC_SW_DWN%2CPRECTOTCORR%2CPS&community=AG&longitude=30.25&latitude=31.25&start=20240101&end=20251231&format=JSON&time-standard=UTC"
+  },
+  "units": {
+    "T2M": "degC",
+    "T2M_MIN": "degC",
+    "T2M_MAX": "degC",
+    "RH2M": "%",
+    "WS2M": "m/s",
+    "ALLSKY_SFC_SW_DWN": "MJ/m2/day",
+    "PRECTOTCORR": "mm/day",
+    "PS": "kPa"
+  }
+}

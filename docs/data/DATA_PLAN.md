@@ -34,3 +34,6 @@ Compare estimated water burden, justified heat exposure, planned cover days, fam
 ## Required validation when implemented
 
 Check input integrity and units; independently reproduce one calculation; review sequences with local agronomic expertise; sweep budget/coefficients/preferences including boundary cases; test missing inputs; replace NASA context with a generic baseline to show its actual contribution. Record results and limitations, including any review that could not be completed.
+
+
+Regional follow-up: the user selected **Nile Delta and Fayoum, 2024–2025**. See [regional coverage and import status](REGIONAL_COVERAGE.md). The earlier Giza snapshots are source-access evidence, not complete regional datasets.

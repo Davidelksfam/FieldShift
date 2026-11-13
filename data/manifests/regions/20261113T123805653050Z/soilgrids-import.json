@@ -1,0 +1,5045 @@
+{
+  "scope": "Study-envelope rasters; field/cropland mask pending",
+  "records": [
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_0-5cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/79e8cd1e140d-egypt-nile-delta-phh2o_0-5cm_mean.tif",
+        "sha256": "79e8cd1e140d38672af41f5e828d441c6a30f673c7db15ccdf2efcc3e7e621c6",
+        "byteCount": 251868,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_0-5cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_0-5cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_5-15cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/b7ca8d0ac415-egypt-nile-delta-phh2o_5-15cm_mean.tif",
+        "sha256": "b7ca8d0ac415d6e4dd8eee632510d3a4b0aecc4e25556ccae02419a87eff2727",
+        "byteCount": 262154,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_5-15cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_5-15cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_15-30cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/59e0d548a19b-egypt-nile-delta-phh2o_15-30cm_mean.tif",
+        "sha256": "59e0d548a19b7d93b55f3bf8b8b625e08a2a734327e7c25fee3063ceef2eefe6",
+        "byteCount": 259370,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_15-30cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_15-30cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_15-30cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_30-60cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/122dfbbbefb2-egypt-nile-delta-phh2o_30-60cm_mean.tif",
+        "sha256": "122dfbbbefb201ce7d80f07a1fae5609a4d3d20d1021226a00c58592faa8364c",
+        "byteCount": 275828,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_30-60cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_30-60cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_30-60cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_60-100cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/b3215e55adb8-egypt-nile-delta-phh2o_60-100cm_mean.tif",
+        "sha256": "b3215e55adb851ed9fe923a5407103bb344ff10a08b4a34d435796fc26bedeff",
+        "byteCount": 284466,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_60-100cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_60-100cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_60-100cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_100-200cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/2168aa1efea1-egypt-nile-delta-phh2o_100-200cm_mean.tif",
+        "sha256": "2168aa1efea12b34401269cc8626cb7fe2e553c08b3e6d7bdb92956debf17b0e",
+        "byteCount": 283713,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_100-200cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_100-200cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "phh2o",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_100-200cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_0-5cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        45.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/ae9e63f96ac5-egypt-nile-delta-clay_0-5cm_mean.tif",
+        "sha256": "ae9e63f96ac5e64a5cefef03154b194d0c1e88ea26240efb0cb8cd6ea16623eb",
+        "byteCount": 651959,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_0-5cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_0-5cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_5-15cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        47.1
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/4f427e5020ef-egypt-nile-delta-clay_5-15cm_mean.tif",
+        "sha256": "4f427e5020efb3353f3c2d45ed8e10c674b365e655366686d8fc5209f1a17ddd",
+        "byteCount": 655383,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_5-15cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_5-15cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_15-30cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        45.9
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/1539546cd028-egypt-nile-delta-clay_15-30cm_mean.tif",
+        "sha256": "1539546cd0282100691e9335ba61ea75ab6a882f610a1f032d6126878891c4f9",
+        "byteCount": 646226,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_15-30cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_15-30cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_15-30cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_30-60cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        46.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/cce945a2f764-egypt-nile-delta-clay_30-60cm_mean.tif",
+        "sha256": "cce945a2f764608779545782e5d184eeba9c0d344458e2000e55475ec09fe54e",
+        "byteCount": 652493,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_30-60cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_30-60cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_30-60cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_60-100cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        46.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/01ff55014129-egypt-nile-delta-clay_60-100cm_mean.tif",
+        "sha256": "01ff550141295494623099abbc5635df8d2987c32dce96175e660d9c229ec5e2",
+        "byteCount": 651481,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_60-100cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_60-100cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_60-100cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_100-200cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        47.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/a319bb17a330-egypt-nile-delta-clay_100-200cm_mean.tif",
+        "sha256": "a319bb17a330354622c46008db398ed0ed5792f22416590ee4b69e1891b84772",
+        "byteCount": 653800,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_100-200cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_100-200cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "clay",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_100-200cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_0-5cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        51.4
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/67a1fe5e0e41-egypt-nile-delta-sand_0-5cm_mean.tif",
+        "sha256": "67a1fe5e0e41ec1989afa29390de1ba2abbff3042b52adbdae2ec07fefc9f406",
+        "byteCount": 646325,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_0-5cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_0-5cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_5-15cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        51.5
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/d1f460d89148-egypt-nile-delta-sand_5-15cm_mean.tif",
+        "sha256": "d1f460d891483b5a5550109b5da820ed4079c621b29de9ea31e8069a74ecf679",
+        "byteCount": 647454,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_5-15cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_5-15cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_15-30cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        52.0
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/a1f20b9cea6f-egypt-nile-delta-sand_15-30cm_mean.tif",
+        "sha256": "a1f20b9cea6f86edea28fa6c8d066e452a1c4f6b4a91a834f0b8742e29096b56",
+        "byteCount": 643630,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_15-30cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_15-30cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_15-30cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_30-60cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        50.7
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/292b0b8ca463-egypt-nile-delta-sand_30-60cm_mean.tif",
+        "sha256": "292b0b8ca463ad663374a59f46f28c0ab85a5d1a4604096bf91024527a020f16",
+        "byteCount": 643833,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_30-60cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_30-60cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_30-60cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_60-100cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        50.8
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/49140eda3795-egypt-nile-delta-sand_60-100cm_mean.tif",
+        "sha256": "49140eda37958f6b863a7edebbc8288311334e506ad16b5895cb62c54d20c433",
+        "byteCount": 636565,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_60-100cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_60-100cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_60-100cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_100-200cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        48.1
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/831a35b48ebb-egypt-nile-delta-sand_100-200cm_mean.tif",
+        "sha256": "831a35b48ebbceafad0851202e1809060a6036daa21f32e60117d2430cbfcd63",
+        "byteCount": 636316,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_100-200cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_100-200cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "sand",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_100-200cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_0-5cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        42.1
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/2392a1b52284-egypt-nile-delta-silt_0-5cm_mean.tif",
+        "sha256": "2392a1b52284803bd57761595f534b4b82f8d66d3df7c344785a9e675729c746",
+        "byteCount": 633419,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_0-5cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_0-5cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_0-5cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_5-15cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        42.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/3c10287cae79-egypt-nile-delta-silt_5-15cm_mean.tif",
+        "sha256": "3c10287cae79d99e87e7d8e59b2ec687917780d0fc1cabf33abdcdde0ab19faa",
+        "byteCount": 634000,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_5-15cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_5-15cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_5-15cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_15-30cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        43.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/8a4f25919906-egypt-nile-delta-silt_15-30cm_mean.tif",
+        "sha256": "8a4f25919906f8d3e5089776e3ada82ddbd6b6ae6ecb93ba411beffe9185efda",
+        "byteCount": 637493,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_15-30cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_15-30cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_15-30cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_30-60cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        43.1
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/f2d0a8996a46-egypt-nile-delta-silt_30-60cm_mean.tif",
+        "sha256": "f2d0a8996a46ca5c4b89b168de38781b9536284f242802ba09337bd9c75322d5",
+        "byteCount": 641255,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_30-60cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_30-60cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_30-60cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_60-100cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        41.7
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/8d0fbef587e0-egypt-nile-delta-silt_60-100cm_mean.tif",
+        "sha256": "8d0fbef587e01bc8058932986abf8bf7e1e7cbeefe0d32860f1d4be5ee84bc71",
+        "byteCount": 638429,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_60-100cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_60-100cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_60-100cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_100-200cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        40.5
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/46340f955a3f-egypt-nile-delta-silt_100-200cm_mean.tif",
+        "sha256": "46340f955a3f590533c3054aa082ccb4e169f96048b73e488adc3f1105005134",
+        "byteCount": 640465,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_100-200cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_100-200cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "silt",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_100-200cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_0-5cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        143.7
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/bcf5b9e263fc-egypt-nile-delta-soc_0-5cm_mean.tif",
+        "sha256": "bcf5b9e263fc088ba8161c3d512be8624c7a6e8d9d5c2ee593b27a265ed9694b",
+        "byteCount": 796823,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_0-5cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_0-5cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_5-15cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        128.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/473a09de51a5-egypt-nile-delta-soc_5-15cm_mean.tif",
+        "sha256": "473a09de51a52c775abc194b591aaaef7f1ff2c05c0f19256a6074f15e2332b1",
+        "byteCount": 745165,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_5-15cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_5-15cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_15-30cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        109.5
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/9241d897d21d-egypt-nile-delta-soc_15-30cm_mean.tif",
+        "sha256": "9241d897d21dd4a493ed25da95ee98afd5560ae4964c78b8d90b54890d2541a5",
+        "byteCount": 712111,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_15-30cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_15-30cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_15-30cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_30-60cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        109.7
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/87fe3a414898-egypt-nile-delta-soc_30-60cm_mean.tif",
+        "sha256": "87fe3a414898ebb783adbd500862d045ad17fbd6e35ddd2a0b7c0425146d3c58",
+        "byteCount": 689644,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_30-60cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_30-60cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_30-60cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_60-100cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        105.9
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/374aaecf6185-egypt-nile-delta-soc_60-100cm_mean.tif",
+        "sha256": "374aaecf6185cb2fa8b0fe13b6a16f3ccb3ba6cdef6287a0616e7badf47b2b6e",
+        "byteCount": 716000,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_60-100cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_60-100cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_60-100cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_100-200cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        101.4
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/9345977f535c-egypt-nile-delta-soc_100-200cm_mean.tif",
+        "sha256": "9345977f535c9d4263e57ba901d4d9704340476d202160a92baf60e665c7b3b6",
+        "byteCount": 748103,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_100-200cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_100-200cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "soc",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_100-200cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_0-5cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.54
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/56532c0eeb1b-egypt-nile-delta-bdod_0-5cm_mean.tif",
+        "sha256": "56532c0eeb1b45ebf71f04a9b4d1da3b39e823419ebe306a5b398448a39959b9",
+        "byteCount": 373826,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_0-5cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_0-5cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_0-5cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_5-15cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.65
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/383071677f38-egypt-nile-delta-bdod_5-15cm_mean.tif",
+        "sha256": "383071677f38cba56561c9feea11e40fe8667aac5d2d98280ca3a0231d6fee83",
+        "byteCount": 371020,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_5-15cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_5-15cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_5-15cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_15-30cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.64
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/e27a8325857a-egypt-nile-delta-bdod_15-30cm_mean.tif",
+        "sha256": "e27a8325857a92567e47a3a0a17044a9e905e794ef1f3cb8e5ab08caa52ba88c",
+        "byteCount": 367274,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_15-30cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_15-30cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_15-30cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_30-60cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.61
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/b2b19e930631-egypt-nile-delta-bdod_30-60cm_mean.tif",
+        "sha256": "b2b19e930631edb6631fd6a3e61474df24083a57ade349a72ba43e9c46d704b1",
+        "byteCount": 357696,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_30-60cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_30-60cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_30-60cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_60-100cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.61
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/58d84b34524f-egypt-nile-delta-bdod_60-100cm_mean.tif",
+        "sha256": "58d84b34524f8d160b23d13898047706c250a2c0ee8fd72f51710856d3120845",
+        "byteCount": 359473,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_60-100cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_60-100cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_60-100cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_100-200cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        780,
+        1254
+      ],
+      "validPixels": 978120,
+      "totalPixels": 978120,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3291250.0,
+        3339500.0,
+        3604750.0,
+        3534500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.67
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/2e521eb1fb00-egypt-nile-delta-bdod_100-200cm_mean.tif",
+        "sha256": "2e521eb1fb006aa5706cad38085eccc82ef346526efffed6761934b36547ced8",
+        "byteCount": 365534,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_100-200cm_mean&SUBSET=X%283291250%2C3604750%29&SUBSET=Y%283339500%2C3534500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_100-200cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-nile-delta",
+      "property": "bdod",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_100-200cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_0-5cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/1aa6bcd8e9c0-egypt-fayoum-phh2o_0-5cm_mean.tif",
+        "sha256": "1aa6bcd8e9c0a8fa62da8879b0dc32e41bc849f4ca79e4c59842135d02a5e675",
+        "byteCount": 56955,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_0-5cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_0-5cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_0-5cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_5-15cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/1647df914b98-egypt-fayoum-phh2o_5-15cm_mean.tif",
+        "sha256": "1647df914b98cbd72ecf494d766305d57eb4550c8af6b4c2d8c89fe479b22dde",
+        "byteCount": 58665,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_5-15cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_5-15cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_5-15cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_15-30cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.2
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/e1e2ea5dca1e-egypt-fayoum-phh2o_15-30cm_mean.tif",
+        "sha256": "e1e2ea5dca1e2a9c49437051a1f141d380f09dd5bda7dbdc855d37610d2cee45",
+        "byteCount": 59647,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_15-30cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_15-30cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_15-30cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_30-60cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/4bf5aba35b59-egypt-fayoum-phh2o_30-60cm_mean.tif",
+        "sha256": "4bf5aba35b598a47012ceb7745369957ea506e44a4b7a90ef80c26c6357e4c66",
+        "byteCount": 62741,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_30-60cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_30-60cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_30-60cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_60-100cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/41d2541ecf86-egypt-fayoum-phh2o_60-100cm_mean.tif",
+        "sha256": "41d2541ecf86ba8edc6bc884107bc775e4704b881328be7328d68366ff3f5859",
+        "byteCount": 65644,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_60-100cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_60-100cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_60-100cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "phh2o_100-200cm_mean",
+      "unit": "pH",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        8.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/8ab865e5cd78-egypt-fayoum-phh2o_100-200cm_mean.tif",
+        "sha256": "8ab865e5cd787790961bf933828b1e2f67f98d60ed9585be22c2e856097e12b8",
+        "byteCount": 64931,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fphh2o.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=phh2o_100-200cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "phh2o_100-200cm_Q05",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "phh2o",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "phh2o_100-200cm_Q95",
+      "unit": "pH",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_0-5cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        38.6
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/b34a6d3aceda-egypt-fayoum-clay_0-5cm_mean.tif",
+        "sha256": "b34a6d3aceda7d5b9c73813d971fee5a3f3c72e040fcd3cda6ffaedd8da6e17d",
+        "byteCount": 202789,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_0-5cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_0-5cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_0-5cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_5-15cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        39.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/ab93c02efdaf-egypt-fayoum-clay_5-15cm_mean.tif",
+        "sha256": "ab93c02efdaf1cea38ae675f8d4e96d34e7544a671e64195d94d821642657b02",
+        "byteCount": 202444,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_5-15cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_5-15cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_5-15cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_15-30cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        38.0
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/47793bfd40f3-egypt-fayoum-clay_15-30cm_mean.tif",
+        "sha256": "47793bfd40f31bb8dd28f7fe33617b885069b1fdca21e466197bd5b8bee868ad",
+        "byteCount": 196059,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_15-30cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_15-30cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_15-30cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_30-60cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        40.5
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/9e25ee383c91-egypt-fayoum-clay_30-60cm_mean.tif",
+        "sha256": "9e25ee383c9126e50954421b04b8618be45cfd1fa4ee3cdc37aa49a89192705b",
+        "byteCount": 195632,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_30-60cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_30-60cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_30-60cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_60-100cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        42.7
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/085e4cb96d97-egypt-fayoum-clay_60-100cm_mean.tif",
+        "sha256": "085e4cb96d97b5a1dc73a5d4327442eeff5e38ba639f9368ac993479653080ad",
+        "byteCount": 196891,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_60-100cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_60-100cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_60-100cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "clay_100-200cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        49.5
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/afa070a7cddf-egypt-fayoum-clay_100-200cm_mean.tif",
+        "sha256": "afa070a7cddf527b79b6750706c59ac76622293bc05d7b5b67d7fa54eca5d309",
+        "byteCount": 200857,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fclay.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=clay_100-200cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "clay_100-200cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "clay",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "clay_100-200cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_0-5cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        60.6
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/9bb398e1fdb6-egypt-fayoum-sand_0-5cm_mean.tif",
+        "sha256": "9bb398e1fdb6b25a5ba2b2ee2da84aea812d2f463b72ee7c1686c97eb7ac2144",
+        "byteCount": 213125,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_0-5cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_0-5cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_0-5cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_5-15cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        60.1
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/476413043997-egypt-fayoum-sand_5-15cm_mean.tif",
+        "sha256": "47641304399782f09608ce1333dc91ef5414833ba7b71703e79c576a079e65f7",
+        "byteCount": 212635,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_5-15cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_5-15cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_5-15cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_15-30cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        60.0
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/38fe67b7ff20-egypt-fayoum-sand_15-30cm_mean.tif",
+        "sha256": "38fe67b7ff20977869c8f964131c8fa2497de089a2c3354b87e6a030abba675b",
+        "byteCount": 208067,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_15-30cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_15-30cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_15-30cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_30-60cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        58.8
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/1ae7472857ef-egypt-fayoum-sand_30-60cm_mean.tif",
+        "sha256": "1ae7472857efbc05dadbcc172dd1b25068fed430e4bbff1536392846c71e056d",
+        "byteCount": 205936,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_30-60cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_30-60cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_30-60cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_60-100cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        56.5
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/9d16a75cb6e4-egypt-fayoum-sand_60-100cm_mean.tif",
+        "sha256": "9d16a75cb6e4ff75d802bc09d6ec753bb6283c3da7b6e6981119916c9fd010ad",
+        "byteCount": 206103,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_60-100cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_60-100cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_60-100cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "sand_100-200cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        51.5
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/48c2cf203ad1-egypt-fayoum-sand_100-200cm_mean.tif",
+        "sha256": "48c2cf203ad1ba1f734a196adee7420fa8ee74c9495145a54fb646f9238ec7e2",
+        "byteCount": 200234,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsand.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=sand_100-200cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "sand_100-200cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "sand",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "sand_100-200cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_0-5cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        37.8
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/68ea9799e72e-egypt-fayoum-silt_0-5cm_mean.tif",
+        "sha256": "68ea9799e72e2614723c9cd0afb5a2eca91b0325968582faa9a106b12f8912c7",
+        "byteCount": 200226,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_0-5cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_0-5cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_0-5cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_5-15cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        38.0
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/35c4650c7fea-egypt-fayoum-silt_5-15cm_mean.tif",
+        "sha256": "35c4650c7fea1dad25868770c4dc8c649c8b53661c993dd4eeee37eda9983fd2",
+        "byteCount": 200580,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_5-15cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_5-15cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_5-15cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_15-30cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        37.9
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/838912f10296-egypt-fayoum-silt_15-30cm_mean.tif",
+        "sha256": "838912f10296faba29c93257506f9aef40ee67b795e992589fe983158877d4a9",
+        "byteCount": 202318,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_15-30cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_15-30cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_15-30cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_30-60cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        39.1
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/96dc4f86eeb4-egypt-fayoum-silt_30-60cm_mean.tif",
+        "sha256": "96dc4f86eeb47e581fa4c64773f693e807a9bb5e3df7663d89a79b7ce6ed2e22",
+        "byteCount": 202641,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_30-60cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_30-60cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_30-60cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_60-100cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        37.3
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/a35689f8c179-egypt-fayoum-silt_60-100cm_mean.tif",
+        "sha256": "a35689f8c179fcfc27ed026223eefdf9af9a0730d9aaa4592771cd191a54eb5f",
+        "byteCount": 201059,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_60-100cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_60-100cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_60-100cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "silt_100-200cm_mean",
+      "unit": "%",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        35.4
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/b99bd89a5fb6-egypt-fayoum-silt_100-200cm_mean.tif",
+        "sha256": "b99bd89a5fb6f0e8109311ba08667775970a40e333123c17b9f58f70ea23136a",
+        "byteCount": 197712,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsilt.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=silt_100-200cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "silt_100-200cm_Q05",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "silt",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "silt_100-200cm_Q95",
+      "unit": "%",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_0-5cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        98.8
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/59fa191a1246-egypt-fayoum-soc_0-5cm_mean.tif",
+        "sha256": "59fa191a12468d404c1ca02619b56067eadb35f3a2dcabd1f6d0d02d2d707eb9",
+        "byteCount": 201808,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_0-5cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_0-5cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_0-5cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_5-15cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        71.4
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/ee134d59d53f-egypt-fayoum-soc_5-15cm_mean.tif",
+        "sha256": "ee134d59d53f3a5ceb040eae7957df9b6433dde97e94836567b1b5ab439aed5f",
+        "byteCount": 181658,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_5-15cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_5-15cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_5-15cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_15-30cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        66.9
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/ddbe78431a1a-egypt-fayoum-soc_15-30cm_mean.tif",
+        "sha256": "ddbe78431a1a3772f296edc19da78109b07d4d392c4d683debc8d9127266eb0d",
+        "byteCount": 179693,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_15-30cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_15-30cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_15-30cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_30-60cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        71.0
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/f4d1549ef153-egypt-fayoum-soc_30-60cm_mean.tif",
+        "sha256": "f4d1549ef1530822b3b333377bacf74d7cb40bd5c918afa726767007d07fbdd0",
+        "byteCount": 172178,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_30-60cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_30-60cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_30-60cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_60-100cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        71.7
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/ffc98ab88623-egypt-fayoum-soc_60-100cm_mean.tif",
+        "sha256": "ffc98ab88623f39397a7679f3cc74f4500f8b22a34c693ffc86c6ce0653a62f5",
+        "byteCount": 188117,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_60-100cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_60-100cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_60-100cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "soc_100-200cm_mean",
+      "unit": "g/kg",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 10,
+      "range": [
+        0.0,
+        69.7
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/51f8acc74100-egypt-fayoum-soc_100-200cm_mean.tif",
+        "sha256": "51f8acc7410054153928a7424cce99ca131bcb8ef86284ffb4b361d4fea0f613",
+        "byteCount": 205461,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fsoc.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=soc_100-200cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "soc_100-200cm_Q05",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "soc",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "soc_100-200cm_Q95",
+      "unit": "g/kg",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_0-5cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.45
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/229f765a9c18-egypt-fayoum-bdod_0-5cm_mean.tif",
+        "sha256": "229f765a9c1800da9ca8b4c7bc804205441ef4487cf8dde5e76c8916cc9946f8",
+        "byteCount": 112416,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_0-5cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_0-5cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        0,
+        5
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_0-5cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_5-15cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.45
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/ecdb43beb09e-egypt-fayoum-bdod_5-15cm_mean.tif",
+        "sha256": "ecdb43beb09e152ceee95245f51d51edc022d1236cf64ddc389f5b1c6df73653",
+        "byteCount": 112827,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_5-15cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_5-15cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        5,
+        15
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_5-15cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_15-30cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.5
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/b829ce7b5f85-egypt-fayoum-bdod_15-30cm_mean.tif",
+        "sha256": "b829ce7b5f85ef4073eb19c859d33dcd39fb4b53cc5cf48648d00f0bbcc3a915",
+        "byteCount": 104773,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_15-30cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_15-30cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        15,
+        30
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_15-30cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_30-60cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.52
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/e597c9769197-egypt-fayoum-bdod_30-60cm_mean.tif",
+        "sha256": "e597c97691971e5902db6f88bdab23155df56080bda0471af013dc046d1eb7ff",
+        "byteCount": 102512,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_30-60cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_30-60cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        30,
+        60
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_30-60cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_60-100cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.53
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/680faae4c4a3-egypt-fayoum-bdod_60-100cm_mean.tif",
+        "sha256": "680faae4c4a3ebefc7701a09c2d16204b3328cd6dc4a50e8e3e7a0fa26c17b91",
+        "byteCount": 104472,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_60-100cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_60-100cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        60,
+        100
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_60-100cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "mean",
+      "coverageId": "bdod_100-200cm_mean",
+      "unit": "g/cm3",
+      "status": "science_downloaded",
+      "valueType": "predicted_soil_property",
+      "shape": [
+        446,
+        528
+      ],
+      "validPixels": 235488,
+      "totalPixels": 235488,
+      "validPixelFraction": 1.0,
+      "nativeCrsWkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Interrupted_Goode_Homolosine\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "nativeBounds": [
+        3339500.0,
+        3206000.0,
+        3471500.0,
+        3317500.0
+      ],
+      "pixelSizeM": [
+        250.0,
+        250.0
+      ],
+      "nativeToCanonicalDivisor": 100,
+      "range": [
+        0.0,
+        1.53
+      ],
+      "artifact": {
+        "path": "data/raw/regions/20261113T123805653050Z/soilgrids/db1c1d5946dd-egypt-fayoum-bdod_100-200cm_mean.tif",
+        "sha256": "db1c1d5946dd9bf68eccc26a1ef480eaf20cc18ba474f535e894ddebee6cbd88",
+        "byteCount": 106079,
+        "sourceUrl": "https://maps.isric.org/mapserv?map=%2Fmap%2Fbdod.map&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&COVERAGEID=bdod_100-200cm_mean&SUBSET=X%283339500%2C3471500%29&SUBSET=Y%283206000%2C3317500%29&FORMAT=image%2Ftiff"
+      }
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q05",
+      "coverageId": "bdod_100-200cm_Q05",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    },
+    {
+      "regionId": "egypt-fayoum",
+      "property": "bdod",
+      "depthCm": [
+        100,
+        200
+      ],
+      "statistic": "Q95",
+      "coverageId": "bdod_100-200cm_Q95",
+      "unit": "g/cm3",
+      "status": "unavailable",
+      "valueType": "predicted_soil_property",
+      "errorCode": "HTTPError"
+    }
+  ]
+}

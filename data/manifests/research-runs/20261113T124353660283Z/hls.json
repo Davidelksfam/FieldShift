@@ -1,0 +1,75 @@
+{
+  "sourceId": "hls",
+  "retrievedAt": "2026-11-13T12:43:53.660428+00:00",
+  "status": "science_downloaded",
+  "scienceDownloaded": true,
+  "artifacts": [
+    {
+      "path": "data/raw/research/20261113T124353660283Z/hls/25fa48b77f1b-collections.json",
+      "sha256": "25fa48b77f1bf8814a4acbdbe6f7d200524282d98c3cd4186ed9135db272f5c1",
+      "byteCount": 11433,
+      "kind": "catalog",
+      "sourceUrl": "https://cmr.earthdata.nasa.gov/search/collections.json?short_name=HLSL30&version=2.0&page_size=2"
+    },
+    {
+      "path": "data/raw/research/20261113T124353660283Z/hls/5e9323235d49-granules.json",
+      "sha256": "5e9323235d494eedd4f1cc9135b40c5ade30974b61c1e21b41821fb4ec1fb0d7",
+      "byteCount": 13840,
+      "kind": "catalog",
+      "sourceUrl": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2021957657-LPCLOUD&point=30.65%2C29.3&temporal=2025-01-01T00%3A00%3A00Z%2C2025-01-07T23%3A59%3A59Z&page_size=1&sort_key=start_date"
+    },
+    {
+      "path": "data/raw/research/20261113T124353660283Z/hls/0f732a9c4d18-HLS.L30.T36RTT.2025007T083009.v2.0.B04.tif",
+      "sha256": "0f732a9c4d1848a7ed8adc1a830bb2cffd02f35dd53df3d3bc7a6e25086b2608",
+      "byteCount": 25791367,
+      "kind": "science",
+      "sourceUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T36RTT.2025007T083009.v2.0/HLS.L30.T36RTT.2025007T083009.v2.0.B04.tif"
+    },
+    {
+      "path": "data/raw/research/20261113T124353660283Z/hls/335f5df127a3-HLS.L30.T36RTT.2025007T083009.v2.0.B05.tif",
+      "sha256": "335f5df127a3d80f9703b0177eaea1197dfd82b9648a4d5be3724db282ba9fae",
+      "byteCount": 26677738,
+      "kind": "science",
+      "sourceUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T36RTT.2025007T083009.v2.0/HLS.L30.T36RTT.2025007T083009.v2.0.B05.tif"
+    },
+    {
+      "path": "data/raw/research/20261113T124353660283Z/hls/cf49f5425c35-HLS.L30.T36RTT.2025007T083009.v2.0.Fmask.tif",
+      "sha256": "cf49f5425c355bc539dbc272dab5643dbd39c9a594bee51008b7915015a4df2a",
+      "byteCount": 1226295,
+      "kind": "science",
+      "sourceUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T36RTT.2025007T083009.v2.0/HLS.L30.T36RTT.2025007T083009.v2.0.Fmask.tif"
+    }
+  ],
+  "scope": {
+    "scope": "Public regional access sample for Egypt Fayoum basin",
+    "point": {
+      "longitude": 30.65,
+      "latitude": 29.3
+    },
+    "startDate": "2025-01-01",
+    "endDateInclusive": "2025-01-07",
+    "soilSubsetWidthM": 1000
+  },
+  "eligibilityStatus": "pending_resources_tab_verification",
+  "acquisitionScriptSha256": "c3696a5b8c064c8fc5d57058021aa8f4103a5849a9681633bf13b2ac3f4bf6cf",
+  "processingNote": "Bounded acquisition and inspection only; no approved feature/model outputs",
+  "sourceDocumentation": "https://hls.gsfc.nasa.gov/data-products/",
+  "collection": {
+    "id": "C2021957657-LPCLOUD",
+    "title": "HLS Landsat Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m v2.0",
+    "version_id": "2.0",
+    "data_center": "LPCLOUD"
+  },
+  "granule": {
+    "id": "G3364349059-LPCLOUD",
+    "title": "HLS.L30.T36RTT.2025007T083009.v2.0",
+    "time_start": "2025-01-07T08:30:09.064Z",
+    "time_end": "2025-01-07T08:30:32.963Z",
+    "granule_size": null
+  },
+  "scienceUrls": [
+    "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T36RTT.2025007T083009.v2.0/HLS.L30.T36RTT.2025007T083009.v2.0.B04.tif",
+    "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T36RTT.2025007T083009.v2.0/HLS.L30.T36RTT.2025007T083009.v2.0.B05.tif",
+    "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T36RTT.2025007T083009.v2.0/HLS.L30.T36RTT.2025007T083009.v2.0.Fmask.tif"
+  ]
+}

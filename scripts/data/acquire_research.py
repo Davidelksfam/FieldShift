@@ -16,11 +16,14 @@ ROOT = Path(__file__).resolve().parents[2]
 CMR = 'https://cmr.earthdata.nasa.gov/search/'
 REGISTRY = ROOT / 'data/manifests/source-registry.json'
 NASA_HOSTS = {
+    'appeears.earthdatacloud.nasa.gov',
+    'harmony.earthdata.nasa.gov',
     'data.lpdaac.earthdatacloud.nasa.gov',
     'data.nsidc.earthdatacloud.nasa.gov',
     'data.gesdisc.earthdata.nasa.gov', 'urs.earthdata.nasa.gov',
 }
 NASA_DELIVERY_HOSTS = {
+    'dqzb5lcolc8fj.cloudfront.net',  # Harmony regional result delivery
     'd1nklfio7vscoe.cloudfront.net',  # LP DAAC redirect observed 2026-11-13
     'd2b3c3wh8s6en5.cloudfront.net',  # GES DISC
     'd3h5e2j7riftk6.cloudfront.net',  # NSIDC
@@ -141,6 +144,17 @@ def science_links(entry, suffixes):
                    if link.get('rel', '').endswith('/data#') and not link.get('inherited')
                    and link.get('href', '').startswith('https://')
                    and any(urlsplit(link['href']).path.endswith(s) for s in suffixes)})
+
+
+def soil_coverage_id(property_id, depth, statistic):
+    """WCS quantile IDs differ from the downloadable-file naming convention."""
+    if property_id not in {'phh2o','clay','sand','silt','soc','bdod'}:
+        raise ValueError('Unsupported soil property')
+    if depth not in {'0-5','5-15','15-30','30-60','60-100','100-200'}:
+        raise ValueError('Unsupported soil depth')
+    wire={'mean':'mean','Q05':'Q0.05','Q95':'Q0.95'}
+    if statistic not in wire:raise ValueError('Unsupported soil statistic')
+    return f'{property_id}_{depth}cm_{wire[statistic]}'
 
 
 class Acquisition:

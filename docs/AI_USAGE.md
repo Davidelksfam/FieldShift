@@ -11,3 +11,5 @@ Record material AI contributions and human review without private prompts, secre
 Future entry fields: contributor, tool/model if known, generated/edited code/content/assets, source attribution, checks, human reviewer and changes made after review. Do not claim human review occurred until it did.
 
 Authenticated follow-up, 2026-11-13: user explicitly authorized Earthdata token use. All four previously protected sources downloaded; native NetCDF/HDF5/GeoTIFF inspection and seven-source readiness index added. Bearer is stripped on approved delivery-CDN redirects; no token is included in Git or manifests. Fourteen boundary tests; human scientific review remains pending.
+
+Regional follow-up, 2026-11-13: user-selected Delta/Fayoum and 2024–2025; acquired complete sampled POWER series and 216 SoilGrids region-envelope layers, corrected WCS quantile IDs, refreshed local satellite examples, generated full-period catalog plans and strict regional source/coverage validation. Remaining full satellite mosaics/periods and scientific QA explicitly marked incomplete; human review pending. No credential or private farmer geometry committed.

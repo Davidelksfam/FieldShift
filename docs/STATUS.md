@@ -32,3 +32,6 @@ Implementation backlog and submission preparation: [delivery plan](delivery/PLAN
 ## Workstream layout prepared (organizational decision)
 
 See [accepted directory decision](decisions/0001-workstream-directory-layout.md), [team ownership](team/WORKSTREAMS.md), [repository map](engineering/REPOSITORY_STRUCTURE.md) and [draft contracts](engineering/CONTRACTS.md). Actual named assignments, scientific definitions, implementation permissions and final stack remain pending. The `web/` folder is not yet runnable and no Vercel project was deployed.
+
+
+Regional follow-up: the user selected **Nile Delta and Fayoum, 2024–2025**. See [regional coverage and import status](data/REGIONAL_COVERAGE.md). The earlier Giza snapshots are source-access evidence, not complete regional datasets.

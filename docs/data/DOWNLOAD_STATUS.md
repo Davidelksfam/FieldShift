@@ -42,3 +42,6 @@ The downloader follows only the explicitly observed NASA CDN routes and strips A
 Validation: fourteen acquisition boundary tests (including bearer stripping on NASA CDN redirects), native file readers, byte counts/SHA-256 and repository checks. Authenticated retrieval is now exercised against all four previously protected sources.
 
 [Connection and schema guide](DATASET_ACCESS_GUIDE.md).
+
+
+Regional follow-up: the user selected **Nile Delta and Fayoum, 2024–2025**. See [regional coverage and import status](REGIONAL_COVERAGE.md). The earlier Giza snapshots are source-access evidence, not complete regional datasets.
