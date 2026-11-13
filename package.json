@@ -12,7 +12,8 @@
     "preview": "vite preview --host 0.0.0.0",
     "test": "node --test tests/unit/*.test.js",
     "test:browser": "playwright test",
-    "check": "npm test && npm run build && python3 scripts/check_repository.py"
+    "check": "npm test && npm run build && python3 scripts/check_repository.py",
+    "test:live": "node scripts/verify-live-demo.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",

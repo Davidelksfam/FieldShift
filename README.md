@@ -1,5 +1,7 @@
 # Field Shift Egypt
 
+**Live demo: [fieldshift-tau.vercel.app](https://fieldshift-tau.vercel.app)** · [Vercel release and verification](docs/delivery/VERCEL_RELEASE.md)
+
 A bilingual crop-rotation planning prototype for Egyptian farmers: choose a field, describe its irrigation and current crops, then compare a baseline with water-smart and soil-recovery strategies. Historical NASA POWER, MODIS and SoilGrids inputs complement transparent rules and local agricultural expertise.
 
 The application is a **client-first Vite + React SPA**, with Tailwind, Lucide, Leaflet, NASA GIBS and Recharts. No backend, credentials or database are needed. The approved light-green identity is restored from the previous brand branch.
