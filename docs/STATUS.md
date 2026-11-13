@@ -1,12 +1,12 @@
 # Current project status
 
-Updated: 2026-11-12 (Africa/Cairo).
+Updated: 2026-11-13 (Africa/Cairo).
 
 ## Established context
 
 - Team selected Field Shift for NASA Space Apps 2026 (user request).
 - Zewail City/Giza, acceptance and six-person roster are team-reported in the original README, not independently verified event facts.
-- Repository preparation and shared context are in scope. No application code, NASA integration, agronomic validation, deployment or final stack exists yet.
+- Repository preparation and shared context are in scope. Workstream folder/ownership layout is authorized, with draft contracts and a synthetic test fixture. No application code, NASA integration, agronomic validation, deployment or final stack exists yet.
 - Brand identity and colors are intentionally empty for the user's planned update.
 
 ## Proposed direction
@@ -25,3 +25,8 @@ The supplied guide recommends “Rotation Rehearsal”: Arabic-first comparison 
 | P1 | Fill identity and colors when supplied | Unassigned | User/team-provided content |
 
 Implementation backlog and submission preparation: [delivery plan](delivery/PLAN.md). Unverified facts and conflicts: [verification register](challenge/VERIFICATION.md).
+
+
+## Workstream layout prepared (organizational decision)
+
+See [accepted directory decision](decisions/0001-workstream-directory-layout.md), [team ownership](team/WORKSTREAMS.md), [repository map](engineering/REPOSITORY_STRUCTURE.md) and [draft contracts](engineering/CONTRACTS.md). Actual named assignments, scientific definitions, implementation permissions and final stack remain pending. The `web/` folder is not yet runnable and no Vercel project was deployed.

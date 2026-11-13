@@ -23,3 +23,9 @@ Recommended GitHub settings: protect `main`, require pull requests and the `Repo
 ## Reporting a problem
 
 Use the bug template with reproduction, expected behavior, observed result, environment, and safe logs. Report exposed credentials privately to the team lead and rotate them; never paste secrets in an issue.
+
+## Multi-agent workstreams
+
+Use the [workstream ownership guide](docs/team/WORKSTREAMS.md), [folder map](docs/engineering/REPOSITORY_STRUCTURE.md), and [draft contracts](docs/engineering/CONTRACTS.md). Every issue must identify an accountable owner, reviewer, allowed paths, input and output fixtures, and acceptance checks. Ask the integration lead before changing `contracts/`, generated type boundaries, shared app configs or global styles.
+
+Frontend, model and feature engineers may work against the same clearly synthetic fixture while data retrieval is underway. The integrator replaces it with validated real data only after checking units, missing values, provenance and contract compatibility. Do not merge a PR just because its isolated UI looks correct; require domain-relevant tests.

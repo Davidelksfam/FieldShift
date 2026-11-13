@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Davidelksfam/FieldShift/blob/main/contracts/seasonal-features.v1.schema.json",
+  "title": "FieldShift SeasonalFeatures draft v1",
+  "description": "Draft cross-language data shape. Does not verify scientific legitimacy of values or NASA eligibility.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "featureId",
+    "locationId",
+    "seasonId",
+    "period",
+    "metrics",
+    "dataStatus",
+    "provenance",
+    "warnings"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0-draft"
+    },
+    "featureId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "locationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seasonId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "startDate",
+        "endDate"
+      ],
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "seasonalRainfallMm",
+        "avgAirTempC",
+        "heatExposureDays"
+      ],
+      "properties": {
+        "seasonalRainfallMm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Period precipitation amount, not irrigation water."
+        },
+        "avgAirTempC": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Temperature aggregate and time step must be documented."
+        },
+        "heatExposureDays": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Threshold and calculation method must be documented."
+        }
+      }
+    },
+    "dataStatus": {
+      "enum": [
+        "synthetic_fixture",
+        "historical_observed",
+        "historical_modeled",
+        "unknown"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "dataset",
+        "observationStart",
+        "observationEnd",
+        "spatialSupport",
+        "processingNote",
+        "retrievedAt",
+        "sourceUrl"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dataset": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observationStart": {
+          "type": "string",
+          "format": "date"
+        },
+        "observationEnd": {
+          "type": "string",
+          "format": "date"
+        },
+        "spatialSupport": {
+          "type": "string",
+          "minLength": 1
+        },
+        "processingNote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retrievedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "sourceUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -228,3 +228,10 @@ node_modules/
 data/raw/
 work/
 .DS_Store
+
+# FieldShift large/intermediate processing data
+data/interim/*
+!data/interim/README.md
+
+# Local fixtures with farmer-specific data must never be committed
+data/private/
