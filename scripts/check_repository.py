@@ -1,5 +1,6 @@
 """Dependency-free checks for the repository's shared context."""
 from pathlib import Path
+import json
 import re
 import sys
 from urllib.parse import unquote, urlsplit
@@ -16,6 +17,10 @@ REQUIRED = (
     'docs/reference/Field_Shift_Complete_Strategy_Guide.md',
     'docs/reference/original-repository-readme.md',
     'docs/brand/IDENTITY.md', 'docs/brand/COLORS.md',
+    'docs/team/WORKSTREAMS.md', 'docs/engineering/REPOSITORY_STRUCTURE.md',
+    'docs/engineering/CONTRACTS.md',
+    'contracts/seasonal-features.v1.schema.json',
+    'data/fixtures/seasonal-features.synthetic.v1.json',
 )
 errors = []
 for name in REQUIRED:
@@ -46,8 +51,31 @@ for path in ROOT.rglob('*.md'):
         if not destination.is_relative_to(ROOT) or not destination.exists():
             errors.append(f'{relative}: missing/escaping local link: {target}')
 
+
+# Validate JSON syntax and protect the clearly labeled synthetic test fixture.
+# This is a lightweight safety check, NOT full JSON Schema or scientific validation.
+try:
+    schema = json.loads((ROOT / 'contracts/seasonal-features.v1.schema.json').read_text())
+    fixture = json.loads((ROOT / 'data/fixtures/seasonal-features.synthetic.v1.json').read_text())
+    required = schema.get('required', [])
+    missing = [name for name in required if name not in fixture]
+    if missing:
+        errors.append('Synthetic fixture missing required keys: ' + ', '.join(missing))
+    if fixture.get('schemaVersion') != schema.get('properties', {}).get('schemaVersion', {}).get('const'):
+        errors.append('Synthetic fixture version does not match draft schema')
+    if fixture.get('dataStatus') != 'synthetic_fixture':
+        errors.append('Synthetic fixture must remain marked synthetic_fixture')
+    provenance = fixture.get('provenance', {})
+    if not isinstance(provenance, dict) or provenance.get('sourceUrl') is not None:
+        errors.append('Synthetic fixture must not claim a real data source')
+    warnings = fixture.get('warnings', [])
+    if not isinstance(warnings, list) or not any('SYNTHETIC' in str(w).upper() for w in warnings):
+        errors.append('Synthetic fixture must explicitly warn that it is synthetic')
+except (OSError, json.JSONDecodeError, TypeError) as exc:
+    errors.append(f'Contract/fixture unreadable or invalid JSON: {exc}')
+
 if errors:
     print('\n'.join(errors), file=sys.stderr)
     sys.exit(1)
-print(f'PASS: {len(REQUIRED)} required files, {checked} local links, empty brand placeholders')
+print(f'PASS: {len(REQUIRED)} required files, {checked} local links, empty brand placeholders, draft JSON fixture checks')
 print('Archived source snapshots excluded from link checks; external URLs and anchors not validated.')
