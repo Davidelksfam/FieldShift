@@ -1,23 +1,21 @@
 ---
 name: Scoped task
-about: A reviewable contribution for a teammate or coding agent
+about: A reviewable contribution or proposal for the new Field Shift direction
 title: ""
 labels: ""
 assignees: ""
 ---
 
-## Outcome
+## Outcome / proposal
 
-## Owner and branch
+## Owner and reviewer
 
-## Relevant canonical docs and dependencies
-
-## Files / contracts in scope
+## Branch, allowed files and dependencies
 
 ## Acceptance criteria
 
 - [ ]
 
-## Evidence and validation plan
+## Evidence, validation and open questions
 
-## Handoff / open questions
+## Handoff

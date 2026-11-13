@@ -1,16 +1,17 @@
 # NNNN: <decision title>
 
-- Status: Proposed / Accepted / Superseded
+- Status: Proposed
 - Date:
-- Decision owner and approver:
-- Related issue and specs:
+- Owner / approver:
+- Issue / PR:
+- Affected docs, datasets, and workstreams:
 
 ## Context and evidence
 
-## Options and trade-offs
+## Alternatives considered
 
-## Decision
+## Decision and rationale
 
-## Consequences and validation
+## Consequences, tests, risks
 
-## Supersedes / superseded by
+## Supersedes / links

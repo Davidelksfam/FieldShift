@@ -1,7 +1,3 @@
-# Rotation comparison screen
+# Historical workstream placeholder: rotations
 
-**Primary owner:** Frontend developer
-
-Timelines and result displays; consume model output rather than recalculating scientific indicators.
-
-See `docs/team/WORKSTREAMS.md` and `docs/engineering/CONTRACTS.md` for coordination and interface rules. This README reserves the folder; it is not a claim that code exists.
+This directory is carried over solely to preserve the original contribution skeleton. It is **not** an approved new-direction feature; rename/remove it once the new product requirements are accepted.

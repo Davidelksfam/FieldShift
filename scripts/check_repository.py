@@ -1,94 +1,41 @@
-"""Dependency-free checks for the repository's shared context."""
+"""Small dependency-free repository skeleton/link checker for the pivot branch."""
 from pathlib import Path
-import json
 import re
 import sys
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-REQUIRED = (
-    'README.md', 'AGENTS.md', 'CLAUDE.md', 'CONTRIBUTING.md',
-    '.github/copilot-instructions.md', 'docs/STATUS.md',
-    'docs/challenge/BRIEF.md', 'docs/challenge/VERIFICATION.md',
-    'docs/product/PRD.md', 'docs/data/DATA_PLAN.md',
-    'docs/engineering/ARCHITECTURE.md', 'docs/team/TEAM.md',
-    'docs/team/HANDOFF_TEMPLATE.md', 'docs/decisions/TEMPLATE.md',
-    'docs/delivery/PLAN.md', 'docs/AI_USAGE.md',
-    'docs/reference/Field_Shift_Complete_Strategy_Guide.md',
-    'docs/reference/original-repository-readme.md',
-    'docs/brand/IDENTITY.md', 'docs/brand/COLORS.md',
-    'docs/brand/DESIGN.md', 'docs/brand/README.md',
-    'docs/brand/tokens.css', 'web/AGENTS.md',
-    'assets/brand/field-shift-mark.svg',
-    'docs/team/WORKSTREAMS.md', 'docs/engineering/REPOSITORY_STRUCTURE.md',
-    'docs/engineering/CONTRACTS.md',
-    'contracts/seasonal-features.v1.schema.json',
-    'data/fixtures/seasonal-features.synthetic.v1.json',
-)
+REQUIRED = [
+    "README.md", "AGENTS.md", "CLAUDE.md", "CONTRIBUTING.md",
+    ".github/ISSUE_TEMPLATE/task.md", ".github/pull_request_template.md",
+    "docs/STATUS.md", "docs/README.md", "docs/product/PRD.md",
+    "docs/data/DATA_PLAN.md", "docs/engineering/ARCHITECTURE.md",
+    "docs/engineering/CONTRACTS.md", "docs/team/TEAM.md",
+    "docs/team/WORKSTREAMS.md", "docs/team/HANDOFF_TEMPLATE.md",
+    "docs/decisions/README.md", "docs/decisions/TEMPLATE.md",
+    "docs/delivery/PLAN.md", "docs/challenge/VERIFICATION.md",
+    "docs/brand/IDENTITY.md", "docs/brand/COLORS.md",
+    "contracts/README.md", "data/README.md", "web/README.md",
+]
 errors = []
 for name in REQUIRED:
     if not (ROOT / name).is_file():
-        errors.append(f'Missing context file: {name}')
-# User-approved brand files must now be populated (decision 0002).
-for name in ('IDENTITY.md', 'COLORS.md', 'DESIGN.md', 'tokens.css'):
-    path = ROOT / 'docs/brand' / name
-    if path.exists() and not path.read_text().strip():
-        errors.append(f'Approved brand file must not be empty: {path.relative_to(ROOT)}')
-tokens_path = ROOT / 'docs/brand/tokens.css'
-if tokens_path.exists():
-    tokens_text = tokens_path.read_text()
-    for token in ('--fs-brand-primary', '--fs-action-bg', '--fs-bg-surface',
-                  '--fs-bg-canvas', '--fs-text-primary', '--fs-border'):
-        if not re.search(r'^\s*' + re.escape(token) + r'\s*:', tokens_text, re.M):
-            errors.append(f'Missing canonical UI token: {token}')
-    defined_tokens = re.findall(r'^\s*(--fs-[\w-]+)\s*:', tokens_text, re.M)
-    if len(defined_tokens) != len(set(defined_tokens)):
-        errors.append('Duplicate Field Shift CSS design token name')
-
+        errors.append(f"Missing skeleton file: {name}")
 checked = 0
-for path in ROOT.rglob('*.md'):
-    relative = path.relative_to(ROOT)
-    if any(part in {'.git', 'node_modules', '.venv', 'work'} for part in relative.parts):
+for file in ROOT.rglob("*.md"):
+    if any(part in {".git", "node_modules", ".venv"} for part in file.relative_to(ROOT).parts):
         continue
-    # Historical snapshots retain their original relative links and formatting.
-    if relative.parent == Path('docs/reference') and path.name != 'README.md':
-        continue
-    content = re.sub(r'```.*?```', '', path.read_text(), flags=re.S)
-    for match in re.finditer(r'!?\[[^\]]*\]\(([^\s)]+)(?:\s+"[^"]*")?\)', content):
-        target = match.group(1).strip('<>')
-        parsed = urlsplit(target)
+    content = re.sub(r"\x60\x60\x60.*?\x60\x60\x60", "", file.read_text(encoding="utf-8"), flags=re.S)
+    for match in re.finditer(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+['\"][^'\"]*['\"])?\)", content):
+        url = match.group(1).strip("<>")
+        parsed = urlsplit(url)
         if parsed.scheme or parsed.netloc or not parsed.path:
             continue
         checked += 1
-        destination = (path.parent / unquote(parsed.path)).resolve()
+        destination = (file.parent / unquote(parsed.path)).resolve()
         if not destination.is_relative_to(ROOT) or not destination.exists():
-            errors.append(f'{relative}: missing/escaping local link: {target}')
-
-
-# Validate JSON syntax and protect the clearly labeled synthetic test fixture.
-# This is a lightweight safety check, NOT full JSON Schema or scientific validation.
-try:
-    schema = json.loads((ROOT / 'contracts/seasonal-features.v1.schema.json').read_text())
-    fixture = json.loads((ROOT / 'data/fixtures/seasonal-features.synthetic.v1.json').read_text())
-    required = schema.get('required', [])
-    missing = [name for name in required if name not in fixture]
-    if missing:
-        errors.append('Synthetic fixture missing required keys: ' + ', '.join(missing))
-    if fixture.get('schemaVersion') != schema.get('properties', {}).get('schemaVersion', {}).get('const'):
-        errors.append('Synthetic fixture version does not match draft schema')
-    if fixture.get('dataStatus') != 'synthetic_fixture':
-        errors.append('Synthetic fixture must remain marked synthetic_fixture')
-    provenance = fixture.get('provenance', {})
-    if not isinstance(provenance, dict) or provenance.get('sourceUrl') is not None:
-        errors.append('Synthetic fixture must not claim a real data source')
-    warnings = fixture.get('warnings', [])
-    if not isinstance(warnings, list) or not any('SYNTHETIC' in str(w).upper() for w in warnings):
-        errors.append('Synthetic fixture must explicitly warn that it is synthetic')
-except (OSError, json.JSONDecodeError, TypeError) as exc:
-    errors.append(f'Contract/fixture unreadable or invalid JSON: {exc}')
-
+            errors.append(f"{file.relative_to(ROOT)}: missing link {url}")
 if errors:
-    print('\n'.join(errors), file=sys.stderr)
+    print("\n".join(errors), file=sys.stderr)
     sys.exit(1)
-print(f'PASS: {len(REQUIRED)} required files, {checked} local links, approved brand files and tokens, draft JSON fixture checks')
-print('Archived source snapshots excluded from link checks; external URLs and anchors not validated.')
+print(f"PASS: {len(REQUIRED)} skeleton files and {checked} local Markdown links")

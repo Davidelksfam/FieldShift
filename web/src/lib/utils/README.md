@@ -1,7 +1,3 @@
-# Cross-cutting utilities
+# Placeholder: utils
 
-**Primary owner:** Integration lead
-
-Minimal presentation-neutral helpers. Keep science in rotation/ and features in scripts/features/.
-
-See `docs/team/WORKSTREAMS.md` and `docs/engineering/CONTRACTS.md` for coordination and interface rules. This README reserves the folder; it is not a claim that code exists.
+No legacy contract, model or behavior is approved. This directory is a structural placeholder only; revise the structure after the new architecture decision.

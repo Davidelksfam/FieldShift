@@ -1,3 +1,3 @@
-# Local cleaned data — data engineer
+# Interim data
 
-Temporary normalized data lives here when implementation begins. Git ignores all contents except this README. Provide reproducible cleaning scripts and compact manifests rather than committing large/intermediate files.
+Reserved for documented transformations after datasets are approved. Intermediate files stay local/ignored unless a reviewed small sample is needed.

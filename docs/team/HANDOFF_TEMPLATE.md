@@ -1,14 +1,14 @@
-# Handoff: <task / issue>
+# Handoff — <task / issue>
 
-- Date, contributor and agent/tool:
-- Branch and commit:
+- Date / contributor / coding agent:
+- Assigned issue and branch:
 - Goal and acceptance criteria:
-- Canonical docs read / decisions used:
-- Files changed and current behavior:
-- Checks run with results; checks not run and why:
-- Evidence, assumptions and scientific limitations:
-- Remaining work, blockers and dependencies:
-- Exact next command/action:
-- Shared files coordinated with / reviewer needed:
+- Approved decisions and relevant docs read:
+- Files changed:
+- Input/output contracts or dataset evidence:
+- Checks run and actual results:
+- Checks not run and why:
+- Unresolved questions / blockers / reviewer:
+- Exact next step:
 
-Store completed handoffs in this folder using a task-specific filename and link them from the issue. Never include secrets or raw private session logs.
+Never include credentials, private samples, personal data or agent session transcripts.
