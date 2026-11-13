@@ -1,0 +1,212 @@
+{
+  "version": "prototype-sample-1.0",
+  "sampleId": "fayoum-power-30.75-29.55",
+  "name": "Fayoum study sample",
+  "coordinate": {
+    "longitude": 30.75,
+    "latitude": 29.55
+  },
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-12-31"
+  },
+  "annual": {
+    "temperatureC": 22.59,
+    "rainfallMm": 93.5,
+    "weatherDays": 365
+  },
+  "monthly": [
+    {
+      "month": "2025-01",
+      "temperatureC": 14.64,
+      "rainfallMm": 0.88,
+      "days": 31
+    },
+    {
+      "month": "2025-02",
+      "temperatureC": 12.75,
+      "rainfallMm": 1.2,
+      "days": 28
+    },
+    {
+      "month": "2025-03",
+      "temperatureC": 18.29,
+      "rainfallMm": 42.7,
+      "days": 31
+    },
+    {
+      "month": "2025-04",
+      "temperatureC": 21.61,
+      "rainfallMm": 0.11,
+      "days": 30
+    },
+    {
+      "month": "2025-05",
+      "temperatureC": 25.89,
+      "rainfallMm": 21.64,
+      "days": 31
+    },
+    {
+      "month": "2025-06",
+      "temperatureC": 28.0,
+      "rainfallMm": 6.96,
+      "days": 30
+    },
+    {
+      "month": "2025-07",
+      "temperatureC": 30.88,
+      "rainfallMm": 3.01,
+      "days": 31
+    },
+    {
+      "month": "2025-08",
+      "temperatureC": 30.82,
+      "rainfallMm": 0.0,
+      "days": 31
+    },
+    {
+      "month": "2025-09",
+      "temperatureC": 27.71,
+      "rainfallMm": 1.73,
+      "days": 30
+    },
+    {
+      "month": "2025-10",
+      "temperatureC": 24.2,
+      "rainfallMm": 0.11,
+      "days": 31
+    },
+    {
+      "month": "2025-11",
+      "temperatureC": 20.86,
+      "rainfallMm": 2.29,
+      "days": 30
+    },
+    {
+      "month": "2025-12",
+      "temperatureC": 14.76,
+      "rainfallMm": 12.87,
+      "days": 31
+    }
+  ],
+  "sources": [
+    {
+      "id": "power",
+      "temporalStatus": "complete_at_imported_points",
+      "qualityStatus": "units_dates_fill_validated",
+      "ready": false
+    },
+    {
+      "id": "imerg",
+      "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+      "qualityStatus": "documented_research_QA_applied_pending_independent_review",
+      "ready": false
+    },
+    {
+      "id": "smap",
+      "temporalStatus": "calendar_complete_with_explicit_unavailable_rows",
+      "qualityStatus": "documented_research_QA_applied_pending_independent_review",
+      "ready": false
+    },
+    {
+      "id": "hls",
+      "temporalStatus": "snapshot_only",
+      "qualityStatus": "QA_review_required",
+      "ready": false
+    },
+    {
+      "id": "modis_mod13q1",
+      "temporalStatus": "snapshot_only",
+      "qualityStatus": "QA_review_required",
+      "ready": false
+    },
+    {
+      "id": "ecostress",
+      "temporalStatus": "snapshot_only",
+      "qualityStatus": "QA_review_required",
+      "ready": false
+    },
+    {
+      "id": "soilgrids",
+      "temporalStatus": "static_not_a_seasonal_observation",
+      "qualityStatus": "CRS_fill_scale_depth_statistic_checked",
+      "ready": false
+    }
+  ],
+  "weatherProvenance": {
+    "csvPath": "web/public/data/regions/20261113T123805653050Z/egypt-fayoum-power-30.75-29.55.csv",
+    "csvSha256": "b525ac3046b03ba6d57b227a0c4c7e1b12b0e85719b06e9bad9655b3796bce0d",
+    "sourceUrl": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CRH2M%2CWS2M%2CALLSKY_SFC_SW_DWN%2CPRECTOTCORR%2CPS&community=AG&longitude=30.75&latitude=29.55&start=20240101&end=20251231&format=JSON&time-standard=UTC",
+    "dataStatus": "historical_modeled",
+    "support": "POWER query point, not a weather station or field sensor"
+  },
+  "crops": [
+    {
+      "id": "wheat",
+      "name": "Wheat",
+      "ar": "قمح",
+      "season": "winter",
+      "use": "grain"
+    },
+    {
+      "id": "barley",
+      "name": "Barley",
+      "ar": "شعير",
+      "season": "winter",
+      "use": "grain"
+    },
+    {
+      "id": "faba_bean",
+      "name": "Faba bean",
+      "ar": "فول بلدي",
+      "season": "winter",
+      "use": "dry_grain"
+    },
+    {
+      "id": "berseem",
+      "name": "Egyptian clover (berseem)",
+      "ar": "برسيم مصري",
+      "season": "winter",
+      "use": "forage"
+    },
+    {
+      "id": "maize",
+      "name": "Maize",
+      "ar": "ذرة شامية",
+      "season": "summer",
+      "use": "grain"
+    },
+    {
+      "id": "sorghum",
+      "name": "Grain sorghum",
+      "ar": "ذرة رفيعة للحبوب",
+      "season": "summer",
+      "use": "grain"
+    },
+    {
+      "id": "soybean",
+      "name": "Soybean",
+      "ar": "فول صويا",
+      "season": "summer",
+      "use": "grain"
+    },
+    {
+      "id": "sunflower",
+      "name": "Sunflower",
+      "ar": "عباد الشمس",
+      "season": "summer",
+      "use": "oilseed"
+    }
+  ],
+  "smap": {
+    "valid_regional_context": 719,
+    "no_QA_valid_pixels": 741,
+    "provider_inventory_gap": 2
+  },
+  "soilLayerCount": 108,
+  "limitations": [
+    "No cultivated-field boundary or spatial matching",
+    "No locally approved crop rules or irrigation demand estimates",
+    "Schedules and farmer budgets in the prototype are editable hypothetical test inputs"
+  ]
+}

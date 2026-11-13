@@ -2,7 +2,7 @@
 
 Shared project context for our NASA Space Apps 2026 team at Zewail City, Giza, Egypt. This repository is the team's source of truth for planning, decisions, evidence, implementation, and handoffs.
 
-**Stage:** research and repository preparation; no application has been implemented. **Working proposal:** an Arabic-first, evidence-aware crop-rotation planner, provisionally called “Rotation Rehearsal.” The team has not yet accepted a final product or technology stack.
+**Stage:** research plus a user-authorized rapid web prototype; see the [runbook](docs/engineering/PROTOTYPE_RUNBOOK.md). **Working proposal:** an Arabic-first, evidence-aware crop-rotation planner, provisionally called “Rotation Rehearsal.” The team has not yet accepted a final product or technology stack.
 
 ## Start here
 
@@ -43,9 +43,9 @@ The organizational layout is prepared for **data engineering**, **feature engine
 1. Read [workstream ownership](docs/team/WORKSTREAMS.md) and the [folder map](docs/engineering/REPOSITORY_STRUCTURE.md).
 2. Review the draft [cross-team contracts](docs/engineering/CONTRACTS.md) and the clearly synthetic sample in `data/fixtures/`.
 3. Select one GitHub issue, one branch/worktree, and task-scoped files; follow [contribution rules](CONTRIBUTING.md).
-4. Do not begin live product coding until event restrictions and stack decisions are resolved.
+4. The user explicitly authorized the rapid prototype; follow its documented scope and keep event eligibility separate.
 
-`web/` is reserved for a future Vercel-friendly app, **not a runnable Next.js project yet**. No `package.json`, lockfile, live application/NASA integration or deployment is claimed.
+`web/` now contains a runnable Next.js prototype with cached historical research data. Vercel deployment status and scientific limitations are documented in the runbook; the app has no live NASA calls or agronomically approved recommendations.
 
 ## Seven-source research access kit
 

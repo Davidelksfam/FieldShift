@@ -235,3 +235,9 @@ data/interim/*
 
 # Local fixtures with farmer-specific data must never be committed
 data/private/
+
+# Application libraries are source, not Python build artifacts.
+!web/src/lib/
+!web/src/lib/**
+web/test-results/
+web/playwright-report/
