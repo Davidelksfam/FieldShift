@@ -52,3 +52,7 @@ A narrow shared-contract change is required in root integration so a derived out
 ## Rollback
 
 Keep `VITE_SCIENTIFIC_V2=false` (default) and rebuild. The legacy farmer and expert outputs do not call this module. Removing this experimental module has no source-data or cache migration. No merge or production release is performed by this PR.
+
+## Integrated stacked-PR verification
+
+All 84 unit tests, production build and repository/link checks pass on the complete PR0–3 stack. Default browsers pass 10/10 and flagged experimental browser passes 1/1. All nine published component comparisons pass. Four additional source-lineage regressions ensure operand metadata cannot bypass direct endpoint, source identity, availability or regional scope checks. The shared contract amendment described above is included in this PR. Legacy snapshot hashes remain unchanged.
