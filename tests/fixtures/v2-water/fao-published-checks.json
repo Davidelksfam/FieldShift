@@ -1,0 +1,31 @@
+{
+  "purpose": "Published numerical component checks. These are not Egyptian calendar defaults or complete-season field validation.",
+  "coefficientInterpolation": {
+    "sourceId": "fao56_example28",
+    "url": "https://www.fao.org/4/x0490e/x0490e0b.htm#numerical%20determination%20of%20kc",
+    "title": "FAO Irrigation and Drainage Paper 56, Chapter 6, equation 66 and Example 28",
+    "retrievedOn": "2026-11-14",
+    "scope": "Dry bean example, Kimberly Idaho. Not a new crop recommendation or an Egyptian calendar.",
+    "stageLengthsDays": [25, 25, 30, 20],
+    "coefficients": {"kcIni": 0.15, "kcMid": 1.19, "kcEnd": 0.35},
+    "published": [{"day":20,"kc":0.15},{"day":40,"kc":0.77},{"day":70,"kc":1.19},{"day":95,"kc":0.56}],
+    "toleranceDeclaredBeforeComparison": {"absoluteKc":0.005,"reason":"The source rounds Kc answers to two decimal places; unrounded equation-66 day-40 result is 0.774."}
+  },
+  "etcMultiplication": {
+    "sourceId": "fao_training_crop_water_example",
+    "url": "https://www.fao.org/4/s2022e/s2022e07.htm#3.3.2%20crop%20water%20need%20calculation%20example",
+    "title": "FAO Irrigation Water Management Training Manual 3: Irrigation Water Needs, section 3.3.2, Step 4",
+    "retrievedOn": "2026-11-14",
+    "scope": "Published tomato monthly-average daily ETcrop products. These use rounded monthly Kc and 30-day months, not the V2 actual-date daily Kc curve.",
+    "published": [{"month":"February","et0MmPerDay":5.0,"kc":0.45,"etcMmPerDay":2.3},{"month":"March","et0MmPerDay":5.8,"kc":0.70,"etcMmPerDay":4.1},{"month":"April","et0MmPerDay":6.3,"kc":0.95,"etcMmPerDay":6.0},{"month":"May","et0MmPerDay":6.8,"kc":1.15,"etcMmPerDay":7.8},{"month":"June","et0MmPerDay":7.1,"kc":0.85,"etcMmPerDay":6.0}],
+    "toleranceDeclaredBeforeComparison": {"absoluteMmPerDay":0.050000001,"reason":"The source reports Step-4 ETcrop to one decimal place; binary arithmetic allowance is 1e-9 mm/day."},
+    "publishedSeasonalTotalMm":786,
+    "seasonalTotalAcceptance":"not_comparable: rounded stage-average Kc and artificial 30-day months are not the implemented daily actual-date method"
+  },
+  "releaseBoundary": {
+    "stageKcInterpolation":"component_reference_check_only",
+    "etcEquation":"component_reference_check_only",
+    "fullSeasonEtc":"not_independently_compared",
+    "netGrossIrrigationSchedule":"not_implemented_or_independently_validated"
+  }
+}
