@@ -1,31 +1,19 @@
-# Contributing
+# Contributing to the Field Shift pivot
 
-Read [AGENTS.md](AGENTS.md) and [current status](docs/STATUS.md) first. Anyone using an agent that does not discover AGENTS.md automatically should explicitly include it in the task context.
+Read [AGENTS.md](AGENTS.md), [status](docs/STATUS.md) and [workstreams](docs/team/WORKSTREAMS.md) first.
 
-## A small, reviewable contribution
+## One task, one branch, one review
 
-1. Pick or open one issue with an outcome, owner, affected files, dependencies and acceptance criteria. Use the task template; no roles have been assigned automatically.
-2. Update your local `main`, then branch: `git switch -c feat/short-task-name` (or `docs/`, `fix/`, `data/`). For concurrent agents use separate clones or worktrees, e.g. `git worktree add ../field-shift-task -b docs/task main`.
-3. Read relevant canonical docs. Agree on input/output contracts before parallel implementation. Coordinate before changing shared status, contracts or lockfiles.
-4. Make the smallest coherent change. Update evidence and docs with it. Keep large source data outside Git; track reproducible retrieval instructions and compact derived fixtures.
-5. Run `python3 scripts/check_repository.py` and any implementation-specific checks available at that time. Record commands, results and omitted checks.
-6. Open a pull request using the template. Link the issue and explain behavior, evidence, limitations and AI assistance. Obtain a teammate's review for shared interfaces and scientific assumptions; calculations need an independent check.
-7. Resolve review, merge through GitHub, and update the task/handoff. Do not merge unrelated cleanup into a task.
+1. Open or claim a GitHub issue with goal, owner, reviewer, allowed files, acceptance criteria and dependencies.
+2. Base a separate branch/worktree on `chore/clean-slate-new-direction-2026-11-13` during pivot planning. Examples: `docs/new-product-proposal`, `data/source-comparison`, `chore/team-setup`.
+3. Keep changes scoped. Shared specs, contracts, GitHub workflows, lockfiles and global UI files need integration-lead coordination.
+4. Record datasets and factual claims with links, dates, limitations and evidence, never unsupported certainty.
+5. Run `python3 scripts/check_repository.py` and relevant task-specific checks; describe anything not run.
+6. Open a pull request **targeting the pivot branch**, attach evidence and use the PR template. Obtain teammate review for shared assumptions and contracts.
+7. If unfinished, publish a handoff using [the template](docs/team/HANDOFF_TEMPLATE.md).
 
-## Documentation ownership
+Only after the team approves the new plan should it decide how to merge the pivot into `main`. Do not delete or rewrite the previous work to accomplish that. Prefer explicit decisions over divergent agent instructions.
 
-Official claims go in the verification register with exact source, checked date and scope. Proposals go in the relevant spec. Accepted material decisions get a decision record and linked spec update. Source snapshots stay unmodified; annotate them in their wrapper. Do not copy evolving requirements into multiple agent-specific files.
+## Files and datasets
 
-## Maintainer setup
-
-Recommended GitHub settings: protect `main`, require pull requests and the `Repository checks / context` check, and block force-pushes. These settings are recommendations, not changes applied by this contribution. Add CODEOWNERS only after the team agrees real paths and reviewers; no owners are fabricated.
-
-## Reporting a problem
-
-Use the bug template with reproduction, expected behavior, observed result, environment, and safe logs. Report exposed credentials privately to the team lead and rotate them; never paste secrets in an issue.
-
-## Multi-agent workstreams
-
-Use the [workstream ownership guide](docs/team/WORKSTREAMS.md), [folder map](docs/engineering/REPOSITORY_STRUCTURE.md), and [draft contracts](docs/engineering/CONTRACTS.md). Every issue must identify an accountable owner, reviewer, allowed paths, input and output fixtures, and acceptance checks. Ask the integration lead before changing `contracts/`, generated type boundaries, shared app configs or global styles.
-
-Frontend, model and feature engineers may work against the same clearly synthetic fixture while data retrieval is underway. The integrator replaces it with validated real data only after checking units, missing values, provenance and contract compatibility. Do not merge a PR just because its isolated UI looks correct; require domain-relevant tests.
+Do not commit secrets, private participant information, raw/bulk satellite downloads or unexplained sample data. Keep source evidence and provenance when proposing a dataset. Synthetic inputs must be clearly marked, and claims about outputs must match validation actually performed.

@@ -1,21 +1,13 @@
-## Problem and resulting behavior
+## What changes and why?
 
-## Related issue / acceptance criteria
+## Linked issue / approval requested
 
-## Evidence and decisions
+## Files, interfaces and teammates affected
 
-Link canonical docs, official verification or scientific sources where applicable. Label proposals and unknowns.
+## Evidence / assumptions / dataset provenance (if relevant)
 
-## Validation
+## Validation performed and results
 
-Commands and results; include checks not run and why. For scientific changes, include independent calculation/review and uncertainty limits.
+## Checks not run / unresolved risks / AI assistance
 
-## Team handoff and AI use
-
-Record material assistance in docs/AI_USAGE.md. Note shared contracts changed and remaining work.
-
-## Visual/UI changes only
-- [ ] Read `docs/brand/README.md`, `IDENTITY.md`, `COLORS.md`, `DESIGN.md` and `tokens.css`; no new theme, fonts or ad-hoc colors.
-- [ ] Attach/review Arabic RTL + English LTR, desktop + mobile screenshots (or explain not applicable).
-- [ ] Check keyboard/focus, contrast, accessible states, and explicit data-source / synthetic / historical labels.
-- [ ] Link a reviewed design decision if this PR proposes an exception.
+## Reviewer and follow-up

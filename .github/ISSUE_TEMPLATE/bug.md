@@ -1,17 +1,17 @@
 ---
 name: Bug report
-about: Reproduce a problem in behavior, calculations or documentation
+about: Document a reproducible problem
 title: ""
 labels: ""
 assignees: ""
 ---
 
-## Observed and expected behavior
+## Observed behavior
 
-## Reproduction steps and safe sample inputs
+## Expected behavior
 
-## Environment / commit
+## Steps to reproduce
 
-## Impact, evidence and relevant source
+## Environment, logs and safe sample inputs
 
-## Logs or screenshots (remove secrets and personal data)
+## Impact and related issue

@@ -1,3 +1,0 @@
-# Optional, needed only for SoilGrids WCS extraction/inspection.
-rasterio==1.4.3
-pyproj==3.7.2

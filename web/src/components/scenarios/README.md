@@ -1,7 +1,3 @@
-# Scenarios screen
+# Historical workstream placeholder: scenarios
 
-**Primary owner:** Frontend developer
-
-Controls for changing water budget and farmer preferences; call deterministic model functions with explicit units.
-
-See `docs/team/WORKSTREAMS.md` and `docs/engineering/CONTRACTS.md` for coordination and interface rules. This README reserves the folder; it is not a claim that code exists.
+This directory is carried over solely to preserve the original contribution skeleton. It is **not** an approved new-direction feature; rename/remove it once the new product requirements are accepted.

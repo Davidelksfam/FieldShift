@@ -1,5 +1,5 @@
-# Decision records
+# Decision log — new plan
 
-No product or technology decisions have been accepted yet. Repository preparation does not approve the source guide's proposals.
+No **new-direction** product, data, model, architecture or branding decisions are accepted yet. Older decision records remain accessible on `main` but are **not carried forward automatically**.
 
-Copy [TEMPLATE.md](TEMPLATE.md) to `NNNN-short-title.md`. Record status, context, options, decision, consequences, evidence, approver and date. Accepted decisions must update affected canonical specs and status. Supersede old decisions explicitly; preserve history.
+Copy [TEMPLATE.md](TEMPLATE.md) to `NNNN-descriptive-name.md`. Mark it Proposed, Accepted, Rejected or Superseded and include approver/date, evidence, alternatives, and effects on other teams. Update relevant canonical docs only after acceptance.

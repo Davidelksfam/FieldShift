@@ -1,4 +1,4 @@
-name: Repository checks
+name: Planning skeleton checks
 on:
   push:
   pull_request:
@@ -13,23 +13,3 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 scripts/check_repository.py
-      - name: Research acquisition boundary checks
-        run: python3 -m unittest discover -s tests/data -p 'test_*.py'
-      - name: Delta and Fayoum input structure and coverage gates
-        run: python3 scripts/data/validate_regions.py
-  prototype:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: web
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: npm
-          cache-dependency-path: web/package-lock.json
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
-      - run: npm run typecheck
