@@ -89,7 +89,7 @@ Two historical years support replay and pipeline testing. They do not supply a l
 | Feature engineer | Deterministic seasonal adapters in scripts/features with formulas, support and missingness | Boundary/unit tests and independent numerical review; conforms to accepted SeasonalFeatures schema |
 | Model/domain engineer | Reviewed local crop catalog and deterministic feasibility-first baseline | Rotation/family/window/water constraints tested before ranking; missing critical inputs produce an explicit limited/no-result state |
 | Frontend developer | Consume approved JSON and render loading, unavailable and evidence states | Farmer-selected location and farmer-supplied irrigation budget remain distinct from satellite context |
-| UI/UX developer | Accessible Arabic/English and RTL/LTR flows, mobile evidence displays | Units, dates, uncertainty and support readable; design tokens await user-provided brand decisions |
+| UI/UX developer | Accessible Arabic/English and RTL/LTR flows, mobile evidence displays | Units, dates, uncertainty and support readable; follow approved light-green brand tokens and the UI review checklist |
 
 Do not invent team member assignments. Use one owner and one reviewer per issue. Proposed schema changes belong in a reviewed integration change, not separate ad hoc interfaces in each workstream. Keep the existing synthetic fixture clearly labeled until real feature files pass the same contract and scientific checks.
 

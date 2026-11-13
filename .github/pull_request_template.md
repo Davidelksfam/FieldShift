@@ -13,3 +13,9 @@ Commands and results; include checks not run and why. For scientific changes, in
 ## Team handoff and AI use
 
 Record material assistance in docs/AI_USAGE.md. Note shared contracts changed and remaining work.
+
+## Visual/UI changes only
+- [ ] Read `docs/brand/README.md`, `IDENTITY.md`, `COLORS.md`, `DESIGN.md` and `tokens.css`; no new theme, fonts or ad-hoc colors.
+- [ ] Attach/review Arabic RTL + English LTR, desktop + mobile screenshots (or explain not applicable).
+- [ ] Check keyboard/focus, contrast, accessible states, and explicit data-source / synthetic / historical labels.
+- [ ] Link a reviewed design decision if this PR proposes an exception.
