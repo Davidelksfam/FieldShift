@@ -2142,3 +2142,13 @@ html[lang="ar"] .strategy-card h3 {
     min-height: 36px;
   }
 }
+.v2-inspector {
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+}
+.v2-inspector .pipeline-json {
+  max-height: 420px;
+  overflow: auto;
+  max-width: 100%;
+}

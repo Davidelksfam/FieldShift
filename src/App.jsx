@@ -28,6 +28,8 @@ import {
   evaluationInputs,
   comparisonSourceSupport,
 } from "./presentation/farmerModel";
+import { SCIENTIFIC_V2_ENABLED } from "./engine/engineAdapter";
+import ScientificV2Inspector from "./components/ScientificV2Inspector";
 const initialPreset = presets.fayoum_etsa;
 const initialInputs = {
   ...initialPreset.defaults,
@@ -349,6 +351,15 @@ export default function App() {
                 open={evidenceOpen}
                 onToggle={setEvidenceOpen}
               />
+              {SCIENTIFIC_V2_ENABLED && (
+                <ScientificV2Inspector
+                  lang={lang}
+                  data={data}
+                  inputs={inputs}
+                  crops={crops}
+                  location={location}
+                />
+              )}
               {evaluation && (
                 <PipelineExplorer
                   lang={lang}
