@@ -320,6 +320,8 @@ export default function Workspace({ data }: { data: typeof sample }) {
       })),
       sourceBundleVersion: data.version,
       weatherProvenance: data.weatherProvenance,
+      weatherHandoff: data.weatherHandoff,
+      weatherFeature: data.weatherFeature,
       labels: {
         farmerInputs: "hypothetical sample or browser user input",
         schedule: "synthetic interface schedule",
@@ -793,6 +795,15 @@ export default function Workspace({ data }: { data: typeof sample }) {
                   {t("Local review needed", "تحتاج مراجعة محلية")}
                 </Badge>
               </div>
+              <section className="card" data-testid="period-weather">
+                <h3>{t("Historical comparison interval", "فترة المقارنة التاريخية")}</h3>
+                <p dir="ltr">{data.weatherFeature.period.startDate} – {data.weatherFeature.period.endDate} · UTC</p>
+                <p>{t("Modeled POWER weather at the Fayoum query point; not field measurements or a reviewed crop season.", "طقس POWER نمذجي عند نقطة الفيوم؛ ليس قياسات حقلية أو موسم محصول معتمداً.")}</p>
+                <p>{t("Mean temperature", "متوسط الحرارة")}: {data.weatherFeature.metrics.avgAirTempC === null ? t("Unknown", "غير معروف") : fmt(data.weatherFeature.metrics.avgAirTempC, 2)} °C · {t("Period rainfall", "أمطار الفترة")}: {data.weatherFeature.metrics.seasonalRainfallMm === null ? t("Unknown", "غير معروف") : fmt(data.weatherFeature.metrics.seasonalRainfallMm, 2)} mm</p>
+                <p>{data.weatherHandoff.metrics.meanAirTemperatureC.coverage.validDays}/{data.weatherHandoff.metrics.meanAirTemperatureC.coverage.expectedDays} {t("valid temperature days", "يوماً صالحاً للحرارة")} · {data.weatherHandoff.metrics.periodRainfallMm.coverage.validDays}/{data.weatherHandoff.metrics.periodRainfallMm.coverage.expectedDays} {t("valid rainfall days", "يوماً صالحاً للأمطار")}</p>
+                <p>{t("Shared context for all plans. Crop demand and suitability remain unknown without reviewed methods.", "سياق مشترك لكل الخطط. طلب المحصول وملاءمته غير معروفين دون طرق معتمدة.")}</p>
+                <a className="text-button" href="/data/weather-handoff/period-context.proposal-0.2.json" download>{t("Download methods and provenance", "تنزيل الطرق ومصادر البيانات")}</a>
+              </section>
               <div className="plan-grid">
                 {plans.map((p, index) => {
                   const result = assessPlan(p, field, 0);
@@ -1361,6 +1372,7 @@ export default function Workspace({ data }: { data: typeof sample }) {
               <div className="evidence-bottom">
                 <section className="card">
                   <h3>{t("What the sample can support", "ما تدعمه العينة")}</h3>
+                  <a className="text-button" href="/data/weather-handoff/period-context.proposal-0.2.json" download>{t("Comparison-period weather evidence", "أدلة طقس فترة المقارنة")}</a>
                   <ul>
                     <li>
                       {t(
