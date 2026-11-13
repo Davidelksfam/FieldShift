@@ -23,7 +23,7 @@ Shared project context for our NASA Space Apps 2026 team at Zewail City, Giza, E
 | [docs/decisions/](docs/decisions/README.md) | Accepted decisions and proposal template |
 | [docs/delivery/PLAN.md](docs/delivery/PLAN.md) | Ordered backlog, validation and submission checklist |
 | [docs/AI_USAGE.md](docs/AI_USAGE.md) | AI assistance and review disclosure log |
-| [docs/brand/](docs/brand/README.md) | Empty identity and color files awaiting the team's update |
+| [docs/brand/](docs/brand/README.md) | Approved light-green Field Shift brand, design rules and canonical CSS tokens |
 
 
 ## Repository checks
@@ -34,7 +34,7 @@ Requires Python 3.10+; no application dependencies are needed yet.
 python3 scripts/check_repository.py
 ```
 
-This checks local Markdown file links, required context files, and blank brand placeholders. GitHub Actions runs the same check on pushes and pull requests. Build, app test, deployment, and data-processing commands will be documented when the team selects and implements a stack.
+This checks local Markdown file links, required context files, approved brand presence/tokens, and the synthetic fixture. GitHub Actions runs the same check on pushes and pull requests. Build, app test, deployment, and data-processing commands will be documented when the team selects and implements a stack.
 
 ## Workstream folders and integration
 
