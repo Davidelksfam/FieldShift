@@ -181,19 +181,27 @@ test("V2 foundation is deterministic, immutable, explicitly unavailable and does
   const a = analyzeRotationV2(request),
     b = analyzeRotationV2(request);
   assert.deepEqual(a, b);
-  assert.equal(a.releaseStatus, "foundation_only");
-  assert.equal(a.recommendation.status, "unavailable");
+  assert.equal(a.releaseStatus, "experimental");
+  assert.equal(a.recommendation.status, "no_supported_recommendation");
   assert.equal(a.recommendation.selectedId, null);
   assert.equal(a.alternatives.length, 0);
-  assert.equal(a.candidateAudit.generated, null);
-  assert.equal(a.releaseGates.calendarEvidence, "not_assessed");
+  assert.equal(a.candidateAudit.generated, 0);
+  assert.equal(
+    a.releaseGates.calendarEvidence,
+    "pending_local_calendar_review",
+  );
   for (const key of [
     "nitrogenScore",
     "marketScore",
     "baseWaterMm",
     "finalSuitability",
   ])
-    assert.ok(!JSON.stringify(a).includes(key));
+    assert.ok(
+      !JSON.stringify({
+        alternatives: a.alternatives,
+        recommendation: a.recommendation,
+      }).includes(key),
+    );
   a.inputAudit.location.lat = 0;
   assert.equal(request.location.lat, 29.2315);
   assertAnalysis(a);

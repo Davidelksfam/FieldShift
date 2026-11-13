@@ -25,6 +25,27 @@ export function analyzeRotations({
   return analyzeRotationV2({
     ...v2Inputs,
     farmerInputs,
+    cropCatalog,
+    observedData:
+      v2Inputs.observedData ??
+      (data
+        ? {
+            ...data,
+            // The service parser normalizes these values; explicit contradictory units survive.
+            climateUnits: {
+              tmax: data.sources?.climate?.quality?.units?.T2M_MAX ?? "C",
+              ...data.climateUnits,
+            },
+            soilUnits: {
+              nitrogen: "g/kg",
+              soc: "g/kg",
+              phh2o: "pH",
+              clay: "%",
+              sand: "%",
+              ...data.soilUnits,
+            },
+          }
+        : {}),
     sourceProvenance: v2Inputs.sourceProvenance ?? data?.sources ?? {},
   });
 }
