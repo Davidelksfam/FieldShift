@@ -1,0 +1,3 @@
+# Preserve source snapshots exactly, including original Markdown hard breaks.
+docs/reference/Field_Shift_Complete_Strategy_Guide.md -whitespace
+docs/reference/original-repository-readme.md -whitespace
