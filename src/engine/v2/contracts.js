@@ -355,14 +355,28 @@ export function assertCalendarRecord(record, { sourceRegistry } = {}) {
       record.sourceYear === null || Number.isInteger(record.sourceYear),
       "Source year must be an integer or explicitly unknown.",
     );
+    requireCondition(
+      isRecord(sourceRegistry),
+      "Verified calendar requires a resolved source registry.",
+    );
     if (sourceRegistry) {
       const source = sourceRegistry[record.sourceId];
       requireCondition(
         sourceIsAvailable(source) &&
+          source.id === record.sourceId &&
           source.nature === "published_reference" &&
           source.reviewStatus === "verified_reference",
         "Calendar source unavailable or not a checked calendar reference.",
       );
+      requireCondition(
+        [source.url, ...(source.locators ?? [])].includes(record.sourceUrl),
+        "Calendar citation URL does not match the resolved source.",
+      );
+      if (source.cropIds)
+        requireCondition(
+          source.cropIds.includes(record.cropId),
+          "Calendar source does not cover this crop.",
+        );
       if (source.regionIds)
         requireCondition(
           source.regionIds.includes(record.regionId),

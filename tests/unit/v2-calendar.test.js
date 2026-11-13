@@ -477,3 +477,28 @@ test("known crop/use source contradictions cannot prove a temporal hard failure"
     assert.ok(!r.reasonCodes.includes("crop_intervals_overlap"));
   }
 });
+
+test("verified calendar guard cannot invent an unresolved source or borrow a source ID/URL", () => {
+  const record = calendars.records.find(
+    (x) => x.reviewStatus === "partially_verified",
+  );
+  assert.throws(() => assertCalendarRecord(record), /source registry/);
+  const source = calendars.sources[record.sourceId];
+  assert.throws(
+    () =>
+      assertCalendarRecord(record, {
+        sourceRegistry: {
+          [record.sourceId]: { ...source, id: "wrong-source" },
+        },
+      }),
+    /source unavailable/i,
+  );
+  assert.throws(
+    () =>
+      assertCalendarRecord(
+        { ...record, sourceUrl: "test://false-citation" },
+        { sourceRegistry: calendars.sources },
+      ),
+    /citation URL/,
+  );
+});

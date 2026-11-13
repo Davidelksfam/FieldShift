@@ -49,3 +49,5 @@ The arbitrary dates and durations in tests are labeled software fixtures, not Eg
 No complete production calendar is currently verified. Temporal feasibility means the supplied dated scenario passed declared supported checks; it is not agronomic planting approval. No live-provider availability, water savings, yield, soil restoration or scientifically best rotation is claimed.
 
 The production farmer view remains on legacy. Disable `VITE_SCIENTIFIC_V2` and rebuild to remove experimental inspection. PR 1 does not modify legacy engine, source fixtures or current UI. Root integration will run the complete browser suites before opening the stacked review PR. No merge or production deployment was performed here.
+
+Integration hardening: verified/partially verified calendar records now require a resolved registry, matching source ID and explicit citation URL, plus matching crop/region/use. This closes fabricated-source metadata acceptance discovered by independent QA. Additional focused regression retained.
