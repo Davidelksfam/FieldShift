@@ -121,4 +121,8 @@ These are software checks and source verification, not independent agronomic val
 
 ## Rollback
 
-Leave `VITE_ENABLE_SCIENTIFIC_V2` unset/false to retain the legacy default. The new modules are side-effect free and do not mutate datasets. Reverting this PR and its integration imports restores the prior experimental evidence boundary without a data migration. Do not remove legacy code or promote V2 to the farmer default through this PR.
+Leave `VITE_SCIENTIFIC_V2` unset/false to retain the legacy default. The new modules are side-effect free and do not mutate datasets. Reverting this PR and its integration imports restores the prior experimental evidence boundary without a data migration. Do not remove legacy code or promote V2 to the farmer default through this PR.
+
+## Integrated verification
+
+The PR0–4 stack passes 98 unit tests, production build and repository/link checks. Default browser suite passes 10/10; experimental browser suite passes 1/1. Nine frozen legacy outputs remain unchanged. Source-backed indicator screening is tested as screening, not field outcome validation.
