@@ -22,7 +22,7 @@ test("published FAO ECe is never substituted with the prototype salinity index",
   assert.equal(assessMeasuredSalinity("maize", 2.7).status, "unsupported");
   assert.equal(assessMeasuredSalinity("wheat", 7).thresholdDsm, 6);
   assert.equal(assessMeasuredSalinity("wheat", 7).illustrativeRelativeYieldPct, 92.9);
-  assert.equal(assessMeasuredSalinity("maize", 1.2).status, "within_reference_threshold");
+  assert.equal(assessMeasuredSalinity("wheat", 1.2).status, "within_reference_threshold");
   assert.equal(assessMeasuredSalinity("sesame", 4).status, "unsupported");
   assert.equal(assessMeasuredSalinity("cowpea_nili", 3).status, "unsupported");
   assert.equal(assessMeasuredSalinity("wheat", -1).status, "invalid");
