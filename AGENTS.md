@@ -27,3 +27,7 @@ Implement constraints before ranking. Keep scientific calculations deterministic
 Run `python3 scripts/check_repository.py` for repository documentation changes. Once app commands exist, run the relevant checks documented beside the implementation. Add meaningful tests for calculation, feasibility, units, missing values and scenario boundaries when those components are implemented. Do not claim unrun checks passed. Report changed behavior, checks and unresolved risks; leave a reproducible handoff if incomplete.
 
 Never commit secrets, tokens, private farmer details, bulky raw satellite downloads, or local agent session history. Keep credentials in ignored local environment files, and document variable names without values when needed. Record material AI contributions and human review in `docs/AI_USAGE.md`.
+
+## Workstream-specific ownership and contracts
+
+Before edits read `docs/team/WORKSTREAMS.md`, `docs/engineering/REPOSITORY_STRUCTURE.md`, and `docs/engineering/CONTRACTS.md`. Claim a scoped issue and respect primary folder ownership. Shared contract/configuration/lockfile edits require a dedicated reviewed integration change; do not invent team member assignments. Use `data/fixtures/` for labeled synthetic integration inputs, never represent those values as NASA data. The folder skeleton does not authorize application implementation before event rules are checked.

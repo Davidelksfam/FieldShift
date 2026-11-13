@@ -35,3 +35,14 @@ python3 scripts/check_repository.py
 ```
 
 This checks local Markdown file links, required context files, and blank brand placeholders. GitHub Actions runs the same check on pushes and pull requests. Build, app test, deployment, and data-processing commands will be documented when the team selects and implements a stack.
+
+## Workstream folders and integration
+
+The organizational layout is prepared for **data engineering**, **feature engineering**, **deterministic modeling**, **frontend**, **UI/UX**, and **integration**. No member assignments or application implementation are implied.
+
+1. Read [workstream ownership](docs/team/WORKSTREAMS.md) and the [folder map](docs/engineering/REPOSITORY_STRUCTURE.md).
+2. Review the draft [cross-team contracts](docs/engineering/CONTRACTS.md) and the clearly synthetic sample in `data/fixtures/`.
+3. Select one GitHub issue, one branch/worktree, and task-scoped files; follow [contribution rules](CONTRIBUTING.md).
+4. Do not begin live product coding until event restrictions and stack decisions are resolved.
+
+`web/` is reserved for a future Vercel-friendly app, **not a runnable Next.js project yet**. No `package.json`, lockfile, NASA integration or deployment is claimed.
