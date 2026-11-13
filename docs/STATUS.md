@@ -51,3 +51,7 @@ Eight-crop rule research: [review sheets](data/crop-rules/README.md) and sixteen
 The user explicitly requested a complete baseline and Vercel deployment. A Next.js app now implements field inputs, three editable illustrative plans using the eight-crop catalog, hypothetical water scenarios, evidence, browser-local field saving and JSON export. See [runbook](engineering/PROTOTYPE_RUNBOOK.md). Cached Fayoum weather is real historical modeled context; schedules and demand assumptions are synthetic. Agronomic rule enablement remains false. Local build and browser verification are recorded in the implementation PR; Vercel team access is now authorized, and the public production deployment is READY at https://fieldshift-tau.vercel.app. Earlier no-app statements describe the preparation stage and are superseded for this prototype.
 
 Deployment verified: PR #8 merged; complete live browser flow passed in Arabic/English at mobile/tablet/desktop widths. The user explicitly approved public prototype access. See the runbook and deployment manifest.
+
+## Weather handoff review
+
+A [bounded weather handoff audit](data/WEATHER_HANDOFF_AUDIT.md) now documents the prototype comparison interval, native POWER numerical agreement, compatible draft-v1 features and per-metric evidence. Comparison/evidence/export consume this context without enabling crop or irrigation science. Provider refresh remains blocked by absent Earthdata/AppEEARS credentials; readiness stays false.

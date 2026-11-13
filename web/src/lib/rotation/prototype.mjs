@@ -36,6 +36,13 @@ export function assessPlan(plan, field, reduction = 0) {
     field.excluded.includes(c),
   );
   return {
+    constraints: {
+      cropExclusions: excluded.length ? "fail" : "pass",
+      enteredCalendar: !validDates ? "unknown" : plan.winterEnd < plan.summerStart ? "pass" : "fail",
+      illustrativeWaterBudget: available === null || demand === null ? "unknown" : demand <= available ? "pass" : "fail",
+      agronomicSuitability: "unknown",
+      irrigationDemand: "unknown",
+    },
     available,
     demand,
     balance: available !== null && demand !== null ? available - demand : null,

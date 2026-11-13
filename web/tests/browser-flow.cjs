@@ -93,6 +93,12 @@ const baseURL = process.env.BASE_URL || "http://localhost:3000";
     payload.plans[0].winter !== "barley"
   )
     throw Error("Export provenance/state mismatch");
+  if (payload.weatherFeature.metrics.seasonalRainfallMm !== 80.39 || payload.weatherHandoff.metrics.periodRainfallMm.coverage.validDays !== 365) throw Error("Weather handoff export mismatch");
+  const evidence = await page.evaluate(async () => {
+    const r = await fetch('/data/weather-handoff/period-context.proposal-0.2.json');
+    return {ok:r.ok, data:await r.json()};
+  });
+  if (!evidence.ok || evidence.data.period.startDate !== '2024-10-01') throw Error('Period evidence unavailable');
   await page
     .getByRole("button", { name: "Understand the evidence", exact: true })
     .click();
@@ -145,6 +151,11 @@ const baseURL = process.env.BASE_URL || "http://localhost:3000";
   await page
     .getByText("Water comparison unavailable", { exact: true })
     .waitFor();
+  await page.locator(".nav-item").nth(0).click();
+  await page.getByLabel("Available water · m³").fill("0");
+  await page.locator(".nav-item").nth(2).click();
+  await page.getByLabel("Enable demonstration demand assumptions").check();
+  await page.getByText("Exceeds the demonstration budget", {exact:true}).waitFor();
   if (errors.length) throw Error(errors.join("\n"));
   console.log(
     "PASS: all four screens, eight crop choices, save/reload, assumption toggle, unknown water, scenario, JSON export, source download, RTL/LTR at 390/768/1440, no page errors",

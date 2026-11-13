@@ -59,3 +59,23 @@ test("overflow cannot become a demand estimate", () =>
     assessPlan(plans[0], { ...field, areaHa: "1e308" }).demand,
     null,
   ));
+
+test("weather handoff matches cycle, retains coverage and cannot enable agronomy", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const data = JSON.parse(await readFile(new URL("../src/lib/sample-data.json", import.meta.url)));
+  assert.equal(data.weatherFeature.period.startDate, "2024-10-01");
+  assert.equal(data.weatherFeature.period.endDate, "2025-09-30");
+  assert.equal(data.weatherFeature.metrics.seasonalRainfallMm, 80.39);
+  assert.equal(data.weatherHandoff.metrics.periodRainfallMm.coverage.validDays, 365);
+  assert.equal(data.weatherFeature.metrics.heatExposureDays, null);
+  assert.equal(assessPlan(plans[0], { ...field, demoDemand: false }).water, "unknown");
+});
+
+test("constraint states preserve unknown scientific results and zero supply", () => {
+  const zero = assessPlan(plans[0], { ...field, waterM3: "0" });
+  assert.equal(zero.constraints.illustrativeWaterBudget, "fail");
+  assert.equal(zero.constraints.irrigationDemand, "unknown");
+  assert.equal(zero.constraints.agronomicSuitability, "unknown");
+  assert.equal(assessPlan(plans[0], { ...field, waterM3: "" }).constraints.illustrativeWaterBudget, "unknown");
+  assert.equal(assessPlan(plans[0], field).constraints.cropExclusions, "pass");
+});
