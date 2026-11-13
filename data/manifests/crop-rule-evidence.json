@@ -1,0 +1,680 @@
+{
+  "schemaVersion": "crop-rule-evidence-0.1",
+  "status": "research_evidence_not_approved_model_rules",
+  "sources": [
+    {
+      "sourceId": "field-crops-2007",
+      "title": "Field Crop Production: cereals, pulses and oil crops",
+      "issuer": "Ain Shams University Open Education; hosted by Fayoum University",
+      "publicationYear": 2007,
+      "url": "https://fymweb.fayoum.edu.eg/openedu/pdf/3-%20%D8%A7%D9%86%D8%AA%D8%A7%D8%AC%20%D9%85%D8%AD%D8%A7%D8%B5%D9%8A%D9%84%20%D8%A7%D9%84%D8%AD%D9%82%D9%84.pdf",
+      "retrievedOn": "2026-11-13",
+      "sha256": "dbf4b1708f55cdbff6499ace77cc52f35bbd881ff07efe12a8c0e7ceba42eaa2",
+      "accessStatus": "full_pdf_read",
+      "scope": "Historical teaching text, not a current local extension approval"
+    },
+    {
+      "sourceId": "fao56-ch6",
+      "title": "FAO-56 chapter 6, Tables 11 and 12 and associated notes",
+      "issuer": "FAO",
+      "publicationYear": 1998,
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+      "retrievedOn": "2026-11-13",
+      "sha256": null,
+      "accessStatus": "full_web_page_read",
+      "scope": "Generic standard-condition methodology; indicative stages and coefficients need local adaptation"
+    },
+    {
+      "sourceId": "sunflower-extension-2014",
+      "title": "Sunflower cultivation",
+      "issuer": "Page identifies itself as Ministry of Agriculture extension sector; hosted on Kenana Online",
+      "publicationYear": null,
+      "url": "https://kenanaonline.com/users/aac/posts/585901",
+      "retrievedOn": "2026-11-13",
+      "sha256": null,
+      "accessStatus": "full_web_page_read",
+      "scope": "Historical extension-page guidance, exact publication date not independently verified"
+    },
+    {
+      "sourceId": "barley-kenana",
+      "title": "Barley field-crop guide",
+      "issuer": "Kenana Online fieldcrops account; issuing authority not independently verified",
+      "publicationYear": 2014,
+      "url": "https://kenanaonline.com/users/fieldcrops/posts/584731",
+      "retrievedOn": "2026-11-13",
+      "sha256": null,
+      "accessStatus": "full_web_page_read",
+      "scope": "Supporting secondary-hosted candidate, not sufficient for local approval"
+    },
+    {
+      "sourceId": "arc-soybean-bulletin",
+      "title": "Soybean bulletin, ARC attachment 2997",
+      "issuer": "Agricultural Research Center",
+      "publicationYear": null,
+      "url": "https://www.arc.sci.eg/files/2997/Attachment.pdf",
+      "retrievedOn": "2026-11-13",
+      "sha256": null,
+      "accessStatus": "search_index_only_full_fetch_failed",
+      "scope": "Search-index discrepancy retained; cannot verify full context or approve numeric rule"
+    }
+  ],
+  "crops": [
+    {
+      "cropId": "wheat",
+      "nameEn": "Wheat",
+      "nameAr": "قمح",
+      "harvestUse": "grain",
+      "evidenceClaims": [
+        {
+          "claimId": "wheat-1",
+          "sourceId": "field-crops-2007",
+          "locator": "PDF page 28, printed page 25",
+          "parameter": "sowing_window",
+          "geographicScope": "Lower Egypt",
+          "summary": "Preferred November 10–20; latest end-November.",
+          "value": {
+            "startMonthDay": "11-10",
+            "endMonthDay": "11-20"
+          },
+          "precision": "day_range",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": "wheat-cultivar-timing"
+        },
+        {
+          "claimId": "wheat-2",
+          "sourceId": "field-crops-2007",
+          "locator": "PDF page 29, printed page 26",
+          "parameter": "sowing_window",
+          "geographicScope": "Named historical Sids cultivars; valley/new lands",
+          "summary": "November 15–30 for specified Sids cultivars.",
+          "value": {
+            "startMonthDay": "11-15",
+            "endMonthDay": "11-30"
+          },
+          "precision": "day_range",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": "wheat-cultivar-timing"
+        }
+      ],
+      "waterReference": {
+        "sourceId": "fao56-ch6",
+        "locator": "Table 12: spring wheat versus winter wheat/non-frozen soil; resolve actual crop habit first",
+        "coefficients": null,
+        "status": "method_reference_only",
+        "notes": "Generic reference is not locally validated Kc or irrigation demand; wetting/climate/stage/harvest conditions must be resolved."
+      },
+      "regions": [
+        {
+          "regionId": "egypt-nile-delta",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        },
+        {
+          "regionId": "egypt-fayoum",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        }
+      ],
+      "specificReviewTask": "Resolve cultivar-specific windows and current regional advice; no automatic Middle/Upper Egypt mapping to Fayoum.",
+      "missingRequirements": [
+        "Current locality/cultivar/harvest-specific sowing and field-release dates",
+        "Reviewed stage lengths and crop coefficient applicability",
+        "Sourced rotation and soil/water restrictions",
+        "Defined effective-rain, soil-water and field-inlet loss accounting",
+        "Independent domain review with source references"
+      ],
+      "resultPolicy": "Missing required rules => unknown; never feasible by default"
+    },
+    {
+      "cropId": "barley",
+      "nameEn": "Barley",
+      "nameAr": "شعير",
+      "harvestUse": "grain",
+      "evidenceClaims": [
+        {
+          "claimId": "barley-1",
+          "sourceId": "barley-kenana",
+          "locator": "Sowing date section",
+          "parameter": "sowing_window",
+          "geographicScope": "Irrigated Lower Egypt",
+          "summary": "November 20–December 15.",
+          "value": {
+            "startMonthDay": "11-20",
+            "endMonthDay": "12-15"
+          },
+          "precision": "day_range",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": null
+        }
+      ],
+      "waterReference": {
+        "sourceId": "fao56-ch6",
+        "locator": "Table 12: Barley",
+        "coefficients": null,
+        "status": "method_reference_only",
+        "notes": "Generic reference is not locally validated Kc or irrigation demand; wetting/climate/stage/harvest conditions must be resolved."
+      },
+      "regions": [
+        {
+          "regionId": "egypt-nile-delta",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        },
+        {
+          "regionId": "egypt-fayoum",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        }
+      ],
+      "specificReviewTask": "Separate irrigated grain from rainfed guidance and fodder use; confirm current issuer and local window.",
+      "missingRequirements": [
+        "Current locality/cultivar/harvest-specific sowing and field-release dates",
+        "Reviewed stage lengths and crop coefficient applicability",
+        "Sourced rotation and soil/water restrictions",
+        "Defined effective-rain, soil-water and field-inlet loss accounting",
+        "Independent domain review with source references"
+      ],
+      "resultPolicy": "Missing required rules => unknown; never feasible by default"
+    },
+    {
+      "cropId": "faba_bean",
+      "nameEn": "Faba bean",
+      "nameAr": "فول بلدي",
+      "harvestUse": "dry_grain",
+      "evidenceClaims": [
+        {
+          "claimId": "faba_bean-1",
+          "sourceId": "field-crops-2007",
+          "locator": "PDF page 137, printed page 134",
+          "parameter": "sowing_window",
+          "geographicScope": "Lower Egypt",
+          "summary": "Last October week through mid-November.",
+          "value": null,
+          "precision": "descriptive",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": null
+        },
+        {
+          "claimId": "faba_bean-2",
+          "sourceId": "field-crops-2007",
+          "locator": "PDF page 137, printed page 134",
+          "parameter": "sowing_window",
+          "geographicScope": "Fayoum explicitly named with neighboring governorates",
+          "summary": "Staggered sowing through first November week; start unresolved.",
+          "value": null,
+          "precision": "descriptive",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": null
+        }
+      ],
+      "waterReference": {
+        "sourceId": "fao56-ch6",
+        "locator": "Table 12: Faba Bean, Dry/Seed (not Fresh)",
+        "coefficients": null,
+        "status": "method_reference_only",
+        "notes": "Generic reference is not locally validated Kc or irrigation demand; wetting/climate/stage/harvest conditions must be resolved."
+      },
+      "regions": [
+        {
+          "regionId": "egypt-nile-delta",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        },
+        {
+          "regionId": "egypt-fayoum",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        }
+      ],
+      "specificReviewTask": "Use dry-grain harvest rules, not green-pod maturity; obtain broomrape/disease history and cultivar guidance.",
+      "missingRequirements": [
+        "Current locality/cultivar/harvest-specific sowing and field-release dates",
+        "Reviewed stage lengths and crop coefficient applicability",
+        "Sourced rotation and soil/water restrictions",
+        "Defined effective-rain, soil-water and field-inlet loss accounting",
+        "Independent domain review with source references"
+      ],
+      "resultPolicy": "Missing required rules => unknown; never feasible by default"
+    },
+    {
+      "cropId": "berseem",
+      "nameEn": "Egyptian clover (berseem)",
+      "nameAr": "برسيم مصري",
+      "harvestUse": "forage",
+      "evidenceClaims": [],
+      "waterReference": {
+        "sourceId": "fao56-ch6",
+        "locator": "Table 12: Clover hay, Berseem; averaged versus individual cutting effects, footnotes 13–14",
+        "coefficients": null,
+        "status": "method_reference_only",
+        "notes": "Generic reference is not locally validated Kc or irrigation demand; wetting/climate/stage/harvest conditions must be resolved."
+      },
+      "regions": [
+        {
+          "regionId": "egypt-nile-delta",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        },
+        {
+          "regionId": "egypt-fayoum",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        }
+      ],
+      "specificReviewTask": "A multi-cut forage needs cultivar, cut dates and field-release date; annual single-harvest durations do not apply.",
+      "missingRequirements": [
+        "Current locality/cultivar/harvest-specific sowing and field-release dates",
+        "Reviewed stage lengths and crop coefficient applicability",
+        "Sourced rotation and soil/water restrictions",
+        "Defined effective-rain, soil-water and field-inlet loss accounting",
+        "Independent domain review with source references"
+      ],
+      "resultPolicy": "Missing required rules => unknown; never feasible by default"
+    },
+    {
+      "cropId": "maize",
+      "nameEn": "Maize",
+      "nameAr": "ذرة شامية",
+      "harvestUse": "grain",
+      "evidenceClaims": [
+        {
+          "claimId": "maize-1",
+          "sourceId": "field-crops-2007",
+          "locator": "PDF page 100, printed page 97",
+          "parameter": "sowing_context",
+          "geographicScope": "Egypt, general",
+          "summary": "Broad April–August context; not a single optimum window.",
+          "value": {
+            "startMonth": 4,
+            "endMonth": 8
+          },
+          "precision": "month_range",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": null
+        }
+      ],
+      "waterReference": {
+        "sourceId": "fao56-ch6",
+        "locator": "Table 12: Maize, Field (grain), footnote 11",
+        "coefficients": null,
+        "status": "method_reference_only",
+        "notes": "Generic reference is not locally validated Kc or irrigation demand; wetting/climate/stage/harvest conditions must be resolved."
+      },
+      "regions": [
+        {
+          "regionId": "egypt-nile-delta",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        },
+        {
+          "regionId": "egypt-fayoum",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        }
+      ],
+      "specificReviewTask": "Use grain maize, not sweet corn or silage; verify hybrid and drying/field-release interval.",
+      "missingRequirements": [
+        "Current locality/cultivar/harvest-specific sowing and field-release dates",
+        "Reviewed stage lengths and crop coefficient applicability",
+        "Sourced rotation and soil/water restrictions",
+        "Defined effective-rain, soil-water and field-inlet loss accounting",
+        "Independent domain review with source references"
+      ],
+      "resultPolicy": "Missing required rules => unknown; never feasible by default"
+    },
+    {
+      "cropId": "sorghum",
+      "nameEn": "Grain sorghum",
+      "nameAr": "ذرة رفيعة للحبوب",
+      "harvestUse": "grain",
+      "evidenceClaims": [
+        {
+          "claimId": "sorghum-1",
+          "sourceId": "field-crops-2007",
+          "locator": "PDF page 116, printed page 113",
+          "parameter": "sowing_window",
+          "geographicScope": "Fayoum explicitly named",
+          "summary": "May sowing.",
+          "value": {
+            "startMonth": 5,
+            "endMonth": 5
+          },
+          "precision": "month_range",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": null
+        }
+      ],
+      "waterReference": {
+        "sourceId": "fao56-ch6",
+        "locator": "Table 12: Sorghum, grain (not sweet sorghum or Sudan grass hay)",
+        "coefficients": null,
+        "status": "method_reference_only",
+        "notes": "Generic reference is not locally validated Kc or irrigation demand; wetting/climate/stage/harvest conditions must be resolved."
+      },
+      "regions": [
+        {
+          "regionId": "egypt-nile-delta",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        },
+        {
+          "regionId": "egypt-fayoum",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        }
+      ],
+      "specificReviewTask": "Confirm grain-use cultivar; do not substitute forage or dual-purpose schedules.",
+      "missingRequirements": [
+        "Current locality/cultivar/harvest-specific sowing and field-release dates",
+        "Reviewed stage lengths and crop coefficient applicability",
+        "Sourced rotation and soil/water restrictions",
+        "Defined effective-rain, soil-water and field-inlet loss accounting",
+        "Independent domain review with source references"
+      ],
+      "resultPolicy": "Missing required rules => unknown; never feasible by default"
+    },
+    {
+      "cropId": "soybean",
+      "nameEn": "Soybean",
+      "nameAr": "فول صويا",
+      "harvestUse": "grain",
+      "evidenceClaims": [
+        {
+          "claimId": "soybean-1",
+          "sourceId": "field-crops-2007",
+          "locator": "PDF page 189, printed page 186",
+          "parameter": "sowing_window",
+          "geographicScope": "Egypt, general",
+          "summary": "Early April through end-May.",
+          "value": {
+            "startMonth": 4,
+            "endMonth": 5
+          },
+          "precision": "month_range",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": "soybean-bulletin-context"
+        },
+        {
+          "claimId": "soybean-index-lead",
+          "sourceId": "arc-soybean-bulletin",
+          "locator": "Search index; full bulletin fetch failed",
+          "parameter": "sowing_window",
+          "geographicScope": "Unverified full context",
+          "summary": "Index mentions May; reconcile full bulletin with older textbook.",
+          "value": null,
+          "precision": "unverified",
+          "status": "discovery_only",
+          "reviewer": null,
+          "conflictGroup": "soybean-bulletin-context"
+        }
+      ],
+      "waterReference": {
+        "sourceId": "fao56-ch6",
+        "locator": "Table 12: Soybeans",
+        "coefficients": null,
+        "status": "method_reference_only",
+        "notes": "Generic reference is not locally validated Kc or irrigation demand; wetting/climate/stage/harvest conditions must be resolved."
+      },
+      "regions": [
+        {
+          "regionId": "egypt-nile-delta",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        },
+        {
+          "regionId": "egypt-fayoum",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        }
+      ],
+      "specificReviewTask": "Obtain full ARC bulletin and reconcile timing; confirm cultivar/maturity group and local suitability.",
+      "missingRequirements": [
+        "Current locality/cultivar/harvest-specific sowing and field-release dates",
+        "Reviewed stage lengths and crop coefficient applicability",
+        "Sourced rotation and soil/water restrictions",
+        "Defined effective-rain, soil-water and field-inlet loss accounting",
+        "Independent domain review with source references"
+      ],
+      "resultPolicy": "Missing required rules => unknown; never feasible by default"
+    },
+    {
+      "cropId": "sunflower",
+      "nameEn": "Sunflower",
+      "nameAr": "عباد الشمس",
+      "harvestUse": "oilseed",
+      "evidenceClaims": [
+        {
+          "claimId": "sunflower-1",
+          "sourceId": "sunflower-extension-2014",
+          "locator": "Sowing-date and maturity sections",
+          "parameter": "sowing_context",
+          "geographicScope": "Egypt, different planting cycles",
+          "summary": "Multiple planting cycles; do not treat the whole season as one optimum.",
+          "value": null,
+          "precision": "descriptive",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": null
+        },
+        {
+          "claimId": "sunflower-2",
+          "sourceId": "sunflower-extension-2014",
+          "locator": "Maturity section",
+          "parameter": "maturity_duration",
+          "geographicScope": "Cultivar, sowing date, region and soil dependent",
+          "summary": "Maturity reported at 90–100 days; field-clearance timing is separate.",
+          "value": {
+            "min": 90,
+            "max": 100,
+            "unit": "days"
+          },
+          "precision": "range",
+          "status": "source_supported_candidate",
+          "reviewer": null,
+          "conflictGroup": null
+        }
+      ],
+      "waterReference": {
+        "sourceId": "fao56-ch6",
+        "locator": "Table 12: Sunflower, footnote 9",
+        "coefficients": null,
+        "status": "method_reference_only",
+        "notes": "Generic reference is not locally validated Kc or irrigation demand; wetting/climate/stage/harvest conditions must be resolved."
+      },
+      "regions": [
+        {
+          "regionId": "egypt-nile-delta",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        },
+        {
+          "regionId": "egypt-fayoum",
+          "modelEnabled": false,
+          "reviewStatus": "unreviewed",
+          "approvedRules": {
+            "sowingWindow": null,
+            "durationDays": null,
+            "stageLengthsDays": null,
+            "rotationRestrictions": null,
+            "soilAndWaterRestrictions": null,
+            "waterDemandMethod": null
+          },
+          "reviewer": null,
+          "approvedEvidenceRefs": []
+        }
+      ],
+      "specificReviewTask": "Distinguish oilseed from confectionery use and sole cropping from intercropping.",
+      "missingRequirements": [
+        "Current locality/cultivar/harvest-specific sowing and field-release dates",
+        "Reviewed stage lengths and crop coefficient applicability",
+        "Sourced rotation and soil/water restrictions",
+        "Defined effective-rain, soil-water and field-inlet loss accounting",
+        "Independent domain review with source references"
+      ],
+      "resultPolicy": "Missing required rules => unknown; never feasible by default"
+    }
+  ],
+  "accessLimitations": [
+    "ARC soybean/maize PDF downloads failed; search snippets were not promoted to approved evidence.",
+    "Textbook is a 2007 Ain Shams teaching text hosted at Fayoum University, not a current Fayoum extension bulletin."
+  ],
+  "accuracyPolicy": "Evidence fidelity, applicability and review are recorded separately. No numeric confidence percentage or local approval is invented."
+}
