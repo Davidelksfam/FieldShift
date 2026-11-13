@@ -4,7 +4,7 @@
 
 [Status](STATUS.md) → [challenge](challenge/BRIEF.md) → [verification](challenge/VERIFICATION.md) → [product](product/PRD.md) → [data](data/DATA_PLAN.md) → [architecture](engineering/ARCHITECTURE.md) → [delivery](delivery/PLAN.md).
 
-Also read [team](team/TEAM.md), [handoff template](team/HANDOFF_TEMPLATE.md), [decision records](decisions/README.md), [AI log](AI_USAGE.md), [brand placeholders](brand/README.md), and [source archive](reference/README.md).
+Also read [team](team/TEAM.md), [handoff template](team/HANDOFF_TEMPLATE.md), [decision records](decisions/README.md), [AI log](AI_USAGE.md), [approved visual brand](brand/README.md), and [source archive](reference/README.md).
 
 ## One home for each kind of truth
 
@@ -24,3 +24,6 @@ This repository is authoritative for the team's recorded context, not a substitu
 - [Organizational decision record](decisions/0001-workstream-directory-layout.md)
 
 The contract and directory layout are for collaboration; product and technology choices are still subject to the accepted decision process.
+## Design implementation guidance
+
+The light-green Field Shift direction is user-approved: [brand system](brand/README.md), [identity](brand/IDENTITY.md), [colors](brand/COLORS.md), [UI design rules](brand/DESIGN.md) and [CSS tokens](brand/tokens.css). For future frontend code, also follow [web/AGENTS.md](../web/AGENTS.md). These constrain styling, not scientific methods.

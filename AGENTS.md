@@ -20,7 +20,7 @@ Current work is repository setup and research. Before project implementation, re
 
 Implement constraints before ranking. Keep scientific calculations deterministic and inspectable; an LLM may explain sourced results but must not invent scientific parameters or become the decision authority. Preserve units, missing-data behavior, native spatial/temporal scale, provenance and uncertainty. Label mock, historical, modeled and hypothetical values explicitly. Do not represent model sensitivity as success probability, or regional pixels as field sensors.
 
-`docs/brand/IDENTITY.md` and `docs/brand/COLORS.md` must remain zero-byte files until the user/team explicitly supplies or authorizes their content. Do not fill in names, logos, palettes, typography, or design tokens as defaults.
+**User-approved visual design (2026-11-13):** for every UI/visual task, read `docs/brand/README.md`, `IDENTITY.md`, `COLORS.md`, `DESIGN.md` and `tokens.css` (all under `docs/brand/`), plus the nested `web/AGENTS.md`. Follow the approved light/white/green direction and semantic tokens; do not invent another palette or revive the prior dark design. Any exception needs a scoped, reviewed design decision. This visual approval does not authorize application implementation or scientific claims.
 
 ## Verification and completion
 

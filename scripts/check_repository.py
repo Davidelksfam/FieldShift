@@ -17,6 +17,9 @@ REQUIRED = (
     'docs/reference/Field_Shift_Complete_Strategy_Guide.md',
     'docs/reference/original-repository-readme.md',
     'docs/brand/IDENTITY.md', 'docs/brand/COLORS.md',
+    'docs/brand/DESIGN.md', 'docs/brand/README.md',
+    'docs/brand/tokens.css', 'web/AGENTS.md',
+    'assets/brand/field-shift-mark.svg',
     'docs/team/WORKSTREAMS.md', 'docs/engineering/REPOSITORY_STRUCTURE.md',
     'docs/engineering/CONTRACTS.md',
     'contracts/seasonal-features.v1.schema.json',
@@ -26,11 +29,21 @@ errors = []
 for name in REQUIRED:
     if not (ROOT / name).is_file():
         errors.append(f'Missing context file: {name}')
-# Temporary user-requested placeholders. Remove this assertion when content is authorized.
-for name in ('IDENTITY.md', 'COLORS.md'):
+# User-approved brand files must now be populated (decision 0002).
+for name in ('IDENTITY.md', 'COLORS.md', 'DESIGN.md', 'tokens.css'):
     path = ROOT / 'docs/brand' / name
-    if path.exists() and path.stat().st_size:
-        errors.append(f'Brand placeholder must remain empty: {path.relative_to(ROOT)}')
+    if path.exists() and not path.read_text().strip():
+        errors.append(f'Approved brand file must not be empty: {path.relative_to(ROOT)}')
+tokens_path = ROOT / 'docs/brand/tokens.css'
+if tokens_path.exists():
+    tokens_text = tokens_path.read_text()
+    for token in ('--fs-brand-primary', '--fs-action-bg', '--fs-bg-surface',
+                  '--fs-bg-canvas', '--fs-text-primary', '--fs-border'):
+        if not re.search(r'^\\s*' + re.escape(token) + r'\\s*:', tokens_text, re.M):
+            errors.append(f'Missing canonical UI token: {token}')
+    defined_tokens = re.findall(r'^\\s*(--fs-[\\w-]+)\\s*:', tokens_text, re.M)
+    if len(defined_tokens) != len(set(defined_tokens)):
+        errors.append('Duplicate Field Shift CSS design token name')
 
 checked = 0
 for path in ROOT.rglob('*.md'):
@@ -77,5 +90,5 @@ except (OSError, json.JSONDecodeError, TypeError) as exc:
 if errors:
     print('\n'.join(errors), file=sys.stderr)
     sys.exit(1)
-print(f'PASS: {len(REQUIRED)} required files, {checked} local links, empty brand placeholders, draft JSON fixture checks')
+print(f'PASS: {len(REQUIRED)} required files, {checked} local links, approved brand files and tokens, draft JSON fixture checks')
 print('Archived source snapshots excluded from link checks; external URLs and anchors not validated.')
