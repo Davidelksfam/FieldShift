@@ -1,14 +1,14 @@
-# Documentation map — planning reset
+# Documentation map
 
-- [Status and unresolved decisions](STATUS.md)
-- [Official challenge brief to verify](challenge/BRIEF.md) and [verification register](challenge/VERIFICATION.md)
-- [Product options and requirements](product/PRD.md)
-- [Dataset candidates and evidence](data/DATA_PLAN.md)
-- [Architecture](engineering/ARCHITECTURE.md) and [interface contracts](engineering/CONTRACTS.md)
-- [Folder/workstream map](engineering/REPOSITORY_STRUCTURE.md) and [workstreams](team/WORKSTREAMS.md)
-- [Plan and milestones](delivery/PLAN.md)
-- [Decision log](decisions/README.md) and [decision template](decisions/TEMPLATE.md)
-- [Team roster](team/TEAM.md), [handoff template](team/HANDOFF_TEMPLATE.md) and [AI usage](AI_USAGE.md)
-- [Brand placeholders](brand/README.md) and [reference policy](reference/README.md)
+- [Implementation blueprint](../IMPLEMENTATION_PLAN.md) and [current status](STATUS.md)
+- [Product scope](product/PRD.md)
+- [Data selection, access findings and provenance](data/DATA_PLAN.md)
+- [Architecture](engineering/ARCHITECTURE.md), [contracts](engineering/CONTRACTS.md), [directory map](engineering/REPOSITORY_STRUCTURE.md)
+- [Brand system and assets](brand/README.md)
+- [Decisions](decisions/README.md), [template](decisions/TEMPLATE.md)
+- [Delivery and verification evidence](delivery/PLAN.md)
+- [Challenge brief](challenge/BRIEF.md) and [unverified official requirements](challenge/VERIFICATION.md)
+- [Team roster](team/TEAM.md), [workstreams](team/WORKSTREAMS.md), [handoff template](team/HANDOFF_TEMPLATE.md)
+- [AI assistance](AI_USAGE.md) and [historical reference policy](reference/README.md)
 
-New product features, datasets and architectural choices are **not accepted** until a decision record is approved. Existing `main` content is historical context, not current instructions.
+The root Vite/React SPA is the accepted implementation direction. Synthetic fixtures, historical source observations and modeled outputs must remain distinguishable. Previous prototype code survives in history and older branches.

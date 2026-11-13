@@ -1,18 +1,14 @@
-# Contribution-oriented repository structure
+# Repository structure
 
-This folder tree is a **collaboration scaffold**, not an architecture choice.
+The runnable application is at repository root: `package.json`, `vite.config.js`, `index.html`, `src/`, `public/`. See the full [target tree](../../IMPLEMENTATION_PLAN.md).
 
-| Location | Provisional lane |
-| --- | --- |
-| `docs/product/`, `docs/challenge/`, `docs/delivery/` | Product/research and release coordination |
-| `docs/team/`, `docs/decisions/`, `.github/` | Team coordination, review and accepted decisions |
-| `docs/data/`, `data/`, `scripts/data/` | Source audit, acquisition and quality |
-| `scripts/features/`, `tests/features/` | Data transformations and validation |
-| `contracts/`, `tests/integration/` | Shared interface review and integration checks |
-| `web/`, `web/src/components/ui/` | Future UX/frontend if a web UI is approved |
-| `web/src/lib/`, `tests/` | Future logic and testing, subject to chosen stack |
-| `docs/brand/` | Awaiting refreshed brand guidance |
+- `src/data/`: crop catalog and clearly synthetic regional benchmarks.
+- `src/services/`: bounded remote access, normalization, provenance and cache.
+- `src/engine/`: deterministic agronomic rules.
+- `src/components/`: farmer inputs, map, diagnostics, comparisons and evidence.
+- `tests/unit/`, `tests/browser/`: calculation/service regression checks and production browser smoke tests.
+- `scripts/offline-plugin.js`: build-time first-party shell precache generation.
+- `docs/brand/`, `assets/brand/`, `public/brand/`: canonical visual guidance and served logo.
+- `docs/`: product, data, contracts, status, decisions, delivery and team context.
 
-Some inherited empty subdirectories mention older UI concepts (field/rotations/scenarios); **their names are not endorsed new features**. Rename or discard them after the new product architecture is accepted, rather than coding assumptions into them.
-
-Owners and review boundaries: [workstreams](../team/WORKSTREAMS.md). No runnable application or pipeline is present.
+The former `web/`, `contracts/`, `data/` and feature-script folders remain organizational/history placeholders. Do not scaffold a second app or restore the old pipeline merely because these folders exist. Old implementations remain in Git history and existing branches.

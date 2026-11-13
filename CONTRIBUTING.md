@@ -1,19 +1,12 @@
-# Contributing to the Field Shift pivot
+# Contributing to Field Shift Egypt
 
-Read [AGENTS.md](AGENTS.md), [status](docs/STATUS.md) and [workstreams](docs/team/WORKSTREAMS.md) first.
+Read the [accepted blueprint](IMPLEMENTATION_PLAN.md), [status](docs/STATUS.md), [agent instructions](AGENTS.md) and [workstreams](docs/team/WORKSTREAMS.md).
 
-## One task, one branch, one review
+1. Scope work through a GitHub issue with a goal, owner/reviewer, files and acceptance criteria.
+2. Use one branch per task, based on `chore/clean-slate-new-direction-2026-11-13` while the pivot is integrated. Open PRs against that branch; preserve main and older work.
+3. Root `src/` contains the Vite SPA. Shared app configuration, contracts, workflows, brand tokens and schemas need coordinated review. `web/` is not a second application.
+4. Keep source URLs, units, dates, spatial scale, missingness and provenance. Synthetic benchmarks must stay labeled, including in charts. The user-supplied scoring rules are prototype assumptions, not verified agronomic advice.
+5. Run `npm ci`, `npm run check`, and, for UI/flow changes, `npx playwright install chromium` followed by `npm run test:browser`. CI runs the same checks. Report anything not run.
+6. Use the PR template, link the issue and document limitations/AI assistance. Obtain teammate review before merging; no automatic main reset or deployment.
 
-1. Open or claim a GitHub issue with goal, owner, reviewer, allowed files, acceptance criteria and dependencies.
-2. Base a separate branch/worktree on `chore/clean-slate-new-direction-2026-11-13` during pivot planning. Examples: `docs/new-product-proposal`, `data/source-comparison`, `chore/team-setup`.
-3. Keep changes scoped. Shared specs, contracts, GitHub workflows, lockfiles and global UI files need integration-lead coordination.
-4. Record datasets and factual claims with links, dates, limitations and evidence, never unsupported certainty.
-5. Run `python3 scripts/check_repository.py` and relevant task-specific checks; describe anything not run.
-6. Open a pull request **targeting the pivot branch**, attach evidence and use the PR template. Obtain teammate review for shared assumptions and contracts.
-7. If unfinished, publish a handoff using [the template](docs/team/HANDOFF_TEMPLATE.md).
-
-Only after the team approves the new plan should it decide how to merge the pivot into `main`. Do not delete or rewrite the previous work to accomplish that. Prefer explicit decisions over divergent agent instructions.
-
-## Files and datasets
-
-Do not commit secrets, private participant information, raw/bulk satellite downloads or unexplained sample data. Keep source evidence and provenance when proposing a dataset. Synthetic inputs must be clearly marked, and claims about outputs must match validation actually performed.
+Do not commit API keys, private farmer data, raw satellite archives, node_modules or generated test/build artifacts. See [data plan](docs/data/DATA_PLAN.md) and [handoff template](docs/team/HANDOFF_TEMPLATE.md).
