@@ -131,13 +131,13 @@
         "referenceNotes": "Reference conditions are non-stressed, well managed, subhumid; adjust for Egyptian climate/irrigation."
       },
       "salinity": {
-        "status": "published_reference",
+        "status": "reference_for_different_outcome",
         "eceThresholdDsm": 1.6,
         "slopePctPerDsm": 9.6,
         "outcome": "shoot dry weight",
         "rating": "MS",
         "sourceId": "fao_salinity_annex_a1_1",
-        "note": "ECe = laboratory saturated-paste root-zone soil electrical conductivity, NOT soil pH, canal EC or the prototype 0–100 screening index."
+        "note": "FAO endpoint is shoot dry weight; this is not identical to the catalog's dry-seed harvest outcome. Display only; do not penalize automatically."
       },
       "unverifiedLegacyFields": [
         "kc",
@@ -217,13 +217,13 @@
         "referenceNotes": "Kc_end is a selected endpoint of a published range, not an Egypt-specific measurement."
       },
       "salinity": {
-        "status": "published_reference",
+        "status": "reference_for_different_outcome",
         "eceThresholdDsm": 1.7,
         "slopePctPerDsm": 12,
         "outcome": "ear fresh weight",
         "rating": "MS",
         "sourceId": "fao_salinity_annex_a1_1",
-        "note": "ECe = laboratory saturated-paste root-zone soil electrical conductivity, NOT soil pH, canal EC or the prototype 0–100 screening index."
+        "note": "FAO endpoint is ear fresh weight; this is not identical to the catalog's grain-corn harvest outcome. Display only; do not penalize automatically."
       },
       "unverifiedLegacyFields": [
         "kc",

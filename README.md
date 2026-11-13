@@ -31,7 +31,7 @@ npm run test:browser
 - The app requests historical **2025** POWER, SoilGrids and MODIS observations. Each source independently falls back to a seven-day coordinate cache or a labeled regional fixture, within one 4.5-second request budget.
 - EVPTRNS is an **energy flux in MJ/m²/day**, not ET₀ in millimeters. MODIS annual retrieval is split into three batches because ORNL permits at most ten composites per request. Matching pixel reliability is mandatory; rejected observations remain missing.
 - Co-locating ~50 km climate and 250 m vegetation/soil data does not create field-scale precision. Salinity is a screening heuristic; soil EC, drainage, prices and dates require local review.
-- Crop parameters and scores implement the supplied prototype assumptions. Water savings are modeled comparisons; nitrogen is an ordinal index. Nili cover is conditional on compatible crop dates and pest management.
+- The nine-crop catalog still contains **uncalibrated legacy water/heat/N/market/forage assumptions**. A separate [FAO evidence registry](src/data/cropEvidence.json) now documents verified crop-stage Kc and outcome-specific salinity ECe values; this does **not** validate demo rankings. Crop parameters and scores implement the supplied prototype assumptions. Water savings are modeled comparisons; nitrogen is an ordinal index. Nili cover is conditional on compatible crop dates and pest management.
 - Production assets are cached for offline reload **after an initial successful online visit**. External map tiles still need network access.
 
 ## Project guide
@@ -41,6 +41,7 @@ npm run test:browser
 - [Three-minute demo story](docs/pitch/THREE_MINUTE_DEMO.md)
 - [Current status](docs/STATUS.md) and [accepted direction](docs/decisions/0003-client-first-egypt-dashboard.md)
 - [Data audit and access findings](docs/data/DATA_PLAN.md)
+- [FAO crop-science reference registry and verification gaps](docs/data/CROP_SCIENCE_AUDIT.md)
 - [Payload contract](docs/engineering/CONTRACTS.md) and [architecture](docs/engineering/ARCHITECTURE.md)
 - [Brand assets and tokens](docs/brand/README.md)
 - [Validation and delivery](docs/delivery/PLAN.md)

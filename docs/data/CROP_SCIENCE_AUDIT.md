@@ -14,9 +14,9 @@ This file explains `src/data/cropEvidence.json`. The primary numeric sources wer
 |---|---|---:|---:|---|
 | wheat | 0.70 / 1.15 / 0.25† | 6.0 | 7.1 | Grain yield |
 | berseem | 0.40 / 0.90 / 0.85 | 1.5 | 5.7 | Shoot dry weight; averaged cutting effects |
-| faba_bean | 0.50 / 1.15 / 0.30 | 1.6 | 9.6 | Shoot dry weight; Kc for dry-seed crop |
+| faba_bean | 0.50 / 1.15 / 0.30 | 1.6* | 9.6* | *Shoot dry weight, NOT seed outcome: reference only, no scoring penalty |
 | sugar_beet | 0.35 / 1.20 / 0.70 | 7.0 | 5.9 | Storage root yield |
-| maize | 0.30 / 1.20 / 0.35† | 1.7 | 12 | Ear fresh weight; grain-corn Kc |
+| maize | 0.30 / 1.20 / 0.35† | 1.7* | 12* | *Ear fresh weight, NOT grain yield: reference only, no scoring penalty |
 | sorghum | 0.30 / 1.05† / 0.55 | 6.8 | 16 | Grain yield |
 | soybean | 0.40 / 1.15 / 0.50 | 5.0 | 20 | Seed yield |
 | sesame | 0.35 / 1.10 / 0.25 | **unknown** | **unknown** | FAO only reports qualitative salt-sensitive rating |
@@ -35,6 +35,6 @@ This file explains `src/data/cropEvidence.json`. The primary numeric sources wer
 
 ## Implemented protection and follow-up
 
-The new evidence module contains a provenance-aware FAO salinity response available only for user-provided soil ECe, and a separately callable stage-ETc calculator that refuses missing crop timing. The rotation engine only assigns salinity penalties when the farmer supplies measured ECe and the source endpoint matches the intended crop outcome; the prior unmeasured 0–100 screening number triggers **review only**.
+The new evidence module contains a provenance-aware FAO salinity response available only for user-provided soil ECe, and a separately callable stage-ETc calculator that refuses missing crop timing. The rotation engine only assigns salinity penalties when the farmer supplies measured ECe and the source endpoint matches the intended crop outcome; the prior unmeasured 0–100 screening number triggers **review only**. An optional soil ECe input and an FAO-reference disclosure now appear in the farmer UI. The historical 15-point penalty itself remains a prototype assumption, NOT a FAO-mandated penalty.
 
 **To activate fully sourced water predictions:** (1) collect Egypt-verified crop sowing/harvest dates and stage lengths for each variety, (2) apply FAO-56 crop coefficients at daily ET0 with wetting and climate adjustment, (3) model effective rain, rooting, soil water balance and irrigation method with verified efficiencies, (4) independently compare against local irrigation observations, (5) replace the old demo water score only after acceptance tests. Keep every unit, observation and model assumption visible.
