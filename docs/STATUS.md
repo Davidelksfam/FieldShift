@@ -45,3 +45,7 @@ See [decision 0002](decisions/0002-approved-light-green-identity.md) and the [br
 Fixture/data handoff: a separate [implementation checkpoint](data/IMPLEMENTATION_CHECKPOINT.md) proposes eight core crop choices (expanded at the user’s request) and per-metric context. Four real POWER query-point/year examples are available for review; local crop calendars, water-demand rules and acceptance of shared contract changes remain pending.
 
 Eight-crop rule research: [review sheets](data/crop-rules/README.md) and sixteen regional rule records now track source-supported candidates and missing approvals. Model rule enablement stays false pending current local/cultivar/harvest and water-method review.
+
+## User-authorized rapid prototype
+
+The user explicitly requested a complete baseline and Vercel deployment. A Next.js app now implements field inputs, three editable illustrative plans using the eight-crop catalog, hypothetical water scenarios, evidence, browser-local field saving and JSON export. See [runbook](engineering/PROTOTYPE_RUNBOOK.md). Cached Fayoum weather is real historical modeled context; schedules and demand assumptions are synthetic. Agronomic rule enablement remains false. Local build and browser verification are recorded in the implementation PR; remote deployment still requires connected Vercel team access. Earlier no-app statements describe the preparation stage and are superseded for this prototype.

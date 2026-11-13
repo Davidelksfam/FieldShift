@@ -1,10 +1,17 @@
-# Planned Vercel web application
+# Field Shift rapid prototype
 
-**Primary owner:** Integration lead + frontend developer
+Runnable Next.js + TypeScript baseline, explicitly requested by the user. Four screens cover field inputs, illustrative crop comparison, hypothetical water scenarios and evidence. Arabic RTL / English LTR, approved light-green branding, browser-local field saving and JSON export are included.
 
-Reserved for a Next.js + TypeScript application if the team approves the stack and implementation is permitted. No package.json, package-lock.json, running app, or Vercel deployment exists yet. Generate a genuine lockfile from an actual installation, set web/ as the Vercel project root, and log implementation commands in the implementation PR.
+```sh
+npm ci
+npm run dev
+npm test
+npm run build
+npm start
+```
 
-See `docs/team/WORKSTREAMS.md` and `docs/engineering/CONTRACTS.md` for coordination and interface rules. This README reserves the folder; it is not a claim that code exists.
-## UI branding (mandatory when implementation is authorized)
+See the [prototype runbook](../docs/engineering/PROTOTYPE_RUNBOOK.md) for browser tests, source regeneration, assumptions and Vercel setup. Deploy with `web/` as project root. No runtime secrets are needed.
 
-Start with [web agent instructions](AGENTS.md) and the [approved brand system](../docs/brand/README.md). New components must use [canonical tokens](../docs/brand/tokens.css), follow [layout / accessibility / RTL rules](../docs/brand/DESIGN.md) and not create their own design theme.
+Real cached weather comes from the public Fayoum POWER query point. Farmer sample values, crop schedules and demonstration demand figures are labeled hypothetical; crop suitability is unreviewed. The app provides a complete interface baseline, not validated agronomic advice.
+
+All visual work follows [the approved brand system](../docs/brand/README.md) and [web agent instructions](AGENTS.md). This user authorization supersedes earlier preparation-only scope for this rapid prototype; official competition facts and scientific review remain separate.
