@@ -1,0 +1,233 @@
+{
+  "fayoum_etsa": {
+    "depths": {
+      "clay": {
+        "0-5cm": {
+          "mean": 26.3,
+          "Q0.05": 1.8,
+          "Q0.95": 80.9
+        },
+        "5-15cm": {
+          "mean": 27.2,
+          "Q0.05": 1.8,
+          "Q0.95": 80.9
+        }
+      },
+      "sand": {
+        "0-5cm": {
+          "mean": 53.9,
+          "Q0.05": 8.2,
+          "Q0.95": 91.3
+        },
+        "5-15cm": {
+          "mean": 52.7,
+          "Q0.05": 4.0,
+          "Q0.95": 90.3
+        }
+      },
+      "soc": {
+        "0-5cm": {
+          "mean": 34.0,
+          "Q0.05": 1.8,
+          "Q0.95": 166.2
+        },
+        "5-15cm": {
+          "mean": 18.6,
+          "Q0.05": 2.0,
+          "Q0.95": 43.2
+        }
+      },
+      "nitrogen": {
+        "0-5cm": {
+          "mean": 2.89,
+          "Q0.05": 0.12,
+          "Q0.95": 11.29
+        },
+        "5-15cm": {
+          "mean": 1.57,
+          "Q0.05": 0.0,
+          "Q0.95": 4.62
+        }
+      },
+      "phh2o": {
+        "0-5cm": {
+          "mean": 7.3,
+          "Q0.05": 4.8,
+          "Q0.95": 8.9
+        },
+        "5-15cm": {
+          "mean": 7.3,
+          "Q0.05": 4.7,
+          "Q0.95": 8.9
+        }
+      }
+    },
+    "normalizedTop15cm": {
+      "clay": 26.9,
+      "sand": 53.1,
+      "soc": 23.733333,
+      "nitrogen": 2.01,
+      "phh2o": 7.3
+    },
+    "unitDivisors": {
+      "clay": 10,
+      "sand": 10,
+      "soc": 10,
+      "nitrogen": 100,
+      "phh2o": 10
+    },
+    "note": "Depth-specific Q0.05/Q0.95 are prediction quantiles, not field measurements. Their depth-weighted combination is not a joint confidence interval."
+  },
+  "delta_kafr_el_sheikh": {
+    "depths": {
+      "clay": {
+        "0-5cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        },
+        "5-15cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        }
+      },
+      "sand": {
+        "0-5cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        },
+        "5-15cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        }
+      },
+      "soc": {
+        "0-5cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        },
+        "5-15cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        }
+      },
+      "nitrogen": {
+        "0-5cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        },
+        "5-15cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        }
+      },
+      "phh2o": {
+        "0-5cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        },
+        "5-15cm": {
+          "mean": 0.0,
+          "Q0.05": 0.0,
+          "Q0.95": 0.0
+        }
+      }
+    },
+    "normalizedTop15cm": null,
+    "unitDivisors": {
+      "clay": 10,
+      "sand": 10,
+      "soc": 10,
+      "nitrogen": 100,
+      "phh2o": 10
+    },
+    "note": "Depth-specific Q0.05/Q0.95 are prediction quantiles, not field measurements. Their depth-weighted combination is not a joint confidence interval."
+  },
+  "west_delta_nubariya": {
+    "depths": {
+      "clay": {
+        "0-5cm": {
+          "mean": 24.7,
+          "Q0.05": 0.9,
+          "Q0.95": 78.0
+        },
+        "5-15cm": {
+          "mean": 25.5,
+          "Q0.05": 1.0,
+          "Q0.95": 85.0
+        }
+      },
+      "sand": {
+        "0-5cm": {
+          "mean": 41.8,
+          "Q0.05": 2.6,
+          "Q0.95": 75.5
+        },
+        "5-15cm": {
+          "mean": 41.0,
+          "Q0.05": 2.6,
+          "Q0.95": 75.4
+        }
+      },
+      "soc": {
+        "0-5cm": {
+          "mean": 6.9,
+          "Q0.05": 0.2,
+          "Q0.95": 21.9
+        },
+        "5-15cm": {
+          "mean": 6.8,
+          "Q0.05": 0.2,
+          "Q0.95": 21.9
+        }
+      },
+      "nitrogen": {
+        "0-5cm": {
+          "mean": 1.15,
+          "Q0.05": 0.1,
+          "Q0.95": 3.37
+        },
+        "5-15cm": {
+          "mean": 0.71,
+          "Q0.05": 0.02,
+          "Q0.95": 2.0
+        }
+      },
+      "phh2o": {
+        "0-5cm": {
+          "mean": 8.0,
+          "Q0.05": 7.2,
+          "Q0.95": 8.9
+        },
+        "5-15cm": {
+          "mean": 8.0,
+          "Q0.05": 7.2,
+          "Q0.95": 9.0
+        }
+      }
+    },
+    "normalizedTop15cm": {
+      "clay": 25.233333,
+      "sand": 41.266667,
+      "soc": 6.833333,
+      "nitrogen": 0.856667,
+      "phh2o": 8.0
+    },
+    "unitDivisors": {
+      "clay": 10,
+      "sand": 10,
+      "soc": 10,
+      "nitrogen": 100,
+      "phh2o": 10
+    },
+    "note": "Depth-specific Q0.05/Q0.95 are prediction quantiles, not field measurements. Their depth-weighted combination is not a joint confidence interval."
+  }
+}

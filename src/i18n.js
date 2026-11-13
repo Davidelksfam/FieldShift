@@ -8,8 +8,9 @@ export const formatNumber = (value, lang = "en", options = {}) =>
       }).format(value);
 export const sourceLabel = (source, lang) => {
   const labels = {
-    live: ["Retrieved · 2025 observations", "مُسترجع · رصد ٢٠٢٥"],
-    cached: ["Cached · 2025 observations", "محفوظ · رصد ٢٠٢٥"],
+    live: ["Retrieved source data", "بيانات مصدر مسترجعة"],
+    cached: ["Cached source data", "بيانات مصدر محفوظة"],
+    snapshot: ["Audited historical snapshot", "نسخة تاريخية مدققة"],
     demo: ["Illustrative demo fixture", "بيانات تجريبية توضيحية"],
   };
   const label = labels[source?.status] ?? labels.demo;

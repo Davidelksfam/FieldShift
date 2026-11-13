@@ -16,13 +16,17 @@ test("presets, inputs, rankings and both language directions work with all remot
   await expect(page.getByTestId("strategy-baseline")).toBeVisible();
   await english(page);
   await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
-  await expect(page.getByText("Demo fixtures · ready offline")).toBeVisible();
+  await expect(page.getByText("Historical observations · 2025")).toBeVisible();
   await expect(page.getByTestId("water-baseline")).toContainText("10,813");
   await page
     .getByRole("button", { name: "North Delta · Kafr El-Sheikh", exact: true })
     .click();
   await expect(page.getByText("31.1107° N, 30.9388° E")).toBeVisible();
   await expect(page.getByLabel("Known salinity")).toHaveValue("high");
+  await expect(page.locator(".diagnostic-2")).toContainText(
+    "Illustrative demo fixture",
+  );
+  await expect(page.locator(".diagnostic-0 .metric")).toContainText("70");
   await page
     .getByRole("button", { name: "West Delta · Nubariya", exact: true })
     .click();
@@ -99,7 +103,7 @@ test("map selection, historical overlay and coordinate validation", async ({
   await expect(page.getByRole("alert")).toHaveCount(0);
 });
 
-test("successful POWER observations replace only the climate fixture", async ({
+test("incomplete live POWER cannot overwrite an audited snapshot", async ({
   page,
 }) => {
   await page.route(/^https:\/\//, async (route) => {
@@ -119,15 +123,13 @@ test("successful POWER observations replace only the climate fixture", async ({
   });
   await page.goto("/");
   await english(page);
-  await expect(
-    page.getByText("Mixed sources · regional fallback in use"),
-  ).toBeVisible();
-  await expect(page.locator(".diagnostic-0 .metric")).toContainText("2");
+  await expect(page.getByText("Historical observations · 2025")).toBeVisible();
+  await expect(page.locator(".diagnostic-0 .metric")).toContainText("58");
   await expect(page.locator(".diagnostic-0")).toContainText(
-    "Retrieved · 2025 observations",
+    "Audited historical snapshot",
   );
   await expect(page.locator(".diagnostic-1")).toContainText(
-    "Illustrative demo fixture",
+    "Audited historical snapshot",
   );
 });
 
@@ -174,7 +176,7 @@ test("production shell reloads offline after a completed first online visit", as
   await page.reload();
   await expect(page.getByTestId("strategy-baseline")).toBeVisible();
   await english(page);
-  await expect(page.getByText("Demo fixtures · ready offline")).toBeVisible();
+  await expect(page.getByText("Historical observations · 2025")).toBeVisible();
   await page
     .getByRole("button", { name: "West Delta · Nubariya", exact: true })
     .click();

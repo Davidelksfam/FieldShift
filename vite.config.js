@@ -8,6 +8,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
+          benchmarks: ["./src/data/observedBenchmarks.json"],
           charts: ["recharts"],
           map: ["leaflet", "react-leaflet"],
         },

@@ -25,9 +25,9 @@ npm run test:browser
 
 ## Data and limits
 
-- All bundled regional benchmarks are **synthetic illustrative fixtures**, including their climate/soil/NDVI values. They make comparisons usable immediately; they are not downloaded NASA measurements.
+- The three exact benchmark centroids now load **audited historical source snapshots**: complete 2025 POWER, QA-screened MODIS, and native SoilGrids predictions where valid. Kafr El-Sheikh soil is unavailable (zero-filled profile rejected); its soil fallback stays explicitly synthetic. [Dataset quality report](data/processed/QUALITY_REPORT.md). Synthetic demo fixtures remain separate.
 - The app requests historical **2025** POWER, SoilGrids and MODIS observations. Each source independently falls back to a seven-day coordinate cache or a labeled regional fixture, within one 4.5-second request budget.
-- EVPTRNS is an **energy flux in MJ/m²/day**, not ET₀ in millimeters. MODIS annual retrieval is split into three batches because ORNL permits at most ten composites per request.
+- EVPTRNS is an **energy flux in MJ/m²/day**, not ET₀ in millimeters. MODIS annual retrieval is split into three batches because ORNL permits at most ten composites per request. Matching pixel reliability is mandatory; rejected observations remain missing.
 - Co-locating ~50 km climate and 250 m vegetation/soil data does not create field-scale precision. Salinity is a screening heuristic; soil EC, drainage, prices and dates require local review.
 - Crop parameters and scores implement the supplied prototype assumptions. Water savings are modeled comparisons; nitrogen is an ordinal index. Nili cover is conditional on compatible crop dates and pest management.
 - Production assets are cached for offline reload **after an initial successful online visit**. External map tiles still need network access.
@@ -42,4 +42,4 @@ npm run test:browser
 - [Validation and delivery](docs/delivery/PLAN.md)
 - [Contribution rules](CONTRIBUTING.md), [agent instructions](AGENTS.md), [AI assistance](docs/AI_USAGE.md)
 
-Work is tracked in [issue #12](https://github.com/Davidelksfam/FieldShift/issues/12). This implementation is proposed through a PR against `chore/clean-slate-new-direction-2026-11-13`; previous branches and history are preserved. No deployment or merge is implied.
+Work is tracked in [issue #12](https://github.com/Davidelksfam/FieldShift/issues/12). The dashboard was merged into main through PR #13. Dataset acquisition is tracked in issue #14; previous branches and history are preserved.

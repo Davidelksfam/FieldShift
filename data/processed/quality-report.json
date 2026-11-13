@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "period": "2025",
+  "noInterpolation": true,
+  "regions": {
+    "fayoum_etsa": {
+      "climate": {
+        "expectedDays": 365,
+        "validByVariable": {
+          "tmax": 365,
+          "tmin": 365,
+          "precipitation": 365,
+          "evapotranspiration": 365,
+          "rootWetness": 365,
+          "topWetness": 365
+        },
+        "summerValidDays": 153,
+        "heatDaysAbove38C": 58,
+        "missingOrRejected": {},
+        "interpolated": 0,
+        "powerGridCentroid": [
+          30.795,
+          29.232,
+          65.57
+        ],
+        "nativeHeader": {
+          "title": "NASA/POWER Source Native Resolution Daily Data",
+          "api": {
+            "version": "v2.10.3",
+            "name": "POWER Daily API"
+          },
+          "sources": [
+            "MERRA2",
+            "POWER"
+          ],
+          "fill_value": -999.0,
+          "time_standard": "LST",
+          "start": "20250101",
+          "end": "20251231"
+        },
+        "units": {
+          "T2M_MAX": "C",
+          "T2M_MIN": "C",
+          "PRECTOTCORR": "mm/day",
+          "EVPTRNS": "MJ/m^2/day",
+          "GWETROOT": "1",
+          "GWETTOP": "1"
+        }
+      },
+      "ndvi": {
+        "expectedComposites": 23,
+        "validComposites": 21,
+        "rejected": {
+          "qaRejected": 2
+        },
+        "autumnValidComposites": 5,
+        "autumnTotalComposites": 6,
+        "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+        "nativePixel": {
+          "xllcorner": "2988135.32",
+          "yllcorner": "3250370.36",
+          "cellsize": 231.656358264,
+          "nrows": 1,
+          "ncols": 1
+        },
+        "tiles": [
+          "h20v06"
+        ]
+      },
+      "soil": {
+        "status": "accepted",
+        "reason": null,
+        "downloadedCells": 30,
+        "validCells": 30,
+        "expectedCells": 30,
+        "nativeBounds": [
+          3416750.0,
+          3254000.0,
+          3417000.0,
+          3254250.0
+        ],
+        "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+        "depthCm": [
+          0,
+          15
+        ],
+        "method": "Native 250m cell containing centroid; 0–5 and 5–15 cm means thickness-weighted 1:2. No spatial resampling.",
+        "uncertaintyFile": "data/processed/soil-profiles.json",
+        "pointApiCrossCheck": {
+          "matchedValues": 30,
+          "status": "all matched",
+          "note": "Two interfaces to the same model; not independent field validation."
+        }
+      }
+    },
+    "delta_kafr_el_sheikh": {
+      "climate": {
+        "expectedDays": 365,
+        "validByVariable": {
+          "tmax": 365,
+          "tmin": 365,
+          "precipitation": 365,
+          "evapotranspiration": 365,
+          "rootWetness": 365,
+          "topWetness": 365
+        },
+        "summerValidDays": 153,
+        "heatDaysAbove38C": 70,
+        "missingOrRejected": {},
+        "interpolated": 0,
+        "powerGridCentroid": [
+          30.939,
+          31.111,
+          4.96
+        ],
+        "nativeHeader": {
+          "title": "NASA/POWER Source Native Resolution Daily Data",
+          "api": {
+            "version": "v2.10.3",
+            "name": "POWER Daily API"
+          },
+          "sources": [
+            "MERRA2",
+            "POWER"
+          ],
+          "fill_value": -999.0,
+          "time_standard": "LST",
+          "start": "20250101",
+          "end": "20251231"
+        },
+        "units": {
+          "T2M_MAX": "C",
+          "T2M_MIN": "C",
+          "PRECTOTCORR": "mm/day",
+          "EVPTRNS": "MJ/m^2/day",
+          "GWETROOT": "1",
+          "GWETTOP": "1"
+        }
+      },
+      "ndvi": {
+        "expectedComposites": 23,
+        "validComposites": 15,
+        "rejected": {
+          "qaRejected": 8
+        },
+        "autumnValidComposites": 5,
+        "autumnTotalComposites": 6,
+        "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+        "nativePixel": {
+          "xllcorner": "2945278.95",
+          "yllcorner": "3459324.44",
+          "cellsize": 231.656358264,
+          "nrows": 1,
+          "ncols": 1
+        },
+        "tiles": [
+          "h20v05"
+        ]
+      },
+      "soil": {
+        "status": "rejected",
+        "reason": "Zero-filled / physically invalid soil profile at the exact centroid; pH zero and texture sum zero. Do not use as soil data.",
+        "downloadedCells": 30,
+        "validCells": 0,
+        "expectedCells": 30,
+        "nativeBounds": [
+          3429000.0,
+          3463000.0,
+          3429250.0,
+          3463250.0
+        ],
+        "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+        "depthCm": [
+          0,
+          15
+        ],
+        "method": "Native 250m cell containing centroid; 0–5 and 5–15 cm means thickness-weighted 1:2. No spatial resampling.",
+        "uncertaintyFile": "data/processed/soil-profiles.json"
+      }
+    },
+    "west_delta_nubariya": {
+      "climate": {
+        "expectedDays": 365,
+        "validByVariable": {
+          "tmax": 365,
+          "tmin": 365,
+          "precipitation": 365,
+          "evapotranspiration": 365,
+          "rootWetness": 365,
+          "topWetness": 365
+        },
+        "summerValidDays": 153,
+        "heatDaysAbove38C": 28,
+        "missingOrRejected": {},
+        "interpolated": 0,
+        "powerGridCentroid": [
+          30.068,
+          30.665,
+          68.37
+        ],
+        "nativeHeader": {
+          "title": "NASA/POWER Source Native Resolution Daily Data",
+          "api": {
+            "version": "v2.10.3",
+            "name": "POWER Daily API"
+          },
+          "sources": [
+            "MERRA2",
+            "POWER"
+          ],
+          "fill_value": -999.0,
+          "time_standard": "LST",
+          "start": "20250101",
+          "end": "20251231"
+        },
+        "units": {
+          "T2M_MAX": "C",
+          "T2M_MIN": "C",
+          "PRECTOTCORR": "mm/day",
+          "EVPTRNS": "MJ/m^2/day",
+          "GWETROOT": "1",
+          "GWETTOP": "1"
+        }
+      },
+      "ndvi": {
+        "expectedComposites": 23,
+        "validComposites": 22,
+        "rejected": {
+          "qaRejected": 1
+        },
+        "autumnValidComposites": 6,
+        "autumnTotalComposites": 6,
+        "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+        "nativePixel": {
+          "xllcorner": "2875782.08",
+          "yllcorner": "3409749.90",
+          "cellsize": 231.656358264,
+          "nrows": 1,
+          "ncols": 1
+        },
+        "tiles": [
+          "h20v05"
+        ]
+      },
+      "soil": {
+        "status": "accepted",
+        "reason": null,
+        "downloadedCells": 30,
+        "validCells": 30,
+        "expectedCells": 30,
+        "nativeBounds": [
+          3346000.0,
+          3413500.0,
+          3346250.0,
+          3413750.0
+        ],
+        "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+        "depthCm": [
+          0,
+          15
+        ],
+        "method": "Native 250m cell containing centroid; 0–5 and 5–15 cm means thickness-weighted 1:2. No spatial resampling.",
+        "uncertaintyFile": "data/processed/soil-profiles.json"
+      }
+    }
+  },
+  "cleanedSha256": "cc23934a4ab366da3ae73e895e1b0565742288812693626b11a466aad19952e7",
+  "limitations": [
+    "Point subset is not field representativeness validation.",
+    "Reanalysis and soil predictions are model estimates, not farm measurements.",
+    "QA screening reduces cloud contamination; it does not prove every retained pixel is correct.",
+    "Crop thresholds and scores are not validated by this dataset audit."
+  ]
+}

@@ -24,3 +24,7 @@ Source attribution is retained. Official challenge eligibility and a full source
 ## Refresh and reproduction
 
 Run the app and use Refresh or select a map point. The service uses a shared 4.5-second deadline and `Promise.allSettled`; successful sources survive other timeouts. Soil primary/fallback share the same budget. A versioned coordinate cache is used before regional fixtures. See the exact URLs and transformation formulas in [IMPLEMENTATION_PLAN.md](../../IMPLEMENTATION_PLAN.md) and regression checks in [tests](../../tests/unit/data-and-engine.test.js).
+
+## Audited acquisition update — 2026-11-13
+
+The initial access findings above are superseded for the three benchmarks by the [completed acquisition report](../../data/processed/QUALITY_REPORT.md). All three have complete real POWER years and QA-screened MODIS. Official native SoilGrids WCS extraction succeeded at two centroids; the Delta profile was zero-filled and rejected. `src/data/observedBenchmarks.json` now takes precedence at exact benchmark coordinates; `demoPresets.json` remains synthetic test/emergency input. Live MODIS now requires matching pixel reliability, and incomplete POWER cannot override a validated snapshot. See [reproduction and attribution](../../data/processed/README.md).

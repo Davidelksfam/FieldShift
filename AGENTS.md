@@ -8,7 +8,7 @@ The user authorized the client-first Egypt blueprint on 2026-11-13; [decision 00
 
 ## Collaboration
 
-One contributor/agent, one task, one branch or isolated worktree. During pivot integration, branch from `chore/clean-slate-new-direction-2026-11-13` and target PRs at that branch. Never reset or force-push main, overwrite another contributor's changes or merge without authorization. Track shared-file edits and use `docs/team/HANDOFF_TEMPLATE.md` for incomplete work.
+One contributor/agent, one task, one branch or isolated worktree. The pivot was merged into main (PR #13). Base new task branches and PRs on main. Never reset or force-push main, overwrite another contributor's changes or merge without authorization. Track shared-file edits and use `docs/team/HANDOFF_TEMPLATE.md` for incomplete work.
 
 ## Implementation and evidence
 

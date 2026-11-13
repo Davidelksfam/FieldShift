@@ -4,8 +4,12 @@ As of 2026-11-13. Direction authorized by the user in this session and recorded 
 
 The root Vite/React application implements the six-phase [blueprint](../IMPLEMENTATION_PLAN.md): nine-crop catalog, three labeled synthetic regional benchmarks, bounded NASA POWER/SoilGrids/MODIS service, local cache, deterministic scoring, interactive GIBS map, bilingual inputs/comparison, evidence charts and offline production shell. The approved brand mark, tokens and typography were recovered from the old brand branch.
 
-Review and integration are through a PR against the pivot branch. Main and earlier branches are preserved. There is no deployment or merge in this task.
+The dashboard was merged into main in PR #13. Dataset collection/cleaning is tracked in issue #14, with a new reviewable branch based on main. No deployment is part of dataset acquisition.
 
 Scientific limits remain: crop/score constants are user-supplied assumptions, benchmarks are synthetic, salinity is not measured EC, Nili scheduling is conditional, and the satellite sources have different native scales. Live source availability varies; the app shows source-level fallback. Official event eligibility remains unverified.
 
 See [delivery and validation](delivery/PLAN.md) for actual check results and [data access findings](data/DATA_PLAN.md) for endpoint limitations.
+
+## Dataset acquisition update
+
+Complete POWER years and QA-screened MODIS are bundled for all three exact centroids. Two native SoilGrids profiles passed validation; the Kafr El-Sheikh profile was zero-filled and rejected, retaining a synthetic soil fallback. See [actual quality and gaps](../data/processed/QUALITY_REPORT.md). The synthetic benchmarks are retained separately for tests.
