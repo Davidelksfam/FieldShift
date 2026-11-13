@@ -1,38 +1,33 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  ArrowUpRight,
-  CircleHelp,
-  LoaderCircle,
-  MapPin,
-  RefreshCw,
-  Satellite,
-  WifiOff,
-} from "lucide-react";
+import { CircleHelp } from "lucide-react";
 import crops from "./data/egyptCrops.json";
 import presets from "./data/demoPresets.json" with { type: "json" };
 import { evaluateFieldAndRotations } from "./engine/rotationEngine";
 import {
   fetchUnifiedFarmData,
   getInitialFarmData,
+  REQUEST_TIMEOUT_MS,
+  EXTENDED_REQUEST_TIMEOUT_MS,
 } from "./services/nasaDataService";
 import { text } from "./i18n";
 import HeaderBar from "./components/HeaderBar";
 import FarmerInputPanel from "./components/FarmerInputPanel";
-import FarmMap from "./components/FarmMap";
 import VulnerabilityBanner from "./components/VulnerabilityBanner";
 import StrategyComparison from "./components/StrategyComparison";
 import SatelliteEvidenceDrawer from "./components/SatelliteEvidenceDrawer";
-
 import FieldIndicesPanel from "./components/FieldIndicesPanel";
 import PipelineExplorer from "./components/PipelineExplorer";
-import FarmerJourney from "./components/farmer/FarmerJourney";
-import RecommendationView from "./components/farmer/RecommendationView";
+import FieldSummary from "./components/farmer/FieldSummary";
+import FieldInputs from "./components/farmer/FieldInputs";
+import FieldLocation from "./components/farmer/FieldLocation";
+import SourceStatus from "./components/farmer/SourceStatus";
+import ThreeStrategyComparison from "./components/farmer/ThreeStrategyComparison";
 import {
   GOALS,
   areaIsValid,
   evaluationInputs,
+  comparisonSourceSupport,
 } from "./presentation/farmerModel";
-
 const initialPreset = presets.fayoum_etsa;
 const initialInputs = {
   ...initialPreset.defaults,
@@ -46,12 +41,9 @@ const initialInputs = {
   weights: { ...GOALS.water.weights },
 };
 export default function App() {
-  const [lang, setLang] = useState("ar");
-  const [judgeMode, setJudgeMode] = useState(false);
-  const [step, setStep] = useState(0);
-  const [resultsShown, setResultsShown] = useState(false);
-  const [mapOpen, setMapOpen] = useState(false);
-  const [evidenceOpen, setEvidenceOpen] = useState(false);
+  const [lang, setLang] = useState("ar"),
+    [expert, setExpert] = useState(false),
+    [evidenceOpen, setEvidenceOpen] = useState(false);
   const [inputs, setInputs] = useState(initialInputs);
   const [location, setLocation] = useState({
     lat: initialPreset.lat,
@@ -65,19 +57,23 @@ export default function App() {
   const [data, setData] = useState(() =>
     getInitialFarmData(initialPreset.lat, initialPreset.lon, initialPreset.id),
   );
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [refresh, setRefresh] = useState(0);
+  const [loading, setLoading] = useState(true),
+    [error, setError] = useState(""),
+    [refresh, setRefresh] = useState(0),
+    [requestTimeout, setRequestTimeout] = useState(REQUEST_TIMEOUT_MS);
+  const [progress, setProgress] = useState({}),
+    [allowIllustrative, setAllowIllustrative] = useState(false);
   const [offline, setOffline] = useState(!navigator.onLine);
-  const evidenceRef = useRef(null);
+  const comparisonRef = useRef(null),
+    requestRef = useRef(null);
   const t = (en, ar) => text(lang, en, ar);
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   }, [lang]);
   useEffect(() => {
-    const online = () => setOffline(false);
-    const offlineHandler = () => setOffline(true);
+    const online = () => setOffline(false),
+      offlineHandler = () => setOffline(true);
     window.addEventListener("online", online);
     window.addEventListener("offline", offlineHandler);
     return () => {
@@ -87,10 +83,17 @@ export default function App() {
   }, []);
   useEffect(() => {
     const controller = new AbortController();
+    requestRef.current = controller;
     let active = true;
     setLoading(true);
+    setProgress({});
+    setError("");
     fetchUnifiedFarmData(location.lat, location.lon, location.presetId, {
       signal: controller.signal,
+      timeoutMs: requestTimeout,
+      onSourceUpdate: (event) => {
+        if (active) setProgress((p) => ({ ...p, [event.key]: event }));
+      },
     })
       .then((result) => {
         if (active) setData(result);
@@ -105,15 +108,12 @@ export default function App() {
       active = false;
       controller.abort();
     };
-  }, [location, refresh]);
+  }, [location, refresh, requestTimeout]);
   const invalidMeasuredEce =
-    inputs.soilEceDsm !== null &&
-    inputs.soilEceDsm !== undefined &&
+    inputs.soilEceDsm != null &&
     (!Number.isFinite(inputs.soilEceDsm) ||
       inputs.soilEceDsm < 0 ||
       inputs.soilEceDsm > 100);
-  const validationError =
-    invalidMeasuredEce || (inputs.estimateArea && !areaIsValid(inputs));
   const evaluation = useMemo(
     () =>
       invalidMeasuredEce
@@ -121,6 +121,8 @@ export default function App() {
         : evaluateFieldAndRotations(data, evaluationInputs(inputs), crops),
     [data, inputs, invalidMeasuredEce],
   );
+  const support = comparisonSourceSupport(data);
+  const visible = !support.illustrative || allowIllustrative;
   function changeLocation(lat, lon, presetId = null) {
     if (
       !Number.isFinite(lat) ||
@@ -138,46 +140,101 @@ export default function App() {
       );
       return;
     }
-    setError("");
-    const matchedPreset = Object.values(presets).find(
+    const matched = Object.values(presets).find(
       (p) => Math.abs(p.lat - lat) < 1e-7 && Math.abs(p.lon - lon) < 1e-7,
     );
-    setLocation({ lat, lon, presetId: presetId ?? matchedPreset?.id ?? null });
+    const id = presetId ?? matched?.id ?? null;
+    setError("");
+    setAllowIllustrative(false);
+    setRequestTimeout(REQUEST_TIMEOUT_MS);
+    setProgress({});
+    setLoading(true);
+    setLocation({ lat, lon, presetId: id });
     setCoordinates({ lat: lat.toFixed(4), lon: lon.toFixed(4) });
-    setData(getInitialFarmData(lat, lon, presetId));
+    setData(getInitialFarmData(lat, lon, id));
   }
-  function showEvidence() {
-    setEvidenceOpen(true);
-    requestAnimationFrame(() =>
-      evidenceRef.current?.scrollIntoView({
-        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "instant"
-          : "smooth",
-        block: "start",
-      }),
-    );
+  function retry() {
+    setRequestTimeout(EXTENDED_REQUEST_TIMEOUT_MS);
+    setRefresh((n) => n + 1);
   }
-  const syntheticCount = Object.values(data.sources).filter(
-    (s) => s.kind === "synthetic",
-  ).length;
+  function compare() {
+    comparisonRef.current?.focus();
+    comparisonRef.current?.scrollIntoView({
+      block: "start",
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
+  }
+  const validation = (
+    <>
+      {error && (
+        <div className="error-message" role="alert">
+          {error}
+        </div>
+      )}
+      {invalidMeasuredEce && (
+        <div className="error-message" role="alert">
+          {t(
+            "Measured soil ECe must be between 0 and 100 dS/m.",
+            "يجب أن تكون ملوحة التربة ECe المقاسة بين صفر و١٠٠ dS/m.",
+          )}
+        </div>
+      )}
+      {inputs.estimateArea && !areaIsValid(inputs) && (
+        <div className="error-message" role="alert">
+          {t(
+            "Enter a total area greater than zero (up to 100,000 feddans), with 0–23 whole extra qirats. Per-feddan comparisons remain available; whole-field totals are hidden.",
+            "أدخل مساحة أكبر من صفر وحتى ١٠٠ ألف فدان، ومن ٠ إلى ٢٣ قيراطاً إضافياً صحيحاً. المقارنة بالفدان متاحة؛ إجمالي الأرض مخفي.",
+          )}
+        </div>
+      )}
+    </>
+  );
+  const map = (
+    <FieldLocation
+      lang={lang}
+      location={location}
+      coordinates={coordinates}
+      setCoordinates={setCoordinates}
+      presets={presets}
+      onLocationChange={changeLocation}
+    />
+  );
+  const sources = (
+    <SourceStatus
+      lang={lang}
+      data={data}
+      loading={loading}
+      progress={progress}
+      onRetry={retry}
+      onCancel={() => {
+        requestRef.current?.abort();
+        setLoading(false);
+        setProgress({});
+      }}
+      offline={offline}
+      diagnostics={evaluation?.diagnostics}
+    />
+  );
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a className="skip-link" href="#comparison">
         {t("Skip to comparison", "انتقل إلى المقارنة")}
       </a>
       <HeaderBar
         lang={lang}
         onLanguageChange={setLang}
-        judgeMode={judgeMode}
+        judgeMode={expert}
         onJudgeModeChange={(value) => {
-          setJudgeMode(value);
+          setExpert(value);
           setEvidenceOpen(value);
         }}
       />
       <div
-        className={`workspace ${judgeMode ? "expert-workspace" : "farmer-workspace"}`}
+        className={`workspace ${expert ? "expert-workspace" : "farmer-workspace map-cards-workspace"}`}
       >
-        {judgeMode && (
+        {expert && (
           <FarmerInputPanel
             lang={lang}
             inputs={inputs}
@@ -190,306 +247,116 @@ export default function App() {
           />
         )}
         <main id="main">
-          {!judgeMode && (
-            <div className="farmer-intro">
-              <span className="eyebrow">
-                {t("YOUR FIELD · YOUR NEXT ROTATION", "أرضك · دورتك الجاية")}
-              </span>
-              <h1>
-                {t(
-                  "Plan your next crops, one step at a time.",
-                  "خطط لمحاصيلك الجاية، خطوة بخطوة.",
-                )}
-              </h1>
-              <p>
-                {t(
-                  "A historical-data comparison to discuss with your local agricultural adviser.",
-                  "مقارنة ببيانات تاريخية تراجعها مع مهندس الإرشاد الزراعي.",
-                )}
-              </p>
-            </div>
-          )}
-          {!judgeMode && (
-            <p className="farmer-location">
-              {location.presetId
-                ? lang === "ar"
-                  ? presets[location.presetId].nameAr
-                  : presets[location.presetId].nameEn
+          <div className="farmer-intro">
+            <span className="eyebrow">
+              {t("YOUR FIELD · YOUR NEXT ROTATION", "أرضك · دورتك الجاية")}
+            </span>
+            <h1>
+              {expert
+                ? t(
+                    "Inspect the evidence and calculations",
+                    "افحص الأدلة والحسابات",
+                  )
                 : t(
-                    "Custom location · check source support",
-                    "موقع مخصص · راجع دعم البيانات",
+                    "Find your field. Compare your options.",
+                    "حدّد أرضك. وقارن خططك بالأرقام.",
                   )}
-            </p>
-          )}
-          {judgeMode && (
-            <>
-              <div className="page-intro">
-                <div>
-                  <div className="eyebrow">
-                    <span className="green-dot" />
-                    {t("FIELD INTELLIGENCE / EGYPT", "رؤية أوضح لأرضك / مصر")}
-                  </div>
-                  <h1>
-                    {t(
-                      "A better rotation starts here.",
-                      "دورة زراعية أفضل تبدأ من هنا.",
-                    )}
-                  </h1>
-                  <p>
-                    {t(
-                      "Understand your field. Compare the trade-offs. Plan with clarity.",
-                      "افهم أرضك. قارن الخيارات. وخطط بوضوح.",
-                    )}
-                  </p>
-                </div>
-                <button className="button evidence-link" onClick={showEvidence}>
-                  <Satellite size={18} />
-                  {t("Explore the evidence", "استكشف الأدلة")}
-                  <ArrowUpRight size={16} />
-                </button>
-              </div>
-            </>
-          )}
-          {!judgeMode && (
-            <div className="data-status" role="status" aria-live="polite">
-              <Satellite size={18} />
-              <div>
-                <strong>
-                  {syntheticCount
-                    ? t(
-                        "Illustrative fallback data is in use",
-                        "بيانات توضيحية بديلة مستخدمة",
-                      )
-                    : t(
-                        "Historical observations · 2025",
-                        "أرصاد تاريخية · ٢٠٢٥",
-                      )}
-                </strong>
-                <span>
-                  {loading
-                    ? t(
-                        "Checking available historical sources; local comparison remains available.",
-                        "بنراجع المصادر التاريخية المتاحة؛ المقارنة المحلية متاحة.",
-                      )
-                    : syntheticCount
-                      ? t(
-                          "Some sources are not observed data. Review the limitations with your comparison.",
-                          "بعض المصادر مش أرصاد فعلية. راجع الحدود مع المقارنة.",
-                        )
-                      : t(
-                          "Regional history, not a forecast or a field diagnosis.",
-                          "تاريخ المنطقة، مش توقع للمستقبل أو تشخيص لأرضك.",
-                        )}
-                </span>
-              </div>
-            </div>
-          )}
-          {judgeMode && (
-            <div className="data-status" role="status" aria-live="polite">
-              {loading ? (
-                <LoaderCircle className="spin" size={18} />
-              ) : offline ? (
-                <WifiOff size={18} />
-              ) : (
-                <Satellite size={18} />
-              )}
-              <div>
-                <strong>
-                  {loading
-                    ? t(
-                        "Refreshing historical sources…",
-                        "جارٍ تحديث المصادر التاريخية…",
-                      )
-                    : syntheticCount === 3
-                      ? t(
-                          "Demo fixtures · ready offline",
-                          "بيانات توضيحية · جاهزة دون اتصال",
-                        )
-                      : syntheticCount
-                        ? t(
-                            "Mixed sources · regional fallback in use",
-                            "مصادر مختلطة · بديل إقليمي مستخدم",
-                          )
-                        : t(
-                            "Historical observations · 2025",
-                            "أرصاد تاريخية · ٢٠٢٥",
-                          )}
-                </strong>
-                <span>
-                  {loading
-                    ? t(
-                        "Local comparison is ready now. Live requests stop after 4.5 seconds.",
-                        "المقارنة المحلية جاهزة الآن. تنتهي الطلبات الحية خلال ٤٫٥ ثانية.",
-                      )
-                    : syntheticCount
-                      ? t(
-                          "Illustrative values are labeled. Open evidence for source-by-source provenance.",
-                          "القيم التوضيحية معلّمة. افتح الأدلة لمعرفة أصل كل مصدر.",
-                        )
-                      : t(
-                          "Source dates and spatial limitations are available in the evidence panel.",
-                          "تواريخ المصادر وحدود الدقة المكانية متاحة في لوحة الأدلة.",
-                        )}
-                </span>
-              </div>
-              <button
-                className="button compact"
-                disabled={loading}
-                onClick={() => setRefresh((n) => n + 1)}
-                aria-label={t("Refresh sources", "تحديث المصادر")}
-              >
-                <RefreshCw size={16} />
-                <span>{t("Refresh", "تحديث")}</span>
-              </button>
-            </div>
-          )}
-          {error && (
-            <div className="error-message" role="alert">
-              {error}
-            </div>
-          )}
-          {validationError && (
-            <div className="error-message" role="alert">
+            </h1>
+            <p>
               {t(
-                invalidMeasuredEce
-                  ? "Measured soil ECe must be between 0 and 100 dS/m."
-                  : "Enter a total area greater than zero (up to 100,000 feddans), with 0–23 whole extra qirats.",
-                invalidMeasuredEce
-                  ? "يجب أن تكون ملوحة التربة ECe المقاسة بين صفر و١٠٠ dS/m."
-                  : "أدخل مساحة إجمالية أكبر من صفر وحتى ١٠٠ ألف فدان، ومن ٠ إلى ٢٣ قيراطاً إضافياً صحيحاً.",
+                "Select a point on the map, enter your crops and irrigation, then compare three strategies using the same calculated quantities.",
+                "اختار نقطة على الخريطة، أدخل محاصيلك وطريقة الري، وقارن ٣ استراتيجيات بنفس الكميات المحسوبة.",
               )}
-            </div>
-          )}
-          {!judgeMode && !resultsShown && (
-            <FarmerJourney
-              lang={lang}
-              inputs={inputs}
-              setInputs={setInputs}
-              presets={presets}
-              presetId={location.presetId}
-              onPresetChange={(id) =>
-                changeLocation(presets[id].lat, presets[id].lon, id)
-              }
-              crops={crops}
-              step={step}
-              setStep={setStep}
-              onComplete={() => setResultsShown(true)}
-              invalid={validationError}
-            />
-          )}
-          {!judgeMode && resultsShown && evaluation && (
-            <RecommendationView
-              lang={lang}
-              evaluation={evaluation}
-              data={data}
-              inputs={inputs}
-              setInputs={setInputs}
-              onEdit={() => setResultsShown(false)}
-              onMap={() => setMapOpen((v) => !v)}
-            />
-          )}
-          {!judgeMode && resultsShown && !evaluation && (
-            <button className="button" onClick={() => setResultsShown(false)}>
-              {t("Edit field details", "عدّل تفاصيل الأرض")}
-            </button>
-          )}
-          {judgeMode && evaluation && (
-            <VulnerabilityBanner
-              lang={lang}
-              diagnostics={evaluation.diagnostics}
-              data={data}
-            />
-          )}
-          {judgeMode && evaluation && (
-            <FieldIndicesPanel
-              lang={lang}
-              diagnostics={evaluation.diagnostics}
-            />
-          )}
-          {(judgeMode || mapOpen) && (
+            </p>
+          </div>
+          {validation}
+          {expert ? (
             <>
-              {!judgeMode && (
-                <button className="button" onClick={() => setMapOpen(false)}>
-                  {t("Close map", "اقفل الخريطة")}
-                </button>
+              {sources}
+              {map}
+              {evaluation && (
+                <>
+                  <VulnerabilityBanner
+                    lang={lang}
+                    diagnostics={evaluation.diagnostics}
+                    data={data}
+                  />
+                  <FieldIndicesPanel
+                    lang={lang}
+                    diagnostics={evaluation.diagnostics}
+                  />
+                  <div id="comparison" tabIndex="-1">
+                    <StrategyComparison
+                      lang={lang}
+                      strategies={evaluation.strategies}
+                      showTotals={inputs.estimateArea && areaIsValid(inputs)}
+                    />
+                  </div>
+                </>
               )}
-              <p className="local-warning">
-                {t(
-                  "Custom locations are not audited benchmark centroids. Missing sources may use illustrative regional fallback; coordinates do not create field-scale precision. Selecting a point updates your comparison.",
-                  "المواقع المخصصة مش مواقع المقارنة المراجعة. المصادر المفقودة ممكن تستخدم بيانات إقليمية توضيحية؛ الإحداثيات لا تعطي دقة حقلية. اختيار نقطة بيحدّث المقارنة.",
-                )}
-              </p>
-              <FarmMap
-                lang={lang}
-                lat={location.lat}
-                lon={location.lon}
-                onLocationChange={changeLocation}
-              />
-              <form
-                className="coordinate-form"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  changeLocation(
-                    coordinates.lat.trim() ? Number(coordinates.lat) : NaN,
-                    coordinates.lon.trim() ? Number(coordinates.lon) : NaN,
-                  );
-                }}
-              >
-                <MapPin size={16} />
-                <span>{t("Or enter coordinates", "أو أدخل الإحداثيات")}</span>
-                <label>
-                  {t("Latitude", "خط العرض")}
-                  <input
-                    type="number"
-                    step="any"
-                    value={coordinates.lat}
-                    onChange={(e) =>
-                      setCoordinates((c) => ({ ...c, lat: e.target.value }))
-                    }
-                    required
+            </>
+          ) : (
+            <>
+              <div className="field-setup-grid">
+                {map}
+                <FieldInputs
+                  lang={lang}
+                  inputs={inputs}
+                  setInputs={setInputs}
+                  crops={crops}
+                  onCompare={compare}
+                  invalid={invalidMeasuredEce}
+                />
+              </div>
+              {sources}
+              <div id="comparison" tabIndex="-1">
+                <ThreeStrategyComparison
+                  ref={comparisonRef}
+                  lang={lang}
+                  evaluation={evaluation}
+                  data={data}
+                  inputs={inputs}
+                  visible={visible}
+                  loading={loading}
+                  illustrative={support.illustrative}
+                  onShowExample={() => setAllowIllustrative(true)}
+                />
+              </div>
+              {evaluation && visible && (
+                <details className="workspace-summary">
+                  <summary>
+                    {t("Read the field summary", "اقرأ ملخص حالة أرضك")}
+                  </summary>
+                  <FieldSummary
+                    lang={lang}
+                    data={data}
+                    diagnostics={evaluation.diagnostics}
+                    inputs={inputs}
                   />
-                </label>
-                <label>
-                  {t("Longitude", "خط الطول")}
-                  <input
-                    type="number"
-                    step="any"
-                    value={coordinates.lon}
-                    onChange={(e) =>
-                      setCoordinates((c) => ({ ...c, lon: e.target.value }))
-                    }
-                    required
-                  />
-                </label>
-                <button className="button" type="submit">
-                  {t("Analyze location", "تحليل الموقع")}
-                </button>
-              </form>
+                </details>
+              )}
             </>
           )}
-          {judgeMode && evaluation && (
-            <StrategyComparison
-              lang={lang}
-              strategies={evaluation.strategies}
-              showTotals={inputs.estimateArea && areaIsValid(inputs)}
-            />
-          )}
-          {judgeMode && (
-            <div ref={evidenceRef}>
+          {expert && (
+            <>
               <SatelliteEvidenceDrawer
+                lang={lang}
                 diagnostics={evaluation?.diagnostics}
                 hasRecommendedCover={evaluation?.strategies.some(
                   (s) => s.id !== "baseline" && s.conditionalNili,
                 )}
-                lang={lang}
                 data={data}
                 open={evidenceOpen}
                 onToggle={setEvidenceOpen}
               />
-            </div>
-          )}
-          {judgeMode && evaluation && (
-            <PipelineExplorer lang={lang} data={data} evaluation={evaluation} />
+              {evaluation && (
+                <PipelineExplorer
+                  lang={lang}
+                  data={data}
+                  evaluation={evaluation}
+                />
+              )}
+            </>
           )}
           <footer className="page-footer">
             <span dir="ltr">
@@ -498,8 +365,8 @@ export default function App() {
             <p>
               <CircleHelp size={15} />
               {t(
-                "Historical evidence. Transparent rules. Local expertise.",
-                "أدلة تاريخية. قواعد واضحة. خبرة محلية.",
+                "Historical evidence. Transparent calculations. Local review.",
+                "أدلة تاريخية. حسابات واضحة. مراجعة محلية.",
               )}
             </p>
           </footer>
