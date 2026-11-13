@@ -26,4 +26,4 @@ This PR introduces no agricultural constants or regional dates. Catalog season l
 
 ## Verification / limits / rollback
 
-Root integration records actual unit/browser results for the stacked PR. No verified-calendar or agronomic release is asserted; missing calendars produce unknown. Legacy behavior and data are unchanged. Disable `VITE_SCIENTIFIC_V2` and rebuild to roll back experimental inspection. No production merge or deployment.
+Validation: `npm run check` passed (66 unit tests, production build and documentation checks); default browser suite passed 10/10; flagged V2 browser suite passed 1/1. The nine preserved legacy output hashes remain identical. No verified-calendar or agronomic release is asserted; missing calendars produce unknown. Legacy behavior and data are unchanged. Disable `VITE_SCIENTIFIC_V2` and rebuild to roll back experimental inspection. No production merge or deployment.
