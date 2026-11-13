@@ -409,6 +409,9 @@ export function calculateWaterV2({
     coefficientSource = registry[profile.sourceId];
   if (
     !sourceIsAvailable(weatherSource) ||
+    weatherSource.id !== weatherDrivers.sourceId ||
+    (nonempty(weatherDrivers.source?.url) &&
+      weatherDrivers.source.url !== weatherSource.url) ||
     weatherSource.nature !== "historical_climate" ||
     !samePoint(location, weatherSource.coordinates) ||
     !covered(weatherSource.period, period)
@@ -421,6 +424,7 @@ export function calculateWaterV2({
     );
   if (
     !sourceIsAvailable(calendarSource) ||
+    calendarSource.id !== calendarSourceId ||
     !["published_reference", "farmer_scenario"].includes(calendarSource.nature)
   )
     return fail(
@@ -428,6 +432,22 @@ export function calculateWaterV2({
       "Dates/stage lengths need a checked calendar reference or an explicitly recorded farmer scenario.",
       "المواعيد ومدد المراحل محتاجة مرجع تقويم موثّق أو سيناريو مزارع مسجل بوضوح.",
       ["calendarProvenance"],
+    );
+  // An explicit temporal qualifier is a constraint, never metadata to discard.
+  const calendarPeriods = [];
+  if (Object.hasOwn(calendarSource, "period"))
+    calendarPeriods.push(calendarSource.period);
+  if (
+    isRecord(calendarSource.validity) &&
+    Object.hasOwn(calendarSource.validity, "period")
+  )
+    calendarPeriods.push(calendarSource.validity.period);
+  if (calendarPeriods.some((declared) => !covered(declared, period)))
+    return fail(
+      "calendar_period_mismatch",
+      "Every declared calendar-source period must be valid and cover the complete actual crop window.",
+      "كل فترة صلاحية معلنة لمصدر التقويم لازم تكون صحيحة وتغطي فترة المحصول الفعلية كاملة.",
+      ["matchingCalendarPeriod"],
     );
   if (
     calendarSource.nature === "farmer_scenario" &&
@@ -441,11 +461,16 @@ export function calculateWaterV2({
     );
   if (calendarSource.nature === "published_reference") {
     const attested =
+      !Object.hasOwn(WATER_REFERENCE_SOURCES, calendarSourceId) &&
       calendarSource.reviewStatus === "verified_reference" &&
       calendarSource.dataRoles?.includes("crop_calendar") &&
       Array.isArray(calendarSource.calendarInputs) &&
       calendarSource.calendarInputs.some(
         (input) =>
+          (!Object.hasOwn(input, "sourceId") ||
+            input.sourceId === calendarSource.id) &&
+          (!Object.hasOwn(input, "sourceUrl") ||
+            input.sourceUrl === calendarSource.url) &&
           input.cropId === cropId &&
           nonempty(input.regionId) &&
           input.regionId === location.regionId &&
@@ -467,6 +492,7 @@ export function calculateWaterV2({
   }
   if (
     !sourceIsAvailable(coefficientSource) ||
+    coefficientSource.id !== profile.sourceId ||
     coefficientSource.nature !== "published_reference" ||
     coefficientSource.reviewStatus !== "verified_reference"
   )
@@ -574,6 +600,10 @@ export function calculateWaterV2({
     "Published Kc is not locally adjusted for Egyptian wetting frequency, wind or humidity.",
     "ETc is crop evapotranspiration, not net/gross irrigation or measured consumption.",
   ];
+  if (calendarPeriods.length === 0)
+    assumptions.push(
+      "Calendar temporal validity is undeclared; supplied dates/stages are scenario inputs, not independently verified historical dates.",
+    );
   if (nonempty(profile.basis)) assumptions.push(profile.basis);
   if (cropId === "sugar_beet")
     assumptions.push(

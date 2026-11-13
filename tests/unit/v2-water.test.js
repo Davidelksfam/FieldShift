@@ -534,3 +534,104 @@ test("generic published references cannot attest arbitrary calendar inputs or su
     "calendar_reference_does_not_support_inputs",
   );
 });
+
+test("calendar periods constrain actual dates, including expired farmer scenarios and nested validity", () => {
+  const initial = request();
+  assert.equal(calculateWaterV2(initial).status, "etc_reference");
+  assert.ok(
+    calculateWaterV2(initial).assumptions.some((text) =>
+      text.includes("temporal validity is undeclared"),
+    ),
+  );
+  for (const period of [
+    { start: "2024-01-01", end: "2024-12-31" },
+    { start: "2025-01-01", end: "2025-01-07" },
+    { start: "2025-01-08", end: "2025-01-01" },
+    { start: "2025-02-30", end: "2025-12-31" },
+    null,
+  ]) {
+    for (const nested of [false, true]) {
+      const input = request(),
+        source = input.sourceRegistry[input.calendarSourceId];
+      if (nested) source.validity = { period };
+      else source.period = period;
+      const result = calculateWaterV2(input);
+      assert.equal(result.status, "unavailable");
+      assert.equal(result.etcMm.value, null);
+      assert.equal(result.reasonCodes[0], "calendar_period_mismatch");
+    }
+  }
+  const valid = request(),
+    source = valid.sourceRegistry[valid.calendarSourceId];
+  source.period = { start: "2025-01-01", end: "2025-12-31" };
+  assert.equal(calculateWaterV2(valid).status, "etc_reference");
+  source.validity = { period: { start: "2024-01-01", end: "2024-12-31" } };
+  assert.equal(
+    calculateWaterV2(valid).reasonCodes[0],
+    "calendar_period_mismatch",
+  );
+});
+
+test("source identities and URLs cannot be relabeled to authenticate dates or weather", () => {
+  const id = request();
+  id.sourceRegistry[id.calendarSourceId].id = "different-source";
+  assert.equal(
+    calculateWaterV2(id).reasonCodes[0],
+    "calendar_provenance_unavailable",
+  );
+  const weather = request();
+  weather.sourceRegistry[weather.weatherDrivers.sourceId].url =
+    "https://example.org/unrelated";
+  assert.equal(
+    calculateWaterV2(weather).reasonCodes[0],
+    "weather_provenance_unavailable",
+  );
+  const pinned = request();
+  pinned.calendarSourceId = "fao56_1998_table12";
+  pinned.sourceRegistry[pinned.calendarSourceId] = {
+    ...WATER_REFERENCE_SOURCES[pinned.calendarSourceId],
+    dataRoles: ["crop_calendar"],
+    calendarInputs: [
+      {
+        cropId: "wheat",
+        regionId: "fayoum_etsa",
+        intendedUse: "grain",
+        sowingDate: pinned.sowingDate,
+        stageLengthsDays: pinned.stageLengthsDays,
+      },
+    ],
+  };
+  assert.equal(
+    calculateWaterV2(pinned).reasonCodes[0],
+    "calendar_reference_does_not_support_inputs",
+  );
+  const bound = request(),
+    source = bound.sourceRegistry[bound.calendarSourceId];
+  source.nature = "published_reference";
+  source.reviewStatus = "verified_reference";
+  source.dataRoles = ["crop_calendar"];
+  const entry = {
+    cropId: "wheat",
+    regionId: "fayoum_etsa",
+    intendedUse: "grain",
+    sowingDate: bound.sowingDate,
+    stageLengthsDays: bound.stageLengthsDays,
+    sourceId: source.id,
+    sourceUrl: source.url,
+  };
+  source.calendarInputs = [entry];
+  assert.equal(calculateWaterV2(bound).status, "etc_reference");
+  for (const [key, value] of [
+    ["sourceId", "wrong"],
+    ["sourceUrl", "https://example.org/wrong"],
+    ["cropId", "maize"],
+    ["regionId", "wrong"],
+    ["intendedUse", "hay"],
+  ]) {
+    source.calendarInputs = [{ ...entry, [key]: value }];
+    assert.equal(
+      calculateWaterV2(bound).reasonCodes[0],
+      "calendar_reference_does_not_support_inputs",
+    );
+  }
+});

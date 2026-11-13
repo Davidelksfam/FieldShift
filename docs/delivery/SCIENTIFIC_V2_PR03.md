@@ -37,7 +37,11 @@ The full declared horizon and single covered crop window are separate. Root inte
 
 ## Executed tests
 
-`npm run check` passed in the isolated worktree: **54 unit tests passed**, production build passed, repository/link checker passed. `node scripts/validation/verify-v2-water-reference.mjs` passed all nine published component checks. The water-specific suite contains **12 scenarios**, including a follow-up guard against using a generic reference as calendar provenance. Component reference checks cover four genuine FAO-56 interpolation answers and five FAO training-manual ETcrop products; they are not full-season or irrigation validation. Existing legacy regression snapshots and ET₀ numerical tests remain mandatory during integration. Browser/experimental UI checks are the integration owner's responsibility because this PR changes pure engine code only.
+`npm run check` passed in the isolated worktree: **57 unit tests passed**, production build passed, repository/link checker passed. `node scripts/validation/verify-v2-water-reference.mjs` passed all nine published component checks. The water-specific suite contains **14 scenarios**, including follow-up guards against generic reference misuse, expired/invalid calendar periods, source identity/URL mismatches and conflicting calendar attestations. Component reference checks cover four genuine FAO-56 interpolation answers and five FAO training-manual ETcrop products; they are not full-season or irrigation validation. Existing legacy regression snapshots and ET₀ numerical tests remain mandatory during integration. Browser/experimental UI checks are the integration owner's responsibility because this PR changes pure engine code only.
+
+## Follow-up calendar provenance regression
+
+An explicit farmer calendar source constrained to `2024-01-01..2024-12-31` previously authenticated a `2025-01-01` sowing with stages `[2,2,2,2]`. It now returns `unavailable`, `etcMm.value: null`, and `calendar_period_mismatch`. Every explicitly declared `period` or `validity.period` must be a real ordered ISO interval covering the entire crop window. Missing periods remain disclosed temporal assumptions, not verified historical dates. Source lookup IDs, weather-source URLs, calendar entry source IDs/URLs and crop/use/region inputs must agree. Checked FAO coefficient IDs cannot be repurposed as calendar evidence by appending metadata. The 14 water scenarios and final 57-test repository check passed after these fixes.
 
 ## Remaining limitations
 
