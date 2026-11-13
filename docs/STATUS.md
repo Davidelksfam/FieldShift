@@ -1,28 +1,11 @@
-# Current status — new-direction pivot
+# Current status — Egypt client-first dashboard
 
-**As of:** 2026-11-13 (Africa/Cairo)  
-**State:** Clean-slate planning. No new product specification, datasets, computations, stack, design system, or implementation approved on this branch.
+As of 2026-11-13. Direction authorized by the user in this session and recorded in [decision 0003](decisions/0003-client-first-egypt-dashboard.md). Work tracked in [issue #12](https://github.com/Davidelksfam/FieldShift/issues/12).
 
-## What has been decided
+The root Vite/React application implements the six-phase [blueprint](../IMPLEMENTATION_PLAN.md): nine-crop catalog, three labeled synthetic regional benchmarks, bounded NASA POWER/SoilGrids/MODIS service, local cache, deterministic scoring, interactive GIBS map, bilingual inputs/comparison, evidence charts and offline production shell. The approved brand mark, tokens and typography were recovered from the old brand branch.
 
-- Keep Field Shift as the collaboration repository.
-- Preserve prior work on `main` and its commit history.
-- Use the original team contribution/workstream skeleton to coordinate a **new** plan.
-- Require explicit decision/evidence review before implementation.
+Review and integration are through a PR against the pivot branch. Main and earlier branches are preserved. There is no deployment or merge in this task.
 
-## What remains to decide
+Scientific limits remain: crop/score constants are user-supplied assumptions, benchmarks are synthetic, salinity is not measured EC, Nili scheduling is conditional, and the satellite sources have different native scales. Live source availability varies; the app shows source-level fallback. Official event eligibility remains unverified.
 
-| Priority | Decision | Accountable owner | Evidence needed | Status |
-| --- | --- | --- | --- | --- |
-| P0 | Confirm official challenge brief, rules, judging and deadline | TBD | Official references with dates | Open |
-| P0 | Pick/define new problem statement and end-user outcome | TBD | Alternatives, impact and demo path | Open |
-| P0 | Choose candidate datasets and assess suitability | TBD | Data audit and access proof | Open |
-| P0 | Select the minimum end-to-end demo | TBD | Input → transformation → result → UI | Open |
-| P1 | Agree roles, interfaces and testing ownership | TBD | Issues and reviewed contracts | Open |
-| P1 | Choose stack and visual direction | TBD | Reviewed alternatives and constraints | Open |
-
-## Team protocol
-
-Work through scoped issues, branch from the pivot branch, review PRs into it, then decide whether and how to merge into `main`. Do not claim old implementation or datasets are part of the new plan.
-
-Next: fill the [product proposal](product/PRD.md), [data evaluation](data/DATA_PLAN.md), [architecture](engineering/ARCHITECTURE.md), and [delivery plan](delivery/PLAN.md). Record decisions in [the log](decisions/README.md).
+See [delivery and validation](delivery/PLAN.md) for actual check results and [data access findings](data/DATA_PLAN.md) for endpoint limitations.

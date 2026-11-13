@@ -1,28 +1,23 @@
-# Shared instructions for coding agents — new-direction planning branch
+# Shared instructions for coding agents
 
-## Before every task
+## Current direction and authority
 
-Read `README.md`, `docs/STATUS.md`, `CONTRIBUTING.md`, the assigned GitHub issue and the relevant focused docs. Inspect the selected branch and working tree first. Report your task scope, intended files, assumptions and acceptance criteria.
+Read `README.md`, `IMPLEMENTATION_PLAN.md`, `docs/STATUS.md`, `CONTRIBUTING.md` and the assigned issue before working. Inspect branch and working tree. State scope, assumptions and acceptance criteria.
 
-## Authority and status
-
-This branch replaces the **working plan**, not repository history. No old product, dataset, model, technology, architecture, UI or schema is automatically approved. Do not revive old assumptions from `main` unless the team explicitly evaluates and accepts them. Treat all new specification text as a **proposal** until a decision record says otherwise. Prefer verified official challenge rules to unsourced claims; keep unknown facts labeled unknown.
+The user authorized the client-first Egypt blueprint on 2026-11-13; [decision 0003](docs/decisions/0003-client-first-egypt-dashboard.md) records that direction. This replaces the earlier blank planning gate. The canonical application lives at root `src/`; `web/` is a historical placeholder. Do not revive older backend/seven-source assumptions.
 
 ## Collaboration
 
-One contributor/agent, one task, one branch or isolated worktree. During pivot planning, branch from `chore/clean-slate-new-direction-2026-11-13` and open PRs **against that branch**. Follow the shared-file ownership rules in `docs/team/WORKSTREAMS.md`. Never reset/force-push `main`, overwrite someone else's work, silently change shared contracts, or merge unreviewed assumptions. Use `docs/team/HANDOFF_TEMPLATE.md` for incomplete work.
+One contributor/agent, one task, one branch or isolated worktree. During pivot integration, branch from `chore/clean-slate-new-direction-2026-11-13` and target PRs at that branch. Never reset or force-push main, overwrite another contributor's changes or merge without authorization. Track shared-file edits and use `docs/team/HANDOFF_TEMPLATE.md` for incomplete work.
 
-## Planning sequence
+## Implementation and evidence
 
-1. Verify the challenge and deadline requirements.
-2. Write competing product approaches with measurable outcomes.
-3. Audit candidate datasets: exact product, relevance, eligibility, access, coverage, units, granularity, missingness, licensing and provenance.
-4. Decide the smallest demonstrable end-to-end path and what remains uncertain.
-5. Choose a stack and define interface contracts *after* the product/data decision.
-6. Implement in independent reviewed slices, with tests and clear evidence.
+- Follow the six phases and contracts in the implementation plan. Use the approved brand files in `docs/brand/` before UI work.
+- Keep synthetic fixtures visibly labeled. Do not describe generated benchmark values as NASA/ISRIC observations, model scores as probabilities, or modeled savings as measured outcomes.
+- Preserve missingness and source provenance. Co-location is not field-level downscaling. Crop assumptions require local agronomic review.
+- Historical 2025 data is not a forecast; salinity heuristic is not soil EC. Nili sequences are conditional on dates and local pest review.
+- Do not claim scientific validation, challenge eligibility, deployment or field outcomes without evidence. Never commit secrets, private data or bulky raw downloads.
 
-Do not silently scaffold a framework, select datasets or fabricate example scientific outputs as if they were real. Small synthetic fixtures may be added only when a proposal or contract is accepted, and must be explicitly labeled.
+## Required checks and handoff
 
-## Checks and handoff
-
-Run `python3 scripts/check_repository.py` for documentation and structural edits, and report the actual output. Add task-specific checks when code is introduced. No claimed deployment, benchmark, scientific validity, field result, or dataset eligibility without evidence. Never commit API keys, credentials, private data or bulky raw downloads. Record material AI contributions in `docs/AI_USAGE.md`.
+Run `npm run check` for code changes and `npm run test:browser` for flow changes (after a production build). Run `python3 scripts/check_repository.py` for documentation/structure changes. Report actual results and limitations. Record material AI contributions in `docs/AI_USAGE.md`.

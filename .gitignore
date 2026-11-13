@@ -241,3 +241,7 @@ data/private/
 !web/src/lib/**
 web/test-results/
 web/playwright-report/
+
+# SPA verification artifacts
+/test-results/
+/playwright-report/

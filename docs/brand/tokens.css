@@ -1,0 +1,37 @@
+/* Field Shift approved light dashboard tokens — source of truth for future UI.
+   User-approved visual direction 2026-11-13.
+   Do not edit or fork palette without design review; no app is scaffolded here. */
+:root {
+  --fs-brand-primary: #109B60;
+  --fs-brand-hover: #08794A;
+  --fs-brand-soft: #E9F8F0;
+  --fs-brand-pale: #F3FBF6;
+  --fs-action-bg: #08794A;
+  --fs-action-hover: #06673E;
+
+  --fs-text-primary: #1A2D29;
+  --fs-text-secondary: #4C6257;
+  --fs-text-muted: #74827C;
+  --fs-bg-canvas: #F7F9F8;
+  --fs-bg-surface: #FFFFFF;
+  --fs-border: #E6ECE9;
+  --fs-data-blue: #3289CE;
+  --fs-data-blue-soft: #EDF6FC;
+  --fs-caution: #D79A35;
+  --fs-caution-soft: #FFF7E9;
+  /* User blueprint requests a red NDVI threshold; semantic chart marker only. */
+  --fs-threshold: #B42318;
+  --fs-focus: #9AD8BF;
+
+  --fs-font-ar: "IBM Plex Sans Arabic", Tahoma, Arial, sans-serif;
+  --fs-font-en: "DM Sans", Arial, sans-serif;
+  --fs-radius-sm: 9px;
+  --fs-radius-card: 16px;
+  --fs-shadow-card: 0 7px 26px rgba(33,65,52,.035);
+  --fs-space-1: 4px;
+  --fs-space-2: 8px;
+  --fs-space-3: 12px;
+  --fs-space-4: 16px;
+  --fs-space-6: 24px;
+  --fs-space-8: 32px;
+}

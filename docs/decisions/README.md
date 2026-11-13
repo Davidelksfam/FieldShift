@@ -1,5 +1,6 @@
-# Decision log — new plan
+# Decision log
 
-No **new-direction** product, data, model, architecture or branding decisions are accepted yet. Older decision records remain accessible on `main` but are **not carried forward automatically**.
+- [0002 — approved light-green visual identity](0002-approved-light-green-identity.md): recovered from the prior approved brand branch; visual approval only.
+- [0003 — client-first Egypt dashboard](0003-client-first-egypt-dashboard.md): implementation authorized by the user on 2026-11-13; scientific validity remains unestablished.
 
-Copy [TEMPLATE.md](TEMPLATE.md) to `NNNN-descriptive-name.md`. Mark it Proposed, Accepted, Rejected or Superseded and include approver/date, evidence, alternatives, and effects on other teams. Update relevant canonical docs only after acceptance.
+Copy [TEMPLATE.md](TEMPLATE.md) for subsequent decisions. Record status, approver/date, evidence, alternatives and affected interfaces. Preserve prior branches and history.
