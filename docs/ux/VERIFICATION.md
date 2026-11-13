@@ -1,12 +1,14 @@
 # UX verification — 2026-11-13
 
-Scope: frontend-only redesign on `feat/ux-journey-redesign`, based on main `792e186`. No scoring, crop constants, data files, schemas, fetching semantics, service worker or production configuration changed.
+Scope: frontend-only redesign on `feat/ux-journey-redesign`, started from main `792e186` and integrated the concurrent crop-science update `af70509` (PR #21). No scoring, crop constants, data files, schemas, fetching semantics, service worker or production configuration changed.
+
+The concurrent update's measured laboratory ECe input/validation, FAO reference disclosure, water-model caveat and all new science modules/tests are preserved. The redesign does not modify the engine/data files relative to latest main. Baseline screenshots intentionally document the original starting revision.
 
 ## Automated evidence
 
-- `npm run check`: **23 unit tests passed**, Vite production build passed, repository/link check passed.
-- `npm run test:browser`: **9 scenarios passed** against the local production bundle. All seven earlier regression themes are retained, with navigation adapted to the new journey.
-- Goal input-to-paint p90: **33.6 ms** over 12 changes in local headless Chromium; goal and irrigation changes caused no additional API requests. This is a local result, not a guarantee on all devices.
+- `npm run check`: **27 unit tests passed**, Vite production build passed, repository/link check passed.
+- `npm run test:browser`: **10 scenarios passed** against the local production bundle. All seven earlier regression themes are retained, with navigation adapted to the new journey.
+- Goal input-to-paint p90: **34.5 ms** over 12 changes in local headless Chromium; goal and irrigation changes caused no additional API requests. This is a local result, not a guarantee on all devices.
 - Both languages and all five steps checked at 390, 768 and 1440px; no page-level overflow.
 - 200% **reflow equivalent** checked by halving those CSS viewport widths to 195, 384 and 720px. Headless Chromium has no browser-chrome zoom control; this does not claim manual browser-zoom testing or physical-device validation.
 - Keyboard skip link, Enter navigation, heading focus, visible control focus, reduced-motion styles, 44px visible button/disclosure targets at 390px.

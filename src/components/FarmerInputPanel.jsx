@@ -116,6 +116,36 @@ export default function FarmerInputPanel({ lang, inputs, setInputs, crops }) {
             ["high", "High", "مرتفعة"],
           ])}
         </div>
+        <label className="field-label">
+          {t(
+            "Measured soil ECe (dS/m) · optional lab result",
+            "ملوحة التربة ECe (dS/m) · تحليل معمل اختياري",
+          )}
+          <input
+            aria-label={t("Measured soil ECe", "ECe المقاس للتربة")}
+            type="number"
+            min="0"
+            max="100"
+            step="0.1"
+            placeholder={t(
+              "Leave blank if not tested",
+              "اتركه فارغاً دون تحليل",
+            )}
+            value={inputs.soilEceDsm ?? ""}
+            onChange={(e) =>
+              update(
+                "soilEceDsm",
+                e.target.value === "" ? null : Number(e.target.value),
+              )
+            }
+          />
+        </label>
+        <p className="small-note">
+          {t(
+            "Only laboratory saturated-paste soil ECe can be compared with FAO crop thresholds. This is NOT the 0–100 salinity screening index.",
+            "فقط قياس ECe المعملي للتربة يمكن مقارنته بحدود FAO، وليس مؤشر الملوحة التقديري من ٠ إلى ١٠٠.",
+          )}
+        </p>
       </div>
       <p className="small-note">
         {t(

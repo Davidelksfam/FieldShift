@@ -1,5 +1,6 @@
 import { computeFieldIndices } from "./fieldIndices.js";
 import { explainStrategy } from "./strategyExplanations.js";
+import { assessMeasuredSalinity } from "./cropEvidence.js";
 const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 const isNumber = (n) => typeof n === "number" && Number.isFinite(n);
 
@@ -18,6 +19,9 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
     Number(userInputs.feddans) + Number(userInputs.qirats ?? 0) / 24;
   if (!Number.isFinite(feddans) || feddans <= 0)
     throw new Error("Enter a positive field area.");
+  const ece = userInputs.soilEceDsm;
+  if (ece !== null && ece !== undefined && (typeof ece !== "number" || !Number.isFinite(ece) || ece < 0 || ece > 100))
+    throw new Error("Measured soil ECe must be 0–100 dS/m, or left blank.");
   const winter = cropsCatalog.find(
     (c) => c.id === currentWinterId && c.season === "Shitwi",
   );
@@ -112,11 +116,19 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
       );
     }
     for (const c of crops) {
-      if (salinityRisk > 65 && c.salinityToleranceDsm < 3) {
+      const salt = assessMeasuredSalinity(c.id, ece);
+      if (salt.status === "above_reference_threshold") {
+        // The 15-point penalty is still an explicitly uncalibrated scoring choice;
+        // the salinity threshold is from FAO, and never from the 0-100 screening index.
         penalty += 15;
         addWarning(
-          `${c.nameEn}: low salt tolerance; measure soil EC.`,
-          `${c.nameAr}: تحمل محدود للملوحة؛ قِس التوصيل الكهربائي للتربة.`,
+          `${c.nameEn}: measured soil ECe ${salt.measuredEceDsm} dS/m exceeds the FAO reference ${salt.thresholdDsm} dS/m for ${salt.outcome}; verify locally.`,
+          `${c.nameAr}: ملوحة التربة المقاسة ECe (${salt.measuredEceDsm}) تتجاوز مرجع FAO (${salt.thresholdDsm})؛ يلزم التحقق محلياً.`,
+        );
+      } else if (salt.status === "unsupported" && ece !== null && ece !== undefined) {
+        addWarning(
+          `${c.nameEn}: no outcome-matched quantitative FAO salinity response; no numerical salinity penalty.`,
+          `${c.nameAr}: لا يوجد مرجع FAO رقمي مطابق لغرض المحصول؛ لا تُخصم نقاط للملوحة.`,
         );
       }
       if (
@@ -136,6 +148,11 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
           `${c.nameAr}: الأس الهيدروجيني خارج نطاق الدليل؛ يلزم تقييم محلي.`,
         );
     }
+    if (salinityRisk > 65 && (ece === null || ece === undefined))
+      addWarning(
+        "Salinity screening is elevated, but soil ECe is not measured: no numeric salinity penalty; request a soil test.",
+        "مؤشر الملوحة التقديري مرتفع، لكن ECe غير مقاس؛ لا عقوبة رقمية قبل تحليل التربة.",
+      );
     if (
       landType === "new_sandy" &&
       ["flood", "modified_surface"].includes(irrigationType)
@@ -168,6 +185,8 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
       conditionalNili: crops.length === 3,
       crops,
       grossWaterM3Feddan,
+      waterModelStatus: "prototype_uncalibrated",
+      waterModelNote: "Legacy baseWaterMm × legacy Kc / assumed irrigation efficiency; not FAO-verified ETc or measured irrigation water.",
       totalFarmWaterM3: Math.round(grossWaterM3Feddan * feddans),
       nitrogenBalance,
       waterScore,

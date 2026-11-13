@@ -2112,3 +2112,8 @@ html[lang="ar"] .strategy-card h3 {
     border: 0;
   }
 }
+.local-checks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}

@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-11-13",
+  "description": "Authoritative FAO crop reference values mapped to nine existing catalog records. Reference values do not validate the current prototype scoring or irrigation estimates.",
+  "sources": {
+    "fao56_1998_table12": {
+      "organization": "Food and Agriculture Organization of the United Nations",
+      "title": "FAO Irrigation and Drainage Paper 56 (1998), Chapter 6, Table 12: single crop coefficients",
+      "url": "https://www.fao.org/4/x0490e/x0490e0b.htm",
+      "verified": "Directly inspected official HTML table",
+      "note": "Stage values are planning references; Kc_ini depends on wetting; some Kc_mid/Kc_end selections from published ranges remain assumptions."
+    },
+    "fao_salinity_annex_a1_1": {
+      "organization": "Food and Agriculture Organization of the United Nations",
+      "title": "Agricultural Drainage Water Management in Arid and Semi-arid Areas, Annex 1, Table A1.1: crop salt tolerance",
+      "url": "https://www.fao.org/4/y4263e/y4263e0e.htm",
+      "verified": "Directly inspected official HTML table",
+      "note": "Outcome-specific ECe thresholds and yield slopes; cultivar, soil and life stage change outcomes."
+    },
+    "fao56_2025_pending": {
+      "organization": "Food and Agriculture Organization of the United Nations",
+      "title": "Crop Evapotranspiration, second edition revised 2025",
+      "url": "https://doi.org/10.4060/cd6621en",
+      "verified": "Publication exists; numeric crop-by-crop values NOT independently verified in this audit",
+      "note": "Do not relabel the 1998 numbers as 2025 values until cross-checking the revised tables."
+    },
+    "egypt_arc_pending": {
+      "organization": "Egypt Agricultural Research Center",
+      "title": "National crop extension bulletins",
+      "url": "https://www.arc.sci.eg/",
+      "verified": "Candidate for future crop-calendar/cultivar validation; no Egypt-specific dates assigned in this catalog"
+    }
+  },
+  "cropProfiles": {
+    "wheat": {
+      "scientificName": "Triticum aestivum",
+      "cropCoefficient": {
+        "status": "published_reference",
+        "kcIni": 0.7,
+        "kcMid": 1.15,
+        "kcEnd": 0.25,
+        "units": "dimensionless",
+        "sourceId": "fao56_1998_table12",
+        "basis": "winter wheat non-frozen soil; end 0.25–0.40 depending harvest",
+        "referenceNotes": "Kc_end is a selected endpoint of a published range, not an Egypt-specific measurement."
+      },
+      "salinity": {
+        "status": "published_reference",
+        "eceThresholdDsm": 6,
+        "slopePctPerDsm": 7.1,
+        "outcome": "grain yield",
+        "rating": "MT",
+        "sourceId": "fao_salinity_annex_a1_1",
+        "note": "ECe = laboratory saturated-paste root-zone soil electrical conductivity, NOT soil pH, canal EC or the prototype 0–100 screening index."
+      },
+      "unverifiedLegacyFields": [
+        "kc",
+        "baseWaterMm",
+        "heatThresholdC",
+        "salinityToleranceDsm",
+        "phMin",
+        "phMax",
+        "nitrogenScore",
+        "rootDepth",
+        "erosionProtection",
+        "marketScore",
+        "forageScore",
+        "months"
+      ],
+      "status": "reference_with_uncalibrated_demo_fields",
+      "reviewRequirements": [
+        "Egypt cultivar and agricultural calendar",
+        "field-calibrated water balance",
+        "observed soil ECe for salinity",
+        "agronomic review of crop nitrogen/market/forage/heat/pH indices"
+      ]
+    },
+    "berseem": {
+      "scientificName": "Trifolium alexandrinum",
+      "cropCoefficient": {
+        "status": "published_reference",
+        "kcIni": 0.4,
+        "kcMid": 0.9,
+        "kcEnd": 0.85,
+        "units": "dimensionless",
+        "sourceId": "fao56_1998_table12",
+        "basis": "clover hay berseem averaged cutting effects, not an individual cutting",
+        "referenceNotes": "Reference conditions are non-stressed, well managed, subhumid; adjust for Egyptian climate/irrigation."
+      },
+      "salinity": {
+        "status": "published_reference",
+        "eceThresholdDsm": 1.5,
+        "slopePctPerDsm": 5.7,
+        "outcome": "shoot dry weight",
+        "rating": "MS",
+        "sourceId": "fao_salinity_annex_a1_1",
+        "note": "ECe = laboratory saturated-paste root-zone soil electrical conductivity, NOT soil pH, canal EC or the prototype 0–100 screening index."
+      },
+      "unverifiedLegacyFields": [
+        "kc",
+        "baseWaterMm",
+        "heatThresholdC",
+        "salinityToleranceDsm",
+        "phMin",
+        "phMax",
+        "nitrogenScore",
+        "rootDepth",
+        "erosionProtection",
+        "marketScore",
+        "forageScore",
+        "months"
+      ],
+      "status": "reference_with_uncalibrated_demo_fields",
+      "reviewRequirements": [
+        "Egypt cultivar and agricultural calendar",
+        "field-calibrated water balance",
+        "observed soil ECe for salinity",
+        "agronomic review of crop nitrogen/market/forage/heat/pH indices"
+      ]
+    },
+    "faba_bean": {
+      "scientificName": "Vicia faba",
+      "cropCoefficient": {
+        "status": "published_reference",
+        "kcIni": 0.5,
+        "kcMid": 1.15,
+        "kcEnd": 0.3,
+        "units": "dimensionless",
+        "sourceId": "fao56_1998_table12",
+        "basis": "faba/broad bean dry seed, not fresh bean; salinity study used shoot dry weight",
+        "referenceNotes": "Reference conditions are non-stressed, well managed, subhumid; adjust for Egyptian climate/irrigation."
+      },
+      "salinity": {
+        "status": "reference_for_different_outcome",
+        "eceThresholdDsm": 1.6,
+        "slopePctPerDsm": 9.6,
+        "outcome": "shoot dry weight",
+        "rating": "MS",
+        "sourceId": "fao_salinity_annex_a1_1",
+        "note": "FAO endpoint is shoot dry weight; this is not identical to the catalog's dry-seed harvest outcome. Display only; do not penalize automatically."
+      },
+      "unverifiedLegacyFields": [
+        "kc",
+        "baseWaterMm",
+        "heatThresholdC",
+        "salinityToleranceDsm",
+        "phMin",
+        "phMax",
+        "nitrogenScore",
+        "rootDepth",
+        "erosionProtection",
+        "marketScore",
+        "forageScore",
+        "months"
+      ],
+      "status": "reference_with_uncalibrated_demo_fields",
+      "reviewRequirements": [
+        "Egypt cultivar and agricultural calendar",
+        "field-calibrated water balance",
+        "observed soil ECe for salinity",
+        "agronomic review of crop nitrogen/market/forage/heat/pH indices"
+      ]
+    },
+    "sugar_beet": {
+      "scientificName": "Beta vulgaris",
+      "cropCoefficient": {
+        "status": "published_reference",
+        "kcIni": 0.35,
+        "kcMid": 1.2,
+        "kcEnd": 0.7,
+        "units": "dimensionless",
+        "sourceId": "fao56_1998_table12",
+        "basis": "sugar beet root crop",
+        "referenceNotes": "Reference conditions are non-stressed, well managed, subhumid; adjust for Egyptian climate/irrigation."
+      },
+      "salinity": {
+        "status": "published_reference",
+        "eceThresholdDsm": 7,
+        "slopePctPerDsm": 5.9,
+        "outcome": "storage root yield",
+        "rating": "T",
+        "sourceId": "fao_salinity_annex_a1_1",
+        "note": "ECe = laboratory saturated-paste root-zone soil electrical conductivity, NOT soil pH, canal EC or the prototype 0–100 screening index."
+      },
+      "unverifiedLegacyFields": [
+        "kc",
+        "baseWaterMm",
+        "heatThresholdC",
+        "salinityToleranceDsm",
+        "phMin",
+        "phMax",
+        "nitrogenScore",
+        "rootDepth",
+        "erosionProtection",
+        "marketScore",
+        "forageScore",
+        "months"
+      ],
+      "status": "reference_with_uncalibrated_demo_fields",
+      "reviewRequirements": [
+        "Egypt cultivar and agricultural calendar",
+        "field-calibrated water balance",
+        "observed soil ECe for salinity",
+        "agronomic review of crop nitrogen/market/forage/heat/pH indices"
+      ]
+    },
+    "maize": {
+      "scientificName": "Zea mays",
+      "cropCoefficient": {
+        "status": "published_reference",
+        "kcIni": 0.3,
+        "kcMid": 1.2,
+        "kcEnd": 0.35,
+        "units": "dimensionless",
+        "sourceId": "fao56_1998_table12",
+        "basis": "field maize grain; late Kc 0.35–0.60 depends harvest, 0.35 assumes drying",
+        "referenceNotes": "Kc_end is a selected endpoint of a published range, not an Egypt-specific measurement."
+      },
+      "salinity": {
+        "status": "reference_for_different_outcome",
+        "eceThresholdDsm": 1.7,
+        "slopePctPerDsm": 12,
+        "outcome": "ear fresh weight",
+        "rating": "MS",
+        "sourceId": "fao_salinity_annex_a1_1",
+        "note": "FAO endpoint is ear fresh weight; this is not identical to the catalog's grain-corn harvest outcome. Display only; do not penalize automatically."
+      },
+      "unverifiedLegacyFields": [
+        "kc",
+        "baseWaterMm",
+        "heatThresholdC",
+        "salinityToleranceDsm",
+        "phMin",
+        "phMax",
+        "nitrogenScore",
+        "rootDepth",
+        "erosionProtection",
+        "marketScore",
+        "forageScore",
+        "months"
+      ],
+      "status": "reference_with_uncalibrated_demo_fields",
+      "reviewRequirements": [
+        "Egypt cultivar and agricultural calendar",
+        "field-calibrated water balance",
+        "observed soil ECe for salinity",
+        "agronomic review of crop nitrogen/market/forage/heat/pH indices"
+      ]
+    },
+    "sorghum": {
+      "scientificName": "Sorghum bicolor",
+      "cropCoefficient": {
+        "status": "published_reference",
+        "kcIni": 0.3,
+        "kcMid": 1.05,
+        "kcEnd": 0.55,
+        "units": "dimensionless",
+        "sourceId": "fao56_1998_table12",
+        "basis": "grain sorghum; Kc_mid 1.00–1.10, selected 1.05 is midpoint assumption",
+        "referenceNotes": "Kc_mid=1.05 is a selectable midpoint of a reported 1.00–1.10 range, not an exact published point."
+      },
+      "salinity": {
+        "status": "published_reference",
+        "eceThresholdDsm": 6.8,
+        "slopePctPerDsm": 16,
+        "outcome": "grain yield",
+        "rating": "MT",
+        "sourceId": "fao_salinity_annex_a1_1",
+        "note": "ECe = laboratory saturated-paste root-zone soil electrical conductivity, NOT soil pH, canal EC or the prototype 0–100 screening index."
+      },
+      "unverifiedLegacyFields": [
+        "kc",
+        "baseWaterMm",
+        "heatThresholdC",
+        "salinityToleranceDsm",
+        "phMin",
+        "phMax",
+        "nitrogenScore",
+        "rootDepth",
+        "erosionProtection",
+        "marketScore",
+        "forageScore",
+        "months"
+      ],
+      "status": "reference_with_uncalibrated_demo_fields",
+      "reviewRequirements": [
+        "Egypt cultivar and agricultural calendar",
+        "field-calibrated water balance",
+        "observed soil ECe for salinity",
+        "agronomic review of crop nitrogen/market/forage/heat/pH indices"
+      ]
+    },
+    "soybean": {
+      "scientificName": "Glycine max",
+      "cropCoefficient": {
+        "status": "published_reference",
+        "kcIni": 0.4,
+        "kcMid": 1.15,
+        "kcEnd": 0.5,
+        "units": "dimensionless",
+        "sourceId": "fao56_1998_table12",
+        "basis": "soybean seed crop",
+        "referenceNotes": "Reference conditions are non-stressed, well managed, subhumid; adjust for Egyptian climate/irrigation."
+      },
+      "salinity": {
+        "status": "published_reference",
+        "eceThresholdDsm": 5,
+        "slopePctPerDsm": 20,
+        "outcome": "seed yield",
+        "rating": "MT",
+        "sourceId": "fao_salinity_annex_a1_1",
+        "note": "ECe = laboratory saturated-paste root-zone soil electrical conductivity, NOT soil pH, canal EC or the prototype 0–100 screening index."
+      },
+      "unverifiedLegacyFields": [
+        "kc",
+        "baseWaterMm",
+        "heatThresholdC",
+        "salinityToleranceDsm",
+        "phMin",
+        "phMax",
+        "nitrogenScore",
+        "rootDepth",
+        "erosionProtection",
+        "marketScore",
+        "forageScore",
+        "months"
+      ],
+      "status": "reference_with_uncalibrated_demo_fields",
+      "reviewRequirements": [
+        "Egypt cultivar and agricultural calendar",
+        "field-calibrated water balance",
+        "observed soil ECe for salinity",
+        "agronomic review of crop nitrogen/market/forage/heat/pH indices"
+      ]
+    },
+    "sesame": {
+      "scientificName": "Sesamum indicum",
+      "cropCoefficient": {
+        "status": "published_reference",
+        "kcIni": 0.35,
+        "kcMid": 1.1,
+        "kcEnd": 0.25,
+        "units": "dimensionless",
+        "sourceId": "fao56_1998_table12",
+        "basis": "FAO salinity qualitative S only; no numerical threshold or slope",
+        "referenceNotes": "Reference conditions are non-stressed, well managed, subhumid; adjust for Egyptian climate/irrigation."
+      },
+      "salinity": {
+        "status": "qualitative_only",
+        "eceThresholdDsm": null,
+        "slopePctPerDsm": null,
+        "outcome": "pod dry weight",
+        "rating": "S",
+        "sourceId": "fao_salinity_annex_a1_1",
+        "note": "The FAO table has only a qualitative sensitive rating; numeric ECe is unknown."
+      },
+      "unverifiedLegacyFields": [
+        "kc",
+        "baseWaterMm",
+        "heatThresholdC",
+        "salinityToleranceDsm",
+        "phMin",
+        "phMax",
+        "nitrogenScore",
+        "rootDepth",
+        "erosionProtection",
+        "marketScore",
+        "forageScore",
+        "months"
+      ],
+      "status": "reference_with_uncalibrated_demo_fields",
+      "reviewRequirements": [
+        "Egypt cultivar and agricultural calendar",
+        "field-calibrated water balance",
+        "observed soil ECe for salinity",
+        "agronomic review of crop nitrogen/market/forage/heat/pH indices"
+      ]
+    },
+    "cowpea_nili": {
+      "scientificName": "Vigna unguiculata",
+      "cropCoefficient": {
+        "status": "not_validated_for_use",
+        "kcIni": null,
+        "kcMid": null,
+        "kcEnd": null,
+        "units": "dimensionless",
+        "sourceId": "fao56_1998_table12",
+        "basis": "FAO Kc is for full-season green gram/cowpea crop, not verified for short Nili cover; salinity is forage proxy only",
+        "referenceNotes": "FAO generic cowpea coefficients cannot be assigned to a short-duration Nili cover without local stage/cutting data."
+      },
+      "salinity": {
+        "status": "reference_for_different_outcome",
+        "eceThresholdDsm": 2.5,
+        "slopePctPerDsm": 11,
+        "outcome": "shoot dry weight",
+        "rating": "MS",
+        "sourceId": "fao_salinity_annex_a1_1",
+        "note": "Forage shoot dry weight, not Nili cover success; do not use for crop suitability penalty."
+      },
+      "unverifiedLegacyFields": [
+        "kc",
+        "baseWaterMm",
+        "heatThresholdC",
+        "salinityToleranceDsm",
+        "phMin",
+        "phMax",
+        "nitrogenScore",
+        "rootDepth",
+        "erosionProtection",
+        "marketScore",
+        "forageScore",
+        "months"
+      ],
+      "status": "reference_with_uncalibrated_demo_fields",
+      "reviewRequirements": [
+        "Egypt cultivar and agricultural calendar",
+        "field-calibrated water balance",
+        "observed soil ECe for salinity",
+        "agronomic review of crop nitrogen/market/forage/heat/pH indices"
+      ]
+    }
+  },
+  "globalCaveats": [
+    "The current engine still uses legacy baseWaterMm, kc and ordinal nitrogen/market/forage/heat assumptions; do not call its rankings FAO-validated.",
+    "FAO tabulated Kc coefficients need crop-stage dates and local climatic adjustments; no Egypt-specific calendar is inferred here.",
+    "Salt thresholds use laboratory measured soil ECe in dS/m, not the app's 0–100 screening proxy.",
+    "Do not convert qualitative sesame salinity into a numerical threshold.",
+    "Cowpea short-cover performance and forage salinity studies are not interchangeable."
+  ]
+}

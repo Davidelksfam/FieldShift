@@ -9,6 +9,10 @@ import {
   Leaf,
 } from "lucide-react";
 import { text, formatNumber } from "../i18n";
+import {
+  getCropEvidence,
+  CROP_REFERENCE_SOURCES,
+} from "../engine/cropEvidence.js";
 export default function StrategyComparison({ lang, strategies }) {
   const [comparison, setComparison] = useState("all");
   const t = (en, ar) => text(lang, en, ar);
@@ -119,11 +123,11 @@ export default function StrategyComparison({ lang, strategies }) {
                 </span>
               </div>
               <h3>
-                {s.id === "baseline"
-                  ? t("Your current rotation", "دورتك الحالية")
-                  : s.id === "water"
-                    ? t("Water & heat resilience", "المياه ومقاومة الحرارة")
-                    : t("Soil & nitrogen recovery", "تعافي التربة والنيتروجين")}
+                {s.crops
+                  .map((crop) =>
+                    lang === "ar" ? crop.nameAr : crop.nameEn.split(" (")[0],
+                  )
+                  .join(lang === "ar" ? " ← " : " → ")}
               </h3>
               <div className="suitability">
                 <div>
@@ -147,6 +151,12 @@ export default function StrategyComparison({ lang, strategies }) {
                     {n(s.grossWaterM3Feddan)}{" "}
                     <small>{t("m³ / feddan", "م³ / فدان")}</small>
                   </strong>
+                  <small>
+                    {t(
+                      "Uncalibrated crop-water model; FAO-stage ETc is not yet the active comparison.",
+                      "نموذج مياه المحاصيل غير معاير؛ حساب FAO المرحلي لم يُفعّل للمقارنة بعد.",
+                    )}
+                  </small>
                   {s.id === "baseline" ? (
                     <small>
                       {t(
@@ -270,6 +280,67 @@ export default function StrategyComparison({ lang, strategies }) {
                   </p>
                 </details>
               )}
+              <details className="local-checks">
+                <summary>
+                  {t(
+                    "FAO references & unverified inputs",
+                    "مراجع FAO والمدخلات غير الموثقة",
+                  )}
+                </summary>
+                <ul>
+                  {s.crops.map((crop) => {
+                    const evidence = getCropEvidence(crop.id);
+                    const refKc = evidence?.cropCoefficient;
+                    const refSalt = evidence?.salinity;
+                    return (
+                      <li key={crop.id}>
+                        <span>
+                          <strong>
+                            {lang === "ar" ? crop.nameAr : crop.nameEn}
+                          </strong>
+                          {" — "}
+                          {refKc?.status === "published_reference"
+                            ? `FAO Kc(mid): ${refKc.kcMid}`
+                            : t(
+                                "Kc not verified for this cover use",
+                                "Kc غير موثق لاستخدامه كغطاء نيلي",
+                              )}
+                          {" · "}
+                          {refSalt?.status === "published_reference"
+                            ? `FAO ECe: ${refSalt.eceThresholdDsm} dS/m (${refSalt.outcome})`
+                            : t(
+                                "No outcome-matched numeric soil-salinity threshold",
+                                "لا يوجد حد ملوحة رقمي مطابق لغرض المحصول",
+                              )}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <p>
+                  {t(
+                    "These are published reference entries, NOT locally calibrated crop recommendations. Water, heat, nitrogen, market and forage scores remain prototype assumptions.",
+                    "هذه قيم مرجعية منشورة وليست توصيات زراعية معايرة محلياً. حسابات المياه والحرارة والنيتروجين والسوق والأعلاف لا تزال افتراضات تجريبية.",
+                  )}
+                </p>
+                <p>
+                  <a
+                    href={CROP_REFERENCE_SOURCES.fao56_1998_table12.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    FAO-56 Kc
+                  </a>
+                  {" · "}
+                  <a
+                    href={CROP_REFERENCE_SOURCES.fao_salinity_annex_a1_1.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    FAO ECe
+                  </a>
+                </p>
+              </details>
               <details className="subscore-details">
                 <summary>
                   {t("Inspect score breakdown", "تفاصيل الدرجات")}

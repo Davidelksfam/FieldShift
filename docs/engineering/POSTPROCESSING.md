@@ -27,7 +27,7 @@ Enumerate the catalog's winter × summer × optional Nili crops: 32 candidates w
 
 Hard exclusions: duplicate crop IDs, invalid/missing water traits, and explicit farmer exclusions. Season slots come from the catalog. Calendar overlap is **not hard-validated** because sowing/harvest dates are absent; all Nili options stay conditional and need local review. Barley is not generated because the accepted catalog has no reviewed barley record.
 
-Penalties include three consecutive Poaceae across the known last-two-crop history and proposed sequence (+18), N balance<=−3 (+18), salt-sensitive crops (<3 dS/m) when screening>65 (+15/crop), and summer heat-sensitive crops (<37°C) when HSD>14 (+12/crop). pH mismatches and sandy surface-irrigation losses trigger local review. Salt screening is never treated as measured soil EC.
+Penalties include three consecutive Poaceae across the known last-two-crop history and proposed sequence (+18), N balance<=−3 (+18), salinity only when a farmer-supplied lab soil ECe exceeds an outcome-matched FAO threshold (+15/crop; prototype penalty, not FAO weight), and summer heat-sensitive crops (<37°C) when HSD>14 (+12/crop). pH mismatches and sandy surface-irrigation losses trigger local review. Salt screening is never treated as measured soil EC.
 
 ## 3. MCDA and distinct cards
 
@@ -50,3 +50,7 @@ The real 2025 flagship data now lives in [demoPresets.json](../../src/data/demoP
 ## 6. Validation and pitch
 
 See [three-minute demo](../pitch/THREE_MINUTE_DEMO.md), actual pipeline regression tests and browser checks. No claimed award, confirmed rubric, field success, measured water savings, canal EC or verified crop calendar follows from these implementation checks. The synthetic 19-day/48-day Fayoum story must not replace the retrieved 58-day/no-observed-gap result.
+
+## Crop-reference evidence amendment — 2026-11-13
+
+The new `src/data/cropEvidence.json` stores direct FAO-56 (1998, Chapter 6 Table 12) crop-stage Kc references and official Annex A1.1 soil ECe thresholds with source links, crop-outcome distinctions and explicit unverified legacy fields. Numeric 2025 edition values were not independently transcribed in this audit. `projectCropEtc` is a guarded secondary reference calculation requiring actual 2025 sowing dates and four locally checked stage lengths; **it does not replace the active demo gross-water calculation**. The optional farmer-provided *lab soil ECe* is separately evaluated; the unmeasured 0–100 salinity screening no longer triggers a numeric salinity penalty. See [Crop Science Audit](../data/CROP_SCIENCE_AUDIT.md).

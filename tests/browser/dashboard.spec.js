@@ -416,6 +416,8 @@ test("keyboard focus, reduced motion and mobile touch targets", async ({
   await blockRemote(page);
   await page.setViewportSize({ width: 390, height: 900 });
   await page.goto("/");
+  // Wait for the SPA to mount before sending the first keyboard event.
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await page.keyboard.press("Tab");
   await expect(
     page.getByRole("link", { name: "انتقل إلى مساحة التخطيط" }),
@@ -466,4 +468,37 @@ test("keyboard focus, reduced motion and mobile touch targets", async ({
         .map((el) => el.textContent.trim()),
     );
   expect(comparisonTargets).toEqual([]);
+});
+
+test("latest-main measured ECe validation and FAO references remain available", async ({
+  page,
+}) => {
+  await blockRemote(page);
+  await page.goto("/");
+  await english(page);
+  await step(page, "Farm");
+  await page.getByLabel("Measured soil ECe", { exact: true }).fill("-1");
+  await expect(page.getByRole("alert")).toContainText("between 0 and 100 dS/m");
+  await page.getByLabel("Measured soil ECe", { exact: true }).fill("7");
+  await step(page, "Compare");
+  const baseline = page.getByTestId("strategy-baseline");
+  await baseline
+    .getByText("FAO references & unverified inputs", { exact: true })
+    .click();
+  await expect(
+    baseline.getByRole("link", { name: "FAO-56 Kc", exact: true }),
+  ).toBeVisible();
+  await expect(baseline).toContainText("FAO ECe: 6 dS/m");
+  await baseline
+    .getByText("Verify locally before planting", { exact: true })
+    .click();
+  await expect(baseline).toContainText(
+    "measured soil ECe 7 dS/m exceeds the FAO reference",
+  );
+  await step(page, "Farm");
+  await expect(
+    page.getByLabel("Measured soil ECe", { exact: true }),
+  ).toHaveValue("7");
+  await page.getByLabel("Measured soil ECe", { exact: true }).fill("");
+  await expect(page.getByRole("alert")).toHaveCount(0);
 });

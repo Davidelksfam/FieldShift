@@ -1,6 +1,6 @@
 {
   "baseURL": "http://127.0.0.1:4173",
-  "checkedAt": "2026-11-13T21:18:56.215Z",
+  "checkedAt": "2026-11-13T21:28:00.483Z",
   "http": 200,
   "status": "Historical observations \u00b7 2025\nSource dates and spatial limitations are available in the evidence panel.\nRefresh",
   "diagnostics": "Summer heat exposure\n58hot days\n\nAir temperature >38\u00b0C \u00b7 May\u2013September\n\nNASA POWER \u00b7 Retrieved source data\n153 valid summer observations\nPotential autumn bare soil\n0gap days\n\nNDVI <0.22 \u00b7 September\u2013November\n\nMODIS MOD13Q1 \u00b7 Audited historical snapshot\n75 / 91 autumn days covered; 16 unknown\nSalinity risk screening\n45/ 100\n\npH 7.3 \u00b7 Clay 26.9% \u00b7 SOC 23.7 g/kg\n\nISRIC SoilGrids 2.0 / WCS \u00b7 Audited historical snapshot\nHeuristic index; salinity EC is not measured",

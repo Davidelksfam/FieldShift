@@ -45,8 +45,8 @@ export default function FieldIndicesPanel({ lang, diagnostics: d }) {
       t("Salinity/drainage screening", "فحص الملوحة والصرف"),
       `${n(d.salinityRisk)} / 100`,
       t(
-        "pH, clay, canal position and reported salinity; not measured EC or drainage.",
-        "الأس الهيدروجيني والطين وموقع المسقى والملوحة المُبلغ عنها؛ ليس قياس EC أو الصرف.",
+        "Heuristic pH/clay/canal screening; NOT lab soil ECe or drainage. Only an optional separate ECe input supports FAO threshold comparison.",
+        "مؤشر تقديري من pH والطين وموقع الترعة؛ ليس تحليل ECe معملياً أو قياس صرف. يوجد حقل ECe منفصل اختياري لمقارنة FAO.",
       ),
     ],
     [

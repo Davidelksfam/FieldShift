@@ -114,7 +114,14 @@ export default function App() {
       controller.abort();
     };
   }, [location, refresh]);
+  const invalidMeasuredEce =
+    inputs.soilEceDsm !== null &&
+    inputs.soilEceDsm !== undefined &&
+    (!Number.isFinite(inputs.soilEceDsm) ||
+      inputs.soilEceDsm < 0 ||
+      inputs.soilEceDsm > 100);
   const validationError =
+    invalidMeasuredEce ||
     Number(inputs.feddans) < 0 ||
     Number(inputs.feddans) > 100000 ||
     !Number.isFinite(Number(inputs.feddans)) ||
@@ -314,8 +321,12 @@ export default function App() {
           {validationError && (
             <div className="error-message" role="alert">
               {t(
-                "Enter a total area greater than zero (up to 100,000 feddans), with 0–23 whole extra qirats.",
-                "أدخل مساحة إجمالية أكبر من صفر وحتى ١٠٠ ألف فدان، ومن ٠ إلى ٢٣ قيراطاً إضافياً صحيحاً.",
+                invalidMeasuredEce
+                  ? "Measured soil ECe must be between 0 and 100 dS/m."
+                  : "Enter a total area greater than zero (up to 100,000 feddans), with 0–23 whole extra qirats.",
+                invalidMeasuredEce
+                  ? "يجب أن تكون ملوحة التربة ECe المقاسة بين صفر و١٠٠ dS/m."
+                  : "أدخل مساحة إجمالية أكبر من صفر وحتى ١٠٠ ألف فدان، ومن ٠ إلى ٢٣ قيراطاً إضافياً صحيحاً.",
               )}
             </div>
           )}
