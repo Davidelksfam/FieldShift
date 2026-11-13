@@ -101,3 +101,7 @@ All coordinates, histories, crops, budgets, areas and baselines in these fixture
 6. Integration lead verifies one complete synthetic path, then a separately labeled historical data path. Independently check a numerical example, gaps, zero water, unknown area/history, no baseline and unsupported location.
 
 Work is ready to start when the team can point to **one input fixture, one crop/calendar configuration, one accepted feature contract and one result-state policy**. More datasets or more UI fields will not resolve those four decisions.
+
+## Implementation follow-up
+
+See the [implementation checkpoint](IMPLEMENTATION_CHECKPOINT.md) for the recommended three-crop shortlist, proposed per-metric real-weather handoff and cross-year calendar issue. These additions are reviewable artifacts; no crop rules or team approvals are fabricated.

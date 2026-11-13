@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "crop-shortlist-proposal-0.1",
+  "status": "assistant_recommendation_pending_team_and_domain_review",
+  "scope": "Implementation shortlist; no claim these are optimal crops for an individual farm",
+  "sources": [
+    {
+      "sourceId": "fao-egypt-production-systems",
+      "url": "https://www.fao.org/4/y5863e/y5863e07.htm",
+      "checkedOn": "2026-11-13",
+      "scope": "Historical national crop production systems; supports broad season membership, not current local calendars, prices or suitability"
+    }
+  ],
+  "crops": [
+    {
+      "cropId": "wheat",
+      "nameEn": "Wheat",
+      "nameAr": "قمح",
+      "broadSeason": "winter",
+      "implementationPriority": "core",
+      "comparisonRole": "Winter cereal baseline",
+      "evidenceRefs": [
+        "fao-egypt-production-systems"
+      ],
+      "regionalSuitability": {
+        "egypt-nile-delta": "unreviewed",
+        "egypt-fayoum": "unreviewed"
+      },
+      "plantingWindow": null,
+      "durationDays": null,
+      "cropWaterMethod": null,
+      "stageCoefficients": null,
+      "rotationConstraints": null,
+      "modelEnabled": false,
+      "reviewStatus": "candidate_only"
+    },
+    {
+      "cropId": "maize",
+      "nameEn": "Maize",
+      "nameAr": "ذرة شامية",
+      "broadSeason": "summer",
+      "implementationPriority": "core",
+      "comparisonRole": "Summer cereal baseline",
+      "evidenceRefs": [
+        "fao-egypt-production-systems"
+      ],
+      "regionalSuitability": {
+        "egypt-nile-delta": "unreviewed",
+        "egypt-fayoum": "unreviewed"
+      },
+      "plantingWindow": null,
+      "durationDays": null,
+      "cropWaterMethod": null,
+      "stageCoefficients": null,
+      "rotationConstraints": null,
+      "modelEnabled": false,
+      "reviewStatus": "candidate_only"
+    },
+    {
+      "cropId": "faba_bean",
+      "nameEn": "Faba bean",
+      "nameAr": "فول بلدي",
+      "broadSeason": "winter",
+      "implementationPriority": "core",
+      "comparisonRole": "Winter grain-legume alternative",
+      "evidenceRefs": [
+        "fao-egypt-production-systems"
+      ],
+      "regionalSuitability": {
+        "egypt-nile-delta": "unreviewed",
+        "egypt-fayoum": "unreviewed"
+      },
+      "plantingWindow": null,
+      "durationDays": null,
+      "cropWaterMethod": null,
+      "stageCoefficients": null,
+      "rotationConstraints": null,
+      "modelEnabled": false,
+      "reviewStatus": "candidate_only"
+    },
+    {
+      "cropId": "berseem",
+      "nameEn": "Egyptian clover (berseem)",
+      "nameAr": "برسيم مصري",
+      "broadSeason": "winter",
+      "implementationPriority": "deferred",
+      "comparisonRole": "Forage extension; cutting schedule requires extra modeling",
+      "evidenceRefs": [
+        "fao-egypt-production-systems"
+      ],
+      "regionalSuitability": {
+        "egypt-nile-delta": "unreviewed",
+        "egypt-fayoum": "unreviewed"
+      },
+      "plantingWindow": null,
+      "durationDays": null,
+      "cropWaterMethod": null,
+      "stageCoefficients": null,
+      "rotationConstraints": null,
+      "modelEnabled": false,
+      "reviewStatus": "candidate_only"
+    }
+  ]
+}
