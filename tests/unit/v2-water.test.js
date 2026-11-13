@@ -492,3 +492,45 @@ test("archive adapter verifies the coordinate declaration in the source URL inst
     "weather_provenance_unavailable",
   );
 });
+
+test("generic published references cannot attest arbitrary calendar inputs or suppress scenario disclosure", () => {
+  const wrong = request();
+  wrong.calendarSourceId = "fao56_1998_table12";
+  assert.equal(
+    calculateWaterV2(wrong).reasonCodes[0],
+    "calendar_reference_does_not_support_inputs",
+  );
+  const taxonomy = request();
+  taxonomy.sourceRegistry["test-farmer-calendar"].nature =
+    "published_reference";
+  taxonomy.sourceRegistry["test-farmer-calendar"].reviewStatus =
+    "verified_reference";
+  taxonomy.sourceRegistry["test-farmer-calendar"].title =
+    "Test-only taxonomy reference, not a calendar";
+  assert.equal(
+    calculateWaterV2(taxonomy).reasonCodes[0],
+    "calendar_reference_does_not_support_inputs",
+  );
+  const attested = request(),
+    source = attested.sourceRegistry["test-farmer-calendar"];
+  source.nature = "published_reference";
+  source.reviewStatus = "verified_reference";
+  source.title =
+    "Test-only calendar metadata binding, not agricultural observations";
+  source.dataRoles = ["crop_calendar"];
+  source.calendarInputs = [
+    {
+      cropId: "wheat",
+      regionId: "fayoum_etsa",
+      intendedUse: "grain",
+      sowingDate: attested.sowingDate,
+      stageLengthsDays: [...attested.stageLengthsDays],
+    },
+  ];
+  assert.equal(calculateWaterV2(attested).status, "etc_reference");
+  attested.sowingDate = "2025-01-02";
+  assert.equal(
+    calculateWaterV2(attested).reasonCodes[0],
+    "calendar_reference_does_not_support_inputs",
+  );
+});

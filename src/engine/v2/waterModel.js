@@ -430,6 +430,42 @@ export function calculateWaterV2({
       ["calendarProvenance"],
     );
   if (
+    calendarSource.nature === "farmer_scenario" &&
+    calendarSource.reviewStatus !== "recorded_input"
+  )
+    return fail(
+      "calendar_scenario_not_recorded",
+      "Farmer dates and stage lengths must be explicitly recorded scenario inputs.",
+      "لازم تسجيل مواعيد المزارع ومدد المراحل كمدخلات سيناريو بوضوح.",
+      ["recordedCalendarScenario"],
+    );
+  if (calendarSource.nature === "published_reference") {
+    const attested =
+      calendarSource.reviewStatus === "verified_reference" &&
+      calendarSource.dataRoles?.includes("crop_calendar") &&
+      Array.isArray(calendarSource.calendarInputs) &&
+      calendarSource.calendarInputs.some(
+        (input) =>
+          input.cropId === cropId &&
+          nonempty(input.regionId) &&
+          input.regionId === location.regionId &&
+          input.intendedUse === intendedUse &&
+          input.sowingDate === sowingDate &&
+          Array.isArray(input.stageLengthsDays) &&
+          input.stageLengthsDays.length === 4 &&
+          input.stageLengthsDays.every(
+            (length, index) => length === stageLengthsDays[index],
+          ),
+      );
+    if (!attested)
+      return fail(
+        "calendar_reference_does_not_support_inputs",
+        "A generic publication or coefficient table cannot attest arbitrary planting dates/stages; exact reviewed calendar inputs or a recorded farmer scenario are required.",
+        "مرجع عام أو جدول معاملات لا يثبت مواعيد أو مراحل زراعة عشوائية؛ مطلوب تقويم موثّق مطابق أو سيناريو مزارع مسجل.",
+        ["attestedCalendarInputs"],
+      );
+  }
+  if (
     !sourceIsAvailable(coefficientSource) ||
     coefficientSource.nature !== "published_reference" ||
     coefficientSource.reviewStatus !== "verified_reference"

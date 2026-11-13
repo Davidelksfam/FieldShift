@@ -37,7 +37,7 @@ The full declared horizon and single covered crop window are separate. Root inte
 
 ## Executed tests
 
-`npm run check` passed in the isolated worktree: **54 unit tests passed**, production build passed, repository/link checker passed. `node scripts/validation/verify-v2-water-reference.mjs` passed all nine published component checks. The water-specific suite contains **11 scenarios**. Component reference checks cover four genuine FAO-56 interpolation answers and five FAO training-manual ETcrop products; they are not full-season or irrigation validation. Existing legacy regression snapshots and ET₀ numerical tests remain mandatory during integration. Browser/experimental UI checks are the integration owner's responsibility because this PR changes pure engine code only.
+`npm run check` passed in the isolated worktree: **54 unit tests passed**, production build passed, repository/link checker passed. `node scripts/validation/verify-v2-water-reference.mjs` passed all nine published component checks. The water-specific suite contains **12 scenarios**, including a follow-up guard against using a generic reference as calendar provenance. Component reference checks cover four genuine FAO-56 interpolation answers and five FAO training-manual ETcrop products; they are not full-season or irrigation validation. Existing legacy regression snapshots and ET₀ numerical tests remain mandatory during integration. Browser/experimental UI checks are the integration owner's responsibility because this PR changes pure engine code only.
 
 ## Remaining limitations
 
