@@ -127,6 +127,22 @@ export default function SourceStatus({
                         "قيم إقليمية توضيحية · ليست أرصاداً لأرضك",
                       )}
               </span>
+              {pending && key === "ndvi" && (
+                <small>
+                  {t(
+                    "MODIS subsets can take about a minute. Successful batches are kept; you can use the available climate results meanwhile.",
+                    "بيانات MODIS ممكن تستغرق حوالي دقيقة. بنحتفظ بالأجزاء اللي وصلت؛ تقدر تستخدم نتائج المناخ المتاحة في الوقت ده.",
+                  )}
+                </small>
+              )}
+              {!pending && key === "ndvi" && source.kind === "synthetic" && (
+                <small>
+                  {t(
+                    "A complete quality-screened MODIS year could not be retrieved. Retry to recover missing batches; no vegetation assessment is inferred from demo values.",
+                    "تعذّر جلب سنة MODIS كاملة بفحص الجودة. حاول تاني لاستكمال الأجزاء الناقصة؛ مفيش تقييم غطاء نباتي مستنتج من بيانات تجريبية.",
+                  )}
+                </small>
+              )}
               {!pending && key === "soil" && source.kind === "synthetic" && (
                 <small>
                   {source.failureCode === "SOIL_NO_COVERAGE"

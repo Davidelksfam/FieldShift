@@ -6,8 +6,8 @@ import ndviHistory from "../data/ndviHistory.json" with { type: "json" };
 
 import referenceEtDrivers from "../data/referenceEtDrivers.json" with { type: "json" };
 
-export const REQUEST_TIMEOUT_MS = 20000;
-export const EXTENDED_REQUEST_TIMEOUT_MS = 20000;
+export const REQUEST_TIMEOUT_MS = 90000;
+export const EXTENDED_REQUEST_TIMEOUT_MS = 90000;
 const CACHE_VERSION = "fieldshift-v2";
 const CACHE_MAX_AGE = 7 * 24 * 60 * 60 * 1000;
 const validNumber = (value) =>
@@ -468,6 +468,73 @@ async function fetchJson(url, signal, policy) {
   }
 }
 
+// Cache validated provider batches separately: one failed QA/date batch must not
+// force five successful batches to be downloaded again on the next attempt.
+async function settleModisBatches(promises) {
+  const results = await Promise.allSettled(promises);
+  const failed = results.find((r) => r.status === "rejected");
+  if (failed) throw failed.reason;
+  return results.map((r) => r.value);
+}
+const MODIS_CHUNK_PREFIX = "fieldshift-modis-v1:";
+function readModisChunk(url) {
+  try {
+    const entry = JSON.parse(
+      globalThis.localStorage?.getItem(MODIS_CHUNK_PREFIX + url) ?? "null",
+    );
+    if (
+      entry &&
+      Number.isFinite(entry.savedAt) &&
+      Date.now() >= entry.savedAt &&
+      Date.now() - entry.savedAt < CACHE_MAX_AGE
+    )
+      return entry;
+  } catch {
+    /* unavailable storage must not prevent retrieval */
+  }
+  return null;
+}
+function writeModisChunk(url, entry) {
+  try {
+    const storage = globalThis.localStorage;
+    if (!storage) return;
+    const keys =
+      typeof storage.key === "function"
+        ? Array.from({ length: storage.length }, (_, i) =>
+            storage.key(i),
+          ).filter((k) => k?.startsWith(MODIS_CHUNK_PREFIX))
+        : [];
+    while (keys.length >= 36) storage.removeItem(keys.shift());
+    storage.setItem(MODIS_CHUNK_PREFIX + url, JSON.stringify(entry));
+  } catch {
+    /* quotas/private browsing do not invalidate live data */
+  }
+}
+function validateModisChunk(chunk, band, start, end) {
+  if (chunk?.nrows !== 1 || chunk?.ncols !== 1)
+    throw new Error("Unexpected MODIS grid");
+  if (band === "250m_16_days_NDVI" && Number(chunk.scale) !== 0.0001)
+    throw new Error("Unrecognized MODIS scale");
+  const expected = Array.from({ length: 23 }, (_, i) => 1 + i * 16)
+    .filter((d) => d >= Number(start) && d <= Number(end))
+    .map((d) => new Date(Date.UTC(2025, 0, d)).toISOString().slice(0, 10));
+  if (
+    !Array.isArray(chunk.subset) ||
+    chunk.subset.length !== expected.length ||
+    new Set(chunk.subset.map((r) => r.calendar_date)).size !==
+      expected.length ||
+    chunk.subset.some(
+      (r) =>
+        !expected.includes(r.calendar_date) ||
+        !Array.isArray(r.data) ||
+        r.data.length !== 1 ||
+        (r.band && r.band !== band),
+    )
+  )
+    throw new Error("Incomplete or mismatched MODIS batch");
+  return chunk;
+}
+
 export async function fetchUnifiedFarmData(
   lat,
   lon,
@@ -502,7 +569,7 @@ export async function fetchUnifiedFarmData(
   const request = (url, key, overrides = {}) =>
     fetchJson(url, signal, {
       attemptTimeoutMs,
-      retryTimeoutMs: timeoutMs,
+      retryTimeoutMs: Math.min(timeoutMs, 20000),
       retryDelayMs,
       maxAttempts,
       onRetry: (event) => {
@@ -515,6 +582,45 @@ export async function fetchUnifiedFarmData(
   const soilUrl = `https://api.pixelgust.com/v1/soil?lat=${lat}&lon=${lon}`;
   const isricUrl = `https://rest.isric.org/soilgrids/v2.0/properties/query?lon=${lon}&lat=${lat}&property=clay&property=sand&property=soc&property=nitrogen&property=phh2o&depth=0-5cm&depth=5-15cm&value=mean`;
   const modisUrl = `https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=${lat}&longitude=${lon}&band=250m_16_days_NDVI&startDate=A2025001&endDate=A2025365&kmAboveBelow=0&kmLeftRight=0`;
+  const modisBatchTimes = [];
+  const modisBatchUrls = [];
+  let modisNetworkBatches = 0;
+  async function requestModis(band, start, end) {
+    const url = modisUrl
+      .replace("250m_16_days_NDVI", band)
+      .replace("A2025001", `A2025${start}`)
+      .replace("A2025365", `A2025${end}`);
+    modisBatchUrls.push(url);
+    const cached = readModisChunk(url);
+    if (cached) {
+      try {
+        validateModisChunk(cached.payload, band, start, end);
+        modisBatchTimes.push(cached.savedAt);
+        return cached.payload;
+      } catch {
+        /* refetch invalid cached batches */
+      }
+    }
+    // Cold ORNL subset queries were measured at 32–47 seconds. Do not abort
+    // them at the generic 4.5-second fast-provider threshold.
+    const payload = validateModisChunk(
+      await request(url, "ndvi", {
+        attemptTimeoutMs: Math.max(
+          attemptTimeoutMs,
+          Math.min(timeoutMs, 60000),
+        ),
+        retryTimeoutMs: Math.min(timeoutMs, 60000),
+      }),
+      band,
+      start,
+      end,
+    );
+    const savedAt = Date.now();
+    modisNetworkBatches++;
+    modisBatchTimes.push(savedAt);
+    writeModisChunk(url, { savedAt, payload });
+    return payload;
+  }
   const snapshots = [];
   const tasks = [
     request(powerUrl, "climate")
@@ -569,22 +675,16 @@ export async function fetchUnifiedFarmData(
       }
     })(),
     // Retrieve QA alongside NDVI; never replace audited data with unscreened pixels.
-    Promise.all(
+    settleModisBatches(
       ["250m_16_days_NDVI", "250m_16_days_pixel_reliability"].map((band) =>
-        Promise.all(
+        settleModisBatches(
           [
-            ["001", "145"],
-            ["161", "305"],
+            ["001", "065"],
+            ["081", "145"],
+            ["161", "225"],
+            ["241", "305"],
             ["321", "353"],
-          ].map(([start, end]) =>
-            request(
-              modisUrl
-                .replace("250m_16_days_NDVI", band)
-                .replace("A2025001", `A2025${start}`)
-                .replace("A2025365", `A2025${end}`),
-              "ndvi",
-            ),
-          ),
+          ].map(([start, end]) => requestModis(band, start, end)),
         ).then((chunks) => {
           if (chunks.some((c) => c.nrows !== 1 || c.ncols !== 1))
             throw new Error("Unexpected MODIS grid");
@@ -620,6 +720,11 @@ export async function fetchUnifiedFarmData(
         value,
         provider: "ORNL MODIS MOD13Q1 · QA screened",
         url: "https://modis.ornl.gov/data/modis_webservice.html",
+        urls: modisBatchUrls,
+        status: modisNetworkBatches ? "live" : "cached",
+        retrievedAt: new Date(Math.min(...modisBatchTimes)).toISOString(),
+        dataNature:
+          "QA-screened 16-day satellite composites, not daily field observations",
       })),
   ].map((task, index) =>
     task.then(
@@ -631,11 +736,11 @@ export async function fetchUnifiedFarmData(
           if (key === "climate") Object.assign(data, value.value);
           else data[key === "soil" ? "soil" : "ndviSeries"] = value.value;
           data.sources[key] = {
-            status: "live",
+            status: value.status ?? "live",
             kind: "observed",
             provider: value.provider,
             url: value.url,
-            retrievedAt: new Date().toISOString(),
+            retrievedAt: value.retrievedAt ?? new Date().toISOString(),
             ...(value.urls && {
               urls: value.urls,
               nativeBounds: value.nativeBounds,

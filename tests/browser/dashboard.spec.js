@@ -115,8 +115,8 @@ test("custom-location transient failures recover automatically without a Retry c
     );
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
   await expect(page.locator(".comparison-unavailable")).toHaveCount(0);
-  expect(counts.size).toBe(8);
-  expect([...counts.values()].reduce((sum, count) => sum + count, 0)).toBe(10);
+  expect(counts.size).toBe(12);
+  expect([...counts.values()].reduce((sum, count) => sum + count, 0)).toBe(14);
 });
 
 test("a slow climate request and stalled primary soil provider recover automatically through timeout retry and backup", async ({
@@ -406,7 +406,7 @@ test("complete custom-location HTTP responses feed the real service, diagnostics
         Number(p.get("longitude") ?? p.get("lon")) === 31.2
       );
     }).length,
-  ).toBe(8);
+  ).toBe(12);
   await page
     .getByRole("button", { name: "Hide advanced analytics", exact: true })
     .click();

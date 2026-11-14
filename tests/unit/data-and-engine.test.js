@@ -229,7 +229,7 @@ test("all network failures return nearest-region fixtures, soil primary falls th
   const modisCounts = new Map();
   for (const url of urls.filter((url) => url.includes("modis.ornl")))
     modisCounts.set(url, (modisCounts.get(url) ?? 0) + 1);
-  assert.equal(modisCounts.size, 6);
+  assert.equal(modisCounts.size, 10);
   // Once one chunk exhausts its retries the other chunks may be cancelled.
   assert.equal(Math.max(...modisCounts.values()), 3);
   assert.ok(
