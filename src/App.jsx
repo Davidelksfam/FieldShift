@@ -11,7 +11,7 @@ import {
 } from "./services/nasaDataService";
 import { text } from "./i18n";
 import HeaderBar from "./components/HeaderBar";
-import FarmerInputPanel from "./components/FarmerInputPanel";
+
 import VulnerabilityBanner from "./components/VulnerabilityBanner";
 import StrategyComparison from "./components/StrategyComparison";
 import SatelliteEvidenceDrawer from "./components/SatelliteEvidenceDrawer";
@@ -19,6 +19,9 @@ import FieldIndicesPanel from "./components/FieldIndicesPanel";
 import PipelineExplorer from "./components/PipelineExplorer";
 import FieldSummary from "./components/farmer/FieldSummary";
 import FieldInputs from "./components/farmer/FieldInputs";
+import AdditionalDetails from "./components/farmer/AdditionalDetails";
+import PriorityPanel from "./components/farmer/PriorityPanel";
+import LivePlanSummary from "./components/farmer/LivePlanSummary";
 import FieldLocation from "./components/farmer/FieldLocation";
 import SourceStatus from "./components/farmer/SourceStatus";
 import ThreeStrategyComparison from "./components/farmer/ThreeStrategyComparison";
@@ -45,7 +48,7 @@ const initialInputs = {
 };
 export default function App() {
   const [lang, setLang] = useState("ar"),
-    [expert, setExpert] = useState(false),
+    [analyticsOpen, setAnalyticsOpen] = useState(false),
     [evidenceOpen, setEvidenceOpen] = useState(false);
   const [inputs, setInputs] = useState(initialInputs);
   const [location, setLocation] = useState({
@@ -67,9 +70,21 @@ export default function App() {
   const [progress, setProgress] = useState({}),
     [allowIllustrative, setAllowIllustrative] = useState(false);
   const [offline, setOffline] = useState(!navigator.onLine);
+  const analyticsRef = useRef(null);
   const comparisonRef = useRef(null),
     requestRef = useRef(null);
   const t = (en, ar) => text(lang, en, ar);
+  useEffect(() => {
+    if (analyticsOpen) {
+      analyticsRef.current?.focus({ preventScroll: true });
+      analyticsRef.current?.scrollIntoView({
+        block: "start",
+        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "instant"
+          : "smooth",
+      });
+    }
+  }, [analyticsOpen]);
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
@@ -207,8 +222,6 @@ export default function App() {
   );
   const map = (
     <FieldLocation
-      key={expert ? "expert-map" : "farmer-earth"}
-      expert={expert}
       lang={lang}
       location={location}
       coordinates={coordinates}
@@ -219,7 +232,7 @@ export default function App() {
   );
   const sources = (
     <SourceStatus
-      compact={!expert}
+      compact={true}
       lang={lang}
       data={comparisonData}
       loading={loading}
@@ -242,52 +255,176 @@ export default function App() {
       <HeaderBar
         lang={lang}
         onLanguageChange={setLang}
-        judgeMode={expert}
-        onJudgeModeChange={(value) => {
-          setExpert(value);
-          setEvidenceOpen(value);
+        analyticsOpen={analyticsOpen}
+        onAnalyticsToggle={() => {
+          setAnalyticsOpen((open) => !open);
+          setEvidenceOpen(true);
         }}
       />
-      <div
-        className={`workspace ${expert ? "expert-workspace" : "farmer-workspace map-cards-workspace"}`}
-      >
-        {expert && (
-          <FarmerInputPanel
+      <div className="workspace farmer-workspace map-cards-workspace unified-workspace">
+        <main id="main">
+          <div className="planner-intro">
+            <div>
+              <span className="eyebrow">
+                {t("FIELD SHIFT / EGYPT", "فيلد شيفت / مصر")}
+              </span>
+              <h1>
+                {t(
+                  "Plan your next crop rotation.",
+                  "خطّط لدورتك الزراعية الجاية.",
+                )}
+              </h1>
+              <p>
+                {t(
+                  "Tell us what you grow and what your field needs. Compare three paths for the seasons ahead.",
+                  "عرّفنا بمحاصيلك وظروف أرضك، وقارن ثلاث خطط للمواسم الجاية.",
+                )}
+              </p>
+            </div>
+            <div className="historical-context">
+              <span className="context-dot" />
+              <span>
+                {t("Historical evidence", "بيانات تاريخية")}
+                <strong>
+                  {t("NASA observations · 2025", "أرصاد ناسا · ٢٠٢٥")}
+                </strong>
+              </span>
+            </div>
+          </div>
+          {validation}
+          <LivePlanSummary
+            lang={lang}
+            evaluation={evaluation}
+            visible={visible}
+            onCompare={compare}
+          />
+          <div id="field-setup" className="field-setup-grid">
+            <div className="location-workspace">
+              <div className="planner-section-heading">
+                <span className="section-number">01</span>
+                <div>
+                  <h2>{t("Start with your land", "ابدأ بأرضك")}</h2>
+                  <p>
+                    {t(
+                      "Choose a location on the map or use a saved example.",
+                      "حدد الموقع على الخريطة أو اختار مثال محفوظ.",
+                    )}
+                  </p>
+                </div>
+              </div>
+              {map}
+              <div className="map-context-note">
+                <CircleHelp size={16} />
+                <p>
+                  {t(
+                    "A point locates the available evidence. It does not measure your field boundary.",
+                    "النقطة بتحدد مكان البيانات المتاحة، مش حدود أرضك.",
+                  )}
+                </p>
+              </div>
+            </div>
+            <FieldInputs
+              lang={lang}
+              inputs={inputs}
+              setInputs={setInputs}
+              crops={crops}
+            />
+          </div>
+          <AdditionalDetails
             lang={lang}
             inputs={inputs}
             setInputs={setInputs}
-            presetId={location.presetId}
-            onPresetChange={(id) =>
-              changeLocation(presets[id].lat, presets[id].lon, id)
-            }
-            crops={crops}
           />
-        )}
-        <main id="main">
-          <div className="farmer-intro">
-            <span className="eyebrow">
-              {t("YOUR FIELD · YOUR NEXT ROTATION", "أرضك · دورتك الجاية")}
-            </span>
-            <h1>
-              {expert
-                ? t(
-                    "Inspect the evidence and calculations",
-                    "افحص الأدلة والحسابات",
-                  )
-                : t("Plan your next rotation.", "خطط لدورتك الزراعية القادمة.")}
-            </h1>
-            <p>
-              {t(
-                "Choose your field and crops. Compare your options.",
-                "حدد أرضك ومحاصيلك. وقارن البدائل.",
-              )}
-            </p>
+          <PriorityPanel
+            lang={lang}
+            inputs={inputs}
+            setInputs={setInputs}
+            onCompare={compare}
+            invalid={invalidMeasuredEce}
+          />
+          {sources}
+          <div id="comparison" tabIndex="-1">
+            <ThreeStrategyComparison
+              ref={comparisonRef}
+              lang={lang}
+              evaluation={evaluation}
+              data={comparisonData}
+              inputs={inputs}
+              visible={visible}
+              loading={loading}
+              illustrative={allowIllustrative && support.illustrative}
+              onShowExample={() => setAllowIllustrative(true)}
+            />
           </div>
-          {validation}
-          {expert ? (
-            <>
-              {sources}
-              {map}
+          {evaluation && visible && (
+            <details className="workspace-summary">
+              <summary>
+                {t("Read the field summary", "اقرأ ملخص حالة أرضك")}
+              </summary>
+              <FieldSummary
+                lang={lang}
+                data={comparisonData}
+                diagnostics={evaluation.diagnostics}
+                inputs={inputs}
+              />
+            </details>
+          )}
+          <div className="analytics-disclosure">
+            <div>
+              <h2>
+                {t(
+                  "Want to see what’s behind the plans?",
+                  "عايز تعرف إيه ورا الخطط؟",
+                )}
+              </h2>
+              <p>
+                {t(
+                  "Explore climate history, satellite evidence and the calculation steps here on this page.",
+                  "استعرض المناخ التاريخي وأدلة الأقمار الصناعية وخطوات الحساب هنا في نفس الصفحة.",
+                )}
+              </p>
+            </div>
+            <button
+              className="button"
+              aria-expanded={analyticsOpen}
+              aria-controls="advanced-analytics"
+              onClick={() => {
+                setAnalyticsOpen((open) => !open);
+                setEvidenceOpen(true);
+              }}
+            >
+              {t(
+                analyticsOpen
+                  ? "Hide evidence and calculations"
+                  : "Explore evidence and calculations",
+                analyticsOpen
+                  ? "إخفاء الأدلة والحسابات"
+                  : "استعرض الأدلة والحسابات",
+              )}
+            </button>
+          </div>
+          {analyticsOpen && (
+            <section
+              ref={analyticsRef}
+              tabIndex="-1"
+              id="advanced-analytics"
+              className="advanced-analytics"
+              aria-label={t("Advanced analytics", "التحليلات المتقدمة")}
+            >
+              <div className="advanced-heading">
+                <div>
+                  <span className="eyebrow">
+                    {t("THE EVIDENCE BEHIND YOUR PLAN", "الأدلة ورا خطتك")}
+                  </span>
+                  <h2>{t("Advanced analytics", "التحليلات المتقدمة")}</h2>
+                </div>
+                <button
+                  className="button"
+                  onClick={() => setAnalyticsOpen(false)}
+                >
+                  {t("Close analytics", "إغلاق التحليلات")}
+                </button>
+              </div>
               {evaluation && (
                 <>
                   <VulnerabilityBanner
@@ -299,60 +436,13 @@ export default function App() {
                     lang={lang}
                     diagnostics={evaluation.diagnostics}
                   />
-                  <div id="comparison" tabIndex="-1">
-                    <StrategyComparison
-                      lang={lang}
-                      strategies={evaluation.strategies}
-                      showTotals={inputs.estimateArea && areaIsValid(inputs)}
-                    />
-                  </div>
+                  <StrategyComparison
+                    lang={lang}
+                    strategies={evaluation.strategies}
+                    showTotals={inputs.estimateArea && areaIsValid(inputs)}
+                  />
                 </>
               )}
-            </>
-          ) : (
-            <>
-              <div className="field-setup-grid">
-                {map}
-                <FieldInputs
-                  lang={lang}
-                  inputs={inputs}
-                  setInputs={setInputs}
-                  crops={crops}
-                  onCompare={compare}
-                  invalid={invalidMeasuredEce}
-                />
-              </div>
-              {sources}
-              <div id="comparison" tabIndex="-1">
-                <ThreeStrategyComparison
-                  ref={comparisonRef}
-                  lang={lang}
-                  evaluation={evaluation}
-                  data={comparisonData}
-                  inputs={inputs}
-                  visible={visible}
-                  loading={loading}
-                  illustrative={allowIllustrative && support.illustrative}
-                  onShowExample={() => setAllowIllustrative(true)}
-                />
-              </div>
-              {evaluation && visible && (
-                <details className="workspace-summary">
-                  <summary>
-                    {t("Read the field summary", "اقرأ ملخص حالة أرضك")}
-                  </summary>
-                  <FieldSummary
-                    lang={lang}
-                    data={comparisonData}
-                    diagnostics={evaluation.diagnostics}
-                    inputs={inputs}
-                  />
-                </details>
-              )}
-            </>
-          )}
-          {expert && (
-            <>
               <SatelliteEvidenceDrawer
                 lang={lang}
                 diagnostics={evaluation?.diagnostics}
@@ -379,7 +469,7 @@ export default function App() {
                   evaluation={evaluation}
                 />
               )}
-            </>
+            </section>
           )}
           <footer className="page-footer">
             <span dir="ltr">

@@ -1,3 +1,4 @@
+import BestMatch from "./BestMatch";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -57,7 +58,7 @@ export default function StrategyComparison({
           <article
             key={s.id}
             data-testid={`strategy-${s.id}`}
-            className={`strategy-card panel ${s.id === "water" ? "water-strategy" : ""}`}
+            className={`strategy-card panel ${s.rank === 1 ? "best-match" : ""}`}
           >
             <div className="strategy-top">
               <span className="strategy-category">
@@ -72,6 +73,7 @@ export default function StrategyComparison({
               </span>
             </div>
             <h3>{lang === "ar" ? s.labelAr : s.labelEn}</h3>
+            <BestMatch lang={lang} strategy={s} />
             <div className="suitability">
               <div>
                 <span className="score" data-testid={`score-${s.id}`}>

@@ -9,7 +9,9 @@ test("experimental inspection is explicit, bilingual and cannot change legacy co
   ).toHaveCount(0);
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("١٠٬٨١٣");
   await page.getByRole("button", { name: "English", exact: true }).click();
-  await page.getByRole("button", { name: "Expert mode", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Show advanced analytics", exact: true })
+    .click();
   await expect(
     page.getByRole("heading", {
       name: "Scientific V2 · experimental inspection",
@@ -47,6 +49,8 @@ test("experimental inspection is explicit, bilingual and cannot change legacy co
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
-  await page.getByRole("button", { name: "وضع المزارع", exact: true }).click();
+  await page
+    .getByRole("button", { name: "إخفاء التحليلات المتقدمة", exact: true })
+    .click();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("١٠٬٨١٣");
 });

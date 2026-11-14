@@ -2764,3 +2764,53 @@ body {
 .three-strategies > .section-heading .eyebrow {
   display: none;
 }
+
+/* The engine rank determines emphasis in both comparison views. */
+.panel.best-match {
+  border-top-color: var(--fs-brand-primary) !important;
+  border-color: var(--fs-brand-primary);
+  box-shadow:
+    inset 0 3px 0 var(--fs-brand-primary),
+    var(--fs-shadow-card);
+}
+.best-match-note {
+  margin-block: 12px;
+  padding: 12px;
+  border-radius: var(--fs-radius-sm);
+  background: var(--fs-brand-soft);
+}
+.best-match-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--fs-brand-hover);
+  font-size: 13px;
+}
+.best-match-badge svg {
+  flex-shrink: 0;
+}
+.best-match-note p {
+  margin: 6px 0 0;
+  color: var(--fs-text-secondary);
+  font-size: 12px;
+}
+.priority-sliders {
+  min-width: 0;
+  margin-inline: 0;
+  padding: 14px 0 0;
+  border: 0;
+  border-top: 1px solid var(--fs-border);
+}
+.priority-sliders legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-inline: 0 8px;
+  font-weight: 700;
+}
+.priority-sliders .slider-label {
+  margin-block: 12px;
+}
+.priority-sliders input[type="range"] {
+  min-height: 32px;
+}

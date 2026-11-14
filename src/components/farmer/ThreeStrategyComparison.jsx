@@ -1,3 +1,4 @@
+import BestMatch from "../BestMatch";
 import CropIcon from "./CropIcon";
 import { forwardRef } from "react";
 import { Droplets, Sprout, Leaf } from "lucide-react";
@@ -115,13 +116,19 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
           ))}
         </div>
       )}
+      <p className="sr-only" role="status" aria-atomic="true">
+        {visible && evaluation?.strategies.some((s) => s.rank === 1)
+          ? t("Best match for your priorities: ", "أنسب خطة لأولوياتك: ") +
+            categories[evaluation.strategies.find((s) => s.rank === 1).id]
+          : ""}
+      </p>
       <div className="three-strategy-grid">
         {["baseline", "water", "soil"].map((id) => {
           const s = evaluation?.strategies.find((s) => s.id === id),
             show = visible && s;
           return (
             <article
-              className="panel numeric-strategy"
+              className={`panel numeric-strategy ${show && s.rank === 1 ? "best-match" : ""}`}
               data-testid={`farmer-strategy-${id}`}
               key={id}
               aria-labelledby={`farmer-strategy-title-${id}`}
@@ -138,6 +145,7 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
                 </span>
                 <h3 id={`farmer-strategy-title-${id}`}>{categories[id]}</h3>
               </div>
+              {show && <BestMatch lang={lang} strategy={s} />}
               <ol className="numeric-crops">
                 {[
                   ["Shitwi", "Winter", "الشتوي"],
