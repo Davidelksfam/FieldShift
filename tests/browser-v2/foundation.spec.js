@@ -21,9 +21,14 @@ test("experimental inspection is explicit, bilingual and cannot change legacy co
     .selectOption("scientific-v2");
   const output = page.getByLabel("Scientific V2 JSON output", { exact: true });
   const analysis = JSON.parse(await output.innerText());
-  expect(analysis.recommendation.status).toBe("unavailable");
+  expect(analysis.recommendation.status).toBe("no_supported_recommendation");
   expect(analysis.recommendation.selectedId).toBeNull();
-  expect(analysis.alternatives).toHaveLength(0);
+  expect(analysis.alternatives).toHaveLength(3);
+  expect(
+    analysis.alternatives.every(
+      (a) => a.feasibility.status === "unknown" && a.water.etcMm.value === null,
+    ),
+  ).toBe(true);
   await expect(page.getByTestId("water-baseline")).toContainText("10,813");
   await page
     .getByLabel("Inspection engine", { exact: true })

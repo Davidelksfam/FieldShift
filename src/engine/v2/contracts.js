@@ -1,4 +1,17 @@
 /** Scientific V2 contracts. Availability is not agronomic validation. */
+export const REQUIRED_RELEASE_GATES = Object.freeze([
+  "calendarEvidence",
+  "independentWaterComparison",
+  "indicatorAudit",
+  "productValidation",
+  "agronomicReview",
+]);
+export function scientificReleasePassed(gates) {
+  return (
+    isRecord(gates) &&
+    REQUIRED_RELEASE_GATES.every((key) => gates[key] === "passed")
+  );
+}
 export const V2_SCHEMA_VERSION = "scientific-v2/0.1";
 export const FEASIBILITY_STATES = Object.freeze([
   "feasible",
@@ -434,6 +447,34 @@ export function assertAnalysis(analysis) {
         analysis.recommendation.status === "unavailable",
       "Foundation cannot manufacture scientific alternatives or recommendations.",
     );
+  if (analysis.recommendation.status === "proposed") {
+    const selected = analysis.alternatives.find(
+      (a) => a.id === analysis.recommendation.selectedId,
+    );
+    requireCondition(
+      selected?.feasibility?.status === "feasible" &&
+        selected?.decisionStatus === "comparable",
+      "Proposed choice must be feasible, comparable and nonexcluded.",
+    );
+    requireCondition(
+      scientificReleasePassed(analysis.releaseGates),
+      "Every required scientific release gate must pass before an unconditional proposal.",
+    );
+  }
+  if (
+    analysis.recommendation.status === "conditional" &&
+    analysis.recommendation.selectedId !== null
+  ) {
+    const selected = analysis.alternatives.find(
+      (a) => a.id === analysis.recommendation.selectedId,
+    );
+    requireCondition(
+      selected &&
+        selected.feasibility?.status !== "infeasible" &&
+        selected.decisionStatus !== "excluded",
+      "Conditional recommendation cannot select an excluded or infeasible crop.",
+    );
+  }
   if (analysis.recommendation.selectedId !== null)
     requireCondition(
       analysis.alternatives.some(
