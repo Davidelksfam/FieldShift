@@ -50,3 +50,5 @@ npm run test:browser
 Work is tracked in [issue #12](https://github.com/Davidelksfam/FieldShift/issues/12). The dashboard was merged into main through PR #13. Dataset acquisition is tracked in issue #14; previous branches and history are preserved.
 
 Expert Mode includes an interactive five-stage pipeline explorer. Open all six field indices for modeled FAO-56 reference ET₀ and same-pixel historical NDVI anomalies. Real flagship payloads are in `demoPresets.json`; `syntheticFixtures.json` preserves original illustrative tests. An optional Nili switch explores a conditional planting window. Soil-adjusted nitrogen remains unavailable without calibration; water figures remain modeled m³/feddan/rotation.
+
+Scientific V2 is experimental and disabled by default. See [the submitted plan](docs/engineering/FieldShift_Scientific_V2_Implementation_Plan.md) and [contracts, states, feature flag and rollback](docs/engineering/SCIENTIFIC_V2_CONTRACTS.md). `npm run test:browser:v2` builds a separate Expert-only inspection preview; it does not change the legacy farmer demo.

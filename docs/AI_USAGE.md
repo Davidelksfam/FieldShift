@@ -19,3 +19,7 @@ OpenAI Codex implemented the uploaded farmer-first plan: code dependency audit a
 ## 2026-11-14 — Map and three numerical strategy cards
 
 Codex implemented the user-selected map-first layout: all inputs together, actual numerical comparisons for three strategies, explicit source-state and illustrative-example handling, bounded retry/cancellation and source progress. Removed the superseded journey/recommendation components. Added complete custom-point HTTP fixture tests and revised browser coverage; retained engine and data baselines. Scientific quantities remain modeled and uncalibrated; custom ET₀/history remain unavailable. Verification is recorded in `docs/product/MAP_CARDS_VALIDATION.md`.
+
+## 2026-11-14 — Scientific V2 PR 0 foundation
+
+Codex implemented source/units/scope/missingness contracts, pure experimental adapter and Expert inspector, nine legacy output snapshots, and foundation regression/browser tests from the user's archived Scientific V2 plan. No calendar, water, scoring or agricultural constant was invented. Legacy remains default. Metadata guards and software tests are not field or agronomic validation. Later scientific PRs remain independently reviewable and experimental.
