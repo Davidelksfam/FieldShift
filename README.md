@@ -61,3 +61,5 @@ Advanced analytics includes an interactive five-stage pipeline explorer. Open al
 Scientific V2 is experimental and disabled by default. See [the submitted plan](docs/engineering/FieldShift_Scientific_V2_Implementation_Plan.md) and [contracts, states, feature flag and rollback](docs/engineering/SCIENTIFIC_V2_CONTRACTS.md). `npm run test:browser:v2` builds a separate advanced-analytics inspection preview; it does not change the legacy farmer demo.
 
 The complete experimental stack and its [software verification / scientific release assessment](docs/validation/SCIENTIFIC_V2_VALIDATION.md) are documented separately. Run `npm run validate:water-reference` for the nine published component checks. Local calendars and whole-season independent water/agronomic validation remain release blockers; custom map requests do not imply scientific coverage for every field.
+
+Install FieldShift from the welcome screen or planner footer. See the [PWA installation guide](docs/delivery/PWA.md) for Android/iPhone steps and offline limits.

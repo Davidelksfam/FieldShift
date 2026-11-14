@@ -12,6 +12,7 @@ import {
 import { text } from "./i18n";
 import HeaderBar from "./components/HeaderBar";
 import WelcomeScreen from "./components/WelcomeScreen";
+import InstallApp from "./components/InstallApp";
 
 import VulnerabilityBanner from "./components/VulnerabilityBanner";
 import StrategyComparison from "./components/StrategyComparison";
@@ -552,6 +553,7 @@ export default function App() {
                 </section>
               )}
               <footer className="page-footer">
+                <InstallApp lang={lang} />
                 <span dir="ltr">
                   fieldshift. <span>© 2026</span>
                 </span>

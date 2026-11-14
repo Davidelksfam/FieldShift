@@ -136,3 +136,7 @@ The final mobile visual review also identified a legacy media rule hiding the an
 ## Compact map and crop-selection revision
 
 At the user's request, Codex removed the visible map headline, shortened the navbar shade to 150px, moved existing location tools into a vertical side panel and redesigned crop choices as paired season panels with current-selection summaries and compact illustrated radio rows. Keyboard semantics, IDs, data callbacks, values and calculation behavior remain intact. Source recovery, mobile/RTL, crop changes and deployment checks are reported in the PR.
+
+## Installable PWA
+
+At the user's request, Codex added a relative-scope standalone manifest, faithful logo-based home-screen/maskable/Apple icons, native-install event handling and bilingual manual guidance on the welcome/footer. Installation assets join the scoped offline cache and cache-version hash. Added Pages browser tests for manifest/icon dimensions, offline installation assets, prompt lifecycle and installed-state hiding. Existing map, data and calculation behavior is preserved; real OS installation requires the device user's browser action.
