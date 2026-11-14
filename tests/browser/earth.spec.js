@@ -15,6 +15,14 @@ test("Earth renders locally, zooms and keeps quick locations keyboard accessible
     "Focus selected region",
   ])
     await page.getByRole("button", { name, exact: true }).click();
+  const globe = page.locator(".earth-render canvas");
+  const bounds = await globe.boundingBox();
+  await globe.click({
+    position: { x: bounds.width / 2 + 8, y: bounds.height / 2 },
+  });
+  await expect(page.getByLabel("Saved locations", { exact: true })).toHaveValue(
+    "",
+  );
   await page.getByTestId("quick-west_delta_nubariya").focus();
   await page.keyboard.press("Enter");
   await expect(page.getByTestId("quick-west_delta_nubariya")).toHaveAttribute(

@@ -22,3 +22,5 @@ Required checks: `npm run check`, `npm run test:browser`, `npm run test:browser:
 ## Rollback
 
 Revert this UI PR to restore the prior map-first surface. No source-data migration, API/backend changes or scientific release-gate change. V2 remains off by default. Third-party map/data outages remain possible; the globe texture itself is first-party and is not live scientific evidence.
+
+Executed locally: 116 unit/integration tests, build and repository checks passed. All 15 default browser tests and four experimental browser tests passed. The five Earth-specific tests also passed after adding a real sphere-click/coordinate-selection assertion. The first-party preview build succeeded; the unrelated legacy skyspace Vercel project remains outside this PR's scope.
