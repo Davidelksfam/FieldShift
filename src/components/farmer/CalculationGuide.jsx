@@ -1,4 +1,4 @@
-import { useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { ArrowDown, MessageCircle, X } from "lucide-react";
 import { text } from "../../i18n";
 import {
@@ -17,7 +17,9 @@ export default function CalculationGuide({
 }) {
   const [topic, setTopic] = useState("why");
   const [open, setOpen] = useState(false);
-  const dialogRef = useRef(null);
+  const launcherRef = useRef(null);
+  const closeRef = useRef(null);
+  const bodyRef = useRef(null);
   const answerRef = useRef(null);
   const questionsRef = useRef(null);
   const id = useId();
@@ -41,60 +43,78 @@ export default function CalculationGuide({
   const illustrative = Object.values(data.sources ?? {}).some(
     (s) => s.kind !== "observed" && s.usedInComparison !== false,
   );
-  function show() {
-    setOpen(true);
-    dialogRef.current.showModal();
+  function close(restoreFocus = true) {
+    setOpen(false);
+    if (restoreFocus) launcherRef.current?.focus({ preventScroll: true });
   }
-  function close() {
-    dialogRef.current.close();
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        launcherRef.current?.focus({ preventScroll: true });
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+  function toggle() {
+    if (open) close();
+    else {
+      setOpen(true);
+      requestAnimationFrame(() =>
+        closeRef.current?.focus({ preventScroll: true }),
+      );
+    }
   }
   function viewPlans() {
-    close();
+    close(false);
     onCompare();
+  }
+  function showAnswer() {
+    const body = bodyRef.current,
+      answer = answerRef.current;
+    if (body && answer)
+      body.scrollTo({
+        top:
+          body.scrollTop +
+          answer.getBoundingClientRect().top -
+          body.getBoundingClientRect().top,
+        behavior: "instant",
+      });
   }
   return (
     <section
-      className="calculation-guide-entry"
+      className="calculation-guide-widget"
       aria-label={t("Calculation help", "مساعدة في الحسابات")}
     >
-      <div>
-        <MessageCircle size={23} aria-hidden="true" />
-        <div>
-          <h2>{t("Make sense of your results", "افهم نتائج أرضك")}</h2>
-          <p>
-            {t(
-              "Ask about the numbers, the choices, or a drip-irrigation scenario.",
-              "اسأل عن الأرقام والاختيارات، أو جرّب سيناريو ري بالتنقيط.",
-            )}
-          </p>
-        </div>
-      </div>
       <button
         type="button"
-        className="button"
+        className="guide-launcher"
+        ref={launcherRef}
+        aria-label={t("Understand my results", "افهم نتائجي")}
         aria-haspopup="dialog"
+        aria-expanded={open}
         aria-controls={id}
-        onClick={show}
+        data-testid="calculation-chat-launcher"
+        onClick={toggle}
       >
-        {t("Understand my results", "افهم نتائجي")}
+        {open ? (
+          <X size={25} aria-hidden="true" />
+        ) : (
+          <MessageCircle size={27} aria-hidden="true" />
+        )}
+        <span className="guide-launcher-label">
+          {t("Understand my results", "افهم نتائجي")}
+        </span>
       </button>
       <dialog
         id={id}
         className="calculation-guide-dialog"
-        ref={dialogRef}
+        open={open}
+        aria-modal="false"
         aria-labelledby={`${id}-title`}
-        onClose={() => setOpen(false)}
-        onClick={(e) => {
-          if (e.target !== e.currentTarget) return;
-          const rect = e.currentTarget.getBoundingClientRect();
-          if (
-            e.clientX < rect.left ||
-            e.clientX > rect.right ||
-            e.clientY < rect.top ||
-            e.clientY > rect.bottom
-          )
-            close();
-        }}
       >
         <div className="guide-header">
           <div>
@@ -109,13 +129,13 @@ export default function CalculationGuide({
             type="button"
             className="guide-close"
             aria-label={t("Close calculation guide", "اقفل دليل الحسابات")}
-            onClick={close}
-            autoFocus
+            onClick={() => close()}
+            ref={closeRef}
           >
             <X size={20} aria-hidden="true" />
           </button>
         </div>
-        <div className="guide-body">
+        <div className="guide-body" ref={bodyRef}>
           <p className="guide-intro">
             {t(
               "Choose a question. Answers use your current field inputs and calculation results.",
@@ -135,12 +155,7 @@ export default function CalculationGuide({
                 aria-pressed={q.id === topic}
                 onClick={() => {
                   setTopic(q.id);
-                  requestAnimationFrame(() =>
-                    answerRef.current?.scrollIntoView({
-                      block: "start",
-                      behavior: "instant",
-                    }),
-                  );
+                  requestAnimationFrame(showAnswer);
                 }}
               >
                 {text(lang, q.en, q.ar)}
@@ -148,48 +163,56 @@ export default function CalculationGuide({
             ))}
           </div>
           {answer && (
-            <section
-              className="guide-answer"
-              ref={answerRef}
-              aria-live="polite"
-              aria-atomic="true"
-              aria-labelledby={`${id}-question`}
-            >
-              <h3 id={`${id}-question`}>
-                {text(lang, question.en, question.ar)}
-              </h3>
-              {visible && illustrative && (
-                <p className="guide-illustrative">
-                  {t(
-                    "Illustrative comparison · some inputs are synthetic demo assumptions.",
-                    "مقارنة توضيحية · بعض المدخلات افتراضات تجريبية صناعية.",
-                  )}
-                </p>
-              )}
-              {answer.paragraphs.map((p, index) => (
-                <p key={index}>{p}</p>
-              ))}
-              {answer.facts.length > 0 && (
-                <dl>
-                  {answer.facts.map((f) => (
-                    <div key={f.id}>
-                      <dt>{f.label}</dt>
-                      <dd data-testid={`guide-fact-${f.id}`}>
-                        <bdi>{f.value}</bdi>
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
-            </section>
+            <div className="guide-exchange" ref={answerRef}>
+              <div className="guide-question-message">
+                <span>{t("You", "إنت")}</span>
+                <h3 id={`${id}-question`}>
+                  {text(lang, question.en, question.ar)}
+                </h3>
+              </div>
+              <section
+                className="guide-answer"
+                aria-live="polite"
+                aria-atomic="true"
+                aria-labelledby={`${id}-question`}
+              >
+                <span className="guide-message-author">Field Shift</span>
+                {visible && illustrative && (
+                  <p className="guide-illustrative">
+                    {t(
+                      "Illustrative comparison · some inputs are synthetic demo assumptions.",
+                      "مقارنة توضيحية · بعض المدخلات افتراضات تجريبية صناعية.",
+                    )}
+                  </p>
+                )}
+                {answer.paragraphs.map((p, index) => (
+                  <p key={index}>{p}</p>
+                ))}
+                {answer.facts.length > 0 && (
+                  <dl>
+                    {answer.facts.map((f) => (
+                      <div key={f.id}>
+                        <dt>{f.label}</dt>
+                        <dd data-testid={`guide-fact-${f.id}`}>
+                          <bdi>{f.value}</bdi>
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+              </section>
+            </div>
           )}
           <div className="guide-actions">
             <button
               type="button"
               className="button guide-view-plans"
-              onClick={() =>
-                questionsRef.current?.querySelector("button")?.focus()
-              }
+              onClick={() => {
+                bodyRef.current?.scrollTo({ top: 0, behavior: "instant" });
+                questionsRef.current
+                  ?.querySelector("button")
+                  ?.focus({ preventScroll: true });
+              }}
             >
               {t("Another question", "سؤال تاني")}
             </button>

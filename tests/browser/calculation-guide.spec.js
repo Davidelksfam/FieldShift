@@ -175,3 +175,25 @@ test("Arabic mobile guide fits the screen, closes accessibly and supports offlin
     }),
   ).toBeFocused();
 });
+
+test("chat bubble stays in the viewport and the non-modal panel updates while the farmer edits priorities", async ({
+  page,
+}) => {
+  await start(page);
+  const launcher = page.getByTestId("calculation-chat-launcher");
+  const first = await launcher.boundingBox();
+  expect(first.width).toBeGreaterThanOrEqual(44);
+  expect(first.y + first.height).toBeLessThanOrEqual(1000);
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  const afterScroll = await launcher.boundingBox();
+  expect(afterScroll.y).toBeCloseTo(first.y, 0);
+  const dialog = await open(page);
+  await expect(dialog).toHaveAttribute("aria-modal", "false");
+  await expect(launcher).toHaveAttribute("aria-expanded", "true");
+  await page.getByTestId("goal-choice-soil").locator("..").click();
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole("region")).toContainText("Soybean");
+  await launcher.click();
+  await expect(dialog).not.toBeVisible();
+  await expect(launcher).toHaveAttribute("aria-expanded", "false");
+});

@@ -27,7 +27,7 @@ npm run test:browser
 
 `npm run check` runs unit tests, the production build and the repository/link checker. `npm run preview` serves the built application. Browser tests use the production build on port 4173.
 
-“Understand my results” opens an Arabic/English calculation guide with eight suggested questions. Answers follow the current priorities, sources, area and strategy outputs. A drip-irrigation what-if reruns the current crop rotation without changing the form. This is offline-capable guided help, with no LLM API or free-text chat.
+A floating chat bubble (“Understand my results”) opens an Arabic/English calculation guide with eight suggested questions. The compact non-modal panel keeps the form usable while answers update. Answers follow the current priorities, sources, area and strategy outputs. A drip-irrigation what-if reruns the current crop rotation without changing the form. This is offline-capable guided help, with no LLM API or free-text chat.
 
 ## Data and limits
 
