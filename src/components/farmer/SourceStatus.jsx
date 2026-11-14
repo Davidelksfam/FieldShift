@@ -30,15 +30,20 @@ export default function SourceStatus({
                   "Fetching data automatically. Slow or interrupted sources are retried while successful results are kept…",
                   "بنجيب البيانات تلقائياً وبنحاول تاني مع المصادر البطيئة أو المتقطعة، مع الاحتفاظ بالنتائج اللي وصلت…",
                 )
-              : support.illustrative
+              : support.illustrative && !support.blocked
                 ? t(
-                    "Some selected-location data remains unavailable after automatic retrieval. Illustrative fallback is identified below.",
-                    "بعض بيانات الموقع لسه غير متاحة بعد المحاولات التلقائية. البيانات التوضيحية البديلة موضّحة تحت.",
+                    "Strategies are available with partial data. Missing soil or vegetation checks are identified below.",
+                    "الاستراتيجيات متاحة بالبيانات الموجودة. فحوص التربة أو الغطاء النباتي غير المتاحة موضّحة تحت.",
                   )
-                : t(
-                    "Historical source data is available. Regional observations are not a field diagnosis.",
-                    "بيانات المصادر التاريخية متاحة. أرصاد المنطقة ليست تشخيصاً لأرضك.",
-                  )}
+                : support.illustrative
+                  ? t(
+                      "Some selected-location data remains unavailable after automatic retrieval. Illustrative fallback is identified below.",
+                      "بعض بيانات الموقع لسه غير متاحة بعد المحاولات التلقائية. البيانات التوضيحية البديلة موضّحة تحت.",
+                    )
+                  : t(
+                      "Historical source data is available. Regional observations are not a field diagnosis.",
+                      "بيانات المصادر التاريخية متاحة. أرصاد المنطقة ليست تشخيصاً لأرضك.",
+                    )}
             {offline ? " · " + t("Offline", "بدون اتصال") : ""}
           </p>
         </div>
@@ -85,20 +90,25 @@ export default function SourceStatus({
                 )}
               </strong>
               <span>
-                {source.kind === "observed"
-                  ? key === "soil"
-                    ? t(
-                        "Regional soil predictions · not a laboratory measurement",
-                        "تقديرات تربة إقليمية · ليست تحليلاً معملياً",
-                      )
+                {source.usedInComparison === false
+                  ? t(
+                      "No assessment from this source is used in the comparison",
+                      "لا يُستخدم تقييم من المصدر ده في المقارنة",
+                    )
+                  : source.kind === "observed"
+                    ? key === "soil"
+                      ? t(
+                          "Regional soil predictions · not a laboratory measurement",
+                          "تقديرات تربة إقليمية · ليست تحليلاً معملياً",
+                        )
+                      : t(
+                          "Historical observations · 2025",
+                          "أرصاد تاريخية · ٢٠٢٥",
+                        )
                     : t(
-                        "Historical observations · 2025",
-                        "أرصاد تاريخية · ٢٠٢٥",
-                      )
-                  : t(
-                      "Illustrative regional values · not observed at your field",
-                      "قيم إقليمية توضيحية · ليست أرصاداً لأرضك",
-                    )}
+                        "Illustrative regional values · not observed at your field",
+                        "قيم إقليمية توضيحية · ليست أرصاداً لأرضك",
+                      )}
               </span>
               {loading && event?.status === "fulfilled" && (
                 <small>

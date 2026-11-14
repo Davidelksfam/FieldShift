@@ -1,10 +1,21 @@
 export function explainStrategy(strategy, data, inputs, metrics) {
   const reasons = [];
   const add = (en, ar) => reasons.push({ en, ar });
-  if (Object.values(data.sources ?? {}).some((s) => s.kind !== "observed"))
+  if (
+    Object.values(data.sources ?? {}).some(
+      (s) => s.kind !== "observed" && s.usedInComparison !== false,
+    )
+  )
     add(
       "Low: at least one source is an illustrative fallback.",
       "منخفض: أحد المصادر على الأقل بديل توضيحي.",
+    );
+  else if (
+    Object.values(data.sources ?? {}).some((s) => s.usedInComparison === false)
+  )
+    add(
+      "Low: optional soil or vegetation evidence is unavailable.",
+      "منخفض: أدلة التربة أو الغطاء النباتي الاختيارية غير متاحة.",
     );
   if (inputs.landType === "new_sandy")
     add(
@@ -55,10 +66,20 @@ export function explainStrategy(strategy, data, inputs, metrics) {
       ? "ناسا POWER"
       : "بيانات مناخ توضيحية";
   const summer = strategy.crops.find((c) => c.season === "Seifi");
+  const vegetationContext =
+    data.sources?.ndvi?.usedInComparison === false
+      ? {
+          en: "MODIS NDVI is unavailable; no vegetation-cover assessment is made.",
+          ar: "بيانات MODIS NDVI غير متاحة؛ لا يوجد تقييم للغطاء النباتي.",
+        }
+      : {
+          en: `${ndviSource}: longest observed autumn low-cover run ${metrics.bareSoilDays} days; ${metrics.autumnMissingDays} days unknown.`,
+          ar: `${ndviSourceAr}: أطول فترة خريفية مرصودة منخفضة الغطاء ${metrics.bareSoilDays} يوماً؛ ${metrics.autumnMissingDays} يوماً غير معلوم.`,
+        };
   return {
     why: {
-      en: `${source}: ${metrics.heatStressDays} days above 38°C in May–September (${metrics.julyHeatDays} in July). ${ndviSource}: longest observed autumn low-cover run ${metrics.bareSoilDays} days; ${metrics.autumnMissingDays} days unknown. ${summer.nameEn}: catalog heat threshold ${summer.heatThresholdC}°C; modeled N index ${strategy.nitrogenBalance}. ${strategy.crops.length === 3 ? "Conditional cover is included; planting dates must fit." : "Two-crop option avoids assuming an extra cover window."}`,
-      ar: `${sourceAr}: ${metrics.heatStressDays} يوماً فوق ٣٨°م من مايو إلى سبتمبر (${metrics.julyHeatDays} في يوليو). ${ndviSourceAr}: أطول فترة خريفية مرصودة منخفضة الغطاء ${metrics.bareSoilDays} يوماً؛ ${metrics.autumnMissingDays} يوماً غير معلوم. ${summer.nameAr}: حد الحرارة في الدليل ${summer.heatThresholdC}°م؛ مؤشر النيتروجين المقدر ${strategy.nitrogenBalance}. ${strategy.crops.length === 3 ? "الغطاء مشروط بتوافق مواعيد الزراعة." : "خيار بمحصولين دون افتراض نافذة غطاء إضافية."}`,
+      en: `${source}: ${metrics.heatStressDays} days above 38°C in May–September (${metrics.julyHeatDays} in July). ${vegetationContext.en} ${summer.nameEn}: catalog heat threshold ${summer.heatThresholdC}°C; modeled N index ${strategy.nitrogenBalance}. ${strategy.crops.length === 3 ? "Conditional cover is included; planting dates must fit." : "Two-crop option avoids assuming an extra cover window."}`,
+      ar: `${sourceAr}: ${metrics.heatStressDays} يوماً فوق ٣٨°م من مايو إلى سبتمبر (${metrics.julyHeatDays} في يوليو). ${vegetationContext.ar} ${summer.nameAr}: حد الحرارة في الدليل ${summer.heatThresholdC}°م؛ مؤشر النيتروجين المقدر ${strategy.nitrogenBalance}. ${strategy.crops.length === 3 ? "الغطاء مشروط بتوافق مواعيد الزراعة." : "خيار بمحصولين دون افتراض نافذة غطاء إضافية."}`,
     },
     confidence,
     confidenceReasons: reasons,

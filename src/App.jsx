@@ -27,6 +27,7 @@ import {
   areaIsValid,
   evaluationInputs,
   comparisonSourceSupport,
+  prepareComparisonData,
 } from "./presentation/farmerModel";
 import { SCIENTIFIC_V2_ENABLED } from "./engine/engineAdapter";
 import ScientificV2Inspector from "./components/ScientificV2Inspector";
@@ -119,15 +120,23 @@ export default function App() {
     (!Number.isFinite(inputs.soilEceDsm) ||
       inputs.soilEceDsm < 0 ||
       inputs.soilEceDsm > 100);
+  const comparisonData = useMemo(
+    () => prepareComparisonData(data, allowIllustrative),
+    [data, allowIllustrative],
+  );
   const evaluation = useMemo(
     () =>
       invalidMeasuredEce
         ? null
-        : evaluateFieldAndRotations(data, evaluationInputs(inputs), crops),
-    [data, inputs, invalidMeasuredEce],
+        : evaluateFieldAndRotations(
+            comparisonData,
+            evaluationInputs(inputs),
+            crops,
+          ),
+    [comparisonData, inputs, invalidMeasuredEce],
   );
   const support = comparisonSourceSupport(data);
-  const visible = !support.illustrative || allowIllustrative;
+  const visible = !support.blocked || allowIllustrative;
   function changeLocation(lat, lon, presetId = null) {
     if (
       !Number.isFinite(lat) ||
@@ -211,7 +220,7 @@ export default function App() {
   const sources = (
     <SourceStatus
       lang={lang}
-      data={data}
+      data={comparisonData}
       loading={loading}
       progress={progress}
       onRetry={retry}
@@ -283,7 +292,7 @@ export default function App() {
                   <VulnerabilityBanner
                     lang={lang}
                     diagnostics={evaluation.diagnostics}
-                    data={data}
+                    data={comparisonData}
                   />
                   <FieldIndicesPanel
                     lang={lang}
@@ -318,11 +327,11 @@ export default function App() {
                   ref={comparisonRef}
                   lang={lang}
                   evaluation={evaluation}
-                  data={data}
+                  data={comparisonData}
                   inputs={inputs}
                   visible={visible}
                   loading={loading}
-                  illustrative={support.illustrative}
+                  illustrative={allowIllustrative && support.illustrative}
                   onShowExample={() => setAllowIllustrative(true)}
                 />
               </div>
@@ -333,7 +342,7 @@ export default function App() {
                   </summary>
                   <FieldSummary
                     lang={lang}
-                    data={data}
+                    data={comparisonData}
                     diagnostics={evaluation.diagnostics}
                     inputs={inputs}
                   />
@@ -349,14 +358,14 @@ export default function App() {
                 hasRecommendedCover={evaluation?.strategies.some(
                   (s) => s.id !== "baseline" && s.conditionalNili,
                 )}
-                data={data}
+                data={comparisonData}
                 open={evidenceOpen}
                 onToggle={setEvidenceOpen}
               />
               {SCIENTIFIC_V2_ENABLED && (
                 <ScientificV2Inspector
                   lang={lang}
-                  data={data}
+                  data={comparisonData}
                   inputs={inputs}
                   crops={crops}
                   location={location}
@@ -365,7 +374,7 @@ export default function App() {
               {evaluation && (
                 <PipelineExplorer
                   lang={lang}
-                  data={data}
+                  data={comparisonData}
                   evaluation={evaluation}
                 />
               )}

@@ -40,3 +40,18 @@ Executed on the completed change:
 - An unmocked service-client check (`NODE_USE_ENV_PROXY=1 node`, using the environment's HTTPS proxy and normal TLS verification) at **30.8 N, 31.2 E** retrieved validated historical POWER, static ISRIC soil predictions and all QA-screened MODIS batches in **9,771 ms**. Slow soil and MODIS requests recovered automatically, and ISRIC supplied soil after the primary provider failed. This verifies one actual location/time via the Node client; it does not establish universal provider uptime or browser CORS behavior.
 
 These are pre-merge verification results. Production deployment is a separate step.
+
+## 2026-11-14 — Partial-source comparison (issue #36)
+
+The user reported **29.8682 N, 31.3133 E** showing climate and MODIS successes but no strategies. An unmocked service request reproduced that combination: SoilGrids returned an incomplete profile. The display incorrectly required every source even though optional soil/NDVI inputs do not select legacy crops or determine crop-water/ordinal-N arithmetic.
+
+The corrected flow opens all three cards as soon as supported climate is available. Unsupported soil/vegetation values are omitted from the default evaluation, with unavailable diagnostic quantities and a partial-data banner. Missing pH cannot silently become pH 8. Baseline crops remain visible while climate is pending. Missing climate still needs explicit illustrative opt-in before numerical comparison. Crop parameters, ranking rules, laboratory ECe handling and scientific V2 gates are preserved.
+
+Executed checks:
+
+- `npm run check`: **129 unit/integration tests**, production build and repository checker passed. All nine full-input legacy hashes remain identical.
+- Production-build farmer/globe suite: **22 passed**. New checks cover the exact reported location with incomplete soil, climate-only success, optional-source recovery without losing crop selections, missing climate with preserved baseline crop names, Arabic/mobile display, and online reload with deliberately stale offline HTML.
+- Experimental browser suite: **4 passed**.
+- The stale-HTML regression confirms that online navigation loads the current application, rather than using cached old HTML. Existing open tabs still need a reload to execute a newly deployed JavaScript build; no provider retry is needed just to display a climate-supported comparison.
+
+HTTP fixtures verify deterministic browser failure/success combinations; the separate unmocked request establishes one actual provider response at the reported coordinates. Neither proves universal provider uptime, complete soil coverage or agronomic validity. Unsupported soil data remains unavailable rather than being filled with invented values.
