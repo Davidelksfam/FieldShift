@@ -210,6 +210,7 @@ export default function App() {
   );
   const sources = (
     <SourceStatus
+      compact={!expert}
       lang={lang}
       data={data}
       loading={loading}
@@ -264,12 +265,12 @@ export default function App() {
                     "Inspect the evidence and calculations",
                     "افحص الأدلة والحسابات",
                   )
-                : t("A better season starts here.", "موسم أفضل يبدأ من هنا.")}
+                : t("Plan your next rotation.", "خطط لدورتك الزراعية القادمة.")}
             </h1>
             <p>
               {t(
-                "Find your land. Set your priorities. Explore three rotation plans.",
-                "حدد أرضك، اختار أولوياتك، وقارن ثلاث خطط زراعية.",
+                "Choose your field and crops. Compare your options.",
+                "حدد أرضك ومحاصيلك. وقارن البدائل.",
               )}
             </p>
           </div>

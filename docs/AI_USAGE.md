@@ -55,3 +55,7 @@ Codex replaced the short initial/manual recovery split with automatic transient-
 ## 2026-11-14 — Earth-first UX redesign
 
 Codex implemented the user-requested Three.js Earth selector, marked benchmark shortcuts, opt-in geolocation and stale-callback protection, detailed-map recovery, crop iconography and a quieter responsive workspace. The existing scientific engines/datasets and source-quality rules are preserved. Added permission, WebGL, keyboard and location-race browser checks. No NASA endorsement, hackathon award or validated agricultural outcome is claimed.
+
+## 2026-11-14 — Simplify location and farmer UI
+
+Codex implemented the user's correction to remove the 3D Earth/Three.js and use the detailed map directly, explicitly enabling touch/wheel/keyboard/button zoom. Simplified copy, crop/goal labels, map-layer disclosure and source layout while retaining critical source states and all automatic data recovery. Added actual pinch-gesture regressions and preserved geolocation protections. Scientific engines, data constants and release gates are unchanged.
