@@ -47,3 +47,7 @@ Executed checks for this revision:
 - `git diff --check` and formatting checks passed. The existing Vite large-chunk warning remains.
 
 No production deployment or new scientific validation was performed.
+
+## Regional vegetation presentation
+
+For Fayoum and Delta presentation areas, the planner uses an immediate bundled regional vegetation reference; it does not wait for ORNL. Source details identify the reference area and original provenance. Exact saved points preserve original audited readings. References never provide selected-point historical anomaly evidence, and crop explanations identify regional vegetation context. Climate/soil acquisition and explicit missing-climate gating are unchanged. Live-provider diagnostics are selectable for the current tab and are covered separately from the default regional-mode browser test.

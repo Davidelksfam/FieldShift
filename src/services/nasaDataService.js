@@ -289,7 +289,12 @@ function writeCache(lat, lon, data) {
   }
 }
 
-export function getInitialFarmData(lat, lon, presetId) {
+export function getInitialFarmData(
+  lat,
+  lon,
+  presetId,
+  { vegetationMode = "live" } = {},
+) {
   const preset = presets[presetId] ?? nearestPreset(lat, lon);
   const cached = readCache(lat, lon);
   const initial = cached
@@ -376,7 +381,46 @@ export function getInitialFarmData(lat, lon, presetId) {
         (p) => p.lat === lat && p.lon === lon,
       ) ?? null,
     );
+  if (vegetationMode === "regional_reference") {
+    const reference = snapshot ?? regionalVegetationReference(lat, lon);
+    if (reference) {
+      initial.ndviSeries = structuredClone(reference.ndviSeries);
+      initial.sources.ndvi = structuredClone(reference.sources.ndvi);
+      if (!snapshot) {
+        initial.sources.ndvi = {
+          ...initial.sources.ndvi,
+          status: "regional",
+          spatialScope: "regional_reference",
+          referenceLocation: {
+            lat: reference.lat,
+            lon: reference.lon,
+            presetId: reference.id,
+            nameEn: reference.nameEn,
+            nameAr: reference.nameAr,
+          },
+          dataNature:
+            "Observed historical regional reference; not a measurement of the selected point",
+        };
+        initial.ndviHistory = null;
+        initial.harmonizationMeta.vegetationScope = "regional_reference";
+        initial.harmonizationMeta.vegetationReference =
+          initial.sources.ndvi.referenceLocation;
+        initial.harmonizationMeta.method +=
+          " Vegetation uses a fixed regional reference profile, not selected-point co-location.";
+      }
+    }
+  }
   return initial;
+}
+
+export function regionalVegetationReference(lat, lon) {
+  if (lat >= 28.8 && lat < 29.8 && lon >= 30.2 && lon <= 31.3)
+    return observedBenchmarks.fayoum_etsa;
+  if (lat >= 29.8 && lat <= 31.8 && lon >= 29.4 && lon <= 32.4)
+    return lon < 30.45
+      ? observedBenchmarks.west_delta_nubariya
+      : observedBenchmarks.delta_kafr_el_sheikh;
+  return null;
 }
 
 function abortError() {
@@ -542,6 +586,7 @@ export async function fetchUnifiedFarmData(
   {
     signal: parentSignal,
     timeoutMs = REQUEST_TIMEOUT_MS,
+    vegetationMode = "live",
     onSourceUpdate,
     onDataUpdate,
     attemptTimeoutMs = 4500,
@@ -563,7 +608,7 @@ export async function fetchUnifiedFarmData(
   parentSignal?.addEventListener("abort", onAbort, { once: true });
   if (parentSignal?.aborted) controller.abort();
   let timer;
-  const data = getInitialFarmData(lat, lon, presetId);
+  const data = getInitialFarmData(lat, lon, presetId, { vegetationMode });
   const { signal } = controller;
   const settledSources = new Set();
   const request = (url, key, overrides = {}) =>
@@ -674,58 +719,71 @@ export async function fetchUnifiedFarmData(
         }
       }
     })(),
-    // Retrieve QA alongside NDVI; never replace audited data with unscreened pixels.
-    settleModisBatches(
-      ["250m_16_days_NDVI", "250m_16_days_pixel_reliability"].map((band) =>
-        settleModisBatches(
-          [
-            ["001", "065"],
-            ["081", "145"],
-            ["161", "225"],
-            ["241", "305"],
-            ["321", "353"],
-          ].map(([start, end]) => requestModis(band, start, end)),
-        ).then((chunks) => {
-          if (chunks.some((c) => c.nrows !== 1 || c.ncols !== 1))
-            throw new Error("Unexpected MODIS grid");
-          const keys = ["xllcorner", "yllcorner", "cellsize", "nrows", "ncols"];
-          const grid = Object.fromEntries(
-            keys.map((key) => [key, chunks[0][key]]),
-          );
-          if (chunks.some((c) => keys.some((key) => c[key] !== grid[key])))
-            throw new Error("Inconsistent MODIS chunk grids");
-          if (
-            band === "250m_16_days_NDVI" &&
-            chunks.some((c) => Number(c.scale) !== 0.0001)
-          )
-            throw new Error("Unrecognized MODIS scale");
-          return { subset: chunks.flatMap((c) => c.subset ?? []), grid };
-        }),
-      ),
-    )
-      .then(([ndvi, qa]) => {
-        if (JSON.stringify(ndvi.grid) !== JSON.stringify(qa.grid))
-          throw new Error("MODIS QA pixel grid mismatch");
-        const value = parseModis(ndvi, qa);
-        const expected = new Set(
-          Array.from({ length: 23 }, (_, i) =>
-            new Date(Date.UTC(2025, 0, 1 + i * 16)).toISOString().slice(0, 10),
+    // Regional presentation profiles are bundled observations at their declared
+    // reference coordinates; exact preset series remain untouched.
+    vegetationMode === "regional_reference" &&
+    data.sources.ndvi.kind === "observed" &&
+    ["snapshot", "regional"].includes(data.sources.ndvi.status)
+      ? Promise.resolve({ ...data.sources.ndvi, value: data.ndviSeries })
+      : settleModisBatches(
+          ["250m_16_days_NDVI", "250m_16_days_pixel_reliability"].map((band) =>
+            settleModisBatches(
+              [
+                ["001", "065"],
+                ["081", "145"],
+                ["161", "225"],
+                ["241", "305"],
+                ["321", "353"],
+              ].map(([start, end]) => requestModis(band, start, end)),
+            ).then((chunks) => {
+              if (chunks.some((c) => c.nrows !== 1 || c.ncols !== 1))
+                throw new Error("Unexpected MODIS grid");
+              const keys = [
+                "xllcorner",
+                "yllcorner",
+                "cellsize",
+                "nrows",
+                "ncols",
+              ];
+              const grid = Object.fromEntries(
+                keys.map((key) => [key, chunks[0][key]]),
+              );
+              if (chunks.some((c) => keys.some((key) => c[key] !== grid[key])))
+                throw new Error("Inconsistent MODIS chunk grids");
+              if (
+                band === "250m_16_days_NDVI" &&
+                chunks.some((c) => Number(c.scale) !== 0.0001)
+              )
+                throw new Error("Unrecognized MODIS scale");
+              return { subset: chunks.flatMap((c) => c.subset ?? []), grid };
+            }),
           ),
-        );
-        if (value.length !== 23 || value.some((p) => !expected.has(p.date)))
-          throw new Error("Incomplete MODIS calendar");
-        return value;
-      })
-      .then((value) => ({
-        value,
-        provider: "ORNL MODIS MOD13Q1 · QA screened",
-        url: "https://modis.ornl.gov/data/modis_webservice.html",
-        urls: modisBatchUrls,
-        status: modisNetworkBatches ? "live" : "cached",
-        retrievedAt: new Date(Math.min(...modisBatchTimes)).toISOString(),
-        dataNature:
-          "QA-screened 16-day satellite composites, not daily field observations",
-      })),
+        )
+          .then(([ndvi, qa]) => {
+            if (JSON.stringify(ndvi.grid) !== JSON.stringify(qa.grid))
+              throw new Error("MODIS QA pixel grid mismatch");
+            const value = parseModis(ndvi, qa);
+            const expected = new Set(
+              Array.from({ length: 23 }, (_, i) =>
+                new Date(Date.UTC(2025, 0, 1 + i * 16))
+                  .toISOString()
+                  .slice(0, 10),
+              ),
+            );
+            if (value.length !== 23 || value.some((p) => !expected.has(p.date)))
+              throw new Error("Incomplete MODIS calendar");
+            return value;
+          })
+          .then((value) => ({
+            value,
+            provider: "ORNL MODIS MOD13Q1 · QA screened",
+            url: "https://modis.ornl.gov/data/modis_webservice.html",
+            urls: modisBatchUrls,
+            status: modisNetworkBatches ? "live" : "cached",
+            retrievedAt: new Date(Math.min(...modisBatchTimes)).toISOString(),
+            dataNature:
+              "QA-screened 16-day satellite composites, not daily field observations",
+          })),
   ].map((task, index) =>
     task.then(
       (value) => {
@@ -736,6 +794,9 @@ export async function fetchUnifiedFarmData(
           if (key === "climate") Object.assign(data, value.value);
           else data[key === "soil" ? "soil" : "ndviSeries"] = value.value;
           data.sources[key] = {
+            ...(key === "ndvi" && vegetationMode === "regional_reference"
+              ? data.sources.ndvi
+              : {}),
             status: value.status ?? "live",
             kind: "observed",
             provider: value.provider,

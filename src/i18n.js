@@ -14,6 +14,7 @@ export const sourceLabel = (source, lang) => {
       "غير متاح · مستبعد من المقارنة",
     );
   const labels = {
+    regional: ["Regional reference · 2025", "مرجع إقليمي · ٢٠٢٥"],
     live: ["Retrieved source data", "بيانات مصدر مسترجعة"],
     cached: ["Cached source data", "بيانات مصدر محفوظة"],
     snapshot: ["Audited historical snapshot", "نسخة تاريخية مدققة"],

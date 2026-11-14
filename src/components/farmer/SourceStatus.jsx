@@ -112,20 +112,25 @@ export default function SourceStatus({
                       "No assessment from this source is used in the comparison",
                       "لا يُستخدم تقييم من المصدر ده في المقارنة",
                     )
-                  : source.kind === "observed"
-                    ? key === "soil"
-                      ? t(
-                          "Regional soil predictions · not a laboratory measurement",
-                          "تقديرات تربة إقليمية · ليست تحليلاً معملياً",
-                        )
+                  : source.spatialScope === "regional_reference"
+                    ? t(
+                        `${source.referenceLocation.nameEn} · historical vegetation reference`,
+                        `${source.referenceLocation.nameAr} · مرجع الغطاء النباتي التاريخي`,
+                      )
+                    : source.kind === "observed"
+                      ? key === "soil"
+                        ? t(
+                            "Regional soil predictions · not a laboratory measurement",
+                            "تقديرات تربة إقليمية · ليست تحليلاً معملياً",
+                          )
+                        : t(
+                            "Historical observations · 2025",
+                            "أرصاد تاريخية · ٢٠٢٥",
+                          )
                       : t(
-                          "Historical observations · 2025",
-                          "أرصاد تاريخية · ٢٠٢٥",
-                        )
-                    : t(
-                        "Illustrative regional values · not observed at your field",
-                        "قيم إقليمية توضيحية · ليست أرصاداً لأرضك",
-                      )}
+                          "Illustrative regional values · not observed at your field",
+                          "قيم إقليمية توضيحية · ليست أرصاداً لأرضك",
+                        )}
               </span>
               {pending && key === "ndvi" && (
                 <small>
@@ -156,14 +161,16 @@ export default function SourceStatus({
                       )}
                 </small>
               )}
-              {loading && event?.status === "fulfilled" && (
-                <small>
-                  {t(
-                    "Retrieved for the selected coordinates",
-                    "مسترجعة للإحداثيات المختارة",
-                  )}
-                </small>
-              )}
+              {loading &&
+                event?.status === "fulfilled" &&
+                source.spatialScope !== "regional_reference" && (
+                  <small>
+                    {t(
+                      "Retrieved for the selected coordinates",
+                      "مسترجعة للإحداثيات المختارة",
+                    )}
+                  </small>
+                )}
             </article>
           );
         })}
