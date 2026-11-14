@@ -532,17 +532,6 @@ html[lang="ar"] .planner-intro h1 {
   font-size: 11px;
   margin-top: 3px;
 }
-.area-enable {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  margin-bottom: 16px;
-  cursor: pointer;
-}
-.area-enable input {
-  flex-shrink: 0;
-}
 .unified-workspace .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1259,4 +1248,29 @@ html {
   .unified-workspace .advanced-analytics .small-note {
     overflow-wrap: anywhere;
   }
+}
+
+.optional-land-type {
+  border-block-start: 1px solid var(--fs-border);
+  margin-block-start: 20px;
+  padding-block-start: 14px;
+}
+.optional-field-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.optional-field-heading .field-illustration {
+  width: 40px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.optional-field-heading small {
+  margin-inline-start: auto;
+  color: var(--fs-text-secondary);
+  font-weight: 400;
+}
+.optional-land-type select {
+  width: 100%;
+  min-height: 44px;
 }

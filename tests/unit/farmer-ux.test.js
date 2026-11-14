@@ -12,6 +12,7 @@ import {
   GOALS,
   selectGoal,
   areaIsValid,
+  areaWasEntered,
   evaluationInputs,
   proposedStrategy,
   warningLayers,
@@ -80,7 +81,11 @@ test("whole-field scale is opt-in; zero, missing, invalid and fractional qirat a
     [0.25, 0],
   ])
     assert.equal(areaIsValid({ feddans, qirats }), true);
-  const inputs = { ...base, feddans: "", qirats: 0, estimateArea: false };
+  assert.equal(areaWasEntered({ feddans: "", qirats: 0 }), false);
+  assert.equal(areaWasEntered({ feddans: "", qirats: "" }), false);
+  assert.equal(areaWasEntered({ feddans: "0", qirats: 0 }), true);
+  assert.equal(areaWasEntered({ feddans: "", qirats: 24 }), true);
+  const inputs = { ...base, feddans: "", qirats: 0 };
   assert.equal(evaluationInputs(inputs).feddans, 1);
   assert.deepEqual(
     project(evaluate(data, evaluationInputs(inputs), crops)),
@@ -114,5 +119,29 @@ test("measured salinity and fallback cautions remain critical, with no substitut
     !warningLayers(s, data, b.diagnostics).critical.some((w) =>
       w.en.includes("illustrative fallback"),
     ),
+  );
+});
+
+test("valid area automatically scales all totals without an enable flag and never changes ranking", () => {
+  const defaultResult = evaluate(
+    data,
+    evaluationInputs({ ...base, feddans: "", qirats: 0 }),
+    crops,
+  );
+  const entered = { ...base, feddans: "2", qirats: "12" };
+  const result = evaluate(data, evaluationInputs(entered), crops);
+  assert.deepEqual(result.rankedStrategyIds, defaultResult.rankedStrategyIds);
+  for (const strategy of result.strategies) {
+    const perFeddan = defaultResult.strategies.find(
+      (s) => s.id === strategy.id,
+    );
+    assert.equal(
+      strategy.totalFarmWaterM3,
+      Math.round(perFeddan.grossWaterM3Feddan * 2.5),
+    );
+  }
+  assert.deepEqual(
+    evaluationInputs({ ...entered, estimateArea: false }).feddans,
+    "2",
   );
 });

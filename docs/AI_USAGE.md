@@ -104,3 +104,7 @@ Codex removed the user-rejected canal-position question from both input componen
 ## 2026-11-14 — Production integration with current main
 
 After user approval to publish on Vercel, Codex integrated the newer main-branch accessibility/reflow, native SoilGrids retrieval, preset-cache recovery and canal-input removal into the approved Earth/logo/theme changes. Preserved both branches' contribution records and updated navigation-size checks for the default 3D controls. Production deployment status and hosted verification are reported separately; a Vercel quota failure is not reported as a successful release.
+
+## 2026-11-14 — Simplify optional farmer inputs
+
+Codex removed the whole-field water enable checkbox and its state gates: valid area alone scales and reveals totals in farmer and advanced views, absent area uses the one-feddan comparison basis, and entered invalid area shows validation without hiding per-feddan comparisons. Land type is a compact optional select starting unspecified, retaining explicit demo scenario choices and sandy-irrigation warnings without inferring land class from soil predictions. Added area-scaling/rank-invariance and visible-form regressions and updated the workspace contract. Crop equations, source acquisition, Scientific V2 and the latest Earth/logo/theme work are preserved. No field accuracy claim is added.

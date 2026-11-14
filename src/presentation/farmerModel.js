@@ -19,6 +19,12 @@ export const GOALS = {
 export function selectGoal(inputs, goal) {
   return { ...inputs, goal, weights: { ...GOALS[goal].weights } };
 }
+export function areaWasEntered(inputs) {
+  return (
+    String(inputs.feddans ?? "").trim() !== "" ||
+    Number(inputs.qirats ?? 0) !== 0
+  );
+}
 export function areaIsValid(inputs) {
   const f = Number(inputs.feddans),
     q = Number(inputs.qirats);
@@ -38,9 +44,7 @@ export function areaIsValid(inputs) {
 export function evaluationInputs(inputs) {
   // The engine requires a positive scale. One feddan is a comparison basis,
   // never a claim about the user's field area. UI totals require explicit valid area.
-  return inputs.estimateArea && areaIsValid(inputs)
-    ? inputs
-    : { ...inputs, feddans: 1, qirats: 0 };
+  return areaIsValid(inputs) ? inputs : { ...inputs, feddans: 1, qirats: 0 };
 }
 export function proposedStrategy(evaluation) {
   return evaluation.strategies.find(

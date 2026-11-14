@@ -17,7 +17,6 @@ test("all field factors are discoverable without disclosures and illustrated cho
     "Winter crop",
     "Summer crop",
     "Irrigation system",
-    "Land type",
     "Reported salinity",
     "Main goal",
   ]) {
@@ -48,8 +47,14 @@ test("all field factors are discoverable without disclosures and illustrated cho
   await expect(page.getByTestId("farmer-strategy-baseline")).toContainText(
     "Egyptian Clover",
   );
-  await page.getByTestId("field-landType-new_sandy").locator("..").click();
-  await expect(page.getByTestId("field-landType-new_sandy")).toBeChecked();
+  const landType = page.getByRole("combobox", {
+    name: "Land type",
+    exact: true,
+  });
+  await expect(landType).toBeVisible();
+  await expect(landType).toHaveValue("");
+  await landType.selectOption("new_sandy");
+  await expect(landType).toHaveValue("new_sandy");
   await page.getByTestId("field-salinityLevel-high").locator("..").click();
   await page
     .getByLabel("Do you keep livestock? Include forage in scoring.", {
@@ -65,7 +70,7 @@ test("all field factors are discoverable without disclosures and illustrated cho
   await page.getByLabel("Area in feddans", { exact: true }).fill("2");
   await expect(
     page.getByLabel("Estimate water for my whole field", { exact: true }),
-  ).toBeChecked();
+  ).toHaveCount(0);
   await expect(page.getByTestId("farmer-total-baseline")).toBeVisible();
   await page.getByLabel("Measured soil ECe", { exact: true }).fill("12");
   await expect(

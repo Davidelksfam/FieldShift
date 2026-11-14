@@ -86,17 +86,6 @@ export default function FarmerInputPanel({
           "أدوات الخبير · تعديل الأوزان يفعّل هدفاً مخصصاً. تغيير المنطقة يحافظ على المدخلات.",
         )}
       </p>
-      <label className="checkbox-label">
-        <input
-          type="checkbox"
-          checked={inputs.estimateArea}
-          onChange={(e) => update("estimateArea", e.target.checked)}
-        />
-        {t(
-          "Estimate water for my whole field",
-          "أحسب تقدير المياه لأرضي بالكامل",
-        )}
-      </label>
       <div className="form-section">
         <h3>
           <Sprout size={16} />
@@ -130,7 +119,8 @@ export default function FarmerInputPanel({
         <p className="small-note">
           {t("1 feddan = 24 qirats ≈ 4,200 m²", "الفدان = ٢٤ قيراط ≈ ٤٢٠٠ م²")}
         </p>
-        {select("landType", t("Land type", "نوع الأرض"), [
+        {select("landType", t("Land type · optional", "نوع الأرض · اختياري"), [
+          ["", "Not specified", "غير محدد"],
           ["old_clay", "Old alluvial clay", "طينية قديمة"],
           ["new_sandy", "New sandy land", "رملية مستصلحة"],
         ])}

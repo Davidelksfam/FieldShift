@@ -28,6 +28,7 @@ import ThreeStrategyComparison from "./components/farmer/ThreeStrategyComparison
 import {
   GOALS,
   areaIsValid,
+  areaWasEntered,
   evaluationInputs,
   comparisonSourceSupport,
   prepareComparisonData,
@@ -38,7 +39,7 @@ const initialPreset = presets.fayoum_etsa;
 const initialInputs = {
   ...initialPreset.defaults,
   feddans: "",
-  estimateArea: false,
+  landType: "",
   goal: "water",
   qirats: 0,
   currentWinterId: "wheat",
@@ -227,7 +228,7 @@ export default function App() {
           )}
         </div>
       )}
-      {inputs.estimateArea && !areaIsValid(inputs) && (
+      {areaWasEntered(inputs) && !areaIsValid(inputs) && (
         <div className="error-message" role="alert">
           {t(
             "Enter a total area greater than zero (up to 100,000 feddans), with 0–23 whole extra qirats. Per-feddan comparisons remain available; whole-field totals are hidden.",
@@ -460,7 +461,7 @@ export default function App() {
                   <StrategyComparison
                     lang={lang}
                     strategies={evaluation.strategies}
-                    showTotals={inputs.estimateArea && areaIsValid(inputs)}
+                    showTotals={areaIsValid(inputs)}
                   />
                 </>
               )}
