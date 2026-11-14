@@ -1,0 +1,50 @@
+[
+  {
+    "width": 390,
+    "lang": "ar",
+    "demoY": 427.765625,
+    "overflow": false,
+    "comparisonY": 441.984375,
+    "comparisonSummaryY": 547.171875
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "demoY": 487.125,
+    "overflow": false,
+    "comparisonY": 507.546875,
+    "comparisonSummaryY": 612.734375
+  },
+  {
+    "width": 768,
+    "lang": "ar",
+    "demoY": 452.359375,
+    "overflow": false,
+    "comparisonY": 479.578125,
+    "comparisonSummaryY": 0
+  },
+  {
+    "width": 768,
+    "lang": "en",
+    "demoY": 460.5625,
+    "overflow": false,
+    "comparisonY": 498.171875,
+    "comparisonSummaryY": 0
+  },
+  {
+    "width": 1440,
+    "lang": "ar",
+    "demoY": 395.484375,
+    "overflow": false,
+    "comparisonY": 433.890625,
+    "comparisonSummaryY": 0
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "demoY": 396.953125,
+    "overflow": false,
+    "comparisonY": 424.171875,
+    "comparisonSummaryY": 0
+  }
+]
