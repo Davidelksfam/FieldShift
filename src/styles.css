@@ -2152,3 +2152,508 @@ html[lang="ar"] .strategy-card h3 {
   overflow: auto;
   max-width: 100%;
 }
+
+/* Earth workspace: a quiet planning surface with a focused spatial selector. */
+body {
+  background: #f6f7f2;
+}
+.header-bar {
+  border-bottom: 1px solid #e2e7dc;
+  box-shadow: none;
+}
+.workspace.farmer-workspace {
+  max-width: 1500px;
+  margin: auto;
+  padding: 28px 36px 64px;
+}
+.farmer-workspace .workspace-intro {
+  max-width: 780px;
+  margin-bottom: 24px;
+}
+.farmer-workspace h1 {
+  font-size: clamp(28px, 3vw, 40px);
+  letter-spacing: -1.2px;
+}
+.farmer-workspace .panel {
+  border-radius: 20px;
+  border-color: #e1e7dc;
+  box-shadow: 0 3px 18px #19392f04;
+}
+.field-setup-grid {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 28px;
+}
+.field-location {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #e1e7dc;
+  border-radius: 20px;
+  padding: 20px;
+}
+.location-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.location-heading h2 {
+  font-size: 20px;
+  margin-top: 5px;
+}
+.step-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  font-weight: 700;
+  color: #64816e;
+  margin-bottom: 10px;
+}
+.view-switch {
+  display: flex;
+  padding: 3px;
+  background: #f1f4ed;
+  border-radius: 12px;
+}
+.view-switch button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  border-radius: 9px;
+  padding: 8px 12px;
+  color: #607164;
+}
+.view-switch button[aria-pressed="true"] {
+  background: white;
+  color: #245d43;
+  box-shadow: 0 1px 5px #163c2912;
+}
+.earth-stage {
+  height: 388px;
+  background: radial-gradient(
+    ellipse at center,
+    #183f45 0%,
+    #0e2028 62%,
+    #0a171e 100%
+  );
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  color: #eaf3eb;
+}
+.earth-render {
+  position: absolute;
+  inset: 0;
+  direction: ltr;
+}
+.earth-render canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+.earth-caption {
+  position: absolute;
+  top: 20px;
+  inset-inline-start: 20px;
+  z-index: 1;
+  pointer-events: none;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+}
+.earth-caption small {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0;
+  color: #a7bdbc;
+  margin-top: 5px;
+}
+.earth-live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #8de2b4;
+  border-radius: 50%;
+  margin-inline-end: 6px;
+}
+.earth-tools {
+  position: absolute;
+  inset-inline-end: 14px;
+  top: 70px;
+  display: grid;
+  gap: 5px;
+}
+.earth-tools button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  min-height: 44px;
+  border: 1px solid #426169;
+  border-radius: 10px;
+  background: #11262bdf;
+  color: #e7eee8;
+}
+.earth-legend {
+  position: absolute;
+  bottom: 44px;
+  inset-inline-start: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 10px;
+  pointer-events: none;
+}
+.earth-legend span:first-child {
+  color: #ffd36e;
+}
+.earth-legend span:last-child {
+  color: #78efbe;
+}
+.earth-hint {
+  position: absolute;
+  bottom: 16px;
+  inset-inline-start: 20px;
+  font-size: 10px;
+  color: #a9bfbd;
+  pointer-events: none;
+}
+.earth-fallback {
+  position: absolute;
+  inset: 75px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+}
+.quick-locations {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px 0;
+}
+.quick-locations button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-align: start;
+  border: 1px solid #e2e8dd;
+  border-radius: 12px;
+  background: #fafbf8;
+  padding: 10px 8px;
+  color: #415c4a;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.quick-locations button span {
+  min-width: 0;
+}
+.quick-locations button svg {
+  flex-shrink: 0;
+}
+.quick-locations button small {
+  display: block;
+  font-size: 8px;
+  color: #839280;
+  letter-spacing: 0.4px;
+}
+.quick-locations button.active {
+  background: #edf5e8;
+  border-color: #8cb27e;
+  color: #265b37;
+}
+.geo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.geo-row small {
+  font-size: 10px;
+  color: #778576;
+  max-width: 190px;
+}
+.geo-row .button {
+  font-size: 12px;
+}
+.geo-error {
+  padding: 12px;
+  color: #945222;
+  font-size: 12px;
+}
+.field-location .location-controls {
+  padding: 12px 0 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.saved-location-select {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.field-location details summary {
+  font-size: 11px;
+  color: #68806c;
+}
+.field-inputs {
+  padding: 24px;
+}
+.field-inputs .workspace-panel-heading {
+  margin: 4px 0 24px;
+}
+.field-inputs h2 {
+  font-size: 23px;
+}
+.workspace-fields {
+  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+}
+.workspace-fields .field-label {
+  gap: 9px;
+  font-size: 12px;
+}
+.input-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #526a58;
+}
+.input-title svg {
+  color: #5b8555;
+}
+.workspace-fields select {
+  background: #fafbf7;
+  border-color: #e0e6d9;
+  border-radius: 12px;
+  min-height: 52px;
+  font-size: 13px;
+}
+.crop-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #79944b;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.crop-wheat,
+.crop-maize,
+.crop-sorghum {
+  color: #b89339;
+}
+.crop-faba_bean,
+.crop-soybean {
+  color: #967657;
+}
+.preference-note {
+  margin-top: 18px;
+}
+.preference-note summary {
+  font-size: 11px;
+  color: #76836f;
+}
+.field-inputs .additional-details {
+  margin-top: 16px;
+}
+.field-inputs .compare-action {
+  width: 100%;
+  border-radius: 12px;
+  min-height: 52px;
+  margin-top: 20px;
+  background: #2c593e;
+}
+.farmer-workspace .source-status-panel {
+  margin-block: 24px;
+  padding: 18px 22px;
+}
+.source-status-heading h2 {
+  font-size: 15px;
+}
+.source-status-heading p {
+  font-size: 11px;
+  max-width: 650px;
+}
+.farmer-workspace .location-source {
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+.location-source h3 {
+  font-size: 11px;
+}
+.location-source > span {
+  font-size: 10px;
+}
+.numeric-card-heading {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #edf0e9;
+}
+.numeric-card-heading h3 {
+  font-size: 17px;
+}
+.numeric-strategy {
+  border-top: 3px solid #bdd0a5 !important;
+  border-radius: 18px !important;
+}
+.numeric-strategy:first-child {
+  border-top-color: #d7dccc !important;
+}
+.numeric-crops strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.numeric-crops li {
+  background: #f7f9f2;
+  border-radius: 10px;
+}
+.numeric-water > strong {
+  font-size: 40px;
+  color: #2a583a;
+}
+.numeric-details summary {
+  font-size: 11px;
+}
+.numeric-metrics {
+  border-radius: 12px;
+  background: #f7f9f2;
+}
+@media (max-width: 1100px) {
+  .field-setup-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 16px;
+  }
+  .workspace-fields {
+    grid-template-columns: 1fr;
+  }
+  .quick-locations {
+    grid-template-columns: 1fr;
+  }
+  .quick-locations button small {
+    display: none;
+  }
+  .earth-stage {
+    height: 390px;
+  }
+}
+@media (max-width: 800px) {
+  .workspace.farmer-workspace {
+    padding: 20px 16px 48px;
+  }
+  .field-setup-grid {
+    grid-template-columns: 1fr;
+  }
+  .field-location {
+    padding: 16px;
+  }
+  .earth-stage {
+    height: 340px;
+  }
+  .quick-locations {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .quick-locations button {
+    flex-direction: column;
+    align-items: start;
+    font-size: 10px;
+  }
+  .quick-locations button > svg:last-child:not(:first-child) {
+    display: none;
+  }
+  .workspace-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+  .field-inputs {
+    padding: 20px;
+  }
+  .geo-row small {
+    max-width: 160px;
+  }
+}
+@media (max-width: 380px) {
+  .workspace-fields {
+    grid-template-columns: 1fr;
+  }
+  .location-heading h2 {
+    font-size: 17px;
+  }
+  .earth-stage {
+    height: 300px;
+  }
+  .quick-locations button {
+    font-size: 9px;
+  }
+}
+.farmer-workspace .farmer-intro {
+  margin-bottom: 22px;
+}
+.field-location {
+  gap: 10px;
+}
+.location-heading {
+  margin-bottom: 4px;
+}
+.quick-locations {
+  margin: 4px 0;
+}
+.numeric-card-heading {
+  margin-bottom: 16px;
+}
+.numeric-crops {
+  gap: 8px;
+}
+.numeric-crops li {
+  min-height: 60px;
+  padding: 9px 12px;
+}
+.numeric-crops strong {
+  font-size: 14px;
+}
+.numeric-metrics {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px;
+}
+.numeric-metrics > div {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.numeric-metrics dt {
+  font-size: 11px;
+}
+.numeric-metrics dd {
+  font-size: 20px;
+}
+.numeric-metrics small {
+  font-size: 10px;
+  min-height: 0;
+}
+.farmer-cautions p {
+  font-size: 12px;
+}
+.numeric-details {
+  margin-top: 12px;
+}
+.field-location .location-controls {
+  gap: 8px;
+}
+@media (max-width: 480px) {
+  .numeric-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+  .earth-caption {
+    font-size: 9px;
+  }
+  .earth-caption small {
+    font-size: 10px;
+  }
+}

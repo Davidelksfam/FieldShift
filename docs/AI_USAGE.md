@@ -47,3 +47,7 @@ Codex integrated calendars, explicit Nili modes, crop-only ETc aggregation, qual
 ## 2026-11-14 — Scientific V2 PR 6 final review
 
 Codex performed agronomy-oriented software review and independent agent logic checks, fixed identified provenance/units/timing/comparison/trace defects, and documented executed tests versus unresolved scientific evidence. Added release-invariant, custom-point isolation and offline inspector regressions plus CI checks. No qualified field-validation, universal accuracy, measured savings or agronomic optimum is claimed; V2 remains experimental.
+
+## 2026-11-14 — Earth-first UX redesign
+
+Codex implemented the user-requested Three.js Earth selector, marked benchmark shortcuts, opt-in geolocation and stale-callback protection, detailed-map recovery, crop iconography and a quieter responsive workspace. The existing scientific engines/datasets and source-quality rules are preserved. Added permission, WebGL, keyboard and location-race browser checks. No NASA endorsement, hackathon award or validated agricultural outcome is claimed.

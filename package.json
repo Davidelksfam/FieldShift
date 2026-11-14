@@ -28,7 +28,8 @@
     "react-dom": "^19.0.0",
     "react-leaflet": "^5.0.0",
     "recharts": "^3.0.0",
-    "tailwindcss": "^4.1.0"
+    "tailwindcss": "^4.1.0",
+    "three": "^0.187.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",
