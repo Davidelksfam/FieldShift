@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../helpers/plannerTest.js";
 import { sourcePayload } from "../helpers/sourcePayloads.js";
 import presets from "../../src/data/demoPresets.json" with { type: "json" };
 
@@ -159,6 +159,8 @@ test("sphere picking fetches custom data and invalid coordinates preserve the la
   const requests = await start(page);
   await settled(page);
   await page.getByTestId("irrigation-choice-drip").locator("..").click();
+  // The field parameters now follow the viewport-sized map.
+  await page.locator(".earth-render canvas").scrollIntoViewIfNeeded();
   const box = await page.locator(".earth-render canvas").boundingBox();
   await page.mouse.click(box.x + box.width / 2 + 8, box.y + box.height / 2);
   await expect(page.getByLabel("Saved locations", { exact: true })).toHaveValue(
@@ -192,6 +194,9 @@ test("sphere picking fetches custom data and invalid coordinates preserve the la
 test("close zoom stays in 3D without changing analysis location or fetching data", async ({
   page,
 }) => {
+  // This exhaustive 45-click traversal renders a full viewport on CI's software
+  // GPU. Keep every interaction/assertion, with time for the larger surface.
+  test.setTimeout(60000);
   const requests = await start(page);
   await settled(page);
   await expect(

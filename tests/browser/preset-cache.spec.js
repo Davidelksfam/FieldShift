@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../helpers/plannerTest.js";
 import presets from "../../src/data/demoPresets.json" with { type: "json" };
 import synthetic from "../../src/data/syntheticFixtures.json" with { type: "json" };
 import { sourcePayload } from "../helpers/sourcePayloads.js";

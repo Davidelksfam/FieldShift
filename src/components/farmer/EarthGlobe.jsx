@@ -31,13 +31,14 @@ export default function EarthGlobe({
   presets,
   onLocationChange,
   onMap,
+  intro = false,
 }) {
   const host = useRef(null),
     api = useRef(null);
   const labels = useRef({}),
     guides = useRef({});
-  const latest = useRef({ location, onLocationChange });
-  latest.current = { location, onLocationChange };
+  const latest = useRef({ location, onLocationChange, intro });
+  latest.current = { location, onLocationChange, intro };
   const [failed, setFailed] = useState(false),
     [ready, setReady] = useState(false);
   const [distance, setDistance] = useState(3.55);
@@ -82,6 +83,7 @@ export default function EarthGlobe({
         controls.autoRotate = false;
         const motion = matchMedia("(prefers-reduced-motion: reduce)");
         let frame = 0,
+          imageryFrame = 0,
           animation = null,
           imageReady = false,
           imagery = null;
@@ -137,11 +139,15 @@ export default function EarthGlobe({
         scene.add(selected);
 
         function placeLandmarks() {
+          if (latest.current.intro) return;
           const { width, height } = container.getBoundingClientRect();
           const stage = container.parentElement;
           const bounds = stage.getBoundingClientRect();
           const obstacles = [
             ...stage.querySelectorAll(".earth-caption, .earth-tools"),
+            ...(stage
+              .closest(".field-experience")
+              ?.querySelectorAll("[data-map-obstacle]") ?? []),
           ].map((el) => {
             const r = el.getBoundingClientRect();
             return {
@@ -200,11 +206,17 @@ export default function EarthGlobe({
               h,
             }));
             // Search remaining free space if a narrow view exhausts the preferred offsets.
-            for (let gy = 44; gy <= height - h - 58; gy += 12) {
-              for (let gx = 8; gx <= width - w - 8; gx += 12) {
-                candidates.push({ x: gx, y: gy, w, h });
+            if (
+              !candidates.some(
+                (candidate) =>
+                  !obstacles.some((obstacle) => overlaps(candidate, obstacle)),
+              )
+            )
+              for (let gy = 44; gy <= height - h - 58; gy += 12) {
+                for (let gx = 8; gx <= width - w - 8; gx += 12) {
+                  candidates.push({ x: gx, y: gy, w, h });
+                }
               }
-            }
             const box =
               candidates.find(
                 (candidate) =>
@@ -271,7 +283,14 @@ export default function EarthGlobe({
           camera.updateProjectionMatrix();
           setDistance(Number(camera.position.length().toFixed(6)));
           render();
-          imagery?.schedule();
+          if (!latest.current.intro) imagery?.schedule();
+        };
+        const renderImagery = () => {
+          if (!disposed && !imageryFrame)
+            imageryFrame = requestAnimationFrame(() => {
+              imageryFrame = 0;
+              if (!disposed) render();
+            });
         };
         const tick = (now) => {
           frame = 0;
@@ -295,8 +314,7 @@ export default function EarthGlobe({
               );
             if (p === 1) animation = null;
           }
-          controls.update();
-          updateView();
+          if (!controls.update()) updateView();
           if (animation) requestFrame();
         };
         const requestFrame = () => {
@@ -322,8 +340,7 @@ export default function EarthGlobe({
           } else {
             animation = null;
             camera.position.copy(to);
-            controls.update();
-            updateView();
+            if (!controls.update()) updateView();
           }
         };
         const updateSelection = () => {
@@ -352,12 +369,19 @@ export default function EarthGlobe({
               Math.min(6, 1 + (camera.position.length() - 1) * factor),
             ),
           );
-          controls.update();
-          updateView();
+          if (!controls.update()) updateView();
         };
         const resize = () => {
           const { width, height } = container.getBoundingClientRect();
           if (!width || !height) return;
+          const dock = container
+            .closest(".map-hero")
+            ?.querySelector(".map-location-dock");
+          if (dock)
+            container.parentElement.style.setProperty(
+              "--map-dock-height",
+              `${dock.clientHeight}px`,
+            );
           camera.aspect = width / height;
           camera.updateProjectionMatrix();
           renderer.setSize(width, height);
@@ -372,6 +396,10 @@ export default function EarthGlobe({
         });
         const observer = new ResizeObserver(resize);
         observer.observe(container);
+        container
+          .closest(".field-experience")
+          ?.querySelectorAll("[data-map-obstacle]")
+          .forEach((el) => observer.observe(el));
         Object.values(labels.current).forEach((label) => {
           if (label) observer.observe(label);
         });
@@ -393,7 +421,9 @@ export default function EarthGlobe({
             imageReady = true;
             setReady(true);
             updateSelection();
-            if (latest.current.location === launchLocation)
+            if (latest.current.intro)
+              cameraTo(EGYPT.lat, EGYPT.lon, 3.55, false);
+            else if (latest.current.location === launchLocation)
               cameraTo(EGYPT.lat, EGYPT.lon, EGYPT.distance);
             else focus();
             render();
@@ -648,8 +678,7 @@ export default function EarthGlobe({
             const target = animation.to.clone();
             stop();
             camera.position.copy(target);
-            controls.update();
-            updateView();
+            if (!controls.update()) updateView();
           }
         };
         for (const [name, fn] of [
@@ -669,7 +698,7 @@ export default function EarthGlobe({
           scene,
           camera,
           renderer,
-          onRender: render,
+          onRender: renderImagery,
           onState: (state) => {
             if (!disposed) setImageryState(state);
           },
@@ -685,6 +714,7 @@ export default function EarthGlobe({
         resize();
         cleanup = () => {
           cancelAnimationFrame(frame);
+          cancelAnimationFrame(imageryFrame);
           observer.disconnect();
           imagery?.dispose();
           container.parentElement.removeEventListener("wheel", wheel);
@@ -732,8 +762,11 @@ export default function EarthGlobe({
     };
   }, [presets]);
   useEffect(() => {
-    api.current?.focus();
+    if (!intro) api.current?.focus();
   }, [location]);
+  useEffect(() => {
+    if (!intro) api.current?.overview();
+  }, [intro]);
   useEffect(() => {
     const canvas = host.current?.querySelector("canvas");
     if (canvas)

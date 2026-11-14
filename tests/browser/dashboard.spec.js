@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../helpers/plannerTest.js";
 import { sourcePayload } from "../helpers/sourcePayloads.js";
 import { soilGridsPayload } from "../helpers/soilGridsPayloads.js";
 const firstParty = (route) =>

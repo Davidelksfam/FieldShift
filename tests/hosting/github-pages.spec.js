@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../helpers/plannerTest.js";
 
 test("repository subpath loads the globe, current inputs and scoped offline shell", async ({
   page,

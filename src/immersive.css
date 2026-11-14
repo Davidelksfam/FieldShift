@@ -1,0 +1,775 @@
+/* User-requested immersive entry and map; the planner retains shared theme tokens. */
+.field-experience {
+  position: relative;
+}
+.field-experience > main {
+  min-width: 0;
+  padding: 0;
+}
+.field-experience .unified-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 30;
+  padding: 22px 4vw;
+  min-height: 90px;
+  gap: 28px;
+  color: var(--fs-earth-ink);
+  border: 0;
+  background: linear-gradient(var(--fs-earth-space), transparent);
+}
+.field-experience .brand,
+.field-experience .brand > span,
+.field-experience .workspace-nav a {
+  color: var(--fs-earth-ink);
+}
+.field-experience .brand small {
+  color: var(--fs-earth-sage);
+}
+.field-experience .header-actions .button {
+  color: var(--fs-earth-ink);
+  background: #070b0ec9;
+  border: 1px solid #f2f7f42b;
+  border-radius: 30px;
+}
+.field-experience .header-actions .button:hover {
+  background: #23382d;
+}
+.map-hero {
+  position: relative;
+  isolation: isolate;
+  background: var(--fs-earth-space);
+}
+.field-location.immersive-map {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--fs-earth-space);
+}
+.immersive-map .earth-stage,
+.immersive-map .earth-loading,
+.immersive-map .map-canvas {
+  height: max(680px, 100svh);
+  border-radius: 0;
+  border: 0;
+}
+.immersive-map .map-canvas {
+  min-height: 680px;
+}
+.map-hero-heading {
+  position: absolute;
+  z-index: 5;
+  top: 126px;
+  inset-inline-start: 4vw;
+  max-width: 580px;
+  pointer-events: none;
+}
+.map-hero-heading h1 {
+  color: var(--fs-earth-ink);
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: 1.2;
+  letter-spacing: -1.3px;
+  margin-block: 12px;
+  font-weight: 500;
+}
+.map-hero-heading p {
+  color: #d2dfd7;
+  max-width: 420px;
+  font-size: 14px;
+}
+.welcome-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--fs-earth-sage);
+}
+.welcome-kicker > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.immersive-map .earth-caption {
+  top: 126px;
+  inset-inline-start: auto;
+  inset-inline-end: 4vw;
+  padding: 9px 12px;
+  border: 1px solid #f2f7f42b;
+  border-radius: 30px;
+}
+.immersive-map .earth-tools {
+  top: 190px;
+  inset-inline-end: 4vw;
+  gap: 8px;
+}
+.immersive-map .earth-tools button {
+  background: #070b0edb;
+  border-color: #f2f7f430;
+  border-radius: 50%;
+}
+.immersive-map .earth-tools button:hover {
+  border-color: var(--fs-earth-sage);
+}
+.immersive-map .earth-note {
+  bottom: 9px;
+  color: #d2dfd7;
+}
+.immersive-map .earth-hint {
+  inset-inline: 24px;
+  bottom: 246px;
+  color: #d2dfd7;
+}
+.immersive-map .earth-imagery-status {
+  bottom: 268px;
+  inset-inline: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  max-width: calc(100% - 40px);
+}
+.map-location-dock {
+  position: absolute;
+  z-index: 8;
+  bottom: 104px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, calc(100% - 8vw));
+  padding: 16px 20px 12px;
+  border: 1px solid #f2f7f430;
+  border-radius: 18px;
+  background: #0d1318e8;
+  backdrop-filter: blur(20px);
+  color: var(--fs-earth-ink);
+  box-shadow: 0 14px 50px #0005;
+  color-scheme: dark;
+}
+.map-dock-label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 11px;
+  color: var(--fs-earth-sage);
+  margin-bottom: 10px;
+}
+.map-dock-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.map-location-dock .quick-locations {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+.map-location-dock .quick-locations button {
+  flex: 1;
+  padding: 8px 12px;
+  min-height: 44px;
+  min-width: 90px;
+  border-radius: 10px;
+  border: 1px solid #f2f7f430;
+  color: var(--fs-earth-ink);
+  background: transparent;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.map-location-dock .quick-locations button svg {
+  width: 16px;
+  height: 16px;
+}
+.map-location-dock .quick-locations button.active,
+html[data-theme="dark"] .map-location-dock .quick-locations button.active {
+  color: var(--fs-earth-space);
+  background: var(--fs-earth-sage);
+  border-color: var(--fs-earth-sage);
+}
+.map-location-dock .quick-locations button:hover {
+  border-color: var(--fs-earth-sage);
+}
+.map-location-dock .geo-row {
+  margin: 0;
+  padding: 0;
+}
+.map-location-dock .geo-row small {
+  display: none;
+}
+.map-location-dock .geo-row .button {
+  font-size: 12px;
+  min-height: 44px;
+  padding: 9px 12px;
+  color: var(--fs-earth-ink);
+  border: 1px solid #f2f7f430;
+  background: transparent;
+}
+.map-location-dock .location-controls {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+.map-location-dock .location-controls summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--fs-earth-ink);
+  padding: 7px 10px;
+  border: 1px solid #f2f7f430;
+  border-radius: 10px;
+}
+.map-location-dock .location-controls summary::before {
+  content: "+";
+  color: var(--fs-earth-sage);
+  font-size: 18px;
+}
+.map-location-dock .coordinate-form {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.map-location-dock .coordinate-form label {
+  flex: 1;
+  min-width: 100px;
+  color: var(--fs-earth-ink);
+  flex-direction: column;
+  align-items: stretch;
+}
+.map-location-dock .coordinate-form input {
+  width: 100%;
+  min-height: 44px;
+  color: var(--fs-earth-ink);
+  background: var(--fs-earth-space);
+  border-color: #f2f7f450;
+}
+.map-location-dock .coordinate-form button {
+  min-height: 44px;
+  background: var(--fs-earth-sage);
+  color: var(--fs-earth-space);
+  align-self: end;
+}
+.map-location-dock:has(details[open]) .location-controls {
+  flex-basis: 100%;
+}
+.immersive-map:has(details[open]) :is(.earth-hint, .earth-imagery-status) {
+  display: none;
+}
+.map-location-dock .geo-error {
+  color: #f1c46f;
+  flex-basis: 100%;
+}
+.map-evidence-note {
+  font-size: 10px;
+  margin: 10px 0 0;
+  color: #bdccc4;
+  text-align: start;
+}
+.map-next {
+  position: absolute;
+  z-index: 8;
+  bottom: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: max-content;
+  max-width: calc(100% - 32px);
+}
+.map-next button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 20px;
+  background: var(--fs-earth-ink);
+  color: var(--fs-earth-space);
+  border: 0;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.map-next button:hover {
+  background: var(--fs-earth-sage);
+}
+.map-next > span {
+  display: none;
+}
+.field-experience .planner-body {
+  min-width: 0;
+}
+.field-experience .planner-intro {
+  padding-top: 64px;
+}
+.field-experience .planner-intro h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.field-experience #parameters {
+  scroll-margin-top: 115px;
+  margin-bottom: 28px;
+}
+.field-experience .field-inputs {
+  padding: 28px;
+}
+.field-experience .field-inputs .season-question {
+  display: inline-block;
+  width: calc(50% - 14px);
+  vertical-align: top;
+}
+.field-experience .field-inputs .season-question + .season-question {
+  margin-top: 0;
+  margin-inline-start: 28px;
+  border: 0;
+  padding: 0;
+}
+.field-experience .field-inputs .visual-options {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.field-experience .field-inputs .irrigation-question .visual-options {
+  max-width: 720px;
+}
+.intro-mode .immersive-map .earth-render {
+  inset-inline-start: 28%;
+}
+.intro-mode
+  .immersive-map
+  :is(
+    .earth-tools,
+    .earth-caption,
+    .earth-hint,
+    .earth-note,
+    .earth-landmarks,
+    .earth-guides,
+    .earth-status,
+    .earth-imagery-status,
+    .map-location-dock,
+    .earth-fallback
+  ) {
+  visibility: hidden;
+}
+.welcome-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 7vw 150px;
+  color: var(--fs-earth-ink);
+  background: linear-gradient(
+    90deg,
+    #070b0ef5 0%,
+    #070b0eb8 35%,
+    #070b0e00 80%
+  );
+}
+html[dir="rtl"] .welcome-screen {
+  background: linear-gradient(
+    270deg,
+    #070b0ef5 0%,
+    #070b0eb8 35%,
+    #070b0e00 80%
+  );
+}
+.welcome-copy {
+  max-width: 590px;
+}
+.welcome-copy h1 {
+  font-size: clamp(52px, 6.6vw, 100px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -4px;
+  margin: 26px 0 24px;
+  color: var(--fs-earth-ink);
+}
+.welcome-copy h1 em {
+  font-style: normal;
+  color: var(--fs-earth-sage);
+}
+.welcome-copy > p {
+  color: #bdccc4;
+  font-size: 16px;
+  max-width: 440px;
+  line-height: 1.8;
+}
+.welcome-start {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--fs-earth-sage);
+  color: var(--fs-earth-space);
+  font-weight: 600;
+  border: 1px solid var(--fs-earth-sage);
+  border-radius: 40px;
+  padding: 17px 24px;
+  margin-top: 32px;
+  min-height: 56px;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+.welcome-start:hover {
+  transform: translateY(-3px);
+  background: var(--fs-earth-ink);
+}
+.welcome-context {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  color: #bdccc4;
+  margin-top: 22px;
+}
+.welcome-bottom {
+  position: absolute;
+  bottom: 34px;
+  inset-inline: 7vw;
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid #f2f7f433;
+}
+.welcome-caption {
+  font-size: 11px;
+  color: #bdccc4;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.welcome-bottom ol {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.welcome-bottom li {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.welcome-bottom li > span {
+  color: var(--fs-earth-sage);
+  font-size: 10px;
+}
+html[lang="ar"] :is(.welcome-kicker, .welcome-context) {
+  letter-spacing: 0;
+}
+html[lang="ar"] :is(.welcome-copy h1, .map-hero-heading h1) {
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+html[dir="rtl"] .welcome-start svg {
+  transform: rotate(-90deg);
+}
+.field-experience :is(button, a, summary):focus-visible {
+  outline: 2px solid var(--fs-earth-sage);
+  outline-offset: 4px;
+}
+@media (max-width: 1000px) {
+  .welcome-bottom {
+    align-items: start;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .welcome-copy {
+    max-width: 60%;
+  }
+  .welcome-copy h1 {
+    font-size: 64px;
+  }
+  .map-hero-heading {
+    max-width: 60%;
+  }
+  .field-experience .header-actions .analytics-link {
+    max-width: 175px;
+    white-space: normal;
+  }
+  .map-location-dock {
+    width: calc(100% - 48px);
+  }
+  .map-dock-controls {
+    gap: 8px;
+  }
+  .map-dock-controls .quick-locations {
+    flex-basis: 100%;
+  }
+  .map-location-dock .geo-row {
+    flex: 1;
+  }
+  .map-location-dock .geo-row .button {
+    width: 100%;
+  }
+  .map-location-dock .location-controls {
+    flex: 1;
+  }
+  .map-location-dock .location-controls summary {
+    justify-content: center;
+  }
+  .immersive-map .earth-hint {
+    bottom: 298px;
+  }
+  .immersive-map .earth-imagery-status {
+    bottom: 320px;
+  }
+}
+@media (max-width: 650px) {
+  .field-experience .unified-header {
+    padding: 16px 20px;
+    gap: 12px;
+    min-height: 80px;
+    align-items: start;
+    flex-wrap: wrap;
+  }
+  .field-experience .unified-header .brand {
+    min-width: 130px;
+  }
+  .field-experience .unified-header .brand img {
+    width: 38px;
+    height: 38px;
+  }
+  .field-experience .unified-header .brand > span {
+    font-size: 22px;
+  }
+  .field-experience .unified-header .brand small {
+    font-size: 6px;
+  }
+  .field-experience .unified-header .header-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+    justify-content: end;
+    min-width: 164px;
+  }
+  .field-experience .unified-header .analytics-link {
+    width: 44px;
+    max-width: 44px;
+  }
+  .field-experience .unified-header .analytics-link span,
+  .field-experience .unified-header .language-button svg {
+    display: none;
+  }
+  .field-experience .header-actions .button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .map-hero-heading {
+    top: 110px;
+    inset-inline: 22px;
+    max-width: calc(100% - 80px);
+  }
+  .map-hero-heading h1 {
+    font-size: 30px;
+    letter-spacing: -0.7px;
+  }
+  .map-hero-heading p {
+    font-size: 12px;
+    max-width: 250px;
+  }
+  .welcome-kicker {
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+  .immersive-map .earth-caption {
+    top: auto;
+    bottom: calc(114px + var(--map-dock-height, 180px));
+    inset-inline-start: 20px;
+    inset-inline-end: auto;
+    font-size: 10px;
+    padding: 7px 10px;
+  }
+  .immersive-map .earth-tools {
+    top: 244px;
+    inset-inline-end: 16px;
+    gap: 6px;
+  }
+  .immersive-map .earth-tools button {
+    width: 44px;
+    height: 44px;
+  }
+  .immersive-map .earth-hint {
+    display: none;
+  }
+  .immersive-map .earth-imagery-status {
+    bottom: 328px;
+    font-size: 10px;
+  }
+  .map-location-dock {
+    width: calc(100% - 32px);
+    bottom: 98px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+  .map-location-dock .quick-locations button {
+    min-width: 0;
+    padding: 7px;
+    font-size: 11px;
+  }
+  .map-location-dock .quick-locations button svg:last-child:not(:first-child) {
+    display: none;
+  }
+  .map-location-dock .quick-locations button svg {
+    width: 14px;
+  }
+  .map-location-dock .geo-row .button,
+  .map-location-dock .location-controls summary {
+    font-size: 11px;
+    padding-inline: 8px;
+    white-space: normal;
+    text-align: center;
+  }
+  .map-evidence-note {
+    font-size: 9px;
+    line-height: 1.6;
+  }
+  .map-next {
+    bottom: 32px;
+  }
+  .map-next button {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+  .field-experience .planner-intro {
+    padding-top: 36px;
+  }
+  .field-experience .field-inputs {
+    padding: 20px 14px;
+  }
+  .field-experience .field-inputs .season-question {
+    width: 100%;
+    display: block;
+  }
+  .field-experience .field-inputs .season-question + .season-question {
+    margin: 24px 0 0;
+  }
+  .field-experience .field-inputs .visual-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .intro-mode .immersive-map .earth-render {
+    inset-inline: 0;
+    opacity: 0.65;
+  }
+  .welcome-screen,
+  html[dir="rtl"] .welcome-screen {
+    padding: 120px 24px 172px;
+    background: linear-gradient(0deg, #070b0ef2, #070b0e6b 70%, #070b0e00);
+  }
+  .welcome-copy {
+    max-width: 100%;
+  }
+  .welcome-copy h1 {
+    font-size: clamp(44px, 12vw, 64px);
+    letter-spacing: -2px;
+    margin-block: 20px;
+  }
+  .welcome-copy > p {
+    font-size: 14px;
+    max-width: 320px;
+  }
+  .welcome-start {
+    margin-top: 24px;
+    padding: 14px 20px;
+  }
+  .welcome-context {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .welcome-bottom {
+    inset-inline: 24px;
+    bottom: 26px;
+    padding-top: 16px;
+    gap: 16px;
+  }
+  .welcome-caption {
+    font-size: 10px;
+  }
+  .welcome-bottom ol {
+    gap: 8px;
+    width: 100%;
+  }
+  .welcome-bottom li {
+    flex: 1;
+    font-size: 10px;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .welcome-bottom li svg {
+    display: none;
+  }
+}
+@media (max-width: 320px) {
+  .field-experience .unified-header {
+    padding-inline: 12px;
+  }
+  .map-hero-heading {
+    top: 156px;
+  }
+  .map-hero-heading h1 {
+    font-size: 24px;
+  }
+  .map-hero-heading p {
+    display: none;
+  }
+  .map-hero-heading .welcome-kicker {
+    letter-spacing: 0;
+  }
+  .map-location-dock {
+    width: calc(100% - 20px);
+    padding: 10px;
+  }
+  .map-location-dock .quick-locations {
+    flex-direction: column;
+  }
+  .map-dock-controls .geo-row,
+  .map-dock-controls .location-controls {
+    flex-basis: 100%;
+  }
+  .immersive-map .earth-stage,
+  .immersive-map .earth-loading,
+  .immersive-map .map-canvas {
+    height: max(1050px, 100svh);
+  }
+  .immersive-map .earth-caption {
+    bottom: 410px;
+  }
+  .welcome-screen,
+  html[dir="rtl"] .welcome-screen {
+    padding: 180px 18px 200px;
+    justify-content: start;
+  }
+  .welcome-copy h1 {
+    font-size: 42px;
+  }
+  .welcome-bottom ol {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .welcome-bottom {
+    inset-inline: 18px;
+  }
+  .field-experience .field-inputs .visual-options {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-start {
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
