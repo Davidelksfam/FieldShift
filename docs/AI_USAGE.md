@@ -31,3 +31,7 @@ Codex calendar researcher implemented actual-date checks and audited official FA
 ## 2026-11-14 — Scientific V2 PR 2 Nili policy
 
 Codex implemented separate off/explore/require candidate generation against the sourced calendar API. Independent QA caught and prompted preservation of an explicit following-winter boundary even without a cover crop. No NDVI authorization, legacy score porting or agricultural dates/parameters were introduced. Required-cover unknowns remain audited but are not exposed as feasible choices.
+
+## 2026-11-14 — Scientific V2 PR 3 reference water
+
+Codex implemented daily historical FAO reference ETc and independent published component checks. Independent QA hardened calendar, location, crop-use and input provenance boundaries. Derived quantities preserve separately validated operand lineage without treating upstream endpoints as direct final-outcome evidence. Full-season ETc/CROPWAT and field irrigation validation remain pending; no measured consumption or savings is claimed.

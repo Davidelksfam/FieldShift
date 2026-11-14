@@ -170,6 +170,18 @@ export function assertScientificQuantity(
       Array.isArray(field[key]) && field[key].every(nonempty),
       `${key} must be an array of nonempty strings.`,
     );
+  const inputSourceIds = field.provenance.inputSourceIds ?? [];
+  requireCondition(
+    Array.isArray(inputSourceIds) &&
+      inputSourceIds.every((id) => field.provenance.sourceIds.includes(id)),
+    "Input source IDs must resolve within full source lineage.",
+  );
+  if (inputSourceIds.length)
+    requireCondition(
+      field.provenance.nature === "derived_model" &&
+        field.provenance.sourceIds.some((id) => !inputSourceIds.includes(id)),
+      "Derived input lineage requires a distinct direct method/reference source.",
+    );
   if (field.status === "available") {
     requireCondition(
       isFiniteNumber(field.value),
@@ -222,7 +234,8 @@ export function assertScientificQuantity(
       ])
         if (
           field.validity[scopeKey] !== null &&
-          Array.isArray(source[sourceKey])
+          Array.isArray(source[sourceKey]) &&
+          (scopeKey === "regionId" || !inputSourceIds.includes(id))
         )
           requireCondition(
             source[sourceKey].includes(field.validity[scopeKey]),
