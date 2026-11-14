@@ -15,7 +15,8 @@
     "check": "npm test && npm run build && python3 scripts/check_repository.py",
     "test:live": "node scripts/verify-live-demo.mjs",
     "build:scientific-v2": "node scripts/build-scientific-v2.mjs",
-    "test:browser:v2": "playwright test --config playwright.scientific-v2.config.js"
+    "test:browser:v2": "playwright test --config playwright.scientific-v2.config.js",
+    "validate:water-reference": "node scripts/validation/verify-v2-water-reference.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",

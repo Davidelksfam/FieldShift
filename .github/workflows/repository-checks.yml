@@ -18,8 +18,10 @@ jobs:
           python-version: '3.12'
       - run: npm ci
       - run: npm run check
+      - run: npm run validate:water-reference
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
+      - run: npm run test:browser:v2
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

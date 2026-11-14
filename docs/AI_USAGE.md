@@ -43,3 +43,7 @@ Codex audited qualitative crop taxonomy, laboratory-only salinity outcome matchi
 ## 2026-11-14 — Scientific V2 PR 5 orchestration and comparison
 
 Codex integrated calendars, explicit Nili modes, crop-only ETc aggregation, qualitative evidence and feasibility-first selection into a flag-gated bilingual Expert inspector. Independent QA exercised numerical totals, baseline arithmetic, missing data and hard exclusions, prompting fixes for trace replay and contradictory units. All release gates remain fixed to their actual pending status. No farmer-default activation, independently validated water savings or agronomic optimality is claimed.
+
+## 2026-11-14 — Scientific V2 PR 6 final review
+
+Codex performed agronomy-oriented software review and independent agent logic checks, fixed identified provenance/units/timing/comparison/trace defects, and documented executed tests versus unresolved scientific evidence. Added release-invariant, custom-point isolation and offline inspector regressions plus CI checks. No qualified field-validation, universal accuracy, measured savings or agronomic optimum is claimed; V2 remains experimental.

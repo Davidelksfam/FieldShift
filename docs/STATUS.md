@@ -37,3 +37,9 @@ Full custom-point request/parse/evaluation wiring is tested with known HTTP fixt
 ## Scientific V2 — PR 0 foundation
 
 Based on the user-provided Scientific V2 plan; actual baseline main is `3fcf71f`. Nine full region/goal outputs are frozen for legacy regression. V2 contracts distinguish available/unknown/unavailable quantities, feasible/infeasible/unknown constraints and conditional/non-comparable/excluded decisions. The build flag `VITE_SCIENTIFIC_V2` defaults off; enabled builds add an explicitly experimental Expert inspector only. PR 0 emits no scientific alternatives or planting recommendation. Current farmer layout, source acquisition, legacy evaluation and datasets are unchanged. [Contracts and rollback](engineering/SCIENTIFIC_V2_CONTRACTS.md) record scope and remaining gates.
+
+## Scientific V2 — PR 1–6 experimental implementation and review
+
+The stacked implementation now includes sourced/unknown calendar handling, explicit Nili policies, daily historical reference ETc, indicator audit, feasibility-first comparison and full trace inspection. Validation passes 116 unit/integration tests, 10 default and four experimental browser tests, build/docs checks and nine published numerical component comparisons. Nine legacy hashes remain unchanged. See [auditable report, fixed defects and scientific blockers](validation/SCIENTIFIC_V2_VALIDATION.md) and [PR 6 delivery](delivery/SCIENTIFIC_V2_PR06.md).
+
+V2 remains experimental and off by default. No full local calendar, independently validated whole-season ETc/irrigation model, calibrated soil/economic optimum or arbitrary-location scientific coverage is claimed. The current farmer demo remains on legacy. No scientific merge/deployment is performed by this stack.
