@@ -5,13 +5,12 @@
     "nameAr": "الفيوم · إطسا، نهاية الترعة",
     "lat": 29.2315,
     "lon": 30.7952,
-    "description": "fayoum_etsa: exact benchmark centroid. Land type, irrigation, canal position and salinity defaults are demo farmer scenarios, not remotely measured facts.",
+    "description": "fayoum_etsa: exact benchmark centroid. Land type, irrigation and salinity defaults are demo farmer scenarios, not remotely measured facts.",
     "fixture": false,
     "provenance": "Audited historical observations with per-source provenance; any unavailable soil source remains explicitly synthetic.",
     "defaults": {
       "landType": "old_clay",
       "irrigationType": "flood",
-      "canalPosition": "tail",
       "salinityLevel": "moderate"
     },
     "soil": {
@@ -3705,13 +3704,12 @@
     "nameAr": "شمال الدلتا · كفر الشيخ",
     "lat": 31.1107,
     "lon": 30.9388,
-    "description": "delta_kafr_el_sheikh: exact benchmark centroid. Land type, irrigation, canal position and salinity defaults are demo farmer scenarios, not remotely measured facts.",
+    "description": "delta_kafr_el_sheikh: exact benchmark centroid. Land type, irrigation and salinity defaults are demo farmer scenarios, not remotely measured facts.",
     "fixture": false,
     "provenance": "Audited historical observations with per-source provenance; any unavailable soil source remains explicitly synthetic.",
     "defaults": {
       "landType": "old_clay",
       "irrigationType": "modified_surface",
-      "canalPosition": "middle",
       "salinityLevel": "high"
     },
     "soil": {
@@ -7378,13 +7376,12 @@
     "nameAr": "غرب الدلتا · النوبارية",
     "lat": 30.665,
     "lon": 30.068,
-    "description": "west_delta_nubariya: exact benchmark centroid. Land type, irrigation, canal position and salinity defaults are demo farmer scenarios, not remotely measured facts.",
+    "description": "west_delta_nubariya: exact benchmark centroid. Land type, irrigation and salinity defaults are demo farmer scenarios, not remotely measured facts.",
     "fixture": false,
     "provenance": "Audited historical observations with per-source provenance; any unavailable soil source remains explicitly synthetic.",
     "defaults": {
       "landType": "new_sandy",
       "irrigationType": "drip",
-      "canalPosition": "head",
       "salinityLevel": "none"
     },
     "soil": {

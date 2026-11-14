@@ -141,11 +141,6 @@ export default function FarmerInputPanel({
           ["drip", "Drip", "تنقيط"],
         ])}
         <div className="form-row">
-          {select("canalPosition", t("Canal position", "موقع المسقى"), [
-            ["head", "Head", "البداية"],
-            ["middle", "Middle", "الوسط"],
-            ["tail", "Tail-end", "النهاية"],
-          ])}
           {select("salinityLevel", t("Known salinity", "الملوحة المعروفة"), [
             ["none", "None reported", "غير مُبلغ عنها"],
             ["moderate", "Moderate", "متوسطة"],

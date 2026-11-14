@@ -151,7 +151,6 @@ export function computeFieldIndices(data, inputs, catalog) {
             15 +
               Math.max(0, ph - 8) * 35 +
               (clay > 40 ? 15 : 0) +
-              (inputs.canalPosition === "tail" ? 12 : 0) +
               ({ none: 0, moderate: 18, high: 35 }[inputs.salinityLevel] ?? 0),
             0,
             100,

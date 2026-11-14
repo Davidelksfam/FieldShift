@@ -1,0 +1,44 @@
+[
+  {
+    "width": 390,
+    "lang": "ar",
+    "overflow": false,
+    "smallControls": [],
+    "comparisonY": 4409.671875
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "overflow": false,
+    "smallControls": [],
+    "comparisonY": 4702.359375
+  },
+  {
+    "width": 768,
+    "lang": "ar",
+    "overflow": false,
+    "smallControls": [],
+    "comparisonY": 3793.34375
+  },
+  {
+    "width": 768,
+    "lang": "en",
+    "overflow": false,
+    "smallControls": [],
+    "comparisonY": 3806.609375
+  },
+  {
+    "width": 1440,
+    "lang": "ar",
+    "overflow": false,
+    "smallControls": [],
+    "comparisonY": 2661.953125
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "overflow": false,
+    "smallControls": [],
+    "comparisonY": 2688.75
+  }
+]

@@ -1,0 +1,148 @@
+[
+  {
+    "width": 195,
+    "lang": "ar",
+    "overflow": false,
+    "elements": [
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      }
+    ]
+  },
+  {
+    "width": 195,
+    "lang": "en",
+    "overflow": false,
+    "elements": [
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": "",
+        "text": "NDVI observations and cover illustrationDateNDVIHypothetical cover2025-01-010.80"
+      },
+      {
+        "class": "",
+        "text": "NDVI observations and cover illustration"
+      },
+      {
+        "class": "",
+        "text": "DateNDVIHypothetical cover"
+      },
+      {
+        "class": "",
+        "text": "DateNDVIHypothetical cover"
+      },
+      {
+        "class": "",
+        "text": "Hypothetical cover"
+      },
+      {
+        "class": "",
+        "text": "2025-01-010.8030.8032025-01-170.8250.8252025-02-020.8260.8262025-02-180.8060.806"
+      }
+    ]
+  },
+  {
+    "width": 384,
+    "lang": "ar",
+    "overflow": false,
+    "elements": [
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      }
+    ]
+  },
+  {
+    "width": 384,
+    "lang": "en",
+    "overflow": false,
+    "elements": [
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": "",
+        "text": "NASA POWER · 2025MonthMJ/m²/dayGWETROOTValid daysJan00.3631Feb00.3628Mar0.004194"
+      },
+      {
+        "class": "",
+        "text": "NASA POWER · 2025"
+      },
+      {
+        "class": "",
+        "text": "MonthMJ/m²/dayGWETROOTValid days"
+      },
+      {
+        "class": "",
+        "text": "MonthMJ/m²/dayGWETROOTValid days"
+      },
+      {
+        "class": "",
+        "text": "MJ/m²/day"
+      },
+      {
+        "class": "",
+        "text": "GWETROOT"
+      }
+    ]
+  },
+  {
+    "width": 720,
+    "lang": "ar",
+    "overflow": false,
+    "elements": [
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": {},
+        "text": ""
+      }
+    ]
+  },
+  {
+    "width": 720,
+    "lang": "en",
+    "overflow": false,
+    "elements": [
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": "leaflet-tile",
+        "text": ""
+      },
+      {
+        "class": {},
+        "text": ""
+      }
+    ]
+  }
+]

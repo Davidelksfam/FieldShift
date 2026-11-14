@@ -1150,3 +1150,113 @@ html {
     text-overflow: ellipsis;
   }
 }
+
+/* Final accessibility pass: keep the unified workspace's controls reachable. */
+.unified-workspace button.button,
+.unified-workspace button,
+.unified-workspace summary {
+  min-height: 44px;
+  min-width: 44px;
+}
+.unified-workspace input:not([type="checkbox"]):not([type="radio"]),
+.unified-workspace select {
+  min-height: 44px;
+}
+.workspace-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.unified-header .analytics-link,
+.unified-header .language-button,
+.unified-workspace .map-layers > summary,
+.unified-workspace .map-heading p,
+.unified-workspace .map-heading .coordinate,
+.unified-workspace .map-tag,
+.unified-workspace .map-footnote,
+.unified-workspace .field-help,
+.unified-workspace .choice-effect,
+.unified-workspace .nili-caution p,
+.unified-workspace .illustrated-toggle small,
+.live-plan-label,
+.live-plan-label small,
+.live-crop-sequence > span,
+.live-crop-sequence > p,
+.live-water small,
+.live-plan-summary .button {
+  font-size: 12px;
+}
+@media (max-width: 340px) {
+  .unified-header .header-actions {
+    flex-wrap: wrap;
+    width: 100%;
+    margin-inline-start: 0;
+  }
+  .unified-workspace .visual-options,
+  .unified-workspace .conditions-panel .visual-options,
+  .unified-workspace
+    .conditions-panel
+    .visual-options:has(> :nth-child(2):last-child),
+  .unified-workspace .numeric-crops,
+  .unified-workspace .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .illustrated-toggle {
+    grid-template-columns: minmax(0, 1fr) 34px;
+  }
+  .illustrated-toggle > .field-illustration {
+    display: none;
+  }
+  .illustrated-toggle > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .planner-section-heading,
+  .advanced-heading {
+    flex-wrap: wrap;
+  }
+  .live-plan-summary {
+    position: static;
+  }
+  .live-plan-label,
+  .live-plan-summary > .button {
+    flex-basis: 100%;
+  }
+  .live-crop-sequence {
+    flex-direction: column;
+  }
+}
+.unified-workspace .location-source h3,
+.unified-workspace .location-source strong,
+.unified-workspace .source-method summary,
+.unified-workspace .source-status-heading p {
+  font-size: 12px;
+}
+@media (max-width: 340px) {
+  .unified-workspace button.button {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .unified-workspace .location-source {
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .unified-workspace .location-source h3,
+  .unified-workspace .location-source strong {
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .unified-workspace .location-source strong,
+  .unified-workspace .source-status-heading {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 340px) {
+  .unified-workspace .quick-locations {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .unified-workspace .advanced-analytics .small-note {
+    overflow-wrap: anywhere;
+  }
+}

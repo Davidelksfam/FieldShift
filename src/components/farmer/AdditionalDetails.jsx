@@ -42,7 +42,7 @@ export default function AdditionalDetails({ lang, inputs, setInputs }) {
       </div>
       <div className="conditions-grid">
         <div className="panel conditions-panel">
-          <h3>{t("Soil & water access", "التربة ووصول المياه")}</h3>
+          <h3>{t("Soil conditions", "حالة التربة")}</h3>
           <p className="context-assumption">
             <Info size={14} />
             {t(
@@ -53,11 +53,6 @@ export default function AdditionalDetails({ lang, inputs, setInputs }) {
           {choices("landType", t("Land type", "نوع الأرض"), [
             ["old_clay", "Alluvial clay", "طينية قديمة"],
             ["new_sandy", "Sandy land", "رملية مستصلحة"],
-          ])}
-          {choices("canalPosition", t("Canal position", "موقع المسقى"), [
-            ["head", "Head", "البداية"],
-            ["middle", "Middle", "الوسط"],
-            ["tail", "Tail-end", "النهاية"],
           ])}
           {choices(
             "salinityLevel",
