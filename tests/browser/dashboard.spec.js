@@ -345,9 +345,15 @@ test("custom map location failure hides numeric results until an illustrative co
     .getByLabel("Satellite layer", { exact: true })
     .selectOption("ndvi");
   await expect(page.getByText("12 JUL 2025", { exact: true })).toBeVisible();
-  await page
-    .locator(".leaflet-container")
-    .click({ position: { x: 200, y: 120 } });
+  const fallbackMap = page.locator(".leaflet-container");
+  const fallbackBounds = await fallbackMap.boundingBox();
+  // Select open map space, clear of the new vertical location controls.
+  await fallbackMap.click({
+    position: {
+      x: fallbackBounds.width / 2 + 30,
+      y: fallbackBounds.height / 2 + 20,
+    },
+  });
   await waitSources(page);
   await expect(page.getByLabel("Saved locations", { exact: true })).toHaveValue(
     "",
