@@ -88,7 +88,7 @@
   top: auto;
   bottom: 32px;
   inset-inline-start: auto;
-  inset-inline-end: 24px;
+  inset-inline-end: 100px;
 }
 .field-experience .rotation-seasons {
   display: grid;
@@ -173,7 +173,7 @@ html[dir="rtl"] .field-experience .crop-question .visual-option {
     flex-basis: auto;
   }
   .immersive-map .earth-caption {
-    bottom: 28px;
+    bottom: 110px;
     inset-inline-end: 12px;
   }
   .field-experience .field-inputs .season-question,
