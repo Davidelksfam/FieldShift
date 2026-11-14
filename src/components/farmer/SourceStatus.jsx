@@ -127,6 +127,19 @@ export default function SourceStatus({
                         "قيم إقليمية توضيحية · ليست أرصاداً لأرضك",
                       )}
               </span>
+              {!pending && key === "soil" && source.kind === "synthetic" && (
+                <small>
+                  {source.failureCode === "SOIL_NO_COVERAGE"
+                    ? t(
+                        "SoilGrids has no usable prediction at these coordinates. Try another field point or use a laboratory soil test.",
+                        "لا توجد تقديرات تربة صالحة من SoilGrids للإحداثيات دي. جرّب نقطة أخرى داخل الحقل أو استخدم تحليل تربة معملي.",
+                      )
+                    : t(
+                        "A complete soil profile could not be retrieved. Retry the sources; soil checks remain unavailable.",
+                        "تعذّر جلب ملف تربة كامل. حاول جلب البيانات تاني؛ فحوص التربة تظل غير متاحة.",
+                      )}
+                </small>
+              )}
               {loading && event?.status === "fulfilled" && (
                 <small>
                   {t(

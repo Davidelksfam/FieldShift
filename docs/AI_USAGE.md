@@ -71,3 +71,7 @@ Codex implemented the three user-authorized UX changes: shared bilingual priorit
 ## 2026-11-14 — Unified illustrated farmer workspace
 
 Codex implemented the user-directed farmer UX redesign: bespoke crop and field SVG illustrations, accessible visual choice cards, visible context/measurement inputs, accurate Nili labeling, shared goal/sliders, a live plan summary and inline advanced analytics replacing the mode split. Updated the source-to-UI browser scenarios and added focused accessibility, state-preservation and visible-input checks. Source services, crop constants, scoring and Scientific V2 release gates are unchanged. SVGs are interface illustrations, not satellite imagery or agronomic evidence.
+
+## 2026-11-14 — Native SoilGrids retrieval recovery
+
+Codex reproduced PixelGust access failure and an all-null ISRIC point profile at 29.8682 N, 31.3133 E. Added bounded native WCS fallback with lazy GeoTIFF decoding, Egypt-only native-cell alignment, complete-profile validation and retained request provenance; added bilingual missing-coverage/retrieval explanations. Live WCS recovered the audited Fayoum values; the reported point's zero-filled cell remains excluded. Added compressed-cell/hash, alignment/CRS/fill, weighted-unit, timeout/cancellation, cache and browser regressions. The tiny ISRIC fixture is attributed to its source under CC BY 4.0. This change cannot manufacture missing soil coverage or establish field accuracy; crop calculations and scientific release gates are unchanged.
