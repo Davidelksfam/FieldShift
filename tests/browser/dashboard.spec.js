@@ -231,6 +231,7 @@ test("custom map location failure hides numeric results until an illustrative co
   await expect(page.getByLabel("Saved locations", { exact: true })).toHaveValue(
     "",
   );
+  await expect(page.locator(".three-strategy-grid .best-match")).toHaveCount(0);
   for (const id of ["baseline", "water", "soil"])
     await expect(page.getByTestId(`farmer-water-${id}`)).toHaveText("—");
   await expect(page.getByTestId("source-climate")).toContainText(
@@ -576,5 +577,73 @@ test("input changes repaint locally without new source requests", async ({
   await expect(page.getByTestId("farmer-water-baseline")).not.toHaveText(
     "10,813",
   );
+  expect(requests.length).toBe(before);
+});
+
+test("farmer priority sliders move the best-match highlight and preserve shared expert state", async ({
+  page,
+}) => {
+  const requests = [];
+  page.on("request", (r) => {
+    if (/power.larc|pixelgust|rest.isric|modis.ornl/.test(r.url()))
+      requests.push(r.url());
+  });
+  await blockRemote(page);
+  await page.goto("/");
+  await english(page);
+  await waitSources(page);
+  const before = requests.length;
+  const water = page.getByLabel("Water conservation", { exact: true });
+  const soil = page.getByLabel("Soil & nitrogen recovery", { exact: true });
+  const market = page.getByLabel("Cash & forage return", { exact: true });
+  await expect(water).toBeVisible();
+  await water.fill("100");
+  await soil.fill("0");
+  await market.fill("0");
+  await expect(page.locator(".three-strategy-grid .best-match")).toHaveCount(1);
+  await expect(page.getByTestId("farmer-strategy-water")).toHaveClass(
+    /best-match/,
+  );
+  await expect(page.getByLabel("Main goal", { exact: true })).toHaveValue(
+    "custom",
+  );
+  await water.fill("0");
+  await soil.fill("100");
+  await expect(page.getByTestId("farmer-strategy-soil")).toHaveClass(
+    /best-match/,
+  );
+  await expect(page.getByTestId("farmer-strategy-water")).not.toHaveClass(
+    /best-match/,
+  );
+  expect(
+    await page
+      .locator(".three-strategy-grid > article")
+      .evaluateAll((cards) => cards.map((c) => c.dataset.testid)),
+  ).toEqual([
+    "farmer-strategy-baseline",
+    "farmer-strategy-water",
+    "farmer-strategy-soil",
+  ]);
+  await expert(page);
+  await expect(soil).toHaveValue("100");
+  await expect(page.locator(".strategy-grid .best-match")).toHaveCount(1);
+  await expect(page.getByTestId("strategy-soil")).toHaveClass(/best-match/);
+  await expect(page.getByTestId("strategy-water")).not.toHaveClass(
+    /water-strategy|best-match/,
+  );
+  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
+  await page.getByLabel("Main goal", { exact: true }).selectOption("water");
+  await expect(water).toHaveValue("70");
+  await expect(soil).toHaveValue("20");
+  await expect(market).toHaveValue("10");
+  await water.fill("0");
+  await soil.fill("0");
+  await market.fill("0");
+  await expect(
+    page.getByText("All zero: using default weights 50 / 30 / 20.", {
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(page.locator(".three-strategy-grid .best-match")).toHaveCount(1);
   expect(requests.length).toBe(before);
 });

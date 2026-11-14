@@ -1,12 +1,7 @@
-import {
-  Droplets,
-  MapPin,
-  SlidersHorizontal,
-  Sprout,
-  Tractor,
-} from "lucide-react";
+import PrioritySliders from "./PrioritySliders";
+import { Droplets, MapPin, Sprout, Tractor } from "lucide-react";
 import presets from "../data/demoPresets.json" with { type: "json" };
-import { text, formatNumber } from "../i18n";
+import { text } from "../i18n";
 
 export default function FarmerInputPanel({
   lang,
@@ -216,57 +211,7 @@ export default function FarmerInputPanel({
           )}
         </label>
       </div>
-      <div className="form-section">
-        <h3>
-          <SlidersHorizontal size={16} />
-          {t("What matters most?", "ما أولوياتك؟")}
-        </h3>
-        <p className="small-note">
-          {t(
-            "Relative weights, normalized automatically.",
-            "أوزان نسبية تُوازن تلقائياً.",
-          )}
-        </p>
-        {[
-          ["water", t("Water conservation", "ترشيد المياه")],
-          ["soil", t("Soil & nitrogen recovery", "تعافي التربة والنيتروجين")],
-          ["market", t("Cash & forage return", "العائد النقدي والأعلاف")],
-        ].map(([key, label]) => (
-          <label className="slider-label" key={key} htmlFor={`priority-${key}`}>
-            <span>
-              {label}
-              <output>{formatNumber(inputs.weights[key], lang)}</output>
-            </span>
-            <input
-              id={`priority-${key}`}
-              aria-label={label}
-              type="range"
-              min="0"
-              max="100"
-              step="1"
-              value={inputs.weights[key]}
-              onChange={(e) =>
-                setInputs((current) => ({
-                  ...current,
-                  goal: "custom",
-                  weights: {
-                    ...current.weights,
-                    [key]: Number(e.target.value),
-                  },
-                }))
-              }
-            />
-          </label>
-        ))}
-        {Object.values(inputs.weights).every((w) => w === 0) && (
-          <p className="small-note">
-            {t(
-              "All zero: using default weights 50 / 30 / 20.",
-              "جميعها صفر: نستخدم الأوزان الافتراضية ٥٠ / ٣٠ / ٢٠.",
-            )}
-          </p>
-        )}
-      </div>
+      <PrioritySliders lang={lang} inputs={inputs} setInputs={setInputs} />
       <label className="checkbox-label">
         <input
           type="checkbox"

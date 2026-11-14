@@ -1,3 +1,4 @@
+import PrioritySliders from "../PrioritySliders";
 import CropIcon, { cropEmoji } from "./CropIcon";
 import { Sprout, Droplets, Target } from "lucide-react";
 import { text } from "../../i18n";
@@ -94,7 +95,7 @@ export default function FieldInputs({
           >
             {inputs.goal === "custom" && (
               <option value="custom">
-                {t("Custom expert weights", "أوزان خبير مخصصة")}
+                {t("Custom priorities", "أولويات مخصصة")}
               </option>
             )}
             {Object.entries(GOALS).map(([id, g]) => (
@@ -111,13 +112,14 @@ export default function FieldInputs({
           </select>
         </label>
       </div>
+      <PrioritySliders lang={lang} inputs={inputs} setInputs={setInputs} />
       <details className="preference-note">
         <summary>{t("How priorities work", "كيف تعمل الأولويات")}</summary>
         <p className="small-note">
           {inputs.goal === "custom"
             ? t(
-                "Your custom expert weights are active. Choosing a goal replaces them.",
-                "أوزان الخبير المخصصة مفعّلة. اختيار هدف بيستبدلها.",
+                "Your custom priorities are active. Choosing a goal replaces them.",
+                "أولوياتك المخصصة مفعّلة. اختيار هدف بيستبدلها.",
               )
             : t(
                 "Goal weights are comparison preferences, not scientifically calibrated. Market scores do not predict profit.",

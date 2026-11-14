@@ -59,3 +59,7 @@ Codex implemented the user-requested Three.js Earth selector, marked benchmark s
 ## 2026-11-14 — Simplify location and farmer UI
 
 Codex implemented the user's correction to remove the 3D Earth/Three.js and use the detailed map directly, explicitly enabling touch/wheel/keyboard/button zoom. Simplified copy, crop/goal labels, map-layer disclosure and source layout while retaining critical source states and all automatic data recovery. Added actual pinch-gesture regressions and preserved geolocation protections. Scientific engines, data constants and release gates are unchanged.
+
+## 2026-11-14 — Farmer priorities and best match
+
+Codex implemented the three user-authorized UX changes: shared bilingual priority sliders in farmer/Expert modes, rank-driven best-match emphasis and explanations, and immediate reactive winner updates with stable card positions. Farmer source gating also gates the highlight. Added browser coverage for winner changes, shared state, goal resets, all-zero fallback and no new source requests. Engine formulas, data and Scientific V2 are unchanged.
