@@ -116,3 +116,7 @@ Codex removed the whole-field water enable checkbox and its state gates: valid a
 ## 2026-11-14 — Guided calculation assistant
 
 Codex implemented the user-authorized guided chatbot version as eight bilingual questions with answers derived from current engine outputs, plus a same-crop baseline drip-irrigation what-if through the existing engine. Added a native modal with keyboard dismissal/focus restoration, current-input answers, explicit data gating, source status, area validation and ordinal/conditional/prototype disclosures. No LLM, credentials, backend, free-text inference or additional provider requests are introduced. Added unit and browser checks for numeric grounding, scenario/input isolation, stale-input avoidance, missingness, Arabic/mobile/offline behavior and source-request invariance. Updated the workspace contract; crop equations, sources, release gates and Pages/subpath hosting are unchanged.
+
+## 2026-11-14 — Floating calculation chat widget
+
+Codex implemented the user’s requested chat-bubble presentation: a persistent floating launcher, compact non-modal corner panel and question/answer message bubbles. Retained all calculation answers, data gating, Arabic/English, themes and offline support. Added explicit Escape/focus handling, panel-only scrolling and coverage for fixed positioning, launcher toggling and live priority edits while the chat stays open. No calculation formulas, providers or persisted transcript were added.
