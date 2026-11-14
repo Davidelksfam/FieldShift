@@ -27,3 +27,7 @@ Codex implemented source/units/scope/missingness contracts, pure experimental ad
 ## 2026-11-14 — Scientific V2 PR 1 calendars
 
 Codex calendar researcher implemented actual-date checks and audited official FAO API records, retaining only three partially verified bread-wheat regional references. Independent QA reviewed timing/source boundaries; integration hardened resolved source/citation identity. All unknown stage, buffer and cultivar values remain null. No agronomic release is asserted; citations and checks are in the PR 1 delivery/audit documents.
+
+## 2026-11-14 — Scientific V2 PR 2 Nili policy
+
+Codex implemented separate off/explore/require candidate generation against the sourced calendar API. Independent QA caught and prompted preservation of an explicit following-winter boundary even without a cover crop. No NDVI authorization, legacy score porting or agricultural dates/parameters were introduced. Required-cover unknowns remain audited but are not exposed as feasible choices.
