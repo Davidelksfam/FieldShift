@@ -115,9 +115,7 @@ test("map and all primary inputs share one page with three actual numerical stra
   await blockRemote(page);
   await page.goto("/");
   await english(page);
-  await expect(
-    page.getByLabel("Interactive 3D Earth", { exact: true }),
-  ).toBeVisible();
+  await expect(page.locator(".leaflet-container")).toBeVisible();
   for (const name of [
     "Winter crop",
     "Summer crop",
@@ -277,7 +275,7 @@ test("custom map location failure hides numeric results until an illustrative co
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
   await coordinates(page, 0, 0);
   await expect(page.getByRole("alert")).toContainText("within Egypt");
-  await page.getByRole("button", { name: "Field map", exact: true }).click();
+  await page.getByText("Map layers", { exact: true }).click();
   await page
     .getByLabel("Satellite layer", { exact: true })
     .selectOption("ndvi");

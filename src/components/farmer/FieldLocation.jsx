@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { MapPin, LocateFixed, Globe2, Map, Check } from "lucide-react";
-import EarthGlobe from "./EarthGlobe";
+import { MapPin, LocateFixed, Check } from "lucide-react";
 import { text } from "../../i18n";
 import FarmMap from "../FarmMap";
 export default function FieldLocation({
@@ -12,7 +11,6 @@ export default function FieldLocation({
   presets,
   onLocationChange,
 }) {
-  const [view, setView] = useState(expert ? "map" : "earth");
   const [locating, setLocating] = useState(false);
   const [geoError, setGeoError] = useState("");
   const geoRequest = useRef(0);
@@ -63,49 +61,15 @@ export default function FieldLocation({
       className="field-location"
       aria-label={t("Select your field", "اختار أرضك")}
     >
-      <div className="location-heading">
-        <div>
-          <span className="step-label">
-            01 · {t("YOUR LOCATION", "موقع أرضك")}
-          </span>
-          <h2>{t("Start with your corner of Earth.", "ابدأ من موقع أرضك.")}</h2>
-        </div>
-        <div
-          className="view-switch"
-          role="group"
-          aria-label={t("Location view", "عرض الموقع")}
-        >
-          <button
-            aria-pressed={view === "earth"}
-            onClick={() => setView("earth")}
-          >
-            <Globe2 size={16} />
-            {t("Earth", "الأرض")}
-          </button>
-          <button aria-pressed={view === "map"} onClick={() => setView("map")}>
-            <Map size={16} />
-            {t("Field map", "خريطة الأرض")}
-          </button>
-        </div>
-      </div>
-      {view === "earth" ? (
-        <EarthGlobe
-          lang={lang}
-          location={location}
-          presets={presets}
-          onLocationChange={onLocationChange}
-          onMap={() => setView("map")}
-        />
-      ) : (
-        <FarmMap
-          lang={lang}
-          lat={location.lat}
-          lon={location.lon}
-          onLocationChange={onLocationChange}
-        />
-      )}
+      <FarmMap
+        lang={lang}
+        lat={location.lat}
+        lon={location.lon}
+        compact={!expert}
+        onLocationChange={onLocationChange}
+      />
       <div className="quick-locations">
-        {Object.values(presets).map((p, i) => (
+        {Object.values(presets).map((p) => (
           <button
             key={p.id}
             data-testid={`quick-${p.id}`}
@@ -115,10 +79,15 @@ export default function FieldLocation({
           >
             <MapPin size={18} />
             <span>
-              <small>
-                {t("QUICK LOCATION", "موقع سريع")} 0{i + 1}
-              </small>
-              {lang === "ar" ? p.nameAr : p.nameEn}
+              {expert
+                ? lang === "ar"
+                  ? p.nameAr
+                  : p.nameEn
+                : {
+                    fayoum_etsa: t("Fayoum", "الفيوم"),
+                    delta_kafr_el_sheikh: t("North Delta", "شمال الدلتا"),
+                    west_delta_nubariya: t("Nubariya", "النوبارية"),
+                  }[p.id]}
             </span>
             {location.presetId === p.id && <Check size={16} />}
           </button>
@@ -131,12 +100,7 @@ export default function FieldLocation({
             ? t("Locating…", "جارٍ التحديد…")
             : t("Use my location", "استخدم موقعي")}
         </button>
-        <small>
-          {t(
-            "Egypt only · point selection, not a field boundary",
-            "داخل مصر · تحديد نقطة وليس حدود الحقل",
-          )}
-        </small>
+        <small>{t("Egypt only", "داخل مصر")}</small>
       </div>
       {geoError && (
         <p role="alert" className="geo-error">

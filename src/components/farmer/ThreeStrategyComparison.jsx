@@ -274,12 +274,6 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
                         <p key={w.en}>{lang === "ar" ? w.ar : w.en}</p>
                       ))}
                   </div>
-                  <p className="card-verification">
-                    {t(
-                      "Verify water availability, soil suitability and planting dates locally.",
-                      "راجع توفر المياه وملاءمة التربة ومواعيد الزراعة محلياً.",
-                    )}
-                  </p>
                   <details className="numeric-details">
                     <summary>
                       {t(
@@ -366,8 +360,8 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
       </div>
       <p className="comparison-prototype-note">
         {t(
-          "A historical-data planning prototype. Model water and nitrogen quantities are uncalibrated. These strategies are not field-validated planting prescriptions.",
-          "نموذج أولي للتخطيط ببيانات تاريخية. كميات المياه ومؤشر النيتروجين غير معايرة. الاستراتيجيات دي ليست توصيات زراعة معتمدة حقلياً.",
+          "Uncalibrated estimates, not field-validated planting advice. Verify water, soil and planting dates locally.",
+          "تقديرات غير معايرة، وليست توصيات معتمدة حقلياً. راجع المياه والتربة ومواعيد الزراعة محلياً.",
         )}
       </p>
     </section>

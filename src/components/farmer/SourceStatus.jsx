@@ -3,6 +3,7 @@ import { text, sourceLabel, formatNumber } from "../../i18n";
 import { comparisonSourceSupport } from "../../presentation/farmerModel";
 export default function SourceStatus({
   lang,
+  compact = false,
   data,
   loading,
   progress,
@@ -15,7 +16,7 @@ export default function SourceStatus({
     support = comparisonSourceSupport(data);
   return (
     <section
-      className="panel source-status-panel"
+      className={`panel source-status-panel ${compact ? "compact-sources" : ""}`}
       aria-labelledby="source-status-title"
     >
       <div className="source-status-heading">
@@ -25,20 +26,32 @@ export default function SourceStatus({
             {t("Data for this location", "بيانات الموقع ده")}
           </h2>
           <p role="status" aria-live="polite">
-            {loading
-              ? t(
-                  "Fetching data automatically. Slow or interrupted sources are retried while successful results are kept…",
-                  "بنجيب البيانات تلقائياً وبنحاول تاني مع المصادر البطيئة أو المتقطعة، مع الاحتفاظ بالنتائج اللي وصلت…",
-                )
-              : support.illustrative
+            {compact
+              ? loading
+                ? t("Fetching historical data…", "جارٍ جلب البيانات التاريخية…")
+                : support.illustrative
+                  ? t(
+                      "Some data is illustrative. Review before comparing.",
+                      "بعض البيانات توضيحية. راجعها قبل المقارنة.",
+                    )
+                  : t(
+                      "Historical data · 2025. Not a field diagnosis.",
+                      "بيانات تاريخية · ٢٠٢٥. ليست تشخيصاً للحقل.",
+                    )
+              : loading
                 ? t(
-                    "Some selected-location data remains unavailable after automatic retrieval. Illustrative fallback is identified below.",
-                    "بعض بيانات الموقع لسه غير متاحة بعد المحاولات التلقائية. البيانات التوضيحية البديلة موضّحة تحت.",
+                    "Fetching data automatically. Slow or interrupted sources are retried while successful results are kept…",
+                    "بنجيب البيانات تلقائياً وبنحاول تاني مع المصادر البطيئة أو المتقطعة، مع الاحتفاظ بالنتائج اللي وصلت…",
                   )
-                : t(
-                    "Historical source data is available. Regional observations are not a field diagnosis.",
-                    "بيانات المصادر التاريخية متاحة. أرصاد المنطقة ليست تشخيصاً لأرضك.",
-                  )}
+                : support.illustrative
+                  ? t(
+                      "Some selected-location data remains unavailable after automatic retrieval. Illustrative fallback is identified below.",
+                      "بعض بيانات الموقع لسه غير متاحة بعد المحاولات التلقائية. البيانات التوضيحية البديلة موضّحة تحت.",
+                    )
+                  : t(
+                      "Historical source data is available. Regional observations are not a field diagnosis.",
+                      "بيانات المصادر التاريخية متاحة. أرصاد المنطقة ليست تشخيصاً لأرضك.",
+                    )}
             {offline ? " · " + t("Offline", "بدون اتصال") : ""}
           </p>
         </div>
