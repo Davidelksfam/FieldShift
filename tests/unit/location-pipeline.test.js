@@ -35,7 +35,7 @@ test("non-preset coordinates fetch all three source payloads and drive evaluatio
   assert.equal(data.sources.climate.period, "2025");
   assert.equal(data.sources.ndvi.status, "live");
   assert.equal(progress.filter((e) => e.status === "fulfilled").length, 3);
-  assert.equal(urls.length, 8); // POWER + soil + 3 NDVI batches + 3 QA batches.
+  assert.equal(urls.length, 12); // POWER + soil + 5 NDVI batches + 5 QA batches.
   for (const url of urls) {
     const p = new URL(url).searchParams;
     assert.equal(Number(p.get("latitude") ?? p.get("lat")), 30.8);

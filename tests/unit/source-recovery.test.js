@@ -43,10 +43,10 @@ test("transient failures recover automatically without repeating successful sour
     onDataUpdate: (data) => updates.push(data),
   });
   assert.ok(Object.values(data.sources).every((s) => s.status === "live"));
-  assert.equal(counts.size, 8);
+  assert.equal(counts.size, 12);
   assert.equal(
     [...counts.values()].reduce((a, b) => a + b),
-    10,
+    14,
   );
   assert.equal(progress.filter((e) => e.status === "retrying").length, 2);
   assert.equal(updates.length, 3);

@@ -1559,3 +1559,6 @@ html {
     transition: none;
   }
 }
+
+.location-source { min-width: 0; }
+.location-source small { display: block; overflow-wrap: anywhere; }
