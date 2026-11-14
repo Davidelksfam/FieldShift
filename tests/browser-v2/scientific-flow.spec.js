@@ -5,7 +5,9 @@ test("historical inspector preserves missingness across Nili/goals and rejects m
   await page.route(/^https:\/\//, (route) => route.abort());
   await page.goto("/");
   await page.getByRole("button", { name: "English", exact: true }).click();
-  await page.getByRole("button", { name: "Expert mode", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Show advanced analytics", exact: true })
+    .click();
   await page
     .getByLabel("Inspection engine", { exact: true })
     .selectOption("scientific-v2");
@@ -125,7 +127,9 @@ test("artificial calendar JSON yields a conditional numerical comparison and vis
   await page.route(/^https:\/\//, (route) => route.abort());
   await page.goto("/");
   await page.getByRole("button", { name: "English", exact: true }).click();
-  await page.getByRole("button", { name: "Expert mode", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Show advanced analytics", exact: true })
+    .click();
   await page
     .getByLabel("Inspection engine", { exact: true })
     .selectOption("scientific-v2");
@@ -172,7 +176,9 @@ test("experimental inspection reloads offline and does not transfer centroid wea
   await context.setOffline(true);
   await page.reload();
   await page.getByRole("button", { name: "English", exact: true }).click();
-  await page.getByRole("button", { name: "Expert mode", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Show advanced analytics", exact: true })
+    .click();
   await page
     .getByLabel("Inspection engine", { exact: true })
     .selectOption("scientific-v2");
@@ -201,6 +207,8 @@ test("experimental inspection reloads offline and does not transfer centroid wea
   expect(analysis.alternatives.every((a) => a.water.etcMm.value === null)).toBe(
     true,
   );
-  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Hide advanced analytics", exact: true })
+    .click();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("—");
 });

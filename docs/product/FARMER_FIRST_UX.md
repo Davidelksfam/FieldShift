@@ -1,6 +1,8 @@
 # Farmer workspace: map and three numerical strategy cards
 
-## Current accepted layout
+> The [unified illustrated workspace](UNIFIED_FARMER_WORKSPACE.md) now supersedes the layout and visibility rules below. This document retains the earlier audit and scientific dependency decisions.
+
+## Earlier accepted layout
 
 The user selected **Map + three cards** after rejecting the question-per-screen journey. This specification supersedes that interaction, while preserving the scientific audit and engine decisions from PR #23.
 

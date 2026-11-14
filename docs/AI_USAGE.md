@@ -67,3 +67,7 @@ Codex implemented the user's correction to remove the 3D Earth/Three.js and use 
 ## 2026-11-14 — Farmer priorities and best match
 
 Codex implemented the three user-authorized UX changes: shared bilingual priority sliders in farmer/Expert modes, rank-driven best-match emphasis and explanations, and immediate reactive winner updates with stable card positions. Farmer source gating also gates the highlight. Added browser coverage for winner changes, shared state, goal resets, all-zero fallback and no new source requests. Engine formulas, data and Scientific V2 are unchanged.
+
+## 2026-11-14 — Unified illustrated farmer workspace
+
+Codex implemented the user-directed farmer UX redesign: bespoke crop and field SVG illustrations, accessible visual choice cards, visible context/measurement inputs, accurate Nili labeling, shared goal/sliders, a live plan summary and inline advanced analytics replacing the mode split. Updated the source-to-UI browser scenarios and added focused accessibility, state-preservation and visible-input checks. Source services, crop constants, scoring and Scientific V2 release gates are unchanged. SVGs are interface illustrations, not satellite imagery or agronomic evidence.

@@ -10,7 +10,9 @@ const blockRemote = (page) =>
 const english = (page) =>
   page.getByRole("button", { name: "English", exact: true }).click();
 const expert = (page) =>
-  page.getByRole("button", { name: "Expert mode", exact: true }).click();
+  page
+    .getByRole("button", { name: "Show advanced analytics", exact: true })
+    .click();
 async function coordinates(page, lat, lon) {
   const disclosure = page.getByText("Enter coordinates instead", {
     exact: true,
@@ -122,7 +124,9 @@ test("map and all primary inputs share one page with three actual numerical stra
     "Irrigation system",
     "Main goal",
   ])
-    await expect(page.getByLabel(name, { exact: true })).toBeVisible();
+    await expect(
+      page.getByRole("radiogroup", { name, exact: true }),
+    ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Continue", exact: true }),
   ).toHaveCount(0);
@@ -147,18 +151,14 @@ test("map and all primary inputs share one page with three actual numerical stra
       exact: true,
     }),
   ).toBeFocused();
-  await page
-    .getByLabel("Irrigation system", { exact: true })
-    .selectOption("drip");
+  await page.getByTestId("irrigation-choice-drip").locator("..").click();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("6,758");
-  await page.getByLabel("Summer crop", { exact: true }).selectOption("sesame");
+  await page.getByTestId("crop-choice-sesame").locator("..").click();
   await expect(page.getByTestId("farmer-strategy-baseline")).toContainText(
     "Sesame",
   );
-  await page.getByLabel("Main goal", { exact: true }).selectOption("soil");
-  await expect(page.getByLabel("Summer crop", { exact: true })).toHaveValue(
-    "sesame",
-  );
+  await page.getByTestId("goal-choice-soil").locator("..").click();
+  await expect(page.getByTestId("crop-choice-sesame")).toBeChecked();
   await page
     .getByTestId("farmer-strategy-water")
     .getByText("Calculation and scoring details", { exact: true })
@@ -176,9 +176,6 @@ test("optional whole-field totals accept valid area and hide for zero/missing/in
   await page.goto("/");
   await english(page);
   await expect(page.getByTestId("farmer-total-baseline")).toHaveCount(0);
-  await page
-    .getByText("Optional details about your field", { exact: true })
-    .click();
   await page
     .getByLabel("Estimate water for my whole field", { exact: true })
     .check();
@@ -206,7 +203,7 @@ test("optional whole-field totals accept valid area and hide for zero/missing/in
     })
     .check();
   await page
-    .getByLabel("Explore a conditional Nili cover", { exact: true })
+    .getByLabel("Require Nili cover in alternatives", { exact: true })
     .check();
   await expect(
     page.getByTestId("farmer-strategy-water").locator(".numeric-crops"),
@@ -335,7 +332,9 @@ test("complete custom-location HTTP responses feed the real service, diagnostics
       );
     }).length,
   ).toBe(8);
-  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Hide advanced analytics", exact: true })
+    .click();
   await page
     .getByRole("button", { name: "Retry sources", exact: true })
     .click();
@@ -437,7 +436,9 @@ test("the reported coordinates show all three strategies when SoilGrids is incom
   await expert(page);
   await expect(page.locator(".diagnostic-2 .metric")).toContainText("—");
   await expect(page.locator(".diagnostic-2")).toContainText("pH —");
-  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Hide advanced analytics", exact: true })
+    .click();
   await page.getByRole("button", { name: "العربية", exact: true }).click();
   await page.setViewportSize({ width: 390, height: 900 });
   await expect(page.locator(".partial-data-banner")).toContainText(
@@ -506,17 +507,13 @@ test("optional-source recovery removes the partial-data warning without losing f
   await english(page);
   await coordinates(page, 29.8682, 31.3133);
   await expect(page.locator(".partial-data-banner")).toBeVisible();
-  await page
-    .getByLabel("Winter crop", { exact: true })
-    .selectOption("faba_bean");
+  await page.getByTestId("crop-choice-faba_bean").locator("..").click();
   await expect(page.getByTestId("farmer-strategy-baseline")).toContainText(
     "Faba Bean",
   );
   await waitSources(page);
   await expect(page.locator(".partial-data-banner")).toHaveCount(0);
-  await expect(page.getByLabel("Winter crop", { exact: true })).toHaveValue(
-    "faba_bean",
-  );
+  await expect(page.getByTestId("crop-choice-faba_bean")).toBeChecked();
   await expect(page.getByTestId("farmer-water-baseline")).not.toHaveText("—");
 });
 
@@ -579,7 +576,7 @@ test("online reload gets the current application even when the offline cache con
   await expect(page.locator("body")).not.toContainText("STALE_RELEASE");
 });
 
-test("expert inspection, custom weights, measured ECe and all five pipeline stages retain shared state", async ({
+test("advanced analytics, custom weights, measured ECe and all five pipeline stages retain shared state", async ({
   page,
 }) => {
   await blockRemote(page);
@@ -590,17 +587,19 @@ test("expert inspection, custom weights, measured ECe and all five pipeline stag
   await page.getByLabel("Soil & nitrogen recovery", { exact: true }).fill("0");
   await page.getByLabel("Cash & forage return", { exact: true }).fill("0");
   await expect(page.getByTestId("strategy-water")).toContainText("Rank 1");
-  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
-  await expect(page.getByLabel("Main goal", { exact: true })).toHaveValue(
-    "custom",
-  );
-  await page.getByLabel("Main goal", { exact: true }).selectOption("soil");
+  await page
+    .getByRole("button", { name: "Hide advanced analytics", exact: true })
+    .click();
+  await expect(page.getByTestId("custom-priorities")).toBeVisible();
+  await page.getByTestId("goal-choice-soil").locator("..").click();
   await expert(page);
   await expect(
     page.getByLabel("Soil & nitrogen recovery", { exact: true }),
   ).toHaveValue("70");
   await page.getByLabel("Measured soil ECe", { exact: true }).fill("12");
-  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Hide advanced analytics", exact: true })
+    .click();
   await expect(
     page.getByTestId("farmer-strategy-baseline").locator(".farmer-cautions"),
   ).toContainText("measured soil ECe");
@@ -748,20 +747,16 @@ test("input changes repaint locally without new source requests", async ({
   await english(page);
   await waitSources(page);
   const before = requests.length;
-  await page
-    .getByLabel("Irrigation system", { exact: true })
-    .selectOption("drip");
-  await page
-    .getByLabel("Winter crop", { exact: true })
-    .selectOption("faba_bean");
-  await page.getByLabel("Main goal", { exact: true }).selectOption("soil");
+  await page.getByTestId("irrigation-choice-drip").locator("..").click();
+  await page.getByTestId("crop-choice-faba_bean").locator("..").click();
+  await page.getByTestId("goal-choice-soil").locator("..").click();
   await expect(page.getByTestId("farmer-water-baseline")).not.toHaveText(
     "10,813",
   );
   expect(requests.length).toBe(before);
 });
 
-test("farmer priority sliders move the best-match highlight and preserve shared expert state", async ({
+test("farmer priority sliders move the best-match highlight and preserve shared analytics state", async ({
   page,
 }) => {
   const requests = [];
@@ -785,9 +780,7 @@ test("farmer priority sliders move the best-match highlight and preserve shared 
   await expect(page.getByTestId("farmer-strategy-water")).toHaveClass(
     /best-match/,
   );
-  await expect(page.getByLabel("Main goal", { exact: true })).toHaveValue(
-    "custom",
-  );
+  await expect(page.getByTestId("custom-priorities")).toBeVisible();
   await water.fill("0");
   await soil.fill("100");
   await expect(page.getByTestId("farmer-strategy-soil")).toHaveClass(
@@ -812,8 +805,10 @@ test("farmer priority sliders move the best-match highlight and preserve shared 
   await expect(page.getByTestId("strategy-water")).not.toHaveClass(
     /water-strategy|best-match/,
   );
-  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
-  await page.getByLabel("Main goal", { exact: true }).selectOption("water");
+  await page
+    .getByRole("button", { name: "Hide advanced analytics", exact: true })
+    .click();
+  await page.getByTestId("goal-choice-water").locator("..").click();
   await expect(water).toHaveValue("70");
   await expect(soil).toHaveValue("20");
   await expect(market).toHaveValue("10");

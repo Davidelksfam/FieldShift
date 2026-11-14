@@ -1,49 +1,50 @@
-import { FlaskConical, Globe2, Sprout } from "lucide-react";
+import { ChartNoAxesCombined, Globe2 } from "lucide-react";
 import { text } from "../i18n";
 export default function HeaderBar({
   lang,
   onLanguageChange,
-  judgeMode,
-  onJudgeModeChange,
+  analyticsOpen,
+  onAnalyticsToggle,
 }) {
+  const t = (en, ar) => text(lang, en, ar);
   return (
-    <header className="header-bar">
+    <header className="header-bar unified-header">
       <a className="brand" href="#main" aria-label="Field Shift">
-        <img src="/brand/field-shift-mark.svg" alt="" width="42" height="42" />
+        <img src="/brand/field-shift-mark.svg" alt="" width="38" height="38" />
         <span dir="ltr">
           field<span>shift.</span>
           <small>GROW WITH CLARITY</small>
         </span>
       </a>
-      <div className="header-context">
-        <Sprout size={17} />
-        <span>
-          {text(
-            lang,
-            "Egypt rotation workspace",
-            "مساحة تخطيط الدورات الزراعية في مصر",
-          )}
-        </span>
-        <span className="period-chip">2025</span>
-      </div>
+      <nav
+        className="workspace-nav"
+        aria-label={t("Workspace navigation", "التنقل في مساحة التخطيط")}
+      >
+        <a href="#field-setup">{t("Your field", "أرضك")}</a>
+        <a href="#comparison">{t("Compare plans", "مقارنة الخطط")}</a>
+      </nav>
       <div className="header-actions">
         <button
-          className={`button ${judgeMode ? "selected" : ""}`}
-          onClick={() => onJudgeModeChange(!judgeMode)}
-          aria-pressed={judgeMode}
+          className={`button analytics-link ${analyticsOpen ? "selected" : ""}`}
+          aria-expanded={analyticsOpen}
+          aria-controls="advanced-analytics"
+          onClick={onAnalyticsToggle}
         >
-          <FlaskConical size={17} />
-          {text(
-            lang,
-            judgeMode ? "Farmer mode" : "Expert mode",
-            judgeMode ? "وضع المزارع" : "وضع الخبير",
+          <ChartNoAxesCombined size={17} />
+          {t(
+            analyticsOpen
+              ? "Hide advanced analytics"
+              : "Show advanced analytics",
+            analyticsOpen
+              ? "إخفاء التحليلات المتقدمة"
+              : "عرض التحليلات المتقدمة",
           )}
         </button>
         <button
-          className="button"
+          className="button language-button"
           onClick={() => onLanguageChange(lang === "ar" ? "en" : "ar")}
         >
-          <Globe2 size={17} />
+          <Globe2 size={16} />
           {lang === "ar" ? "English" : "العربية"}
         </button>
       </div>

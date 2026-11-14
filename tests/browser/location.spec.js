@@ -21,9 +21,7 @@ test("map opens directly, zoom controls work and quick locations stay keyboard a
     "aria-pressed",
     "true",
   );
-  await expect(page.getByLabel("Winter crop", { exact: true })).toHaveValue(
-    "wheat",
-  );
+  await expect(page.getByTestId("crop-choice-wheat")).toBeChecked();
   await expect(
     page.getByRole("button", { name: "Earth", exact: true }),
   ).toHaveCount(0);

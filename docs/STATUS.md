@@ -51,3 +51,7 @@ The new UI branch adds a lazily loaded interactive Earth, gold benchmark markers
 ## Simplified map workspace — issue #37
 
 User correction replaces the 3D Earth with the direct field map and explicit touch/wheel/button/keyboard zoom. Labels, source display and setup panels are compacted; advanced layers/details are disclosed on demand. GPS, quick locations, numeric/scientific behavior and automatic location-data recovery remain intact. See [flow and rollback](product/SIMPLE_MAP_WORKSPACE.md).
+
+## Unified illustrated farmer workspace
+
+User-requested full farmer-form redesign replaces emoji crop selects with botanical radio cards and adds irrigation/soil/canal/salinity illustrations. Farm factors and optional area/lab measurements are visible. A sticky live comparison summary provides immediate feedback. A same-page advanced analytics disclosure replaces separate farmer/Expert workspaces; inputs, source acquisition and the map remain in place. See [the interaction/design contract](product/UNIFIED_FARMER_WORKSPACE.md). Legacy calculations and Scientific V2 eligibility are unchanged.
