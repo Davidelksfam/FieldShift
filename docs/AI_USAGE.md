@@ -35,3 +35,7 @@ Codex implemented separate off/explore/require candidate generation against the 
 ## 2026-11-14 — Scientific V2 PR 3 reference water
 
 Codex implemented daily historical FAO reference ETc and independent published component checks. Independent QA hardened calendar, location, crop-use and input provenance boundaries. Derived quantities preserve separately validated operand lineage without treating upstream endpoints as direct final-outcome evidence. Full-season ETc/CROPWAT and field irrigation validation remain pending; no measured consumption or savings is claimed.
+
+## 2026-11-14 — Scientific V2 PR 4 indicator audit
+
+Codex audited qualitative crop taxonomy, laboratory-only salinity outcome matching, historical heat screening and unavailable nitrogen/economics. Official Kew references were independently checked. QA hardened source identities, units, sample point/date and matching endpoints. Legacy points and heuristic penalties are not scientific ranking criteria; no field fertility, profit or heat-risk accuracy is claimed.
