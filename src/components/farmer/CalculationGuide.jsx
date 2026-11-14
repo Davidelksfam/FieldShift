@@ -17,6 +17,8 @@ export default function CalculationGuide({
 }) {
   const [topic, setTopic] = useState("why");
   const [open, setOpen] = useState(false);
+  const [revealed, setRevealed] = useState(Infinity);
+  const [typing, setTyping] = useState(false);
   const launcherRef = useRef(null);
   const closeRef = useRef(null);
   const bodyRef = useRef(null);
@@ -40,6 +42,31 @@ export default function CalculationGuide({
         : null,
     [open, topic, lang, evaluation, data, inputs, visible, catalog],
   );
+  useEffect(() => {
+    if (!open || !answer) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setTyping(false);
+      setRevealed(Infinity);
+      return;
+    }
+    setTyping(true);
+    setRevealed(0);
+    let interval;
+    const length = answer.paragraphs.join("").length;
+    const pause = setTimeout(() => {
+      setTyping(false);
+      let count = 0;
+      interval = setInterval(() => {
+        count += 22;
+        setRevealed(count);
+        if (count >= length) clearInterval(interval);
+      }, 18);
+    }, 420);
+    return () => {
+      clearTimeout(pause);
+      clearInterval(interval);
+    };
+  }, [answer, open]);
   const illustrative = Object.values(data.sources ?? {}).some(
     (s) => s.kind !== "observed" && s.usedInComparison !== false,
   );
@@ -138,8 +165,8 @@ export default function CalculationGuide({
         <div className="guide-body" ref={bodyRef}>
           <p className="guide-intro">
             {t(
-              "Choose a question. Answers use your current field inputs and calculation results.",
-              "اختار سؤال. الإجابات من مدخلات أرضك ونتائج الحساب الحالية.",
+              "Let’s explore your plan. Pick what matters to you.",
+              "نفهم خطتك سوا. اختار اللي يهمّك.",
             )}
           </p>
           <div
@@ -148,7 +175,9 @@ export default function CalculationGuide({
             ref={questionsRef}
             aria-label={t("Questions about your results", "أسئلة عن نتائجك")}
           >
-            {GUIDE_QUESTIONS.map((q) => (
+            {GUIDE_QUESTIONS.filter((q) =>
+              ["why", "water", "drip"].includes(q.id),
+            ).map((q) => (
               <button
                 type="button"
                 key={q.id}
@@ -185,21 +214,39 @@ export default function CalculationGuide({
                     )}
                   </p>
                 )}
-                {answer.paragraphs.map((p, index) => (
-                  <p key={index}>{p}</p>
-                ))}
-                {answer.facts.length > 0 && (
-                  <dl>
-                    {answer.facts.map((f) => (
-                      <div key={f.id}>
-                        <dt>{f.label}</dt>
-                        <dd data-testid={`guide-fact-${f.id}`}>
-                          <bdi>{f.value}</bdi>
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
+                {typing && (
+                  <div
+                    className="chat-typing"
+                    role="status"
+                    aria-label={t("Preparing your answer", "بنجهز إجابتك")}
+                  >
+                    <i />
+                    <i />
+                    <i />
+                  </div>
                 )}
+                {!typing &&
+                  answer.paragraphs.map((p, index) => {
+                    const offset = answer.paragraphs
+                      .slice(0, index)
+                      .join("").length;
+                    const shown = p.slice(0, Math.max(0, revealed - offset));
+                    return shown ? <p key={index}>{shown}</p> : null;
+                  })}
+                {!typing &&
+                  revealed >= answer.paragraphs.join("").length &&
+                  answer.facts.length > 0 && (
+                    <dl>
+                      {answer.facts.map((f) => (
+                        <div key={f.id}>
+                          <dt>{f.label}</dt>
+                          <dd data-testid={`guide-fact-${f.id}`}>
+                            <bdi>{f.value}</bdi>
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
               </section>
             </div>
           )}

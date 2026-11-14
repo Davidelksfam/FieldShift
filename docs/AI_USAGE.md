@@ -120,3 +120,7 @@ Codex implemented the user-authorized guided chatbot version as eight bilingual 
 ## 2026-11-14 — Floating calculation chat widget
 
 Codex implemented the user’s requested chat-bubble presentation: a persistent floating launcher, compact non-modal corner panel and question/answer message bubbles. Retained all calculation answers, data gating, Arabic/English, themes and offline support. Added explicit Escape/focus handling, panel-only scrolling and coverage for fixed positioning, launcher toggling and live priority edits while the chat stays open. No calculation formulas, providers or persisted transcript were added.
+
+## Chat refinement
+
+Codex reduced visible prompts to three (recommendation, water savings, drip scenario), softened the chat styling and added a short presentation-only typing indicator and progressive answer reveal. Reduced-motion users receive immediate answers. Timers cancel when inputs change or the widget closes. Calculation formulas and data requests are unchanged.
