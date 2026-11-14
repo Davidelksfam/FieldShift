@@ -79,3 +79,7 @@ Codex compared the uploaded Next.js branch with current main, adapted its Earth 
 ## 2026-11-14 — Egypt-first 3D location refinement
 
 After user review of the deployed preview, Codex hid alternative map views, made the textured globe the initial selector, added automatic Egypt camera focus and removed the close-zoom flat-map handoff. Added projected preset landmark buttons with leader lines, collision avoidance and keyboard access, and retained the existing GPS/coordinate validation and source pipeline. Updated browser checks for default 3D, exact landmark coordinates, actual sphere picks, touch/wheel/keyboard zoom, interruption of camera motion, offline assets, WebGL fallback, preserved farmer inputs and Arabic/English layouts. No scientific engine, source algorithm or dataset was changed.
+
+## 2026-11-14 — User-supplied website logo
+
+Codex inspected the PNG/WebP/SVG logo variants in the user-uploaded ZIP, copied the original transparent PNG without alteration, and replaced the header and browser-icon references. Adjusted responsive logo sizing, documented the user-authorized mark change and used Vite's hashed asset pipeline so the offline shell and favicon update together. Site naming, scientific data and application flows were preserved.

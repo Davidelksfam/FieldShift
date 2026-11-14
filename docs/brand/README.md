@@ -8,7 +8,7 @@
 2. [COLORS.md](COLORS.md) — palette, meaning, contrast and allowed usage.
 3. [DESIGN.md](DESIGN.md) — component rules, layouts, page flows, states, RTL/LTR and UI review checklist.
 4. [tokens.css](tokens.css) — **machine-readable source of truth** for all new styling tokens.
-5. [Field Shift mark](../../assets/brand/field-shift-mark.svg) — approved compact symbol from the prototype.
+5. [Website logo](../../src/assets/brand/site-logo.png) — user-selected original logo from the uploaded ZIP; see [the logo decision](../decisions/0005-supplied-website-logo.md). The previous prototype mark is retained in the source history/assets.
 
 Use this directory for styling decisions instead of inventing a new theme. The previous dark/orbital/terrace style is superseded. Product and scientific specifications remain separate; see [product proposal](../product/PRD.md) for proposed screens and [verification](../challenge/VERIFICATION.md) for unresolved event facts.
 

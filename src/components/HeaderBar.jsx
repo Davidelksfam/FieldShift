@@ -1,5 +1,6 @@
 import { ChartNoAxesCombined, Globe2, Moon, Sun } from "lucide-react";
 import { text } from "../i18n";
+import siteLogo from "../assets/brand/site-logo.png";
 export default function HeaderBar({
   lang,
   onLanguageChange,
@@ -12,7 +13,12 @@ export default function HeaderBar({
   return (
     <header className="header-bar unified-header">
       <a className="brand" href="#main" aria-label="Field Shift">
-        <img src="/brand/field-shift-mark.svg" alt="" width="38" height="38" />
+        <img
+          src={siteLogo}
+          alt={t("Field Shift logo", "شعار فيلد شيفت")}
+          width="52"
+          height="52"
+        />
         <span dir="ltr">
           field<span>shift.</span>
           <small>GROW WITH CLARITY</small>
