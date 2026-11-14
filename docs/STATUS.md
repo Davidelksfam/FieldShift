@@ -43,3 +43,7 @@ Based on the user-provided Scientific V2 plan; actual baseline main is `3fcf71f`
 The stacked implementation now includes sourced/unknown calendar handling, explicit Nili policies, daily historical reference ETc, indicator audit, feasibility-first comparison and full trace inspection. Validation passes 116 unit/integration tests, 10 default and four experimental browser tests, build/docs checks and nine published numerical component comparisons. Nine legacy hashes remain unchanged. See [auditable report, fixed defects and scientific blockers](validation/SCIENTIFIC_V2_VALIDATION.md) and [PR 6 delivery](delivery/SCIENTIFIC_V2_PR06.md).
 
 V2 remains experimental and off by default. No full local calendar, independently validated whole-season ETc/irrigation model, calibrated soil/economic optimum or arbitrary-location scientific coverage is claimed. The current farmer demo remains on legacy. No scientific merge/deployment is performed by this stack.
+
+## Earth-first redesign — issue #32
+
+The new UI branch adds a lazily loaded interactive Earth, gold benchmark markers, quick-location buttons, opt-in GPS, a detailed-map toggle and cleaner crop/strategy visuals. Source support and existing numerical/scientific behavior are preserved. See [interaction, resilience and rollback](product/EARTH_WORKSPACE.md). This redesign does not activate experimental V2 or establish coverage at arbitrary points.

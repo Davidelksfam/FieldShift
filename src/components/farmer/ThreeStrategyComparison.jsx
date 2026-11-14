@@ -1,3 +1,4 @@
+import CropIcon from "./CropIcon";
 import { forwardRef } from "react";
 import { Droplets, Sprout, Leaf } from "lucide-react";
 import { text, formatNumber } from "../../i18n";
@@ -155,6 +156,7 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
                     >
                       <span>{t(en, ar)}</span>
                       <strong>
+                        {c && <CropIcon id={c.id} size={18} />}
                         {c
                           ? lang === "ar"
                             ? c.nameAr

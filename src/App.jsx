@@ -198,6 +198,8 @@ export default function App() {
   );
   const map = (
     <FieldLocation
+      key={expert ? "expert-map" : "farmer-earth"}
+      expert={expert}
       lang={lang}
       location={location}
       coordinates={coordinates}
@@ -262,15 +264,12 @@ export default function App() {
                     "Inspect the evidence and calculations",
                     "افحص الأدلة والحسابات",
                   )
-                : t(
-                    "Find your field. Compare your options.",
-                    "حدّد أرضك. وقارن خططك بالأرقام.",
-                  )}
+                : t("A better season starts here.", "موسم أفضل يبدأ من هنا.")}
             </h1>
             <p>
               {t(
-                "Select a point on the map, enter your crops and irrigation, then compare three strategies using the same calculated quantities.",
-                "اختار نقطة على الخريطة، أدخل محاصيلك وطريقة الري، وقارن ٣ استراتيجيات بنفس الكميات المحسوبة.",
+                "Find your land. Set your priorities. Explore three rotation plans.",
+                "حدد أرضك، اختار أولوياتك، وقارن ثلاث خطط زراعية.",
               )}
             </p>
           </div>
