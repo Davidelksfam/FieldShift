@@ -40,7 +40,7 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
     ] ?? 0.55;
   const diagnostics = computeFieldIndices(nasaData, userInputs, cropsCatalog);
   const { heatStressDays, bareSoilDays, salinityRisk } = diagnostics;
-  const soilPh = nasaData.soil?.phh2o ?? 8;
+  const soilPh = nasaData.soil?.phh2o;
   const normalizedWeights = Object.fromEntries(
     ["water", "soil", "market"].map((k) => [
       k,
@@ -150,7 +150,7 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
           `${c.nameAr}: تعرض للإجهاد الحراري صيفاً.`,
         );
       }
-      if (soilPh < c.phMin || soilPh > c.phMax)
+      if (isNumber(soilPh) && (soilPh < c.phMin || soilPh > c.phMax))
         addWarning(
           `${c.nameEn}: pH outside catalog range; local review needed.`,
           `${c.nameAr}: الأس الهيدروجيني خارج نطاق الدليل؛ يلزم تقييم محلي.`,

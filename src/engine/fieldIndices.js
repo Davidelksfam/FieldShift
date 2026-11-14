@@ -182,8 +182,12 @@ export function computeFieldIndices(data, inputs, catalog) {
     heatStressDays,
     julyHeatDays,
     summerObservationDays: temps.length,
-    bareSoilDays,
-    bareSoilTotalDays: runs.reduce((s, r) => s + r.days, 0),
+    bareSoilDays:
+      data.sources?.ndvi?.usedInComparison === false ? null : bareSoilDays,
+    bareSoilTotalDays:
+      data.sources?.ndvi?.usedInComparison === false
+        ? null
+        : runs.reduce((s, r) => s + r.days, 0),
     bareSoilRuns,
     autumnObservedDays: Math.min(91, observed),
     autumnMissingDays: Math.max(0, 91 - observed),
@@ -191,7 +195,9 @@ export function computeFieldIndices(data, inputs, catalog) {
     salinityRisk,
     salinityStatus: measuredSoil
       ? "screening"
-      : "illustrative: synthetic soil fallback",
+      : data.sources?.soil?.usedInComparison === false
+        ? "unavailable: soil data omitted"
+        : "illustrative: synthetic soil fallback",
     nitrogen,
     soilOrganicCarbon: data.soil?.soc ?? null,
     rootZoneWetnessAvg: data.avgRootWetness ?? null,

@@ -25,4 +25,6 @@ Executed verification: 124 unit/integration tests, production build and reposito
 
 Farmer and Expert modes share the same water, soil and market/forage priority sliders. Editing any slider selects custom priorities; choosing a preset goal restores that goal's weights. All-zero weights use the engine's existing 50/30/20 fallback. The engine's rank-one strategy receives a bilingual best-match badge, explanation and green emphasis in both views, including baseline if it ranks first. Cards retain their baseline/water/soil positions. Farmer source gating also suppresses the badge and highlight until a comparison is visible. A polite screen-reader status announces the current best match. No fetch, scientific model or scoring change is introduced.
 
-Verification for this revision: `npm run check` passed (124 unit/integration tests, production build, repository/link check); all 19 default browser tests passed, including live winner changes, mode synchronization, source-gated highlighting, zero-weight fallback, no additional source requests and Arabic/English responsive layouts.
+Verification for this revision: `npm run check` passed (129 unit/integration tests, production build, repository/link check); all 24 default browser tests passed, including live winner changes, mode synchronization, source-gated highlighting, zero-weight fallback, no additional source requests and Arabic/English responsive layouts.
+
+The latest partial-source comparison fix from PR #39 is integrated; its optional-source recovery and missing-climate behavior remain covered.

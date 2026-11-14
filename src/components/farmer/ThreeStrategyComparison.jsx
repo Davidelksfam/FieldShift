@@ -41,6 +41,7 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
     water: t("Water-oriented strategy", "استراتيجية المياه"),
     soil: t("Soil-oriented strategy", "استراتيجية التربة"),
   };
+  const support = comparisonSourceSupport(data);
   return (
     <section
       className="three-strategies"
@@ -71,33 +72,32 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
             {loading
               ? t("Fetching data for this location", "بنجيب بيانات الموقع ده")
               : t(
-                  "Some data for this location is unavailable",
-                  "بعض بيانات الموقع ده غير متاحة",
+                  "Climate data for this location is unavailable",
+                  "بيانات المناخ للموقع ده غير متاحة",
                 )}
           </h3>
           <p>
             {t(
-              "Your location and crop selections are saved. Results need climate, soil and vegetation data. We fetch and retry automatically; if a source remains unavailable, you can explicitly explore an illustrative regional comparison.",
-              "الموقع والمحاصيل اللي اخترتها محفوظين. النتائج محتاجة بيانات المناخ والتربة والغطاء النباتي. بنجيبها وبنحاول تاني تلقائياً؛ ولو مصدر فضل غير متاح، تقدر تختار مقارنة إقليمية توضيحية.",
+              "Your location and crop selections are saved. Climate data is needed for heat-dependent crop comparisons. We fetch and retry automatically. Missing soil or vegetation data does not block the strategies; those checks are omitted.",
+              "الموقع والمحاصيل اللي اخترتها محفوظين. بيانات المناخ مطلوبة لمقارنة المحاصيل حسب الحرارة، وبنجيبها وبنحاول تاني تلقائياً. نقص بيانات التربة أو الغطاء النباتي لا يمنع عرض الاستراتيجيات؛ الفحوص دي بتفضل غير متاحة.",
             )}
           </p>
           <p>
             {t("Data still needed", "البيانات اللي لسه مطلوبة")}:{" "}
-            {comparisonSourceSupport(data)
-              .missing.map(
-                (key) =>
-                  ({
-                    climate: t("Climate", "المناخ"),
-                    soil: t("Soil", "التربة"),
-                    ndvi: t("Vegetation", "الغطاء النباتي"),
-                  })[key],
-              )
-              .join(t(", ", "، "))}
+            {t("Climate", "المناخ")}
           </p>
           {!loading && (
             <button className="button" onClick={onShowExample}>
               {t("Show illustrative comparison", "اعرض مقارنة توضيحية")}
             </button>
+          )}
+        </div>
+      )}
+      {visible && !illustrative && support.missing.length > 0 && (
+        <div className="local-warning partial-data-banner" role="status">
+          {t(
+            "Strategies are available with partial data. Unavailable soil or vegetation inputs are excluded; their checks remain unavailable. Water and nitrogen figures use crop and irrigation assumptions, not soil measurements.",
+            "الاستراتيجيات متاحة بالبيانات الموجودة. بيانات التربة أو الغطاء النباتي غير المتاحة مستبعدة، وفحوصها بتفضل غير متاحة. أرقام المياه والنيتروجين من افتراضات المحاصيل والري، مش قياسات التربة.",
           )}
         </div>
       )}
@@ -152,12 +152,14 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
                   ["Seifi", "Summer", "الصيفي"],
                   ["Nili", "Conditional Nili", "نيلي مشروط"],
                 ].map(([season, en, ar]) => {
-                  const c = show && s.crops.find((c) => c.season === season);
+                  const showCrops = show || (id === "baseline" && s);
+                  const c =
+                    showCrops && s.crops.find((c) => c.season === season);
                   return (
                     <li
                       key={season}
                       className={
-                        season === "Nili" && show && !c
+                        season === "Nili" && showCrops && !c
                           ? "no-extra-crop"
                           : undefined
                       }
@@ -169,11 +171,11 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
                           ? lang === "ar"
                             ? c.nameAr
                             : c.nameEn
-                          : show
+                          : showCrops
                             ? t("No additional crop", "بدون محصول إضافي")
                             : t(
-                                "Awaiting location data",
-                                "في انتظار بيانات الموقع",
+                                "Awaiting climate data",
+                                "في انتظار بيانات المناخ",
                               )}
                       </strong>
                     </li>

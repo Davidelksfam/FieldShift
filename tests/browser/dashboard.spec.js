@@ -238,10 +238,10 @@ test("custom map location failure hides numeric results until an illustrative co
     "Illustrative demo fixture",
   );
   await expect(page.getByTestId("source-soil")).toContainText(
-    "Illustrative demo fixture",
+    "Unavailable · omitted from comparison",
   );
   await expect(page.getByTestId("source-ndvi")).toContainText(
-    "Illustrative demo fixture",
+    "Unavailable · omitted from comparison",
   );
   expect(
     urls.some(
@@ -264,13 +264,11 @@ test("custom map location failure hides numeric results until an illustrative co
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
   await page.getByTestId("quick-delta_kafr_el_sheikh").click();
   await waitSources(page);
-  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("—");
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
   await expect(page.getByTestId("source-soil")).toContainText(
-    "Illustrative demo fixture",
+    "Unavailable · omitted from comparison",
   );
-  await page
-    .getByRole("button", { name: "Show illustrative comparison", exact: true })
-    .click();
+  await expect(page.locator(".partial-data-banner")).toBeVisible();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813"); // Irrigation is preserved.
   await page.getByTestId("quick-west_delta_nubariya").click();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
@@ -395,7 +393,190 @@ test("rapid map changes discard old source responses; stopping a retry retains s
   await expect(page.getByTestId("source-climate")).toContainText(
     "Retrieved source data",
   );
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
+});
+
+test("the reported coordinates show all three strategies when SoilGrids is incomplete, without using synthetic soil", async ({
+  page,
+}) => {
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await page.route(/^https:\/\//, (route) => {
+    if (firstParty(route)) return route.continue();
+    const url = route.request().url(),
+      payload = sourcePayload(url);
+    if (url.includes("pixelgust")) return route.abort();
+    if (url.includes("rest.isric"))
+      return route.fulfill({ json: { properties: { layers: [] } } });
+    return payload ? route.fulfill({ json: payload }) : route.abort();
+  });
+  await page.goto("/");
+  await english(page);
+  await coordinates(page, 29.8682, 31.3133);
+  await waitSources(page);
+  await expect(page.getByTestId("source-soil")).toContainText(
+    "Unavailable · omitted from comparison",
+  );
+  await expect(page.locator(".partial-data-banner")).toBeVisible();
+  await expect(page.locator(".illustrative-banner")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", {
+      name: "Show illustrative comparison",
+      exact: true,
+    }),
+  ).toHaveCount(0);
+  for (const id of ["baseline", "water", "soil"]) {
+    await expect(page.getByTestId(`farmer-water-${id}`)).not.toHaveText("—");
+    await expect(page.getByTestId(`farmer-strategy-${id}`)).not.toContainText(
+      "Awaiting",
+    );
+  }
+  await expect(page.getByTestId("farmer-strategy-baseline")).toContainText(
+    "Wheat",
+  );
+  await expert(page);
+  await expect(page.locator(".diagnostic-2 .metric")).toContainText("—");
+  await expect(page.locator(".diagnostic-2")).toContainText("pH —");
+  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
+  await page.getByRole("button", { name: "العربية", exact: true }).click();
+  await page.setViewportSize({ width: 390, height: 900 });
+  await expect(page.locator(".partial-data-banner")).toContainText(
+    "الاستراتيجيات متاحة",
+  );
+  await expect(page.getByTestId("farmer-strategy-baseline")).toContainText(
+    "قمح",
+  );
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  expect(errors).toEqual([]);
+});
+
+test("climate alone opens comparison immediately; optional soil and vegetation failures do not remove it", async ({
+  page,
+}) => {
+  await page.route(/^https:\/\//, async (route) => {
+    if (firstParty(route)) return route.continue();
+    const url = route.request().url(),
+      payload = sourcePayload(url);
+    if (url.includes("power.larc")) return route.fulfill({ json: payload });
+    if (url.includes("pixelgust"))
+      return route.fulfill({ status: 404, body: "Unavailable" });
+    if (url.includes("rest.isric")) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      return route
+        .fulfill({ status: 404, body: "Unavailable" })
+        .catch(() => {});
+    }
+    return route.abort();
+  });
+  await page.goto("/");
+  await english(page);
+  await coordinates(page, 29.8682, 31.3133);
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
+  await expect(
+    page.getByRole("button", { name: "Stop fetching", exact: true }),
+  ).toBeVisible();
+  await waitSources(page);
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
+  await expect(page.getByTestId("source-ndvi")).toContainText(
+    "Unavailable · omitted",
+  );
+  await expert(page);
+  await expect(page.locator(".diagnostic-1 .metric")).toContainText("—");
+  await expect(page.locator(".diagnostic-2 .metric")).toContainText("—");
+});
+
+test("optional-source recovery removes the partial-data warning without losing farmer inputs", async ({
+  page,
+}) => {
+  await page.route(/^https:\/\//, async (route) => {
+    if (firstParty(route)) return route.continue();
+    const url = route.request().url(),
+      payload = sourcePayload(url);
+    if (!payload) return route.abort();
+    const p = new URL(url).searchParams;
+    if (url.includes("pixelgust") && Number(p.get("lat")) === 29.8682)
+      await new Promise((resolve) => setTimeout(resolve, 1800));
+    return route.fulfill({ json: payload }).catch(() => {});
+  });
+  await page.goto("/");
+  await english(page);
+  await coordinates(page, 29.8682, 31.3133);
+  await expect(page.locator(".partial-data-banner")).toBeVisible();
+  await page
+    .getByLabel("Winter crop", { exact: true })
+    .selectOption("faba_bean");
+  await expect(page.getByTestId("farmer-strategy-baseline")).toContainText(
+    "Faba Bean",
+  );
+  await waitSources(page);
+  await expect(page.locator(".partial-data-banner")).toHaveCount(0);
+  await expect(page.getByLabel("Winter crop", { exact: true })).toHaveValue(
+    "faba_bean",
+  );
+  await expect(page.getByTestId("farmer-water-baseline")).not.toHaveText("—");
+});
+
+test("missing climate still gates heat-dependent strategies and preserves the farmer's selected crops", async ({
+  page,
+}) => {
+  await page.route(/^https:\/\//, (route) => {
+    if (firstParty(route)) return route.continue();
+    const url = route.request().url(),
+      payload = sourcePayload(url);
+    if (url.includes("power.larc"))
+      return route.fulfill({ status: 404, body: "Unavailable" });
+    return payload ? route.fulfill({ json: payload }) : route.abort();
+  });
+  await page.goto("/");
+  await english(page);
+  await coordinates(page, 29.8682, 31.3133);
+  await waitSources(page);
+  await expect(page.getByTestId("farmer-strategy-baseline")).toContainText(
+    "Wheat",
+  );
+  await expect(page.getByTestId("farmer-strategy-baseline")).toContainText(
+    "Maize",
+  );
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("—");
+  await expect(page.locator(".comparison-unavailable")).toContainText(
+    "Climate",
+  );
+  await page
+    .getByRole("button", { name: "Show illustrative comparison", exact: true })
+    .click();
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
+  await expect(page.locator(".illustrative-banner")).toBeVisible();
+});
+
+test("online reload gets the current application even when the offline cache contains stale HTML", async ({
+  page,
+}) => {
+  await blockRemote(page);
+  await page.goto("/");
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  await page.waitForFunction(() => navigator.serviceWorker.controller != null);
+  await page.evaluate(async () => {
+    for (const key of await caches.keys()) {
+      if (!key.startsWith("fieldshift-shell-")) continue;
+      const cache = await caches.open(key);
+      await cache.put(
+        "/index.html",
+        new Response("<html><body>STALE_RELEASE</body></html>", {
+          headers: { "content-type": "text/html" },
+        }),
+      );
+    }
+  });
+  await page.reload();
+  await english(page);
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
+  await expect(page.locator("body")).not.toContainText("STALE_RELEASE");
 });
 
 test("expert inspection, custom weights, measured ECe and all five pipeline stages retain shared state", async ({
