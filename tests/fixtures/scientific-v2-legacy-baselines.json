@@ -145,7 +145,7 @@
           }
         }
       },
-      "evaluationSha256": "54111251901c31bdc17af2c69f63ce1547694db822e80257aba813db7b164e6b",
+      "evaluationSha256": "c6932e59322b3dc1ed47c9406429713764574e22d3b90d564dd0306c1bb9e8f1",
       "expected": {
         "rankedStrategyIds": [
           "water",
@@ -419,7 +419,7 @@
           }
         }
       },
-      "evaluationSha256": "4655edde5a36524373bb726861e0fb5662308eabb6a0fb93fe132edd3c1a9410",
+      "evaluationSha256": "4851c24cc48f38024f6fb1f3ddfb85d567c96e82d757c1a7a70a6337479b38ee",
       "expected": {
         "rankedStrategyIds": [
           "soil",
@@ -693,7 +693,7 @@
           }
         }
       },
-      "evaluationSha256": "179ecd17a29199d2c919a96a15a5bb1dc672fea0839f4df9932541ea880e99ef",
+      "evaluationSha256": "0bbafd7742ecbaccc9ae00ba0c1caeee6e0f0f29d28b5981e8f815350eece22d",
       "expected": {
         "rankedStrategyIds": [
           "water",
@@ -2371,6 +2371,12 @@
           }
         ]
       }
+    }
+  ],
+  "amendments": [
+    {
+      "date": "2026-11-14",
+      "reason": "User removed canal-position screening bonus. Verified against original engine: only Fayoum tail-end salinityRisk decreases by 12; all other full outputs unchanged. Historical inputs retained to verify backwards compatibility."
     }
   ]
 }

@@ -172,3 +172,32 @@ test("FAO-56 matches independent pyet golden samples and rejects invalid weather
     );
   }
 });
+
+test("legacy canal position inputs cannot influence diagnostics or recommendations", () => {
+  const expectedRisk = Math.round(
+    Math.min(
+      100,
+      Math.max(
+        0,
+        15 +
+          Math.max(0, data.soil.phh2o - 8) * 35 +
+          (data.soil.clay > 40 ? 15 : 0) +
+          18,
+      ),
+    ),
+  );
+  const withoutCanal = { ...inputs, salinityLevel: "moderate" };
+  delete withoutCanal.canalPosition;
+  const expected = evaluateFieldAndRotations(data, withoutCanal, catalog);
+  assert.equal(expected.diagnostics.salinityRisk, expectedRisk);
+  for (const canalPosition of ["head", "middle", "tail"]) {
+    assert.deepEqual(
+      evaluateFieldAndRotations(
+        data,
+        { ...withoutCanal, canalPosition },
+        catalog,
+      ),
+      expected,
+    );
+  }
+});

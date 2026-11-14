@@ -8,7 +8,6 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
   const {
     landType,
     irrigationType,
-    canalPosition,
     salinityLevel,
     currentWinterId,
     currentSummerId,

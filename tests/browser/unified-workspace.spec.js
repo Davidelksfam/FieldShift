@@ -18,7 +18,6 @@ test("all field factors are discoverable without disclosures and illustrated cho
     "Summer crop",
     "Irrigation system",
     "Land type",
-    "Canal position",
     "Reported salinity",
     "Main goal",
   ]) {
@@ -26,6 +25,9 @@ test("all field factors are discoverable without disclosures and illustrated cho
     await expect(group).toBeVisible();
     expect(await group.evaluate((el) => el.closest("details"))).toBeNull();
   }
+  await expect(
+    page.getByRole("radiogroup", { name: "Canal position", exact: true }),
+  ).toHaveCount(0);
   for (const label of [
     "Do you keep livestock? Include forage in scoring.",
     "Require Nili cover in alternatives",
@@ -48,7 +50,6 @@ test("all field factors are discoverable without disclosures and illustrated cho
   );
   await page.getByTestId("field-landType-new_sandy").locator("..").click();
   await expect(page.getByTestId("field-landType-new_sandy")).toBeChecked();
-  await page.getByTestId("field-canalPosition-head").locator("..").click();
   await page.getByTestId("field-salinityLevel-high").locator("..").click();
   await page
     .getByLabel("Do you keep livestock? Include forage in scoring.", {
