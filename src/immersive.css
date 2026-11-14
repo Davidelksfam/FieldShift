@@ -39,6 +39,31 @@
   isolation: isolate;
   background: var(--fs-earth-space);
 }
+.project-mode .map-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #070b0edb 0,
+    #070b0eb8 230px,
+    #070b0e00 380px
+  );
+}
+.immersive-map
+  :is(
+    .earth-tools,
+    .earth-caption,
+    .earth-landmarks,
+    .earth-guides,
+    .earth-note,
+    .earth-hint,
+    .earth-imagery-status
+  ) {
+  z-index: 3;
+}
 .field-location.immersive-map {
   display: block;
   padding: 0;
@@ -117,11 +142,27 @@
 .immersive-map .earth-note {
   bottom: 9px;
   color: #d2dfd7;
+  background: #070b0edb;
+  border-radius: 8px;
+  padding: 3px 8px;
+  inset-inline: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 32px);
 }
 .immersive-map .earth-hint {
   inset-inline: 24px;
   bottom: 246px;
   color: #d2dfd7;
+  background: #070b0edb;
+  border-radius: 20px;
+  padding: 5px 10px;
+  inset-inline: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 48px);
 }
 .immersive-map .earth-imagery-status {
   bottom: 268px;
