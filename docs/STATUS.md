@@ -55,3 +55,15 @@ User correction replaces the 3D Earth with the direct field map and explicit tou
 ## Unified illustrated farmer workspace
 
 User-requested full farmer-form redesign replaces emoji crop selects with botanical radio cards and adds irrigation/soil/canal/salinity illustrations. Farm factors and optional area/lab measurements are visible. A sticky live comparison summary provides immediate feedback. A same-page advanced analytics disclosure replaces separate farmer/Expert workspaces; inputs, source acquisition and the map remain in place. See [the interaction/design contract](product/UNIFIED_FARMER_WORKSPACE.md). Legacy calculations and Scientific V2 eligibility are unchanged.
+
+## Selective Earth and dark theme integration — issue #41
+
+The user's later request adds optional dark styling, the uploaded branch's textured Earth and startup interaction, and a reserved Plain Earth view. Main's unified farmer layout and field map remain the default. [Decision 0004](decisions/0004-selective-earth-dark-theme.md) records the limited design exception and data integration contract. No backend/authentication, new source pipeline, scientific model changes or deployment is included.
+
+### Deployed-preview refinement: Egypt-first 3D selection
+
+The later user review makes textured 3D Earth the only normal location view. Startup automatically focuses Egypt, named preset landmarks support pointer/keyboard selection, and close zoom remains in 3D. The flat map is available only after rendering failure. See the refinement in [decision 0004](decisions/0004-selective-earth-dark-theme.md). Existing point validation, GPS, source acquisition and farmer-state handling remain authoritative.
+
+### Progressive 3D imagery and region zoom
+
+The user-reported close-up pixelation is addressed with progressively detailed Esri satellite tiles on the 3D globe. Valid point/preset/GPS/coordinate choices zoom to the selected region, and View Egypt returns to the overview. Field-scale navigation changes altitude smoothly, with explicit image-source attribution and offline/failure fallback. See the latest refinement in [decision 0004](decisions/0004-selective-earth-dark-theme.md). This affects orientation imagery only; scientific source resolution and calculations are unchanged.

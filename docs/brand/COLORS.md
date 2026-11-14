@@ -42,3 +42,7 @@ Use [tokens.css](tokens.css) in the future application styling. UI primitives sh
 ## Egypt blueprint threshold marker
 
 The 2026-11-13 implementation blueprint explicitly requests a red NDVI threshold. `--fs-threshold: #B42318` supplies this semantic chart line; it is not an alternative brand palette or a claim of crop failure. See [decision 0003](../decisions/0003-client-first-egypt-dashboard.md).
+
+## Optional dark mode
+
+[Decision 0004](../decisions/0004-selective-earth-dark-theme.md) authorizes charcoal/sage overrides under `:root[data-theme="dark"]` in the canonical tokens. Canvas/surface are `#070B0E` / `#0D1318`; primary/supporting ink are `#F2F7F4` / `#BDCCC4`; sage accent is `#A3E4B7`. Filled actions retain dark green with white labels. Data blue, caution and threshold tokens receive readable lighter counterparts. Light is the default and the header toggle persists only the user's appearance preference. Earth-stage tokens remain suitable for text over dark orientation imagery in either theme.

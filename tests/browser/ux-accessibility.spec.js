@@ -9,16 +9,17 @@ async function start(page) {
   await page.goto("/");
   await page.getByRole("button", { name: "English", exact: true }).click();
 }
-test("unified workspace retains 44px touch targets including mobile comparison and map disclosures", async ({
+test("unified workspace retains 44px touch targets including mobile comparison and 3D navigation", async ({
   page,
 }) => {
   for (const width of [390, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await start(page);
     await page.getByText("Enter coordinates instead", { exact: true }).click();
+    await expect(page.locator(".earth-tools button").first()).toBeVisible();
     for (const locator of [
       page.getByRole("button", { name: "View plans", exact: true }),
-      page.locator(".map-layers > summary"),
+      page.locator(".earth-tools button").first(),
       page.getByRole("button", { name: "Use this location", exact: true }),
       page.getByLabel("Latitude", { exact: true }),
       page.getByLabel("Longitude", { exact: true }),
@@ -30,7 +31,7 @@ test("unified workspace retains 44px touch targets including mobile comparison a
     await page.getByRole("button", { name: "العربية", exact: true }).click();
     for (const locator of [
       page.getByRole("button", { name: "شوف الخطط", exact: true }),
-      page.locator(".map-layers > summary"),
+      page.locator(".earth-tools button").first(),
       page.getByRole("button", { name: "استخدم الموقع ده", exact: true }),
     ])
       expect((await locator.boundingBox()).height).toBeGreaterThanOrEqual(44);

@@ -25,12 +25,12 @@ Default user-facing language is **Arabic (Egyptian-friendly Modern Standard Arab
 
 ## Logo
 
-The canonical compact mark is [field-shift-mark.svg](../../assets/brand/field-shift-mark.svg). It is a green circle with white field contours and a pale sprout, extracted from the approved light dashboard concept.
+The website logo is the [original transparent PNG](../../src/assets/brand/site-logo.png) selected by the user from `sky-space-main.zip` on 2026-11-14. It depicts pyramids, farmland, circuitry and a satellite. [Decision 0005](../decisions/0005-supplied-website-logo.md) supersedes the previous prototype mark for the website header and browser icon. The site remains named Field Shift.
 
 - Keep proportions and color relationships intact. Do not redraw as a satellite, globe, rocket, or NASA insignia.
 - On light surfaces, pair with the dark wordmark and green `shift.` accent. Preserve a minimum clear area equal to roughly one-quarter of mark width.
 - The mark may stand alone in compact/mobile layouts; provide accessible text for interactive use.
-- SVG is the source asset; do not distribute blurry screenshots as the logo.
+- Use the supplied original transparent PNG without redrawing, stretching or recoloring it. Vite gives it a content-hashed URL for cache updates and the offline shell.
 - Do not create a new official logo variant without design review.
 
 ## Typography

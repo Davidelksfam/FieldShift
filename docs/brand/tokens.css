@@ -2,36 +2,66 @@
    User-approved visual direction 2026-11-13.
    Do not edit or fork palette without design review; no app is scaffolded here. */
 :root {
-  --fs-brand-primary: #109B60;
-  --fs-brand-hover: #08794A;
-  --fs-brand-soft: #E9F8F0;
-  --fs-brand-pale: #F3FBF6;
-  --fs-action-bg: #08794A;
-  --fs-action-hover: #06673E;
+  --fs-brand-primary: #109b60;
+  --fs-brand-hover: #08794a;
+  --fs-brand-soft: #e9f8f0;
+  --fs-brand-pale: #f3fbf6;
+  --fs-action-bg: #08794a;
+  --fs-action-ink: #08794a;
+  --fs-action-text: #ffffff;
+  --fs-action-hover: #06673e;
 
-  --fs-text-primary: #1A2D29;
-  --fs-text-secondary: #4C6257;
-  --fs-text-muted: #74827C;
-  --fs-bg-canvas: #F7F9F8;
-  --fs-bg-surface: #FFFFFF;
-  --fs-border: #E6ECE9;
-  --fs-data-blue: #3289CE;
-  --fs-data-blue-soft: #EDF6FC;
-  --fs-caution: #D79A35;
-  --fs-caution-soft: #FFF7E9;
+  --fs-text-primary: #1a2d29;
+  --fs-text-secondary: #4c6257;
+  --fs-text-muted: #74827c;
+  --fs-bg-canvas: #f7f9f8;
+  --fs-bg-surface: #ffffff;
+  --fs-border: #e6ece9;
+  --fs-data-blue: #3289ce;
+  --fs-data-blue-soft: #edf6fc;
+  --fs-caution: #d79a35;
+  --fs-caution-soft: #fff7e9;
   /* User blueprint requests a red NDVI threshold; semantic chart marker only. */
-  --fs-threshold: #B42318;
-  --fs-focus: #9AD8BF;
+  --fs-threshold: #b42318;
+  --fs-focus: #9ad8bf;
 
   --fs-font-ar: "IBM Plex Sans Arabic", Tahoma, Arial, sans-serif;
   --fs-font-en: "DM Sans", Arial, sans-serif;
   --fs-radius-sm: 9px;
   --fs-radius-card: 16px;
-  --fs-shadow-card: 0 7px 26px rgba(33,65,52,.035);
+  --fs-shadow-card: 0 7px 26px rgba(33, 65, 52, 0.035);
   --fs-space-1: 4px;
   --fs-space-2: 8px;
   --fs-space-3: 12px;
   --fs-space-4: 16px;
   --fs-space-6: 24px;
   --fs-space-8: 32px;
+  --fs-earth-space: #070b0e;
+  --fs-earth-ink: #f2f7f4;
+  --fs-earth-sage: #a3e4b7;
+  --fs-earth-marker: #ffd36e;
+}
+
+/* Optional dark palette authorized 2026-11-14; see decision 0004. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --fs-action-ink: #a3e4b7;
+  --fs-brand-primary: #a3e4b7;
+  --fs-brand-hover: #a3e4b7;
+  --fs-brand-soft: #1b332a;
+  --fs-brand-pale: #14251f;
+  --fs-action-bg: #08794a;
+  --fs-action-hover: #06673e;
+  --fs-text-primary: #f2f7f4;
+  --fs-text-secondary: #bdccc4;
+  --fs-text-muted: #9daea4;
+  --fs-bg-canvas: #070b0e;
+  --fs-bg-surface: #0d1318;
+  --fs-border: #34433e;
+  --fs-data-blue: #7dc5f3;
+  --fs-data-blue-soft: #142b3d;
+  --fs-caution: #f1c46f;
+  --fs-caution-soft: #33291a;
+  --fs-threshold: #ff9188;
+  --fs-focus: #a3e4b7;
 }

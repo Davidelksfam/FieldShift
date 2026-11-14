@@ -47,6 +47,23 @@ const initialInputs = {
   weights: { ...GOALS.water.weights },
 };
 export default function App() {
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem("fieldshift-theme") === "dark"
+        ? "dark"
+        : "light";
+    } catch {
+      return "light";
+    }
+  });
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem("fieldshift-theme", theme);
+    } catch {
+      /* Storage is optional. */
+    }
+  }, [theme]);
   const [lang, setLang] = useState("ar"),
     [analyticsOpen, setAnalyticsOpen] = useState(false),
     [evidenceOpen, setEvidenceOpen] = useState(false);
@@ -253,6 +270,10 @@ export default function App() {
         {t("Skip to comparison", "انتقل إلى المقارنة")}
       </a>
       <HeaderBar
+        theme={theme}
+        onThemeToggle={() =>
+          setTheme((value) => (value === "dark" ? "light" : "dark"))
+        }
         lang={lang}
         onLanguageChange={setLang}
         analyticsOpen={analyticsOpen}

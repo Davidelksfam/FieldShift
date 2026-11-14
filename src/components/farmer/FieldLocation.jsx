@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { MapPin, LocateFixed, Check } from "lucide-react";
 import { text } from "../../i18n";
 import FarmMap from "../FarmMap";
+const EarthGlobe = lazy(() => import("./EarthGlobe"));
 export default function FieldLocation({
   lang,
   expert = false,
@@ -12,11 +13,13 @@ export default function FieldLocation({
   onLocationChange,
 }) {
   const [locating, setLocating] = useState(false);
+  const [fallbackMap, setFallbackMap] = useState(false);
   const [geoError, setGeoError] = useState("");
   const geoRequest = useRef(0);
   useEffect(() => {
     geoRequest.current++;
     setLocating(false);
+    setGeoError("");
     return () => {
       geoRequest.current++;
     };
@@ -61,13 +64,31 @@ export default function FieldLocation({
       className="field-location"
       aria-label={t("Select your field", "اختار أرضك")}
     >
-      <FarmMap
-        lang={lang}
-        lat={location.lat}
-        lon={location.lon}
-        compact={!expert}
-        onLocationChange={onLocationChange}
-      />
+      {fallbackMap ? (
+        <FarmMap
+          lang={lang}
+          lat={location.lat}
+          lon={location.lon}
+          compact={!expert}
+          onLocationChange={onLocationChange}
+        />
+      ) : (
+        <Suspense
+          fallback={
+            <p className="earth-loading" role="status">
+              {t("Loading Earth…", "جارٍ تحميل الأرض…")}
+            </p>
+          }
+        >
+          <EarthGlobe
+            lang={lang}
+            location={location}
+            presets={presets}
+            onLocationChange={onLocationChange}
+            onMap={() => setFallbackMap(true)}
+          />
+        </Suspense>
+      )}
       <div className="quick-locations">
         {Object.values(presets).map((p) => (
           <button
