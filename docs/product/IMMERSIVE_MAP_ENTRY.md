@@ -44,3 +44,8 @@ do not use that fixture. Root, Pages subpath and offline checks remain required.
 This changes presentation, not crop formulas, source resolution, provenance,
 scientific eligibility or external provider availability. Public deployment and
 verification evidence is recorded in the release PR.
+
+The subsequent user revision removes the visible map heading, limits the map's
+shade to the navbar area, and places the location dock vertically at the side.
+Crop inputs use separate season panels with current-selection summaries and
+compact radio choices. Existing location and calculation contracts still apply.
