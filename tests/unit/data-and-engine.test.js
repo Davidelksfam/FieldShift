@@ -225,7 +225,7 @@ test("all network failures return nearest-region fixtures, soil primary falls th
   assert.equal(result.sources.soil.regionalPreset, "west_delta_nubariya");
   assert.equal(result.soil.sand, 74);
   assert.ok(urls.some((url) => url.includes("rest.isric.org")));
-  assert.equal(urls.filter((url) => url.includes("modis.ornl")).length, 6);
+  assert.equal(urls.filter((url) => url.includes("modis.ornl")).length, 18);
 });
 test("exact coordinate cache survives unavailable storage and labels cached observations", async (t) => {
   const memory = new Map();

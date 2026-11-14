@@ -47,3 +47,7 @@ Codex integrated calendars, explicit Nili modes, crop-only ETc aggregation, qual
 ## 2026-11-14 — Scientific V2 PR 6 final review
 
 Codex performed agronomy-oriented software review and independent agent logic checks, fixed identified provenance/units/timing/comparison/trace defects, and documented executed tests versus unresolved scientific evidence. Added release-invariant, custom-point isolation and offline inspector regressions plus CI checks. No qualified field-validation, universal accuracy, measured savings or agronomic optimum is claimed; V2 remains experimental.
+
+## 2026-11-14 — Automatic location-data recovery (issue #34)
+
+Codex replaced the short initial/manual recovery split with automatic transient-request retries under a shared 20-second deadline, prompt backup soil acquisition, incremental source caching/publication and cancellation that retains completed results. Added controlled HTTP and browser regressions for successful recovery, stalled providers, rate limits, permanent failures and cancellation; clarified Arabic/English source-state messaging and updated the acquisition contracts. The legacy engine, scientific release gates and illustrative-data opt-in remain in place. Fixture tests establish recovery behavior, not universal provider availability or agronomic validity.

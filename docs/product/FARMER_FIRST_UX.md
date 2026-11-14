@@ -37,7 +37,9 @@ The compare button scrolls/focuses the cards. Inputs update quantities immediate
 
 ## Map requests, missing data and explicit examples
 
-`fetchUnifiedFarmData` requests the chosen point's 2025 POWER, soil and QA-screened MODIS data. The existing initial 4.5-second shared deadline and independent source fallback remain. Retry explicitly allows a 20-second shared deadline and can be stopped. Completed/failed source jobs report progress; old-location results are discarded on selection changes. A request that completes after cancellation/deadline cannot promote fallback into observed data. The deadline explanation reflects the actual configured budget.
+`fetchUnifiedFarmData` automatically requests the chosen point's 2025 POWER, soil and QA-screened MODIS data within a shared 20-second deadline. Network failures, timeouts and HTTP 408/429/5xx retry up to three attempts per request with exponential backoff and respect for Retry-After. A first request is bounded at 4.5 seconds; retries can use the remaining overall budget so consistently slow providers have more time. The primary soil provider gets at most 2.5 seconds before the ISRIC backup is tried. Successful sources and satellite batches are not repeated by automatic recovery. Manual retry starts another acquisition window and remains optional.
+
+Completed source jobs immediately publish immutable data snapshots and cache their successes; stopping a request keeps already retrieved results. Progress distinguishes automatic retries from final unavailability. Old-location results are discarded on selection changes. Cancellation bounds requests and body parsing even if a client ignores AbortSignal. A response completing after cancellation/deadline cannot promote fallback into observed data. The deadline explanation reflects the actual configured budget.
 
 An exact benchmark can use its audited historical snapshot offline. A custom point cannot inherit that snapshot merely because it is nearby. Cached observations retain their source status and age; synthetic regional fallback remains synthetic.
 

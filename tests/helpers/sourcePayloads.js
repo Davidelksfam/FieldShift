@@ -50,6 +50,24 @@ export function sourcePayload(url, { tmax = 43 } = {}) {
         phh2o: "pH",
       },
     };
+  if (u.hostname === "rest.isric.org")
+    return {
+      properties: {
+        layers: Object.entries({
+          clay: 10,
+          sand: 10,
+          soc: 10,
+          nitrogen: 100,
+          phh2o: 10,
+        }).map(([name, scale]) => ({
+          name,
+          depths: ["0-5cm", "5-15cm"].map((label) => ({
+            label,
+            values: { mean: sample.soil[name] * scale },
+          })),
+        })),
+      },
+    };
   if (u.hostname === "modis.ornl.gov") {
     const start = Number(u.searchParams.get("startDate").slice(5)),
       end = Number(u.searchParams.get("endDate").slice(5)),

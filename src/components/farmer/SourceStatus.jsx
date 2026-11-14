@@ -27,13 +27,13 @@ export default function SourceStatus({
           <p role="status" aria-live="polite">
             {loading
               ? t(
-                  "Requesting historical sources for the selected coordinates…",
-                  "بنطلب المصادر التاريخية للإحداثيات المختارة…",
+                  "Fetching data automatically. Slow or interrupted sources are retried while successful results are kept…",
+                  "بنجيب البيانات تلقائياً وبنحاول تاني مع المصادر البطيئة أو المتقطعة، مع الاحتفاظ بالنتائج اللي وصلت…",
                 )
               : support.illustrative
                 ? t(
-                    "Some selected-location data is unavailable. Illustrative fallback is identified below.",
-                    "بعض بيانات الموقع غير متاحة. البيانات التوضيحية البديلة موضّحة تحت.",
+                    "Some selected-location data remains unavailable after automatic retrieval. Illustrative fallback is identified below.",
+                    "بعض بيانات الموقع لسه غير متاحة بعد المحاولات التلقائية. البيانات التوضيحية البديلة موضّحة تحت.",
                   )
                 : t(
                     "Historical source data is available. Regional observations are not a field diagnosis.",
@@ -64,7 +64,7 @@ export default function SourceStatus({
           const event = progress[key],
             source =
               loading && event?.source ? event.source : data.sources[key];
-          const pending = loading && !event;
+          const pending = loading && (!event || event.status === "retrying");
           return (
             <article
               className={`location-source ${!pending && source.kind === "synthetic" ? "source-illustrative" : ""}`}
@@ -76,7 +76,9 @@ export default function SourceStatus({
                 {pending ? (
                   <>
                     <LoaderCircle size={15} className="spin" />
-                    {t("Requesting…", "جارٍ الطلب…")}
+                    {event?.status === "retrying"
+                      ? t("Retrying automatically…", "بنحاول تاني تلقائياً…")
+                      : t("Requesting…", "جارٍ الطلب…")}
                   </>
                 ) : (
                   sourceLabel(source, lang)
