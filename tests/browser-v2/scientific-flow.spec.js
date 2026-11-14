@@ -158,3 +158,49 @@ test("artificial calendar JSON yields a conditional numerical comparison and vis
   ).toContainText("55.8 mm");
   await expect(page.getByTestId("water-baseline")).toContainText("10,813");
 });
+
+test("experimental inspection reloads offline and does not transfer centroid weather to a custom field", async ({
+  page,
+  context,
+}) => {
+  await page.route(/^https:\/\//, (route) => route.abort());
+  await page.goto("/");
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  await context.setOffline(true);
+  await page.reload();
+  await page.getByRole("button", { name: "English", exact: true }).click();
+  await page.getByRole("button", { name: "Expert mode", exact: true }).click();
+  await page
+    .getByLabel("Inspection engine", { exact: true })
+    .selectOption("scientific-v2");
+  const output = page.getByLabel("Scientific V2 JSON output", { exact: true });
+  expect(
+    JSON.parse(await output.innerText()).recommendation.selectedId,
+  ).toBeNull();
+  const disclosure = page.getByText("Enter coordinates instead", {
+    exact: true,
+  });
+  if (!(await page.getByLabel("Latitude", { exact: true }).isVisible()))
+    await disclosure.click();
+  await page.getByLabel("Latitude", { exact: true }).fill("30.8");
+  await page.getByLabel("Longitude", { exact: true }).fill("31.2");
+  await page
+    .getByRole("button", { name: "Use this location", exact: true })
+    .click();
+  await expect(
+    page.getByRole("button", { name: "Retry sources", exact: true }),
+  ).toBeVisible();
+  const analysis = JSON.parse(await output.innerText());
+  expect(analysis.inputAudit.location.lat).toBe(30.8);
+  expect(analysis.inputAudit.location.lon).toBe(31.2);
+  expect(analysis.inputAudit.weatherDrivers).toBeNull();
+  expect(analysis.recommendation.selectedId).toBeNull();
+  expect(analysis.alternatives.every((a) => a.water.etcMm.value === null)).toBe(
+    true,
+  );
+  await page.getByRole("button", { name: "Farmer mode", exact: true }).click();
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("—");
+});
