@@ -230,3 +230,16 @@ html[data-theme="dark"] .leaflet-control-attribution a {
 .earth-fallback {
   z-index: 2;
 }
+.earth-imagery-status {
+  position: absolute;
+  bottom: 43px;
+  inset-inline: 8px;
+  text-align: center;
+  font-size: 10px;
+  pointer-events: none;
+  background: var(--fs-earth-space);
+  border-radius: 5px;
+}
+.earth-note {
+  font-size: 9px;
+}

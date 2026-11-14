@@ -37,7 +37,7 @@ test("pinch zoom in and out does not change the selected field", async ({
     });
   }
   const zoom = page.locator(".earth-stage");
-  await expect(zoom).toHaveAttribute("data-camera-distance", "1.350");
+  await expect(zoom).toHaveAttribute("data-camera-distance", "1.3500");
 
   await pinch(25, 90);
   await expect
@@ -68,7 +68,7 @@ test("wheel zoom and keyboard zoom leave the field selection unchanged", async (
   await page.getByRole("button", { name: "English", exact: true }).click();
   const map = page.locator(".earth-render canvas"),
     zoom = page.locator(".earth-stage");
-  await expect(zoom).toHaveAttribute("data-camera-distance", "1.350");
+  await expect(zoom).toHaveAttribute("data-camera-distance", "1.3500");
   await map.hover();
   await page.mouse.wheel(0, -250);
   await expect

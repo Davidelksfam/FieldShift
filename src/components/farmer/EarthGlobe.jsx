@@ -6,7 +6,8 @@ import topology from "../../assets/earth/earth-topology.png";
 import nightSky from "../../assets/earth/night-sky.png";
 
 const EGYPT = { lat: 27.2, lon: 30.5, distance: 1.35 };
-const MIN_DISTANCE = 1.025;
+const MIN_DISTANCE = 1.0001;
+const REGION_DISTANCE = 1.006;
 const landmarkNames = {
   fayoum_etsa: ["Fayoum", "الفيوم"],
   delta_kafr_el_sheikh: ["North Delta", "شمال الدلتا"],
@@ -40,6 +41,10 @@ export default function EarthGlobe({
   const [failed, setFailed] = useState(false),
     [ready, setReady] = useState(false);
   const [distance, setDistance] = useState(3.55);
+  const [imageryState, setImageryState] = useState({
+    state: "overview",
+    zoom: 0,
+  });
   const t = (en, ar) => text(lang, en, ar);
 
   useEffect(() => {
@@ -49,8 +54,9 @@ export default function EarthGlobe({
     Promise.all([
       import("three"),
       import("three/addons/controls/OrbitControls.js"),
+      import("./earthImagery"),
     ])
-      .then(([T, { OrbitControls }]) => {
+      .then(([T, { OrbitControls }, { EarthImagery }]) => {
         if (disposed) return;
         let renderer;
         try {
@@ -60,13 +66,14 @@ export default function EarthGlobe({
           return;
         }
         const container = host.current;
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
         renderer.domElement.tabIndex = 0;
         container.appendChild(renderer.domElement);
         const scene = new T.Scene(),
           camera = new T.PerspectiveCamera(40, 1, 0.005, 50);
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enablePan = false;
+        controls.enableZoom = false;
         controls.minDistance = MIN_DISTANCE;
         controls.maxDistance = 6;
         controls.enableDamping = false;
@@ -76,7 +83,8 @@ export default function EarthGlobe({
         const motion = matchMedia("(prefers-reduced-motion: reduce)");
         let frame = 0,
           animation = null,
-          imageReady = false;
+          imageReady = false,
+          imagery = null;
         const geometry = new T.SphereGeometry(1, 128, 96);
         const material = new T.MeshPhongMaterial({
           color: 0xffffff,
@@ -105,17 +113,27 @@ export default function EarthGlobe({
         const pins = Object.values(presets).map((preset) => {
           const pin = new T.Mesh(
             new T.SphereGeometry(0.003, 12, 12),
-            new T.MeshBasicMaterial({ color: 0xffd36e }),
+            new T.MeshBasicMaterial({
+              color: 0xffd36e,
+              depthTest: false,
+              depthWrite: false,
+            }),
           );
           pin.position.set(...earthPoint(preset.lat, preset.lon, 1.002));
           pin.userData.preset = preset;
+          pin.renderOrder = 1000;
           scene.add(pin);
           return pin;
         });
         const selected = new T.Mesh(
           new T.SphereGeometry(0.002, 12, 12),
-          new T.MeshBasicMaterial({ color: 0x78efbe }),
+          new T.MeshBasicMaterial({
+            color: 0x78efbe,
+            depthTest: false,
+            depthWrite: false,
+          }),
         );
+        selected.renderOrder = 1000;
         scene.add(selected);
 
         function placeLandmarks() {
@@ -152,6 +170,7 @@ export default function EarthGlobe({
                 .dot(camera.position.clone().sub(pin.position)) > 0 &&
               Math.abs(projected.x) < 1 &&
               Math.abs(projected.y) < 1;
+            pin.visible = visible;
             label.hidden = !visible;
             line.style.display = visible ? "" : "none";
             if (!visible) continue;
@@ -176,12 +195,12 @@ export default function EarthGlobe({
             ];
             const candidates = offsets.map(([dx, dy]) => ({
               x: Math.max(8, Math.min(width - w - 8, x + dx)),
-              y: Math.max(40, Math.min(height - h - 36, y + dy)),
+              y: Math.max(40, Math.min(height - h - 58, y + dy)),
               w,
               h,
             }));
             // Search remaining free space if a narrow view exhausts the preferred offsets.
-            for (let gy = 44; gy <= height - h - 36; gy += 12) {
+            for (let gy = 44; gy <= height - h - 58; gy += 12) {
               for (let gx = 8; gx <= width - w - 8; gx += 12) {
                 candidates.push({ x: gx, y: gy, w, h });
               }
@@ -205,33 +224,79 @@ export default function EarthGlobe({
             line.setAttribute("y2", Math.max(box.y, Math.min(box.y + h, y)));
           }
         }
+        const sizeMarker = (marker, lat, lon, baseRadius) => {
+          const surface = new T.Vector3(...earthPoint(lat, lon));
+          const radius = Math.max(
+            1e-8,
+            Math.min(
+              0.003,
+              (camera.position.distanceTo(surface) *
+                Math.tan((20 * Math.PI) / 180) *
+                6) /
+                Math.max(1, container.clientHeight),
+            ),
+          );
+          marker.scale.setScalar(radius / baseRadius);
+          marker.position.copy(surface).multiplyScalar(1 + radius * 0.5);
+          marker.visible =
+            surface.dot(camera.position.clone().sub(surface)) > 0;
+        };
         const render = () => {
           if (disposed) return;
+          for (const pin of pins)
+            sizeMarker(
+              pin,
+              pin.userData.preset.lat,
+              pin.userData.preset.lon,
+              0.003,
+            );
+          sizeMarker(
+            selected,
+            latest.current.location.lat,
+            latest.current.location.lon,
+            0.002,
+          );
+          selected.visible &&= !latest.current.location.presetId;
+          halo.visible = camera.position.length() > 1.12;
           renderer.render(scene, camera);
           placeLandmarks();
         };
         const updateView = () => {
           controls.rotateSpeed = Math.max(
-            0.003,
+            0.00003,
             Math.min(0.5, (camera.position.length() - 1) * 0.1),
           );
-          setDistance(Number(camera.position.length().toFixed(3)));
+          camera.near = Math.max(1e-7, (camera.position.length() - 1) * 0.001);
+          camera.far = Math.max(4, camera.position.length() + 2);
+          camera.updateProjectionMatrix();
+          setDistance(Number(camera.position.length().toFixed(6)));
           render();
+          imagery?.schedule();
         };
         const tick = (now) => {
           frame = 0;
           if (disposed || document.hidden) return;
           if (animation) {
             const p = Math.min(1, (now - animation.start) / 1600);
-            camera.position.lerpVectors(
-              animation.from,
-              animation.to,
-              1 - Math.pow(1 - p, 3),
-            );
+            const eased = 1 - Math.pow(1 - p, 3);
+            camera.position
+              .copy(animation.from)
+              .normalize()
+              .applyQuaternion(
+                new T.Quaternion().slerpQuaternions(
+                  new T.Quaternion(),
+                  animation.rotation,
+                  eased,
+                ),
+              )
+              .multiplyScalar(
+                animation.from.length() +
+                  (animation.to.length() - animation.from.length()) * eased,
+              );
             if (p === 1) animation = null;
           }
           controls.update();
-          render();
+          updateView();
           if (animation) requestFrame();
         };
         const requestFrame = () => {
@@ -246,6 +311,10 @@ export default function EarthGlobe({
           if (animate && !motion.matches) {
             animation = {
               from: camera.position.clone(),
+              rotation: new T.Quaternion().setFromUnitVectors(
+                camera.position.clone().normalize(),
+                to.clone().normalize(),
+              ),
               to,
               start: performance.now(),
             };
@@ -272,7 +341,7 @@ export default function EarthGlobe({
           cameraTo(
             lat,
             lon,
-            Math.min(camera.position.length(), EGYPT.distance),
+            Math.min(camera.position.length(), REGION_DISTANCE),
           );
         };
         const zoom = (factor) => {
@@ -280,7 +349,7 @@ export default function EarthGlobe({
           camera.position.setLength(
             Math.max(
               MIN_DISTANCE,
-              Math.min(6, camera.position.length() * factor),
+              Math.min(6, 1 + (camera.position.length() - 1) * factor),
             ),
           );
           controls.update();
@@ -293,6 +362,7 @@ export default function EarthGlobe({
           camera.updateProjectionMatrix();
           renderer.setSize(width, height);
           render();
+          imagery?.schedule();
         };
         // App applies RTL/LTR on <html>; reposition after that parent effect runs.
         const directionObserver = new MutationObserver(placeLandmarks);
@@ -314,6 +384,10 @@ export default function EarthGlobe({
               return;
             }
             tex.colorSpace = T.SRGBColorSpace;
+            tex.anisotropy = Math.min(
+              8,
+              renderer.capabilities.getMaxAnisotropy(),
+            );
             material.map = tex;
             material.needsUpdate = true;
             imageReady = true;
@@ -340,11 +414,20 @@ export default function EarthGlobe({
         });
         const ray = new T.Raycaster();
         const pointers = new Set();
+        const touchPoints = new Map();
+        let pinchDistance = null;
         const landmarkTouches = new Map();
         let down = null,
           gesture = false;
         const start = (e) => {
           pointers.add(e.pointerId);
+          if (e.pointerType === "touch")
+            touchPoints.set(e.pointerId, [e.clientX, e.clientY]);
+          if (touchPoints.size === 2) {
+            const [a, b] = [...touchPoints.values()];
+            pinchDistance = Math.hypot(a[0] - b[0], a[1] - b[1]);
+            controls.enableRotate = false;
+          }
           if (pointers.size > 1) gesture = true;
           if (pointers.size === 1) {
             gesture = false;
@@ -353,6 +436,11 @@ export default function EarthGlobe({
         };
         const pick = (e) => {
           pointers.delete(e.pointerId);
+          touchPoints.delete(e.pointerId);
+          if (touchPoints.size < 2) {
+            pinchDistance = null;
+            controls.enableRotate = true;
+          }
           const landmark = landmarkTouches.get(e.pointerId);
           landmarkTouches.delete(e.pointerId);
           if (
@@ -379,21 +467,56 @@ export default function EarthGlobe({
             ),
             camera,
           );
-          const hit = ray.intersectObjects([globe, ...pins])[0];
-          if (!hit) return;
-          if (hit.object.userData.preset) {
+          const hit = ray.intersectObjects(
+            pins.filter((pin) => pin.visible),
+          )[0];
+          const point = ray.ray.intersectSphere(
+            new T.Sphere(new T.Vector3(), 1),
+            new T.Vector3(),
+          );
+          if (hit) {
             const p = hit.object.userData.preset;
             latest.current.onLocationChange(p.lat, p.lon, p.id);
-          } else {
-            const v = hit.point.clone().normalize();
+          } else if (point) {
+            const v = point.normalize();
             latest.current.onLocationChange(
               (Math.asin(v.y) * 180) / Math.PI,
               (Math.atan2(-v.z, v.x) * 180) / Math.PI,
             );
           }
         };
+        const moveTouch = (e) => {
+          if (!touchPoints.has(e.pointerId)) return;
+          touchPoints.set(e.pointerId, [e.clientX, e.clientY]);
+          if (touchPoints.size !== 2) return;
+          const [a, b] = [...touchPoints.values()];
+          const next = Math.hypot(a[0] - b[0], a[1] - b[1]);
+          if (pinchDistance > 0 && next > 0) zoom(pinchDistance / next);
+          pinchDistance = next;
+          gesture = true;
+        };
+        const wheel = (e) => {
+          e.preventDefault();
+          if (imageReady)
+            zoom(
+              Math.exp(
+                Math.max(
+                  -1,
+                  Math.min(1, e.deltaY * (e.deltaMode === 1 ? 16 : 1) * 0.0025),
+                ),
+              ),
+            );
+        };
+        container.parentElement.addEventListener("wheel", wheel, {
+          passive: false,
+        });
         const cancelPointer = (e) => {
           pointers.delete(e.pointerId);
+          touchPoints.delete(e.pointerId);
+          if (touchPoints.size < 2) {
+            pinchDistance = null;
+            controls.enableRotate = true;
+          }
           landmarkTouches.delete(e.pointerId);
           down = null;
           gesture = true;
@@ -478,7 +601,7 @@ export default function EarthGlobe({
           const lat = (Math.asin(camera.position.y / r) * 180) / Math.PI;
           const lon =
             (Math.atan2(-camera.position.z, camera.position.x) * 180) / Math.PI;
-          const step = Math.max(0.02, (r - 1) * 2);
+          const step = Math.max(0.00002, (r - 1) * 2);
           cameraTo(
             Math.max(
               -85,
@@ -507,6 +630,8 @@ export default function EarthGlobe({
           if (!disposed) {
             stop();
             imageReady = false;
+            imagery?.dispose();
+            imagery = null;
             controls.enabled = false;
             renderer.domElement.tabIndex = -1;
             setFailed(true);
@@ -529,6 +654,7 @@ export default function EarthGlobe({
         };
         for (const [name, fn] of [
           ["pointerdown", start],
+          ["pointermove", moveTouch],
           ["pointerup", pick],
           ["pointercancel", cancelPointer],
           ["keydown", keydown],
@@ -539,13 +665,29 @@ export default function EarthGlobe({
         motion.addEventListener("change", reduceMotion);
         controls.addEventListener("start", stop);
         controls.addEventListener("change", updateView);
-        api.current = { focus, zoom, relabel: placeLandmarks };
+        imagery = new EarthImagery({
+          scene,
+          camera,
+          renderer,
+          onRender: render,
+          onState: (state) => {
+            if (!disposed) setImageryState(state);
+          },
+        });
+        api.current = {
+          focus,
+          zoom,
+          overview: () => cameraTo(EGYPT.lat, EGYPT.lon, EGYPT.distance),
+          relabel: placeLandmarks,
+        };
         cameraTo(EGYPT.lat, EGYPT.lon, 3.55, false);
         updateSelection();
         resize();
         cleanup = () => {
           cancelAnimationFrame(frame);
           observer.disconnect();
+          imagery?.dispose();
+          container.parentElement.removeEventListener("wheel", wheel);
           directionObserver.disconnect();
           container.parentElement.removeEventListener(
             "pointerdown",
@@ -559,6 +701,7 @@ export default function EarthGlobe({
           controls.dispose();
           for (const [name, fn] of [
             ["pointerdown", start],
+            ["pointermove", moveTouch],
             ["pointerup", pick],
             ["pointercancel", cancelPointer],
             ["keydown", keydown],
@@ -606,7 +749,9 @@ export default function EarthGlobe({
   return (
     <section
       className="earth-stage earth-3d"
-      data-camera-distance={distance.toFixed(3)}
+      data-camera-distance={distance.toFixed(4)}
+      data-imagery-state={imageryState.state}
+      data-imagery-level={imageryState.zoom}
       aria-label={t("Interactive Earth", "الأرض التفاعلية")}
       style={{ backgroundImage: `url(${nightSky})` }}
     >
@@ -691,6 +836,13 @@ export default function EarthGlobe({
             <Minus size={18} />
           </button>
           <button
+            onClick={() => api.current?.overview()}
+            disabled={!ready}
+            aria-label={t("View Egypt", "عرض مصر")}
+          >
+            <Globe2 size={18} />
+          </button>
+          <button
             onClick={() => api.current?.focus()}
             disabled={!ready}
             aria-label={t("Focus selected region", "ركز على المنطقة المختارة")}
@@ -705,10 +857,29 @@ export default function EarthGlobe({
           "اسحب للاستكشاف · مرّر أو قرّب للتكبير · اضغط للاختيار",
         )}
       </p>
+      {imageryState.state !== "ready" &&
+        imageryState.state !== "overview" &&
+        !failed && (
+          <p className="earth-imagery-status" role="status">
+            {imageryState.state === "loading"
+              ? t("Loading detailed imagery…", "جارٍ تحميل الصور التفصيلية…")
+              : t(
+                  "Detailed imagery unavailable · local Earth remains usable",
+                  "الصور التفصيلية غير متاحة · عرض الأرض المحلي يعمل",
+                )}
+          </p>
+        )}
       <p className="earth-note">
-        {t(
-          "Orientation imagery · not live satellite data",
-          "صور لتحديد الاتجاه · ليست بيانات أقمار حية",
+        {imageryState.state === "overview" ? (
+          t(
+            "Orientation imagery · not live satellite data",
+            "صور لتحديد الاتجاه · ليست بيانات أقمار حية",
+          )
+        ) : (
+          <>
+            © Esri, Maxar, Earthstar Geographics ·{" "}
+            {t("Imagery dates vary", "تختلف تواريخ الصور")}
+          </>
         )}
       </p>
     </section>

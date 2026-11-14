@@ -28,7 +28,7 @@ async function start(page, { live = true, english = true } = {}) {
 const settled = (page) =>
   expect(page.locator(".earth-stage")).toHaveAttribute(
     "data-camera-distance",
-    "1.350",
+    "1.3500",
   );
 
 test("3D Earth opens over Egypt automatically, alternative views stay hidden and theme changes preserve the farmer state", async ({
@@ -119,6 +119,7 @@ test("all preset landmarks are visible, separated and select exact existing sour
       ).toBe(false);
     }
   for (const preset of Object.values(presets).reverse()) {
+    await page.getByRole("button", { name: "View Egypt", exact: true }).click();
     await page.getByTestId(`landmark-${preset.id}`).click();
     await expect(page.getByTestId(`quick-${preset.id}`)).toHaveAttribute(
       "aria-pressed",
@@ -145,6 +146,10 @@ test("all preset landmarks are visible, separated and select exact existing sour
       "Retrieved source data",
     );
     await expect(page.getByTestId("irrigation-choice-drip")).toBeChecked();
+    await expect(page.locator(".earth-stage")).toHaveAttribute(
+      "data-camera-distance",
+      "1.0060",
+    );
   }
 });
 
@@ -193,13 +198,13 @@ test("close zoom stays in 3D without changing analysis location or fetching data
     page.getByRole("button", { name: "Retry sources", exact: true }),
   ).toBeVisible({ timeout: 25000 });
   const count = requests.length;
-  for (let i = 0; i < 5; i++)
+  for (let i = 0; i < 40; i++)
     await page
       .getByRole("button", { name: "Zoom Earth in", exact: true })
       .click();
   await expect(page.locator(".earth-stage")).toHaveAttribute(
     "data-camera-distance",
-    "1.025",
+    "1.0001",
   );
   await expect(page.locator(".leaflet-container")).toHaveCount(0);
   await expect(page.getByTestId("quick-fayoum_etsa")).toHaveAttribute(
@@ -315,7 +320,7 @@ test("normal startup zooms automatically and stops in Egypt; interaction interru
   await page.keyboard.press("ArrowRight");
   await expect(page.locator(".earth-stage")).toHaveAttribute(
     "data-camera-distance",
-    "1.350",
+    "1.3500",
   );
   await expect(page.getByTestId("quick-fayoum_etsa")).toHaveAttribute(
     "aria-pressed",

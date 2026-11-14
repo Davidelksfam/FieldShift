@@ -83,3 +83,7 @@ After user review of the deployed preview, Codex hid alternative map views, made
 ## 2026-11-14 — User-supplied website logo
 
 Codex inspected the PNG/WebP/SVG logo variants in the user-uploaded ZIP, copied the original transparent PNG without alteration, and replaced the header and browser-icon references. Adjusted responsive logo sizing, documented the user-authorized mark change and used Vite's hashed asset pipeline so the offline shell and favicon update together. Site naming, scientific data and application flows were preserved.
+
+## 2026-11-14 — Detailed 3D imagery and automatic regional zoom
+
+Codex replaced close-up stretching of the fixed global Earth texture with a bounded progressive Esri XYZ imagery layer draped onto the 3D sphere. Added camera/display-aware detail selection, geographic mesh/UV alignment, stale-request cancellation, GPU/image disposal, adaptive close-up markers and altitude-based wheel/pinch/button/keyboard zoom. All valid location changes now zoom to the selected region; a country overview control preserves the analysis point. Added independent Web Mercator, LOD, geometry and disposal checks plus browser coverage for image refinement, selection-to-zoom/data integration and provider failure. The original source-data service, scientific engines, labels and logo remain unchanged. Imagery resolution is not agricultural-data precision.

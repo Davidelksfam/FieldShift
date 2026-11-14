@@ -63,3 +63,7 @@ The user's later request adds optional dark styling, the uploaded branch's textu
 ### Deployed-preview refinement: Egypt-first 3D selection
 
 The later user review makes textured 3D Earth the only normal location view. Startup automatically focuses Egypt, named preset landmarks support pointer/keyboard selection, and close zoom remains in 3D. The flat map is available only after rendering failure. See the refinement in [decision 0004](decisions/0004-selective-earth-dark-theme.md). Existing point validation, GPS, source acquisition and farmer-state handling remain authoritative.
+
+### Progressive 3D imagery and region zoom
+
+The user-reported close-up pixelation is addressed with progressively detailed Esri satellite tiles on the 3D globe. Valid point/preset/GPS/coordinate choices zoom to the selected region, and View Egypt returns to the overview. Field-scale navigation changes altitude smoothly, with explicit image-source attribution and offline/failure fallback. See the latest refinement in [decision 0004](decisions/0004-selective-earth-dark-theme.md). This affects orientation imagery only; scientific source resolution and calculations are unchanged.

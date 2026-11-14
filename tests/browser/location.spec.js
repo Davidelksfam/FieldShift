@@ -10,14 +10,14 @@ test("3D Earth opens directly and quick locations stay keyboard accessible", asy
   await start(page);
   await expect(page.locator(".earth-stage")).toHaveAttribute(
     "data-camera-distance",
-    "1.350",
+    "1.3500",
   );
   await page
     .getByRole("button", { name: "Zoom Earth in", exact: true })
     .click();
   await expect(page.locator(".earth-stage")).toHaveAttribute(
     "data-camera-distance",
-    "1.080",
+    "1.2800",
   );
   await page
     .getByRole("button", { name: "Zoom Earth out", exact: true })
