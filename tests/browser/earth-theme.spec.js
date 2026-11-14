@@ -194,6 +194,9 @@ test("sphere picking fetches custom data and invalid coordinates preserve the la
 test("close zoom stays in 3D without changing analysis location or fetching data", async ({
   page,
 }) => {
+  // This exhaustive 45-click traversal renders a full viewport on CI's software
+  // GPU. Keep every interaction/assertion, with time for the larger surface.
+  test.setTimeout(60000);
   const requests = await start(page);
   await settled(page);
   await expect(
