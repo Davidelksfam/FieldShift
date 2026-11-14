@@ -40,7 +40,7 @@ test("guided answers follow current priorities and area; drip what-if preserves 
     dialog
       .getByRole("group", { name: "Questions about your results" })
       .getByRole("button"),
-  ).toHaveCount(8);
+  ).toHaveCount(3);
   await expect(dialog.getByRole("region")).toContainText("Sesame");
   await dialog
     .getByRole("button", { name: "How much water could I save?", exact: true })
@@ -73,19 +73,6 @@ test("guided answers follow current priorities and area; drip what-if preserves 
     })
     .click();
   await expect(dialog.getByRole("region")).toContainText("Soybean");
-  await dialog
-    .getByRole("button", { name: "What about my whole field?", exact: true })
-    .click();
-  await expect(dialog.getByTestId("guide-fact-field-current")).toHaveText(
-    "21,626",
-  );
-  await close(page);
-  await page.getByLabel("Area in feddans", { exact: true }).fill("");
-  await open(page);
-  await expect(dialog.getByRole("region")).toContainText(
-    "Enter a valid positive area",
-  );
-  await expect(dialog.getByTestId("guide-fact-field-current")).toHaveCount(0);
   expect(providerRequests).toHaveLength(before);
   await page.keyboard.press("Escape");
   await expect(dialog).not.toBeVisible();
@@ -114,13 +101,6 @@ test("guide respects missing-climate gating and invalid ECe while source informa
     })
     .click();
   await expect(dialog.getByTestId("guide-fact-drip-scenario")).toHaveCount(0);
-  await dialog
-    .getByRole("button", {
-      name: "Where do these numbers come from?",
-      exact: true,
-    })
-    .click();
-  await expect(dialog.getByTestId("guide-fact-climate")).toBeVisible();
   await close(page);
   await page.getByLabel("Measured soil ECe", { exact: true }).fill("101");
   await open(page);
@@ -196,4 +176,27 @@ test("chat bubble stays in the viewport and the non-modal panel updates while th
   await launcher.click();
   await expect(dialog).not.toBeVisible();
   await expect(launcher).toHaveAttribute("aria-expanded", "false");
+});
+
+test("normal motion shows typing feedback then reveals the calculated response", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await start(page);
+  const dialog = await open(page);
+  await dialog
+    .getByRole("button", {
+      name: "What if I switch to drip irrigation?",
+      exact: true,
+    })
+    .click();
+  await expect(
+    dialog.getByRole("status", { name: "Preparing your answer" }),
+  ).toBeVisible();
+  await expect(dialog.getByTestId("guide-fact-drip-scenario")).toContainText(
+    "6,758",
+  );
+  await expect(
+    dialog.getByRole("status", { name: "Preparing your answer" }),
+  ).toHaveCount(0);
 });

@@ -1488,3 +1488,74 @@ html {
   flex-wrap: wrap;
   gap: 10px;
 }
+
+/* Three deliberate prompts and a softer conversational rhythm. */
+.guide-questions {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.guide-questions button {
+  padding: 13px 16px;
+  border-radius: 16px;
+  font-size: 13px;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.guide-header {
+  padding: 18px;
+}
+.guide-header h2 {
+  font-size: 20px;
+}
+.guide-intro {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--fs-brand-soft);
+  line-height: 1.8;
+}
+.guide-answer {
+  background: var(--fs-bg-surface);
+  padding: 16px;
+}
+.guide-answer dl > div {
+  padding-block: 12px;
+}
+.chat-typing {
+  display: flex;
+  gap: 5px;
+  padding: 18px 0 10px;
+}
+.chat-typing i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fs-brand-primary);
+  animation: chat-dot 1s ease-in-out infinite;
+}
+.chat-typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.chat-typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes chat-dot {
+  0%,
+  70%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-typing i {
+    animation: none;
+  }
+  .guide-questions button {
+    transition: none;
+  }
+}
