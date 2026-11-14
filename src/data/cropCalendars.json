@@ -1,0 +1,783 @@
+{
+  "schemaVersion": "crop-calendars/0.1",
+  "status": "experimental_partial_reference_registry",
+  "description": "Three checked regional bread-wheat reference windows; other crop/use evidence is not established. No complete region/cultivar calendar is validated.",
+  "sources": {
+    "fao_crop_calendar_eg_bread_wheat_aez_007": {
+      "id": "fao_crop_calendar_eg_bread_wheat_aez_007",
+      "nature": "published_reference",
+      "availability": "available",
+      "reviewStatus": "verified_reference",
+      "title": "FAO Crop Calendar: Egypt, bread wheat, Middle Egypt Region",
+      "url": "https://api-cropcalendar.apps.fao.org/api/v1/countries/EG/cropCalendar?language=en&crop=0373&aez=007",
+      "validityScope": "FAO administrative coverage names Fayoum; this is broad regional support, not centroid downscaling. Bread wheat grain-crop identity; cultivar, four stage lengths and preparation buffer are unspecified. Source cultivation context: existing Nile-transmitted clay-to-salty-clay soils with furrow irrigation from Nile-connected channels. Legacy landType scenario labels only select this context; they do not establish measured soil texture or irrigation infrastructure.",
+      "regionIds": [
+        "fayoum_etsa"
+      ],
+      "cropIds": [
+        "wheat"
+      ],
+      "intendedUses": [
+        "grain"
+      ],
+      "sourceYear": null,
+      "sourceLastUpdated": "2021-02-26",
+      "retrievedOn": "2026-11-14",
+      "evidenceLocator": {
+        "countryId": "EG",
+        "cropId": "0373",
+        "cropName": "Wheat, bread",
+        "aezId": "007",
+        "aezName": "Middle Egypt Region",
+        "sessionIndex": 0
+      },
+      "fullEgyptResponseSha256": "1f092ca3c5b3abcc8d43957b57e2faa265b62fa273721a5a352c5b497fecda9c",
+      "referenceExcerpt": {
+        "early_sowing": {
+          "month": "11",
+          "day": "15"
+        },
+        "later_sowing": {
+          "month": "11",
+          "day": "30"
+        },
+        "early_harvest": {
+          "month": "4",
+          "day": "25"
+        },
+        "late_harvest": {
+          "month": "5",
+          "day": "25"
+        },
+        "growing_period": {
+          "period": "days",
+          "value": "150 - 190"
+        }
+      }
+    },
+    "fao_crop_calendar_eg_bread_wheat_aez_001": {
+      "id": "fao_crop_calendar_eg_bread_wheat_aez_001",
+      "nature": "published_reference",
+      "availability": "available",
+      "reviewStatus": "verified_reference",
+      "title": "FAO Crop Calendar: Egypt, bread wheat, Delta region",
+      "url": "https://api-cropcalendar.apps.fao.org/api/v1/countries/EG/cropCalendar?language=en&crop=0373&aez=001",
+      "validityScope": "FAO administrative coverage names Kafer Elshiekh; not field-specific validation. Bread wheat grain-crop identity; cultivar, four stage lengths and preparation buffer are unspecified. Source cultivation context: existing Nile-transmitted clay-to-salty-clay soils with furrow irrigation from Nile-connected channels. Legacy landType scenario labels only select this context; they do not establish measured soil texture or irrigation infrastructure.",
+      "regionIds": [
+        "delta_kafr_el_sheikh"
+      ],
+      "cropIds": [
+        "wheat"
+      ],
+      "intendedUses": [
+        "grain"
+      ],
+      "sourceYear": null,
+      "sourceLastUpdated": "2021-02-26",
+      "retrievedOn": "2026-11-14",
+      "evidenceLocator": {
+        "countryId": "EG",
+        "cropId": "0373",
+        "cropName": "Wheat, bread",
+        "aezId": "001",
+        "aezName": "Delta region",
+        "sessionIndex": 0
+      },
+      "fullEgyptResponseSha256": "1f092ca3c5b3abcc8d43957b57e2faa265b62fa273721a5a352c5b497fecda9c",
+      "referenceExcerpt": {
+        "early_sowing": {
+          "month": "11",
+          "day": "15"
+        },
+        "later_sowing": {
+          "month": "11",
+          "day": "30"
+        },
+        "early_harvest": {
+          "month": "4",
+          "day": "25"
+        },
+        "late_harvest": {
+          "month": "5",
+          "day": "25"
+        },
+        "growing_period": {
+          "period": "days",
+          "value": "150 - 190"
+        }
+      }
+    },
+    "fao_crop_calendar_eg_bread_wheat_aez_003": {
+      "id": "fao_crop_calendar_eg_bread_wheat_aez_003",
+      "nature": "published_reference",
+      "availability": "available",
+      "reviewStatus": "verified_reference",
+      "title": "FAO Crop Calendar: Egypt, bread wheat, near by Delta region new reclaimed soils \"NDRNRL\"",
+      "url": "https://api-cropcalendar.apps.fao.org/api/v1/countries/EG/cropCalendar?language=en&crop=0373&aez=003",
+      "validityScope": "FAO administrative coverage names Nubaria; applies only to the declared new-reclaimed-land scenario. Bread wheat grain-crop identity; cultivar, four stage lengths and preparation buffer are unspecified. Source cultivation context: new reclaimed soils, sandy soils with drip/pivot/sprinkler groundwater irrigation. Legacy landType scenario labels only select this context; they do not establish measured soil texture or irrigation infrastructure.",
+      "regionIds": [
+        "west_delta_nubariya"
+      ],
+      "cropIds": [
+        "wheat"
+      ],
+      "intendedUses": [
+        "grain"
+      ],
+      "sourceYear": null,
+      "sourceLastUpdated": "2021-02-26",
+      "retrievedOn": "2026-11-14",
+      "evidenceLocator": {
+        "countryId": "EG",
+        "cropId": "0373",
+        "cropName": "Wheat, bread",
+        "aezId": "003",
+        "aezName": "near by Delta region new reclaimed soils \"NDRNRL\"",
+        "sessionIndex": 0
+      },
+      "fullEgyptResponseSha256": "1f092ca3c5b3abcc8d43957b57e2faa265b62fa273721a5a352c5b497fecda9c",
+      "referenceExcerpt": {
+        "early_sowing": {
+          "month": "11",
+          "day": "15"
+        },
+        "later_sowing": {
+          "month": "11",
+          "day": "30"
+        },
+        "early_harvest": {
+          "month": "4",
+          "day": "25"
+        },
+        "late_harvest": {
+          "month": "5",
+          "day": "25"
+        },
+        "growing_period": {
+          "period": "days",
+          "value": "150 - 190"
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "cropId": "wheat",
+      "regionId": "fayoum_etsa",
+      "variety": null,
+      "intendedUse": "grain",
+      "sowingWindow": {
+        "start": "11-15",
+        "end": "11-30"
+      },
+      "growthStagesDays": null,
+      "harvestWindow": {
+        "start": "04-25",
+        "end": "05-25"
+      },
+      "prepBufferDays": null,
+      "sourceId": "fao_crop_calendar_eg_bread_wheat_aez_007",
+      "sourceUrl": "https://api-cropcalendar.apps.fao.org/api/v1/countries/EG/cropCalendar?language=en&crop=0373&aez=007",
+      "sourceYear": null,
+      "reviewStatus": "partially_verified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days",
+        "growingPeriodDays": "days"
+      },
+      "growingPeriodDays": {
+        "min": 150,
+        "max": 190
+      },
+      "sourceLastUpdated": "2021-02-26",
+      "qualifiers": [
+        "FAO administrative coverage names Fayoum; this is broad regional support, not centroid downscaling.",
+        "Bread-wheat reference only; cultivar not specified.",
+        "Total growing period is not four crop-stage lengths.",
+        "Sowing and harvest are separate annual windows and require actual dates across year boundaries."
+      ],
+      "missingFields": [
+        "variety",
+        "growthStagesDays",
+        "prepBufferDays"
+      ],
+      "requiredContext": {
+        "landType": "old_clay"
+      }
+    },
+    {
+      "cropId": "berseem",
+      "regionId": "fayoum_etsa",
+      "variety": null,
+      "intendedUse": "hay",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "faba_bean",
+      "regionId": "fayoum_etsa",
+      "variety": null,
+      "intendedUse": "dry_seed",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "sugar_beet",
+      "regionId": "fayoum_etsa",
+      "variety": null,
+      "intendedUse": "storage_root",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "maize",
+      "regionId": "fayoum_etsa",
+      "variety": null,
+      "intendedUse": "grain",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "sorghum",
+      "regionId": "fayoum_etsa",
+      "variety": null,
+      "intendedUse": "grain",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "soybean",
+      "regionId": "fayoum_etsa",
+      "variety": null,
+      "intendedUse": "seed",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "sesame",
+      "regionId": "fayoum_etsa",
+      "variety": null,
+      "intendedUse": "seed",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "cowpea_nili",
+      "regionId": "fayoum_etsa",
+      "variety": null,
+      "intendedUse": "cover",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "wheat",
+      "regionId": "delta_kafr_el_sheikh",
+      "variety": null,
+      "intendedUse": "grain",
+      "sowingWindow": {
+        "start": "11-15",
+        "end": "11-30"
+      },
+      "growthStagesDays": null,
+      "harvestWindow": {
+        "start": "04-25",
+        "end": "05-25"
+      },
+      "prepBufferDays": null,
+      "sourceId": "fao_crop_calendar_eg_bread_wheat_aez_001",
+      "sourceUrl": "https://api-cropcalendar.apps.fao.org/api/v1/countries/EG/cropCalendar?language=en&crop=0373&aez=001",
+      "sourceYear": null,
+      "reviewStatus": "partially_verified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days",
+        "growingPeriodDays": "days"
+      },
+      "growingPeriodDays": {
+        "min": 150,
+        "max": 190
+      },
+      "sourceLastUpdated": "2021-02-26",
+      "qualifiers": [
+        "FAO administrative coverage names Kafer Elshiekh; not field-specific validation.",
+        "Bread-wheat reference only; cultivar not specified.",
+        "Total growing period is not four crop-stage lengths.",
+        "Sowing and harvest are separate annual windows and require actual dates across year boundaries."
+      ],
+      "missingFields": [
+        "variety",
+        "growthStagesDays",
+        "prepBufferDays"
+      ],
+      "requiredContext": {
+        "landType": "old_clay"
+      }
+    },
+    {
+      "cropId": "berseem",
+      "regionId": "delta_kafr_el_sheikh",
+      "variety": null,
+      "intendedUse": "hay",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "faba_bean",
+      "regionId": "delta_kafr_el_sheikh",
+      "variety": null,
+      "intendedUse": "dry_seed",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "sugar_beet",
+      "regionId": "delta_kafr_el_sheikh",
+      "variety": null,
+      "intendedUse": "storage_root",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "maize",
+      "regionId": "delta_kafr_el_sheikh",
+      "variety": null,
+      "intendedUse": "grain",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "sorghum",
+      "regionId": "delta_kafr_el_sheikh",
+      "variety": null,
+      "intendedUse": "grain",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "soybean",
+      "regionId": "delta_kafr_el_sheikh",
+      "variety": null,
+      "intendedUse": "seed",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "sesame",
+      "regionId": "delta_kafr_el_sheikh",
+      "variety": null,
+      "intendedUse": "seed",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "cowpea_nili",
+      "regionId": "delta_kafr_el_sheikh",
+      "variety": null,
+      "intendedUse": "cover",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "wheat",
+      "regionId": "west_delta_nubariya",
+      "variety": null,
+      "intendedUse": "grain",
+      "sowingWindow": {
+        "start": "11-15",
+        "end": "11-30"
+      },
+      "growthStagesDays": null,
+      "harvestWindow": {
+        "start": "04-25",
+        "end": "05-25"
+      },
+      "prepBufferDays": null,
+      "sourceId": "fao_crop_calendar_eg_bread_wheat_aez_003",
+      "sourceUrl": "https://api-cropcalendar.apps.fao.org/api/v1/countries/EG/cropCalendar?language=en&crop=0373&aez=003",
+      "sourceYear": null,
+      "reviewStatus": "partially_verified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days",
+        "growingPeriodDays": "days"
+      },
+      "growingPeriodDays": {
+        "min": 150,
+        "max": 190
+      },
+      "sourceLastUpdated": "2021-02-26",
+      "qualifiers": [
+        "FAO administrative coverage names Nubaria; applies only to the declared new-reclaimed-land scenario.",
+        "Bread-wheat reference only; cultivar not specified.",
+        "Total growing period is not four crop-stage lengths.",
+        "Sowing and harvest are separate annual windows and require actual dates across year boundaries."
+      ],
+      "missingFields": [
+        "variety",
+        "growthStagesDays",
+        "prepBufferDays"
+      ],
+      "requiredContext": {
+        "landType": "new_sandy"
+      }
+    },
+    {
+      "cropId": "berseem",
+      "regionId": "west_delta_nubariya",
+      "variety": null,
+      "intendedUse": "hay",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "faba_bean",
+      "regionId": "west_delta_nubariya",
+      "variety": null,
+      "intendedUse": "dry_seed",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "sugar_beet",
+      "regionId": "west_delta_nubariya",
+      "variety": null,
+      "intendedUse": "storage_root",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "maize",
+      "regionId": "west_delta_nubariya",
+      "variety": null,
+      "intendedUse": "grain",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "sorghum",
+      "regionId": "west_delta_nubariya",
+      "variety": null,
+      "intendedUse": "grain",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "soybean",
+      "regionId": "west_delta_nubariya",
+      "variety": null,
+      "intendedUse": "seed",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "sesame",
+      "regionId": "west_delta_nubariya",
+      "variety": null,
+      "intendedUse": "seed",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    },
+    {
+      "cropId": "cowpea_nili",
+      "regionId": "west_delta_nubariya",
+      "variety": null,
+      "intendedUse": "cover",
+      "sowingWindow": null,
+      "growthStagesDays": null,
+      "harvestWindow": null,
+      "prepBufferDays": null,
+      "sourceId": null,
+      "sourceUrl": null,
+      "sourceYear": null,
+      "reviewStatus": "unverified",
+      "units": {
+        "sowingWindow": "MM-DD",
+        "growthStagesDays": "days",
+        "harvestWindow": "MM-DD",
+        "prepBufferDays": "days"
+      }
+    }
+  ]
+}

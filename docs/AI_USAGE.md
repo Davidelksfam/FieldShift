@@ -23,3 +23,7 @@ Codex implemented the user-selected map-first layout: all inputs together, actua
 ## 2026-11-14 — Scientific V2 PR 0 foundation
 
 Codex implemented source/units/scope/missingness contracts, pure experimental adapter and Expert inspector, nine legacy output snapshots, and foundation regression/browser tests from the user's archived Scientific V2 plan. No calendar, water, scoring or agricultural constant was invented. Legacy remains default. Metadata guards and software tests are not field or agronomic validation. Later scientific PRs remain independently reviewable and experimental.
+
+## 2026-11-14 — Scientific V2 PR 1 calendars
+
+Codex calendar researcher implemented actual-date checks and audited official FAO API records, retaining only three partially verified bread-wheat regional references. Independent QA reviewed timing/source boundaries; integration hardened resolved source/citation identity. All unknown stage, buffer and cultivar values remain null. No agronomic release is asserted; citations and checks are in the PR 1 delivery/audit documents.
