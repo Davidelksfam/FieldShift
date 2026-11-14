@@ -38,6 +38,20 @@ import {
 } from "./presentation/farmerModel";
 import { SCIENTIFIC_V2_ENABLED } from "./engine/engineAdapter";
 import ScientificV2Inspector from "./components/ScientificV2Inspector";
+// Regional profiles are the presentation default. Live mode remains available
+// for source diagnostics and automated live-provider tests.
+const vegetationOptions = (() => {
+  try {
+    return {
+      vegetationMode:
+        sessionStorage.getItem("fieldshift-vegetation-mode") === "live"
+          ? "live"
+          : "regional_reference",
+    };
+  } catch {
+    return { vegetationMode: "regional_reference" };
+  }
+})();
 const initialPreset = presets.fayoum_etsa;
 const initialInputs = {
   ...initialPreset.defaults,
@@ -111,7 +125,12 @@ export default function App() {
     lon: String(initialPreset.lon),
   });
   const [data, setData] = useState(() =>
-    getInitialFarmData(initialPreset.lat, initialPreset.lon, initialPreset.id),
+    getInitialFarmData(
+      initialPreset.lat,
+      initialPreset.lon,
+      initialPreset.id,
+      vegetationOptions,
+    ),
   );
   const [loading, setLoading] = useState(true),
     [error, setError] = useState(""),
@@ -160,6 +179,7 @@ export default function App() {
     fetchUnifiedFarmData(location.lat, location.lon, location.presetId, {
       signal: controller.signal,
       timeoutMs: requestTimeout,
+      ...vegetationOptions,
       onDataUpdate: (result) => {
         if (active) setData(result);
       },
@@ -231,7 +251,7 @@ export default function App() {
     setLoading(true);
     setLocation({ lat, lon, presetId: id });
     setCoordinates({ lat: lat.toFixed(4), lon: lon.toFixed(4) });
-    setData(getInitialFarmData(lat, lon, id));
+    setData(getInitialFarmData(lat, lon, id, vegetationOptions));
   }
   function retry() {
     setRequestTimeout(EXTENDED_REQUEST_TIMEOUT_MS);

@@ -7,6 +7,7 @@ export const test = base.extend({
       await context.addInitScript(() => {
         try {
           sessionStorage.setItem("fieldshift-entered", "1");
+          sessionStorage.setItem("fieldshift-vegetation-mode", "live");
         } catch {
           /* Optional storage. */
         }

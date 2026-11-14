@@ -31,10 +31,16 @@ A floating chat bubble (“Understand my results”) opens an Arabic/English cal
 
 A fresh tab opens the [intro and full-screen 3D map](docs/product/IMMERSIVE_MAP_ENTRY.md). Enter to focus Egypt, choose your location, then use “Set up your field” to reach the crop parameters and comparisons below. Reloads in the same tab return directly to the map; GPS remains opt-in.
 
+## Regional vegetation presentation
+
+The default planner pins vegetation to bundled, audited 2025 reference profiles for Fayoum and the Delta (including the western Delta). Exact saved centroids retain their original series. Custom points in these presentation areas use the matching regional profile immediately, with reference coordinates in provenance and no ORNL request. These profiles are regional context, not measurements of each selected point; no same-pixel historical anomaly is attached. Other sources and crop formulas are unchanged. Outside these areas the live retrieval path remains available.
+
+Source diagnostics can explicitly enable live vegetation for the current tab with `sessionStorage.setItem("fieldshift-vegetation-mode", "live")` followed by a reload; clearing that key restores the presentation default. Provider-flow browser tests explicitly exercise this live setting; the regional presentation has separate default-mode tests.
+
 ## Data and limits
 
 - The three exact benchmark centroids now load **audited historical source snapshots**: complete 2025 POWER, QA-screened MODIS, and native SoilGrids predictions where valid. Kafr El-Sheikh soil is unavailable (zero-filled profile rejected); its soil fallback stays explicitly synthetic. [Dataset quality report](data/processed/QUALITY_REPORT.md). Synthetic demo fixtures remain separate.
-- The app automatically requests historical **2025** POWER, SoilGrids and MODIS observations when location changes. Transient failures retry within a bounded 90-second budget (cold MODIS requests can take around a minute); successful sources appear immediately and are retained. Unavailable sources fall back to a seven-day coordinate cache or a labeled regional fixture.
+- The app requests historical **2025** POWER and SoilGrids data when location changes. MODIS network retrieval is used outside the regional presentation areas or in explicit live diagnostic mode. Transient failures retry within a bounded 90-second budget (cold MODIS requests can take around a minute); successful sources appear immediately and are retained. Unavailable sources fall back to a seven-day coordinate cache or a labeled regional fixture.
 - Soil retrieval falls through from PixelGust to ISRIC's point API, then to native SoilGrids WCS cells if the point API fails, stalls or returns an incomplete profile. Cell alignment, CRS, complete depth coverage and units are checked. Zero-filled/NoData profiles stay unavailable with a coverage explanation; selecting another field point or supplying a laboratory test may be necessary.
 - EVPTRNS is an **energy flux in MJ/m²/day**, not ET₀ in millimeters. MODIS annual retrieval uses five smaller batches per band (at most five composites each) to reduce cold-query load; validated batches are cached independently so retries only need missing batches. Matching pixel reliability is mandatory; rejected observations remain missing.
 - Co-locating ~50 km climate and 250 m vegetation/soil data does not create field-scale precision. Salinity is a screening heuristic; soil EC, drainage, prices and dates require local review.

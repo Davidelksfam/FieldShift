@@ -17,6 +17,11 @@ export function explainStrategy(strategy, data, inputs, metrics) {
       "Low: optional soil or vegetation evidence is unavailable.",
       "منخفض: أدلة التربة أو الغطاء النباتي الاختيارية غير متاحة.",
     );
+  if (data.sources?.ndvi?.spatialScope === "regional_reference")
+    add(
+      "Vegetation is regional reference context, not an observation at the selected point.",
+      "الغطاء النباتي سياق إقليمي مرجعي، مش رصد للنقطة المختارة.",
+    );
   if (inputs.landType === "new_sandy")
     add(
       "Desert-fringe land scenario: pixel mixing is possible, not detected or measured.",
@@ -50,13 +55,17 @@ export function explainStrategy(strategy, data, inputs, metrics) {
       ? "medium"
       : "high";
   const ndviSource =
-    data.sources?.ndvi?.kind === "observed"
-      ? "MODIS NDVI"
-      : "Illustrative NDVI fixture";
+    data.sources?.ndvi?.spatialScope === "regional_reference"
+      ? "Regional MODIS reference"
+      : data.sources?.ndvi?.kind === "observed"
+        ? "MODIS NDVI"
+        : "Illustrative NDVI fixture";
   const ndviSourceAr =
-    data.sources?.ndvi?.kind === "observed"
-      ? "MODIS NDVI"
-      : "بيانات NDVI توضيحية";
+    data.sources?.ndvi?.spatialScope === "regional_reference"
+      ? "مرجع MODIS الإقليمي"
+      : data.sources?.ndvi?.kind === "observed"
+        ? "MODIS NDVI"
+        : "بيانات NDVI توضيحية";
   const source =
     data.sources?.climate?.kind === "observed"
       ? "NASA POWER"
