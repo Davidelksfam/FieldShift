@@ -59,3 +59,7 @@ User-requested full farmer-form redesign replaces emoji crop selects with botani
 ## Selective Earth and dark theme integration — issue #41
 
 The user's later request adds optional dark styling, the uploaded branch's textured Earth and startup interaction, and a reserved Plain Earth view. Main's unified farmer layout and field map remain the default. [Decision 0004](decisions/0004-selective-earth-dark-theme.md) records the limited design exception and data integration contract. No backend/authentication, new source pipeline, scientific model changes or deployment is included.
+
+### Deployed-preview refinement: Egypt-first 3D selection
+
+The later user review makes textured 3D Earth the only normal location view. Startup automatically focuses Egypt, named preset landmarks support pointer/keyboard selection, and close zoom remains in 3D. The flat map is available only after rendering failure. See the refinement in [decision 0004](decisions/0004-selective-earth-dark-theme.md). Existing point validation, GPS, source acquisition and farmer-state handling remain authoritative.

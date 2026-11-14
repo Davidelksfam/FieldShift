@@ -4,4 +4,4 @@
 
 `plain-earth.jpg` is restored from this repository's `feat/earth-workspace` orientation texture: Three.js examples `earth_atmos_2048.jpg`, originally retrieved from https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg . The Three.js MIT license is included in `LICENSE-three.txt`.
 
-These textures supply orientation visuals only. They do not feed the agricultural engine, establish current field conditions or indicate scientific coverage. Source observations still come exclusively from the existing data service. Assets are imported by Vite so their content hashes and dependencies are included in the first-party offline shell.
+These textures supply orientation visuals only. They do not feed the agricultural engine, establish current field conditions or indicate scientific coverage. Source observations still come exclusively from the existing data service. Active 3D textures are imported by Vite so their content hashes and dependencies are included in the first-party offline shell. The plain texture remains reserved in source; the user later hid the alternative views.

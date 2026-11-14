@@ -76,7 +76,7 @@ test("advanced analytics expands on the same page without replacing the form or 
 }) => {
   await start(page);
   await page.evaluate(() => {
-    window.originalMap = document.querySelector(".leaflet-container");
+    window.originalMap = document.querySelector(".earth-render canvas");
   });
   await page.getByTestId("crop-choice-sesame").locator("..").click();
   await page
@@ -91,7 +91,8 @@ test("advanced analytics expands on the same page without replacing the form or 
   await expect(page.getByTestId("farmer-water-baseline")).toBeVisible();
   expect(
     await page.evaluate(
-      () => window.originalMap === document.querySelector(".leaflet-container"),
+      () =>
+        window.originalMap === document.querySelector(".earth-render canvas"),
     ),
   ).toBe(true);
   await expect(page.getByTestId("crop-choice-sesame")).toBeChecked();

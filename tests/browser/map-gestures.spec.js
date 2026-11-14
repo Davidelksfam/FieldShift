@@ -7,8 +7,10 @@ test("pinch zoom in and out does not change the selected field", async ({
   await page.route(/^https:\/\//, (r) => r.abort());
   await page.goto("/");
   await page.getByRole("button", { name: "English", exact: true }).click();
-  const map = page.locator(".leaflet-container");
+  const map = page.locator(".earth-render canvas");
   await map.scrollIntoViewIfNeeded();
+  await map.evaluate((el) => el.scrollIntoView({ block: "center" }));
+  expect(await page.evaluate(() => scrollY)).toBeGreaterThan(0);
   const box = await map.boundingBox(),
     x = box.x + box.width / 2,
     y = box.y + box.height / 2;
@@ -34,19 +36,26 @@ test("pinch zoom in and out does not change the selected field", async ({
       touchPoints: [],
     });
   }
-  const zoom = page.getByLabel("Map zoom", { exact: true });
-  await expect(zoom).toHaveText("11×");
+  const zoom = page.locator(".earth-stage");
+  await expect(zoom).toHaveAttribute("data-camera-distance", "1.350");
+
   await pinch(25, 90);
   await expect
-    .poll(async () => parseInt(await zoom.innerText()))
-    .toBeGreaterThan(11);
-  const closer = parseInt(await zoom.innerText());
+    .poll(async () => Number(await zoom.getAttribute("data-camera-distance")))
+    .toBeLessThan(1.35);
+  const closer = Number(await zoom.getAttribute("data-camera-distance"));
   await page.waitForTimeout(300);
   await pinch(90, 25);
   await expect
-    .poll(async () => parseInt(await zoom.innerText()))
-    .toBeLessThan(closer);
+    .poll(async () => Number(await zoom.getAttribute("data-camera-distance")))
+    .toBeGreaterThan(closer);
   await expect(page.getByTestId("quick-fayoum_etsa")).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  expect(await page.evaluate(() => visualViewport.scale)).toBe(1);
+  await page.getByTestId("landmark-west_delta_nubariya").tap();
+  await expect(page.getByTestId("quick-west_delta_nubariya")).toHaveAttribute(
     "aria-pressed",
     "true",
   );
@@ -57,19 +66,20 @@ test("wheel zoom and keyboard zoom leave the field selection unchanged", async (
   await page.route(/^https:\/\//, (r) => r.abort());
   await page.goto("/");
   await page.getByRole("button", { name: "English", exact: true }).click();
-  const map = page.locator(".leaflet-container"),
-    zoom = page.getByLabel("Map zoom", { exact: true });
+  const map = page.locator(".earth-render canvas"),
+    zoom = page.locator(".earth-stage");
+  await expect(zoom).toHaveAttribute("data-camera-distance", "1.350");
   await map.hover();
   await page.mouse.wheel(0, -250);
   await expect
-    .poll(async () => parseInt(await zoom.innerText()))
-    .toBeGreaterThan(11);
-  const before = parseInt(await zoom.innerText());
+    .poll(async () => Number(await zoom.getAttribute("data-camera-distance")))
+    .toBeLessThan(1.35);
+  const before = Number(await zoom.getAttribute("data-camera-distance"));
   await map.focus();
   await page.keyboard.press("-");
   await expect
-    .poll(async () => parseInt(await zoom.innerText()))
-    .toBeLessThan(before);
+    .poll(async () => Number(await zoom.getAttribute("data-camera-distance")))
+    .toBeGreaterThan(before);
   await expect(page.getByTestId("quick-fayoum_etsa")).toHaveAttribute(
     "aria-pressed",
     "true",

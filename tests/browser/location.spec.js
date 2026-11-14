@@ -4,17 +4,24 @@ const start = async (page) => {
   await page.goto("/");
   await page.getByRole("button", { name: "English", exact: true }).click();
 };
-test("map opens directly, zoom controls work and quick locations stay keyboard accessible", async ({
+test("3D Earth opens directly and quick locations stay keyboard accessible", async ({
   page,
 }) => {
   await start(page);
-  await expect(page.locator(".leaflet-container")).toBeVisible();
-  const zoom = page.getByLabel("Map zoom", { exact: true });
-  await expect(zoom).toHaveText("11×");
-  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
-  await expect(zoom).toHaveText("12×");
-  await page.getByRole("button", { name: "Zoom out", exact: true }).click();
-  await expect(zoom).toHaveText("11×");
+  await expect(page.locator(".earth-stage")).toHaveAttribute(
+    "data-camera-distance",
+    "1.350",
+  );
+  await page
+    .getByRole("button", { name: "Zoom Earth in", exact: true })
+    .click();
+  await expect(page.locator(".earth-stage")).toHaveAttribute(
+    "data-camera-distance",
+    "1.080",
+  );
+  await page
+    .getByRole("button", { name: "Zoom Earth out", exact: true })
+    .click();
   await page.getByTestId("quick-west_delta_nubariya").focus();
   await page.keyboard.press("Enter");
   await expect(page.getByTestId("quick-west_delta_nubariya")).toHaveAttribute(
@@ -22,9 +29,7 @@ test("map opens directly, zoom controls work and quick locations stay keyboard a
     "true",
   );
   await expect(page.getByTestId("crop-choice-wheat")).toBeChecked();
-  await expect(
-    page.getByRole("button", { name: "Earth", exact: true }),
-  ).toHaveCount(0);
+  await expect(page.locator(".leaflet-container")).toHaveCount(0);
 });
 test("geolocation is opt-in and updates the selected coordinates after permission", async ({
   page,
@@ -111,7 +116,7 @@ test("late GPS cannot replace a newer quick-location choice", async ({
   await page
     .getByRole("button", { name: "Use my location", exact: true })
     .click();
-  await page.getByTestId("quick-west_delta_nubariya").click();
+  await page.getByTestId("landmark-west_delta_nubariya").click();
   await page.evaluate(() =>
     window.delayedGps({ coords: { latitude: 30.8, longitude: 31.2 } }),
   );

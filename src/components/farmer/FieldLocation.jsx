@@ -13,12 +13,13 @@ export default function FieldLocation({
   onLocationChange,
 }) {
   const [locating, setLocating] = useState(false);
-  const [view, setView] = useState("map");
+  const [fallbackMap, setFallbackMap] = useState(false);
   const [geoError, setGeoError] = useState("");
   const geoRequest = useRef(0);
   useEffect(() => {
     geoRequest.current++;
     setLocating(false);
+    setGeoError("");
     return () => {
       geoRequest.current++;
     };
@@ -63,27 +64,7 @@ export default function FieldLocation({
       className="field-location"
       aria-label={t("Select your field", "اختار أرضك")}
     >
-      <div
-        className="location-views"
-        role="group"
-        aria-label={t("Location view", "عرض الموقع")}
-      >
-        {[
-          ["map", t("Field map", "خريطة الأرض")],
-          ["plain", t("Plain Earth", "الأرض البسيطة")],
-          ["3d", t("3D Earth", "الأرض ثلاثية الأبعاد")],
-        ].map(([id, label]) => (
-          <button
-            type="button"
-            key={id}
-            aria-pressed={view === id}
-            onClick={() => setView(id)}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-      {view === "map" ? (
+      {fallbackMap ? (
         <FarmMap
           lang={lang}
           lat={location.lat}
@@ -100,13 +81,11 @@ export default function FieldLocation({
           }
         >
           <EarthGlobe
-            key={view}
-            variant={view}
             lang={lang}
             location={location}
             presets={presets}
             onLocationChange={onLocationChange}
-            onMap={() => setView("map")}
+            onMap={() => setFallbackMap(true)}
           />
         </Suspense>
       )}
