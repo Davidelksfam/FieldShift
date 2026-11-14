@@ -59,3 +59,7 @@ Codex implemented the user-requested Three.js Earth selector, marked benchmark s
 ## 2026-11-14 — Partial-source comparison recovery (issue #36)
 
 Codex reproduced incomplete SoilGrids data at the user's exact coordinates, corrected the all-source display gate to require climate while omitting unavailable optional soil/vegetation inputs, removed the implicit pH-8 fallback for missing pH, and preserved known crop selections. Added exact-location partial-source, diagnostics/missingness, laboratory ECe, recovery, Arabic/mobile and stale-offline-HTML reload regressions. The nine full-input legacy hashes remain unchanged. This work does not create missing soil measurements or validate the prototype's agricultural assumptions.
+
+## 2026-11-14 — Simplify location and farmer UI
+
+Codex implemented the user's correction to remove the 3D Earth/Three.js and use the detailed map directly, explicitly enabling touch/wheel/keyboard/button zoom. Simplified copy, crop/goal labels, map-layer disclosure and source layout while retaining critical source states and all automatic data recovery. Added actual pinch-gesture regressions and preserved geolocation protections. Scientific engines, data constants and release gates are unchanged.

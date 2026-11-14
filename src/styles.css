@@ -2232,105 +2232,6 @@ body {
   color: #245d43;
   box-shadow: 0 1px 5px #163c2912;
 }
-.earth-stage {
-  height: 388px;
-  background: radial-gradient(
-    ellipse at center,
-    #183f45 0%,
-    #0e2028 62%,
-    #0a171e 100%
-  );
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  color: #eaf3eb;
-}
-.earth-render {
-  position: absolute;
-  inset: 0;
-  direction: ltr;
-}
-.earth-render canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-  touch-action: none;
-}
-.earth-caption {
-  position: absolute;
-  top: 20px;
-  inset-inline-start: 20px;
-  z-index: 1;
-  pointer-events: none;
-  font-size: 10px;
-  letter-spacing: 1.4px;
-}
-.earth-caption small {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0;
-  color: #a7bdbc;
-  margin-top: 5px;
-}
-.earth-live-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: #8de2b4;
-  border-radius: 50%;
-  margin-inline-end: 6px;
-}
-.earth-tools {
-  position: absolute;
-  inset-inline-end: 14px;
-  top: 70px;
-  display: grid;
-  gap: 5px;
-}
-.earth-tools button {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  min-height: 44px;
-  border: 1px solid #426169;
-  border-radius: 10px;
-  background: #11262bdf;
-  color: #e7eee8;
-}
-.earth-legend {
-  position: absolute;
-  bottom: 44px;
-  inset-inline-start: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  font-size: 10px;
-  pointer-events: none;
-}
-.earth-legend span:first-child {
-  color: #ffd36e;
-}
-.earth-legend span:last-child {
-  color: #78efbe;
-}
-.earth-hint {
-  position: absolute;
-  bottom: 16px;
-  inset-inline-start: 20px;
-  font-size: 10px;
-  color: #a9bfbd;
-  pointer-events: none;
-}
-.earth-fallback {
-  position: absolute;
-  inset: 75px 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
-}
 .quick-locations {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2540,9 +2441,6 @@ body {
   .quick-locations button small {
     display: none;
   }
-  .earth-stage {
-    height: 390px;
-  }
 }
 @media (max-width: 800px) {
   .workspace.farmer-workspace {
@@ -2553,9 +2451,6 @@ body {
   }
   .field-location {
     padding: 16px;
-  }
-  .earth-stage {
-    height: 340px;
   }
   .quick-locations {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2584,9 +2479,6 @@ body {
   }
   .location-heading h2 {
     font-size: 17px;
-  }
-  .earth-stage {
-    height: 300px;
   }
   .quick-locations button {
     font-size: 9px;
@@ -2650,10 +2542,225 @@ body {
   .numeric-metrics {
     grid-template-columns: 1fr 1fr;
   }
-  .earth-caption {
-    font-size: 9px;
+}
+
+/* Simple map workspace: one location view, four inputs and a comparison. */
+.farmer-workspace .farmer-intro .eyebrow {
+  display: none;
+}
+.farmer-workspace .farmer-intro h1 {
+  font-size: clamp(25px, 3vw, 34px);
+  margin: 0 0 6px;
+}
+.farmer-workspace .farmer-intro p {
+  font-size: 14px;
+}
+.field-setup-grid {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 20px;
+}
+.field-location {
+  padding: 16px;
+  gap: 12px;
+}
+.field-location .map-panel {
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+}
+.field-location .map-heading {
+  align-items: start;
+  gap: 8px;
+  margin: 0 0 12px;
+  flex-wrap: wrap;
+}
+.field-location .map-heading h2 {
+  font-size: 19px;
+}
+.field-location .map-heading p {
+  font-size: 11px;
+}
+.field-location .coordinate {
+  font-size: 10px;
+  background: transparent;
+  padding: 0;
+  color: #6d7c6b;
+}
+.field-location .map-canvas {
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.map-canvas .leaflet-container {
+  touch-action: none;
+}
+.map-layers {
+  margin-bottom: 10px;
+}
+.map-layers > summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #55725b;
+  width: fit-content;
+}
+.map-layers > summary::after {
+  content: " ▾";
+}
+.map-layers .map-toolbar {
+  margin-top: 8px;
+}
+.field-location .map-footnote {
+  font-size: 10px;
+  line-height: 1.5;
+  padding-top: 8px;
+}
+.quick-locations {
+  gap: 8px;
+  margin: 0;
+}
+.quick-locations button {
+  padding: 9px 10px;
+  font-size: 12px;
+  justify-content: center;
+  gap: 6px;
+}
+.field-location .geo-row small {
+  font-size: 10px;
+  max-width: 180px;
+}
+.field-location .location-controls {
+  padding: 0;
+  gap: 0;
+}
+.field-inputs {
+  padding: 22px;
+}
+.field-inputs .workspace-panel-heading {
+  margin: 0 0 20px;
+}
+.field-inputs h2 {
+  font-size: 20px;
+}
+.field-inputs .icon-box {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+}
+.field-inputs .additional-details {
+  padding: 12px 0;
+  border: 0;
+  border-top: 1px solid #e6eadd;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.field-inputs .preference-note {
+  margin-top: 12px;
+}
+.field-inputs .compare-action {
+  margin-top: 16px;
+}
+.farmer-workspace .source-status-panel.compact-sources {
+  padding: 14px 18px;
+  margin-block: 18px;
+}
+.compact-sources .source-status-heading {
+  gap: 10px;
+}
+.compact-sources .source-status-heading h2 {
+  font-size: 13px;
+}
+.compact-sources .source-status-heading p {
+  font-size: 11px;
+}
+.compact-sources .location-sources {
+  margin-block: 10px;
+  gap: 8px;
+}
+.compact-sources .location-source {
+  padding: 8px 10px;
+  gap: 3px;
+}
+.compact-sources .location-source > span {
+  display: none;
+}
+.compact-sources .location-source h3 {
+  font-size: 10px;
+}
+.compact-sources .location-source strong {
+  font-size: 11px;
+}
+.compact-sources .source-method {
+  padding-top: 8px;
+  margin-top: 8px;
+}
+.compact-sources .source-method summary {
+  font-size: 11px;
+}
+.numeric-crops li.no-extra-crop {
+  display: none;
+}
+.numeric-strategy {
+  padding: 20px;
+}
+.numeric-card-heading {
+  margin-bottom: 12px;
+}
+.numeric-water {
+  padding-top: 14px;
+  margin-top: 14px;
+}
+.numeric-details {
+  margin-top: 10px;
+}
+.farmer-cautions {
+  margin-top: 12px;
+}
+.farmer-cautions p {
+  padding: 9px 10px;
+  font-size: 11px;
+}
+.numeric-crops {
+  gap: 6px;
+}
+.map-zoom-level {
+  position: absolute;
+  bottom: 30px;
+  inset-inline-end: 8px;
+  z-index: 500;
+  background: #fff;
+  color: #355540;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 10px;
+  pointer-events: none;
+}
+@media (max-width: 800px) {
+  .field-setup-grid {
+    grid-template-columns: 1fr;
   }
-  .earth-caption small {
+  .field-location .map-canvas {
+    height: 270px;
+  }
+  .compact-sources .location-sources {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .compact-sources .location-source {
+    padding: 8px;
+  }
+  .compact-sources .location-source strong {
     font-size: 10px;
   }
+  .quick-locations button {
+    flex-direction: row;
+    align-items: center;
+    font-size: 11px;
+  }
+}
+.three-strategies > .section-heading .eyebrow {
+  display: none;
 }

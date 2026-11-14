@@ -18,23 +18,12 @@ export default function FieldInputs({
       className="panel field-inputs"
       aria-labelledby="field-inputs-title"
     >
-      <span className="step-label">
-        02 · {t("YOUR ROTATION", "دورتك الزراعية")}
-      </span>
       <div className="workspace-panel-heading">
         <span className="icon-box">
           <Sprout size={20} />
         </span>
         <div>
-          <h2 id="field-inputs-title">
-            {t("Make the next season count", "خطط لموسمك القادم")}
-          </h2>
-          <p>
-            {t(
-              "Your crops. Your water. Your priorities.",
-              "محاصيلك، مياهك، وأولوياتك.",
-            )}
-          </p>
+          <h2 id="field-inputs-title">{t("Your crops", "محاصيلك")}</h2>
         </div>
       </div>
       <div className="workspace-fields">
@@ -56,7 +45,12 @@ export default function FieldInputs({
                 .filter((c) => c.season === season)
                 .map((c) => (
                   <option key={c.id} value={c.id}>
-                    {cropEmoji[c.id]} {lang === "ar" ? c.nameAr : c.nameEn}
+                    {cropEmoji[c.id]}{" "}
+                    {lang === "ar"
+                      ? c.nameAr
+                      : c.nameEn
+                          .split(" (")[0]
+                          .replace("Summer Maize", "Maize")}
                   </option>
                 ))}
             </select>
@@ -105,7 +99,13 @@ export default function FieldInputs({
             )}
             {Object.entries(GOALS).map(([id, g]) => (
               <option key={id} value={id}>
-                {t(g.en, g.ar)}
+                {
+                  {
+                    water: t("Save water", "توفير المياه"),
+                    soil: t("Soil condition", "حالة التربة"),
+                    market: t("Market / forage", "السوق والأعلاف"),
+                  }[id]
+                }
               </option>
             ))}
           </select>

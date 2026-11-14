@@ -47,3 +47,7 @@ V2 remains experimental and off by default. No full local calendar, independentl
 ## Earth-first redesign — issue #32
 
 The new UI branch adds a lazily loaded interactive Earth, gold benchmark markers, quick-location buttons, opt-in GPS, a detailed-map toggle and cleaner crop/strategy visuals. Source support and existing numerical/scientific behavior are preserved. See [interaction, resilience and rollback](product/EARTH_WORKSPACE.md). This redesign does not activate experimental V2 or establish coverage at arbitrary points.
+
+## Simplified map workspace — issue #37
+
+User correction replaces the 3D Earth with the direct field map and explicit touch/wheel/button/keyboard zoom. Labels, source display and setup panels are compacted; advanced layers/details are disclosed on demand. GPS, quick locations, numeric/scientific behavior and automatic location-data recovery remain intact. See [flow and rollback](product/SIMPLE_MAP_WORKSPACE.md).

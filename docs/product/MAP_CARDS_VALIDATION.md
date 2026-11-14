@@ -50,7 +50,7 @@ The corrected flow opens all three cards as soon as supported climate is availab
 Executed checks:
 
 - `npm run check`: **129 unit/integration tests**, production build and repository checker passed. All nine full-input legacy hashes remain identical.
-- Production-build farmer/globe suite: **22 passed**. New checks cover the exact reported location with incomplete soil, climate-only success, optional-source recovery without losing crop selections, missing climate with preserved baseline crop names, Arabic/mobile display, and online reload with deliberately stale offline HTML.
+- Production-build farmer/map suite: **23 passed** after integrating main's simplified map (`0e9def1`), including pinch/zoom and geolocation checks. New checks cover the exact reported location with incomplete soil, climate-only success, optional-source recovery without losing crop selections, missing climate with preserved baseline crop names, Arabic/mobile display, and online reload with deliberately stale offline HTML.
 - Experimental browser suite: **4 passed**.
 - The stale-HTML regression confirms that online navigation loads the current application, rather than using cached old HTML. Existing open tabs still need a reload to execute a newly deployed JavaScript build; no provider retry is needed just to display a climate-supported comparison.
 

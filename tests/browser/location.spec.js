@@ -4,25 +4,17 @@ const start = async (page) => {
   await page.goto("/");
   await page.getByRole("button", { name: "English", exact: true }).click();
 };
-test("Earth renders locally, zooms and keeps quick locations keyboard accessible", async ({
+test("map opens directly, zoom controls work and quick locations stay keyboard accessible", async ({
   page,
 }) => {
   await start(page);
-  await expect(page.locator(".earth-render canvas")).toBeVisible();
-  for (const name of [
-    "Zoom Earth in",
-    "Zoom Earth out",
-    "Focus selected region",
-  ])
-    await page.getByRole("button", { name, exact: true }).click();
-  const globe = page.locator(".earth-render canvas");
-  const bounds = await globe.boundingBox();
-  await globe.click({
-    position: { x: bounds.width / 2 + 8, y: bounds.height / 2 },
-  });
-  await expect(page.getByLabel("Saved locations", { exact: true })).toHaveValue(
-    "",
-  );
+  await expect(page.locator(".leaflet-container")).toBeVisible();
+  const zoom = page.getByLabel("Map zoom", { exact: true });
+  await expect(zoom).toHaveText("11×");
+  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await expect(zoom).toHaveText("12×");
+  await page.getByRole("button", { name: "Zoom out", exact: true }).click();
+  await expect(zoom).toHaveText("11×");
   await page.getByTestId("quick-west_delta_nubariya").focus();
   await page.keyboard.press("Enter");
   await expect(page.getByTestId("quick-west_delta_nubariya")).toHaveAttribute(
@@ -32,8 +24,9 @@ test("Earth renders locally, zooms and keeps quick locations keyboard accessible
   await expect(page.getByLabel("Winter crop", { exact: true })).toHaveValue(
     "wheat",
   );
-  await page.getByRole("button", { name: "Field map", exact: true }).click();
-  await expect(page.locator(".leaflet-container")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Earth", exact: true }),
+  ).toHaveCount(0);
 });
 test("geolocation is opt-in and updates the selected coordinates after permission", async ({
   page,
@@ -104,30 +97,6 @@ test("denied and out-of-region geolocation preserve the current field", async ({
     "true",
   );
 });
-test("WebGL unavailable keeps the map and quick locations usable", async ({
-  page,
-}) => {
-  await page.addInitScript(() => {
-    const get = HTMLCanvasElement.prototype.getContext;
-    HTMLCanvasElement.prototype.getContext = function (type, ...args) {
-      return type.startsWith("webgl") ? null : get.call(this, type, ...args);
-    };
-  });
-  await start(page);
-  await expect(
-    page.getByText("3D is unavailable on this device.", { exact: true }),
-  ).toBeVisible();
-  await page
-    .getByRole("button", { name: "Open field map", exact: true })
-    .click();
-  await expect(page.locator(".leaflet-container")).toBeVisible();
-  await page.getByTestId("quick-delta_kafr_el_sheikh").click();
-  await expect(page.getByTestId("quick-delta_kafr_el_sheikh")).toHaveAttribute(
-    "aria-pressed",
-    "true",
-  );
-});
-
 test("late GPS cannot replace a newer quick-location choice", async ({
   page,
 }) => {
