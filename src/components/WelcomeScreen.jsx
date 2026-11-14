@@ -6,6 +6,7 @@ import {
   ChartNoAxesCombined,
 } from "lucide-react";
 import { text } from "../i18n";
+import InstallApp from "./InstallApp";
 
 export default function WelcomeScreen({ lang, onEnter }) {
   const t = (en, ar) => text(lang, en, ar);
@@ -40,7 +41,8 @@ export default function WelcomeScreen({ lang, onEnter }) {
         </span>
       </div>
       <div className="welcome-bottom">
-        <span className="welcome-caption">
+        <InstallApp lang={lang} welcome />
+        <span className="welcome-caption install-caption">
           <ArrowDown size={16} />
           {t(
             "A view from above. A plan for what’s next.",

@@ -1,0 +1,40 @@
+.install-app {
+  position: relative;
+  min-width: 0;
+}
+.install-caption {
+  display: none;
+}
+.install-welcome > .button {
+  color: var(--fs-earth-ink);
+  background: #0d1318;
+  border-color: #34433e;
+}
+.install-instructions {
+  padding: 18px;
+  border: 1px solid var(--fs-border);
+  border-radius: 14px;
+  background: var(--fs-bg-surface);
+  color: var(--fs-text-primary);
+  width: min(360px, calc(100vw - 48px));
+  text-align: start;
+  box-shadow: 0 8px 36px #0004;
+}
+.install-instructions p {
+  margin-block: 12px;
+  font-size: 13px;
+  color: inherit;
+}
+.install-instructions small {
+  display: block;
+  margin-bottom: 12px;
+}
+.install-welcome .install-instructions {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  inset-inline-start: 0;
+  z-index: 40;
+}
+.page-footer:has(.install-app) {
+  flex-wrap: wrap;
+}

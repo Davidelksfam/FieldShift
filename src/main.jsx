@@ -13,6 +13,7 @@ import "./workspace.css";
 import "./earth-theme.css";
 import "./immersive.css";
 import "./compact-planner.css";
+import "./install.css";
 import App from "./App";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

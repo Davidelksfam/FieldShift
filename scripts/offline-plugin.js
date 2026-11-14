@@ -1,23 +1,40 @@
 import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 // Precache only the built first-party shell. NASA/Esri tiles are never cached here.
 export function offlineShell() {
   let base = "/";
+  let publicDir;
+  const installAssets = [
+    "manifest.webmanifest",
+    "pwa/icon-192.png",
+    "pwa/icon-512.png",
+    "pwa/maskable-512.png",
+    "pwa/apple-touch-icon.png",
+  ];
   return {
     name: "fieldshift-offline-shell",
     configResolved(config) {
       base = config.base;
+      publicDir = config.publicDir;
     },
     generateBundle(_options, bundle) {
       const paths = [
         base,
         `${base}index.html`,
         `${base}brand/field-shift-mark.svg`,
+        ...installAssets.map((name) => `${base}${name}`),
         ...Object.keys(bundle).map((name) => `${base}${name}`),
       ];
       const scope = createHash("sha256").update(base).digest("hex").slice(0, 8);
       const prefix = `fieldshift-shell-${scope}-`;
       const hash = createHash("sha256")
         .update(Object.keys(bundle).sort().join("|"))
+        .update(
+          Buffer.concat(
+            installAssets.map((name) => readFileSync(resolve(publicDir, name))),
+          ),
+        )
         .digest("hex")
         .slice(0, 12);
       const cache = `${prefix}${hash}`;
