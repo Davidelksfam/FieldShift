@@ -27,6 +27,8 @@ npm run test:browser
 
 `npm run check` runs unit tests, the production build and the repository/link checker. `npm run preview` serves the built application. Browser tests use the production build on port 4173.
 
+“Understand my results” opens an Arabic/English calculation guide with eight suggested questions. Answers follow the current priorities, sources, area and strategy outputs. A drip-irrigation what-if reruns the current crop rotation without changing the form. This is offline-capable guided help, with no LLM API or free-text chat.
+
 ## Data and limits
 
 - The three exact benchmark centroids now load **audited historical source snapshots**: complete 2025 POWER, QA-screened MODIS, and native SoilGrids predictions where valid. Kafr El-Sheikh soil is unavailable (zero-filled profile rejected); its soil fallback stays explicitly synthetic. [Dataset quality report](data/processed/QUALITY_REPORT.md). Synthetic demo fixtures remain separate.

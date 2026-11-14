@@ -20,6 +20,7 @@ import PipelineExplorer from "./components/PipelineExplorer";
 import FieldSummary from "./components/farmer/FieldSummary";
 import FieldInputs from "./components/farmer/FieldInputs";
 import AdditionalDetails from "./components/farmer/AdditionalDetails";
+import CalculationGuide from "./components/farmer/CalculationGuide";
 import PriorityPanel from "./components/farmer/PriorityPanel";
 import LivePlanSummary from "./components/farmer/LivePlanSummary";
 import FieldLocation from "./components/farmer/FieldLocation";
@@ -378,6 +379,15 @@ export default function App() {
               onShowExample={() => setAllowIllustrative(true)}
             />
           </div>
+          <CalculationGuide
+            lang={lang}
+            evaluation={evaluation}
+            data={comparisonData}
+            inputs={inputs}
+            visible={visible}
+            catalog={crops}
+            onCompare={compare}
+          />
           {evaluation && visible && (
             <details className="workspace-summary">
               <summary>
