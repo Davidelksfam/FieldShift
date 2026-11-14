@@ -77,3 +77,7 @@ Codex implemented the user-directed farmer UX redesign: bespoke crop and field S
 ## 2026-11-14 — Native SoilGrids retrieval recovery
 
 Codex reproduced PixelGust access failure and an all-null ISRIC point profile at 29.8682 N, 31.3133 E. Added bounded native WCS fallback with lazy GeoTIFF decoding, Egypt-only native-cell alignment, complete-profile validation and retained request provenance; added bilingual missing-coverage/retrieval explanations. Live WCS recovered the audited Fayoum values; the reported point's zero-filled cell remains excluded. Added compressed-cell/hash, alignment/CRS/fill, weighted-unit, timeout/cancellation, cache and browser regressions. The tiny ISRIC fixture is attributed to its source under CC BY 4.0. This change cannot manufacture missing soil coverage or establish field accuracy; crop calculations and scientific release gates are unchanged.
+
+## 2026-11-14 — Preset recovery from partial caches
+
+Codex reproduced an older partial coordinate cache suppressing the audited preset soil profile when other cached sources were usable. Preset initialization now restores each missing source independently from the exact-coordinate audited snapshot while preserving valid cached observations. Added Fayoum/Nubariya cached-climate/vegetation plus unavailable-soil regressions, failed-refresh/reload persistence, valid soil-cache precedence and no-borrowing/missing-Delta guards. No benchmark values, selected coordinates or scientific formulas changed.

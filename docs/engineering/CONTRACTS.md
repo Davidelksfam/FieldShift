@@ -31,6 +31,8 @@ Engine output: diagnostics; strategies with IDs baseline/water/soil, crop record
 
 Source status `snapshot` means a versioned bundled historical download with acquisition provenance. It applies only to an exact benchmark centroid, before synthetic fallback. `kind: observed` distinguishes retrieved source values from synthetic data; `dataNature` clarifies reanalysis, satellite index or modeled soil prediction. It does not mean in-field measurement. NDVI dates rejected by matching pixel reliability are retained with `ndvi: null`; the engine reports autumnObservedDays/autumnMissingDays. See [data quality report](../../data/processed/QUALITY_REPORT.md). Cache namespace/schema v2 invalidates old unscreened cache entries.
 
+Snapshot fallback is applied independently per source: a usable cached climate or vegetation source cannot suppress an audited soil profile when cached soil is synthetic. Valid cached observations retain precedence. An absent audited soil profile (the Delta preset) remains absent, and nearby coordinates cannot borrow the benchmark profile. A failed refresh persists any restored audited source for subsequent reloads.
+
 ## Post-processing amendment — issue #16
 
 The engine now delegates six diagnostics to `computeFieldIndices`, searches 16/32 catalog candidates (depending on cover requirement), selects distinct objective-specific alternatives and re-scores all cards with common farmer weights. `candidateAudit` exposes generation, hard rejections, objective weights and rankings. Strategy output adds `sequenceKey`, `objectiveSuitability`, `objectiveWeights`, absolute modeled water savings and bilingual `explanation` (evidence, data-support category/reasons, checklist).
