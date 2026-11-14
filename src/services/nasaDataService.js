@@ -342,21 +342,28 @@ export function getInitialFarmData(lat, lon, presetId) {
   const snapshot = Object.values(observedBenchmarks).find(
     (p) => Math.abs(p.lat - lat) < 1e-7 && Math.abs(p.lon - lon) < 1e-7,
   );
-  if (!cached && snapshot) {
-    for (const key of [
-      "climateDaily",
-      "summerMaxTemps",
-      "avgRootWetness",
-      "ndviSeries",
-      "soil",
-    ]) {
-      if (snapshot[key] !== undefined)
-        initial[key] = structuredClone(snapshot[key]);
+  if (snapshot) {
+    // A cached success for one source must not hide audited preset data for
+    // another. In particular, older partial caches can contain synthetic soil.
+    for (const [source, fields] of Object.entries({
+      climate: ["climateDaily", "summerMaxTemps", "avgRootWetness"],
+      soil: ["soil"],
+      ndvi: ["ndviSeries"],
+    })) {
+      if (
+        cached?.sources[source]?.kind === "observed" ||
+        !snapshot.sources[source]
+      )
+        continue;
+      for (const key of fields)
+        if (snapshot[key] !== undefined)
+          initial[key] = structuredClone(snapshot[key]);
+      initial.sources[source] = structuredClone(snapshot.sources[source]);
     }
-    Object.assign(initial.sources, structuredClone(snapshot.sources));
-    if (!snapshot.soil)
+    if (!snapshot.soil && initial.sources.soil.kind === "synthetic") {
       initial.sources.soil.reason =
         "Exact centroid has an invalid zero-filled SoilGrids profile; synthetic soil fallback is not a measurement.";
+    }
   }
   if (snapshot && initial.sources.ndvi.kind === "observed")
     initial.ndviHistory = structuredClone(
