@@ -9,7 +9,9 @@ test("pinch zoom in and out does not change the selected field", async ({
   await page.getByRole("button", { name: "English", exact: true }).click();
   const map = page.locator(".earth-render canvas");
   await map.scrollIntoViewIfNeeded();
-  await map.evaluate((el) => el.scrollIntoView({ block: "center" }));
+  // Keep the original scrolled-document gesture regression with a map that
+  // now starts at the top of the viewport instead of below a page header.
+  await page.evaluate(() => window.scrollTo(0, 80));
   expect(await page.evaluate(() => scrollY)).toBeGreaterThan(0);
   const box = await map.boundingBox(),
     x = box.x + box.width / 2,

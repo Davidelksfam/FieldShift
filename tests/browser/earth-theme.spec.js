@@ -159,6 +159,8 @@ test("sphere picking fetches custom data and invalid coordinates preserve the la
   const requests = await start(page);
   await settled(page);
   await page.getByTestId("irrigation-choice-drip").locator("..").click();
+  // The field parameters now follow the viewport-sized map.
+  await page.locator(".earth-render canvas").scrollIntoViewIfNeeded();
   const box = await page.locator(".earth-render canvas").boundingBox();
   await page.mouse.click(box.x + box.width / 2 + 8, box.y + box.height / 2);
   await expect(page.getByLabel("Saved locations", { exact: true })).toHaveValue(

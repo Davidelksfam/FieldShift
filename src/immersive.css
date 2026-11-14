@@ -253,6 +253,7 @@ html[data-theme="dark"] .map-location-dock .quick-locations button.active {
   border-color: #f2f7f450;
 }
 .map-location-dock .coordinate-form button {
+  min-height: 44px;
   background: var(--fs-earth-sage);
   color: var(--fs-earth-space);
   align-self: end;

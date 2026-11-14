@@ -314,8 +314,7 @@ export default function EarthGlobe({
               );
             if (p === 1) animation = null;
           }
-          controls.update();
-          updateView();
+          if (!controls.update()) updateView();
           if (animation) requestFrame();
         };
         const requestFrame = () => {
@@ -341,8 +340,7 @@ export default function EarthGlobe({
           } else {
             animation = null;
             camera.position.copy(to);
-            controls.update();
-            updateView();
+            if (!controls.update()) updateView();
           }
         };
         const updateSelection = () => {
@@ -371,8 +369,7 @@ export default function EarthGlobe({
               Math.min(6, 1 + (camera.position.length() - 1) * factor),
             ),
           );
-          controls.update();
-          updateView();
+          if (!controls.update()) updateView();
         };
         const resize = () => {
           const { width, height } = container.getBoundingClientRect();
@@ -681,8 +678,7 @@ export default function EarthGlobe({
             const target = animation.to.clone();
             stop();
             camera.position.copy(target);
-            controls.update();
-            updateView();
+            if (!controls.update()) updateView();
           }
         };
         for (const [name, fn] of [
