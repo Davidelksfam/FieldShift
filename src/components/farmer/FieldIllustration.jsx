@@ -84,31 +84,7 @@ export default function FieldIllustration({ kind, size = 96 }) {
         )}
       </>
     );
-  else if (["head", "middle", "tail"].includes(kind)) {
-    const x = { head: 20, middle: 50, tail: 80 }[kind];
-    art = (
-      <>
-        <path d="M8 30h84v10H8Z" fill="#B9DAEA" />
-        <path d="M8 30h84m-84 10h84" stroke="#3289CE" strokeWidth="1.5" />
-        <path
-          d="m38 34 4 2-4 2m20-4 4 2-4 2"
-          stroke="#3289CE"
-          strokeWidth="1.5"
-        />
-        <path d={`M${x} 30V19`} stroke="#08794A" strokeWidth="2" />
-        <rect
-          x={x - 9}
-          y="7"
-          width="18"
-          height="14"
-          rx="2"
-          fill="#9AD8BF"
-          stroke="#08794A"
-        />
-        <path d={`M${x - 4} 10v8m5-8v8`} stroke="#08794A" />
-      </>
-    );
-  } else if (["none", "moderate", "high"].includes(kind))
+  else if (["none", "moderate", "high"].includes(kind))
     art = (
       <>
         {soil}

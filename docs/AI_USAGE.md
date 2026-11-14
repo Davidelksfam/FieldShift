@@ -81,3 +81,7 @@ Codex reproduced PixelGust access failure and an all-null ISRIC point profile at
 ## 2026-11-14 — Preset recovery from partial caches
 
 Codex reproduced an older partial coordinate cache suppressing the audited preset soil profile when other cached sources were usable. Preset initialization now restores each missing source independently from the exact-coordinate audited snapshot while preserving valid cached observations. Added Fayoum/Nubariya cached-climate/vegetation plus unavailable-soil regressions, failed-refresh/reload persistence, valid soil-cache precedence and no-borrowing/missing-Delta guards. No benchmark values, selected coordinates or scientific formulas changed.
+
+## 2026-11-14 — Remove canal-position input
+
+Codex removed the user-rejected canal-position question from both input components and active scenario defaults, deleted its unused illustration and removed its 12-point tail-end salinity screening bonus. Existing legacy inputs are ignored rather than remapped to an assumed position. Updated the input/formula contracts and browser coverage; added a regression covering the screening formula and legacy head/middle/tail invariance. Compared all nine frozen evaluations with the original engine before updating three hashes: only the removed 12-point Fayoum screening bonus changed. Soil ECe penalties, water estimates, other farmer inputs and Scientific V2 are unchanged. This simplifies an uncalibrated heuristic; it does not validate the remaining screening index.
