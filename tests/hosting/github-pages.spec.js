@@ -49,6 +49,24 @@ test("repository subpath loads the globe, current inputs and scoped offline shel
   await page.getByRole("button", { name: "English", exact: true }).click();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
   await expect(stage).toHaveAttribute("data-camera-distance", "1.3500");
+  await page
+    .getByRole("button", { name: "Understand my results", exact: true })
+    .click();
+  const guide = page.getByRole("dialog", {
+    name: "Your calculation guide",
+    exact: true,
+  });
+  await guide
+    .getByRole("button", {
+      name: "What if I switch to drip irrigation?",
+      exact: true,
+    })
+    .click();
+  await expect(guide.getByTestId("guide-fact-drip-scenario")).toContainText(
+    "6,758",
+  );
+  await page.keyboard.press("Escape");
+  await expect(guide).not.toBeVisible();
   expect(
     await page.evaluate(() => caches.has("fieldshift-shell-unrelated-app")),
   ).toBe(true);

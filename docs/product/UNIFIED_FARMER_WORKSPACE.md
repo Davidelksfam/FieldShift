@@ -20,6 +20,12 @@ Priorities use illustrated goal cards and the shared live sliders. Custom edits,
 
 There is no farmer/Expert mode switch or alternate input sidebar. The header's Show advanced analytics control and the evidence link below the comparison reveal climate/field diagnostics, technical strategy scores, satellite charts and the pipeline below the existing workspace. Opening analytics focuses the section without replacing the form or remounting the map. Farmer inputs and the technical views share one App state. Scientific V2 remains behind its existing build flag and inside advanced analytics.
 
+## Calculation guide
+
+“Understand my results” opens a keyboard-accessible native dialog beside the plans. Eight curated questions generate Arabic/English answers directly from the current evaluation: winner and weights, modeled water difference, whole-field totals, drip irrigation, measured salinity, source availability, ordinal nitrogen and conditional Nili. Closing and reopening reads current inputs; no answer history or user location is sent or persisted. This is guided calculation help, not an open-ended AI chatbot.
+
+The drip what-if reruns the existing engine on the same baseline crop rotation with drip irrigation and never edits the actual inputs. Hidden strategy results remain hidden in the guide; invalid ECe and absent/invalid area retain their missingness. Source information remains accessible when climate is unavailable. Synthetic comparisons are labeled illustrative. Water figures, scores and source predictions retain their prototype limitations. The guide makes no additional provider or LLM requests and works with the offline application shell.
+
 ## Accessibility and resilience
 
 Native radio groups support arrow-key selection; visible labels, selection checkmarks and focus rings make state clear beyond color. Native checkboxes preserve keyboard/touch operation. SVG illustrations are aria-hidden; text carries meaning. Logical CSS properties support RTL. Inputs retain valid units, validation, per-feddan comparison, optional field totals and source cautions. Reduced-motion preferences apply to section scrolling.
