@@ -1,3 +1,4 @@
+import presets from "../data/demoPresets.json";
 import { useEffect, useState } from "react";
 import {
   MapContainer,
@@ -106,6 +107,25 @@ export default function FarmMap({ lang, lat, lon, onLocationChange }) {
               eventHandlers={{ tileerror: () => setTileError(true) }}
             />
           )}
+          {Object.values(presets).map((p) => (
+            <CircleMarker
+              key={p.id}
+              center={[p.lat, p.lon]}
+              radius={7}
+              bubblingMouseEvents={false}
+              pathOptions={{
+                color: "#fff3cc",
+                fillColor: "#b98b28",
+                fillOpacity: 1,
+                weight: 2,
+              }}
+              eventHandlers={{
+                click: () => onLocationChange(p.lat, p.lon, p.id),
+              }}
+            >
+              <Tooltip>{lang === "ar" ? p.nameAr : p.nameEn}</Tooltip>
+            </CircleMarker>
+          ))}
           <CircleMarker
             center={[lat, lon]}
             radius={9}

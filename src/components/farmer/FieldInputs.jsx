@@ -1,4 +1,5 @@
-import { Sprout, Droplets } from "lucide-react";
+import CropIcon, { cropEmoji } from "./CropIcon";
+import { Sprout, Droplets, Target } from "lucide-react";
 import { text } from "../../i18n";
 import { GOALS, selectGoal } from "../../presentation/farmerModel";
 import AdditionalDetails from "./AdditionalDetails";
@@ -17,18 +18,21 @@ export default function FieldInputs({
       className="panel field-inputs"
       aria-labelledby="field-inputs-title"
     >
+      <span className="step-label">
+        02 · {t("YOUR ROTATION", "دورتك الزراعية")}
+      </span>
       <div className="workspace-panel-heading">
         <span className="icon-box">
           <Sprout size={20} />
         </span>
         <div>
           <h2 id="field-inputs-title">
-            {t("Crops, irrigation & priorities", "محاصيلك وطريقة الري")}
+            {t("Make the next season count", "خطط لموسمك القادم")}
           </h2>
           <p>
             {t(
-              "All your field inputs in one place.",
-              "كل بيانات أرضك في مكان واحد.",
+              "Your crops. Your water. Your priorities.",
+              "محاصيلك، مياهك، وأولوياتك.",
             )}
           </p>
         </div>
@@ -39,7 +43,10 @@ export default function FieldInputs({
           ["Seifi", "currentSummerId", "Summer crop", "المحصول الصيفي"],
         ].map(([season, key, en, ar]) => (
           <label className="field-label" key={key}>
-            {t(en, ar)}
+            <span className="input-title">
+              <CropIcon id={inputs[key]} />
+              {t(en, ar)}
+            </span>
             <select
               aria-label={t(en, ar)}
               value={inputs[key]}
@@ -49,14 +56,17 @@ export default function FieldInputs({
                 .filter((c) => c.season === season)
                 .map((c) => (
                   <option key={c.id} value={c.id}>
-                    {lang === "ar" ? c.nameAr : c.nameEn}
+                    {cropEmoji[c.id]} {lang === "ar" ? c.nameAr : c.nameEn}
                   </option>
                 ))}
             </select>
           </label>
         ))}
         <label className="field-label">
-          {t("Irrigation system", "نظام الري")}
+          <span className="input-title">
+            <Droplets size={20} />
+            {t("Irrigation system", "نظام الري")}
+          </span>
           <select
             aria-label={t("Irrigation system", "نظام الري")}
             value={inputs.irrigationType}
@@ -79,7 +89,10 @@ export default function FieldInputs({
           </select>
         </label>
         <label className="field-label">
-          {t("Main goal", "هدف المقارنة")}
+          <span className="input-title">
+            <Target size={20} />
+            {t("Main goal", "هدف المقارنة")}
+          </span>
           <select
             aria-label={t("Main goal", "هدف المقارنة")}
             value={inputs.goal}
@@ -98,17 +111,20 @@ export default function FieldInputs({
           </select>
         </label>
       </div>
-      <p className="small-note">
-        {inputs.goal === "custom"
-          ? t(
-              "Your custom expert weights are active. Choosing a goal replaces them.",
-              "أوزان الخبير المخصصة مفعّلة. اختيار هدف بيستبدلها.",
-            )
-          : t(
-              "Goal weights are comparison preferences, not scientifically calibrated. Market scores do not predict profit.",
-              "أوزان الهدف تفضيلات للمقارنة وليست معايرة علمياً. درجات السوق لا تتنبأ بالربح.",
-            )}
-      </p>
+      <details className="preference-note">
+        <summary>{t("How priorities work", "كيف تعمل الأولويات")}</summary>
+        <p className="small-note">
+          {inputs.goal === "custom"
+            ? t(
+                "Your custom expert weights are active. Choosing a goal replaces them.",
+                "أوزان الخبير المخصصة مفعّلة. اختيار هدف بيستبدلها.",
+              )
+            : t(
+                "Goal weights are comparison preferences, not scientifically calibrated. Market scores do not predict profit.",
+                "أوزان الهدف تفضيلات للمقارنة وليست معايرة علمياً. درجات السوق لا تتنبأ بالربح.",
+              )}
+        </p>
+      </details>
       <AdditionalDetails lang={lang} inputs={inputs} setInputs={setInputs} />
       <button
         className="button primary compare-action"
@@ -118,12 +134,6 @@ export default function FieldInputs({
         <Droplets size={18} />
         {t("Compare three strategies", "قارن ٣ استراتيجيات")}
       </button>
-      <p className="small-note">
-        {t(
-          "Numbers update immediately when inputs change. This button takes you to the comparison.",
-          "الأرقام بتتحدّث فوراً مع تعديل المدخلات. الزر بينقلك للمقارنة.",
-        )}
-      </p>
     </section>
   );
 }

@@ -8,6 +8,7 @@ export function offlineShell() {
         "/",
         "/index.html",
         "/brand/field-shift-mark.svg",
+        "/earth/earth.jpg",
         ...Object.keys(bundle).map((name) => `/${name}`),
       ];
       const hash = createHash("sha256")

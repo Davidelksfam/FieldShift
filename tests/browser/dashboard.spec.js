@@ -37,7 +37,9 @@ test("map and all primary inputs share one page with three actual numerical stra
   await blockRemote(page);
   await page.goto("/");
   await english(page);
-  await expect(page.locator(".map-panel")).toBeVisible();
+  await expect(
+    page.getByLabel("Interactive 3D Earth", { exact: true }),
+  ).toBeVisible();
   for (const name of [
     "Winter crop",
     "Summer crop",
@@ -183,9 +185,7 @@ test("custom map location failure hides numeric results until an illustrative co
     .click();
   await expect(page.locator(".illustrative-banner")).toBeVisible();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
-  await page
-    .getByLabel("Saved locations", { exact: true })
-    .selectOption("delta_kafr_el_sheikh");
+  await page.getByTestId("quick-delta_kafr_el_sheikh").click();
   await waitSources(page);
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("—");
   await expect(page.getByTestId("source-soil")).toContainText(
@@ -195,12 +195,11 @@ test("custom map location failure hides numeric results until an illustrative co
     .getByRole("button", { name: "Show illustrative comparison", exact: true })
     .click();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813"); // Irrigation is preserved.
-  await page
-    .getByLabel("Saved locations", { exact: true })
-    .selectOption("west_delta_nubariya");
+  await page.getByTestId("quick-west_delta_nubariya").click();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
   await coordinates(page, 0, 0);
   await expect(page.getByRole("alert")).toContainText("within Egypt");
+  await page.getByRole("button", { name: "Field map", exact: true }).click();
   await page
     .getByLabel("Satellite layer", { exact: true })
     .selectOption("ndvi");
@@ -471,9 +470,7 @@ test("production shell and numerical comparisons reload offline after first visi
   await page.reload();
   await english(page);
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
-  await page
-    .getByLabel("Saved locations", { exact: true })
-    .selectOption("west_delta_nubariya");
+  await page.getByTestId("quick-west_delta_nubariya").click();
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
   await coordinates(page, 30.8, 31.2);
   await waitSources(page);
