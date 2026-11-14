@@ -260,7 +260,7 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
                     </small>
                   </dd>
                 </div>
-                {show && inputs.estimateArea && areaIsValid(inputs) && (
+                {show && areaIsValid(inputs) && (
                   <div>
                     <dt>
                       {t(

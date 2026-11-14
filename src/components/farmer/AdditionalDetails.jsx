@@ -50,10 +50,6 @@ export default function AdditionalDetails({ lang, inputs, setInputs }) {
               "القيم الأولية افتراضات للعرض. عدّلها حسب ظروف أرضك.",
             )}
           </p>
-          {choices("landType", t("Land type", "نوع الأرض"), [
-            ["old_clay", "Alluvial clay", "طينية قديمة"],
-            ["new_sandy", "Sandy land", "رملية مستصلحة"],
-          ])}
           {choices(
             "salinityLevel",
             t("Reported salinity", "الملوحة المبلغ عنها"),
@@ -65,10 +61,42 @@ export default function AdditionalDetails({ lang, inputs, setInputs }) {
           )}
           <p className="field-help">
             {t(
-              "Used for context and screening warnings. These selections do not directly change crop ranking.",
-              "للسياق والتنبيهات التقديرية. الاختيارات دي لا تغيّر ترتيب المحاصيل مباشرةً.",
+              "Reported salinity adds screening warnings, not numerical crop penalties.",
+              "الملوحة المبلغ عنها للتنبيهات التقديرية، مش لخصم نقاط المحاصيل.",
             )}
           </p>
+          <div className="optional-land-type">
+            <label className="field-label">
+              <span className="optional-field-heading">
+                <FieldIllustration
+                  kind={inputs.landType || "old_clay"}
+                  size={40}
+                />
+                <span>{t("Land type", "نوع الأرض")}</span>
+                <small>{t("Optional", "اختياري")}</small>
+              </span>
+              <select
+                aria-label={t("Land type", "نوع الأرض")}
+                aria-describedby="land-type-help"
+                value={inputs.landType ?? ""}
+                onChange={(e) => update("landType", e.target.value)}
+              >
+                <option value="">{t("Not specified", "غير محدد")}</option>
+                <option value="old_clay">
+                  {t("Alluvial clay", "طينية قديمة")}
+                </option>
+                <option value="new_sandy">
+                  {t("Sandy land", "رملية مستصلحة")}
+                </option>
+              </select>
+            </label>
+            <p id="land-type-help" className="field-help">
+              {t(
+                "Used for sandy-soil irrigation warnings, not crop ranking. Leave unspecified if unsure.",
+                "لتنبيهات الري في الأرض الرملية، مش لترتيب المحاصيل. سيبه غير محدد لو مش متأكد.",
+              )}
+            </p>
+          </div>
         </div>
         <div className="panel conditions-panel farm-needs">
           <h3>{t("How you use your farm", "احتياجات مزرعتك")}</h3>
@@ -168,17 +196,6 @@ export default function AdditionalDetails({ lang, inputs, setInputs }) {
               </p>
             </div>
           </div>
-          <label className="area-enable">
-            <input
-              type="checkbox"
-              checked={inputs.estimateArea}
-              onChange={(e) => update("estimateArea", e.target.checked)}
-            />
-            {t(
-              "Estimate water for my whole field",
-              "أحسب تقدير المياه لأرضي بالكامل",
-            )}
-          </label>
           <div className="form-row">
             <label className="field-label">
               {t("Area in feddans", "المساحة بالفدان")}
@@ -193,7 +210,6 @@ export default function AdditionalDetails({ lang, inputs, setInputs }) {
                   setInputs((p) => ({
                     ...p,
                     feddans: e.target.value,
-                    estimateArea: true,
                   }))
                 }
               />
@@ -210,7 +226,6 @@ export default function AdditionalDetails({ lang, inputs, setInputs }) {
                   setInputs((p) => ({
                     ...p,
                     qirats: e.target.value,
-                    estimateArea: true,
                   }))
                 }
               />
@@ -218,8 +233,8 @@ export default function AdditionalDetails({ lang, inputs, setInputs }) {
           </div>
           <p className="field-help">
             {t(
-              "1 feddan = 24 qirats. Area scales totals, not the ranking.",
-              "الفدان = ٢٤ قيراط. المساحة تغيّر الإجمالي، مش الترتيب.",
+              "Enter your area to see whole-field water totals automatically. Leave blank for a per-feddan comparison. 1 feddan = 24 qirats.",
+              "دخل مساحة أرضك عشان إجمالي المياه يظهر تلقائياً، أو سيبها فاضية للمقارنة بالفدان. الفدان = ٢٤ قيراط.",
             )}
           </p>
           <div className="lab-heading">

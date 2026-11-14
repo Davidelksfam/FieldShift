@@ -227,17 +227,24 @@ test("optional whole-field totals accept valid area and hide for zero/missing/in
   await page.goto("/");
   await english(page);
   await expect(page.getByTestId("farmer-total-baseline")).toHaveCount(0);
-  await page
-    .getByLabel("Estimate water for my whole field", { exact: true })
-    .check();
-  await expect(page.getByRole("alert")).toContainText(
-    "total area greater than zero",
-  );
+  await expect(
+    page.getByLabel("Estimate water for my whole field", { exact: true }),
+  ).toHaveCount(0);
+  await expect(page.getByRole("alert")).toHaveCount(0);
   await page.getByLabel("Area in feddans", { exact: true }).fill("2");
   await expect(page.getByTestId("farmer-total-baseline")).toContainText(
     "21,626",
   );
+  await page
+    .getByRole("button", { name: "Show advanced analytics", exact: true })
+    .click();
+  const advancedBaseline = page.getByTestId("strategy-baseline");
+  await expect(advancedBaseline).toContainText("Whole field: 21,626");
   await page.getByLabel("Area in feddans", { exact: true }).fill("0");
+  await expect(advancedBaseline).not.toContainText("Whole field:");
+  await page
+    .getByRole("button", { name: "Close analytics", exact: true })
+    .click();
   await expect(page.getByTestId("farmer-total-baseline")).toHaveCount(0);
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
   await page.getByLabel("Area in feddans", { exact: true }).fill("");
@@ -245,9 +252,12 @@ test("optional whole-field totals accept valid area and hide for zero/missing/in
   await expect(page.getByTestId("farmer-total-baseline")).toContainText("451");
   await page.getByLabel("Extra qirats", { exact: true }).fill("24");
   await expect(page.getByTestId("farmer-total-baseline")).toHaveCount(0);
-  await page
-    .getByLabel("Estimate water for my whole field", { exact: true })
-    .uncheck();
+  await expect(page.getByRole("alert")).toContainText(
+    "total area greater than zero",
+  );
+  await page.getByLabel("Extra qirats", { exact: true }).fill("0");
+  await expect(page.getByRole("alert")).toHaveCount(0);
+  await expect(page.getByTestId("farmer-total-baseline")).toHaveCount(0);
   await page
     .getByLabel("Do you keep livestock? Include forage in scoring.", {
       exact: true,
