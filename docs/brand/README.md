@@ -22,3 +22,7 @@ Use this directory for styling decisions instead of inventing a new theme. The p
 - App code is not scaffolded by these docs. Follow event/implementation gates documented in AGENTS.md.
 
 Decision history: [0002 — approved light-green identity](../decisions/0002-approved-light-green-identity.md).
+
+## Optional dark palette and Earth views — 2026-11-14
+
+The user's later selective integration request authorizes a dark-mode option and the textured Earth/startup interaction while retaining main's layout and light default. [Decision 0004](../decisions/0004-selective-earth-dark-theme.md) scopes this exception to the earlier light-only rules. Both themes share the existing semantic tokens, fonts, mark and farmer workspace.

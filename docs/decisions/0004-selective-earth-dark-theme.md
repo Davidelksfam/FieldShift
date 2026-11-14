@@ -1,0 +1,11 @@
+# 0004 — Optional dark palette and selective Earth integration
+
+Accepted user direction, 2026-11-14; tracked in [issue #41](https://github.com/Davidelksfam/FieldShift/issues/41). The user supplied `sky-space-main.zip` and requested its dark palette, textured 3D Earth and startup interaction while keeping the current main-branch layout and a plain Earth option.
+
+This instruction authorizes the focused exception to the earlier light-only brand direction. Light remains the default; the header toggle offers the branch's charcoal/sage palette through canonical semantic tokens. The existing logo, locally bundled fonts, illustrated farmer inputs, comparison layout and analytics remain the standard in both themes. Review occurs through the task PR; this decision does not authorize replacing the workspace with the uploaded branch's fullscreen dashboard.
+
+The location panel offers Field map (default), Plain Earth (the earlier lightweight orientation globe), and 3D Earth (uploaded blue-marble/topology/night-sky textures, sage atmosphere, gentle rotation and an inline start/explore camera transition). The renderer is adapted to the root Vite/Three.js application, rather than importing the branch's Next.js app, React-globe dependency, backend, authentication or alternate calculations. The intro stays inside the existing map slot. Reduced motion disables automatic rotation and camera animation. Rotation stops on interaction and has an explicit pause control.
+
+All point selections call the existing `changeLocation` callback. Egypt validation, presets, request cancellation/retries/cache, provenance, illustrative opt-in and scientific release gates remain authoritative. Camera movement, view switching and theme switching never select analysis points or request new data. Close zoom in the textured view opens the detailed map at the selected analysis centroid. Globe imagery is labeled as orientation imagery, not current satellite observations. Both globe views offer map recovery on WebGL/texture failure; keyboard shortcuts, numeric entry and opt-in GPS remain available.
+
+The optional palette and rendering behavior do not establish scientific validity, current imagery or field-boundary precision. No deployment or merge to main is performed as part of preparing the PR.

@@ -55,3 +55,7 @@ User correction replaces the 3D Earth with the direct field map and explicit tou
 ## Unified illustrated farmer workspace
 
 User-requested full farmer-form redesign replaces emoji crop selects with botanical radio cards and adds irrigation/soil/canal/salinity illustrations. Farm factors and optional area/lab measurements are visible. A sticky live comparison summary provides immediate feedback. A same-page advanced analytics disclosure replaces separate farmer/Expert workspaces; inputs, source acquisition and the map remain in place. See [the interaction/design contract](product/UNIFIED_FARMER_WORKSPACE.md). Legacy calculations and Scientific V2 eligibility are unchanged.
+
+## Selective Earth and dark theme integration — issue #41
+
+The user's later request adds optional dark styling, the uploaded branch's textured Earth and startup interaction, and a reserved Plain Earth view. Main's unified farmer layout and field map remain the default. [Decision 0004](decisions/0004-selective-earth-dark-theme.md) records the limited design exception and data integration contract. No backend/authentication, new source pipeline, scientific model changes or deployment is included.

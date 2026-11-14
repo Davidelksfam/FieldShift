@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { MapPin, LocateFixed, Check } from "lucide-react";
 import { text } from "../../i18n";
 import FarmMap from "../FarmMap";
+const EarthGlobe = lazy(() => import("./EarthGlobe"));
 export default function FieldLocation({
   lang,
   expert = false,
@@ -12,6 +13,7 @@ export default function FieldLocation({
   onLocationChange,
 }) {
   const [locating, setLocating] = useState(false);
+  const [view, setView] = useState("map");
   const [geoError, setGeoError] = useState("");
   const geoRequest = useRef(0);
   useEffect(() => {
@@ -61,13 +63,53 @@ export default function FieldLocation({
       className="field-location"
       aria-label={t("Select your field", "اختار أرضك")}
     >
-      <FarmMap
-        lang={lang}
-        lat={location.lat}
-        lon={location.lon}
-        compact={!expert}
-        onLocationChange={onLocationChange}
-      />
+      <div
+        className="location-views"
+        role="group"
+        aria-label={t("Location view", "عرض الموقع")}
+      >
+        {[
+          ["map", t("Field map", "خريطة الأرض")],
+          ["plain", t("Plain Earth", "الأرض البسيطة")],
+          ["3d", t("3D Earth", "الأرض ثلاثية الأبعاد")],
+        ].map(([id, label]) => (
+          <button
+            type="button"
+            key={id}
+            aria-pressed={view === id}
+            onClick={() => setView(id)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      {view === "map" ? (
+        <FarmMap
+          lang={lang}
+          lat={location.lat}
+          lon={location.lon}
+          compact={!expert}
+          onLocationChange={onLocationChange}
+        />
+      ) : (
+        <Suspense
+          fallback={
+            <p className="earth-loading" role="status">
+              {t("Loading Earth…", "جارٍ تحميل الأرض…")}
+            </p>
+          }
+        >
+          <EarthGlobe
+            key={view}
+            variant={view}
+            lang={lang}
+            location={location}
+            presets={presets}
+            onLocationChange={onLocationChange}
+            onMap={() => setView("map")}
+          />
+        </Suspense>
+      )}
       <div className="quick-locations">
         {Object.values(presets).map((p) => (
           <button

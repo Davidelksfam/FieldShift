@@ -1,0 +1,224 @@
+/* Main's geometry and spacing remain unchanged in either theme. */
+.location-views {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 12px;
+  border: 1px solid var(--fs-border);
+  border-radius: 10px;
+  background: var(--fs-brand-pale);
+}
+.location-views button {
+  flex: 1;
+  padding: 6px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--fs-text-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.location-views button[aria-pressed="true"] {
+  background: var(--fs-bg-surface);
+  color: var(--fs-brand-hover);
+  box-shadow: inset 0 0 0 1px var(--fs-border);
+  font-weight: 600;
+}
+.theme-button {
+  flex-shrink: 0;
+  padding: 10px;
+}
+.earth-stage,
+.earth-loading {
+  height: 340px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--fs-earth-space);
+  color: var(--fs-earth-ink);
+}
+.earth-stage {
+  background-size: cover;
+}
+.earth-stage p {
+  color: inherit;
+}
+.earth-render {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+}
+.earth-render canvas {
+  display: block;
+  touch-action: none;
+}
+.earth-caption {
+  position: absolute;
+  inset-inline-start: 12px;
+  top: 12px;
+  font-size: 11px;
+  padding: 5px 8px;
+  background: var(--fs-earth-space);
+  border-radius: 6px;
+  pointer-events: none;
+}
+.earth-tools {
+  position: absolute;
+  inset-inline-end: 8px;
+  top: 8px;
+  display: grid;
+  gap: 4px;
+}
+.earth-tools button {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--fs-earth-ink);
+  border: 1px solid var(--fs-border);
+  background: var(--fs-earth-space);
+  border-radius: 8px;
+}
+.earth-tools button[aria-pressed="true"] {
+  color: var(--fs-earth-sage);
+}
+.earth-stage :focus-visible {
+  outline-color: var(--fs-earth-sage);
+}
+.earth-intro {
+  position: absolute;
+  bottom: 80px;
+  inset-inline: 62px;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 10px;
+  pointer-events: none;
+  text-shadow: 0 1px 4px var(--fs-earth-space);
+}
+.earth-intro .button {
+  pointer-events: auto;
+}
+.earth-stage .button {
+  background: var(--fs-earth-space);
+  color: var(--fs-earth-sage);
+  border-color: var(--fs-earth-sage);
+  white-space: normal;
+}
+.earth-map-link {
+  position: absolute;
+  bottom: 36px;
+  inset-inline-start: 12px;
+  font-size: 11px;
+}
+.earth-note {
+  position: absolute;
+  bottom: 8px;
+  inset-inline: 8px;
+  text-align: center;
+  font-size: 10px;
+  pointer-events: none;
+}
+.earth-fallback,
+.earth-status,
+.earth-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+.earth-fallback {
+  position: absolute;
+  inset: 0;
+  background: var(--fs-earth-space);
+}
+.earth-status {
+  position: absolute;
+  inset: 40px 0 auto;
+  pointer-events: none;
+}
+/* Resolve legacy literal light surfaces through the shared theme tokens. */
+html[data-theme="dark"] body {
+  background: var(--fs-bg-canvas);
+}
+html[data-theme="dark"] .header-bar {
+  border-color: var(--fs-border);
+}
+html[data-theme="dark"] :is(.section-number, .unit-input, .selection-mark) {
+  background: var(--fs-bg-surface);
+}
+html[data-theme="dark"] .quick-locations button {
+  background: var(--fs-bg-surface);
+  color: var(--fs-text-secondary);
+  border-color: var(--fs-border);
+}
+html[data-theme="dark"] .quick-locations button.active {
+  background: var(--fs-brand-soft);
+  color: var(--fs-brand-hover);
+  border-color: var(--fs-focus);
+}
+html[data-theme="dark"] :is(.numeric-metrics, .best-match-note) {
+  background: var(--fs-brand-pale);
+}
+html[data-theme="dark"]
+  :is(
+    .numeric-water > strong,
+    .geo-row small,
+    .field-location details summary,
+    .step-label,
+    .preference-note summary
+  ) {
+  color: var(--fs-text-secondary);
+}
+html[data-theme="dark"] :is(.numeric-card-heading, .numeric-metrics) {
+  border-color: var(--fs-border);
+}
+html[data-theme="dark"] .leaflet-bar a {
+  background: var(--fs-bg-surface);
+  color: var(--fs-text-primary);
+}
+html[data-theme="dark"] :is(.leaflet-tooltip, .leaflet-control-attribution) {
+  background: var(--fs-bg-surface);
+  color: var(--fs-text-primary);
+  border-color: var(--fs-border);
+}
+html[data-theme="dark"] .leaflet-control-attribution a {
+  color: var(--fs-data-blue);
+}
+@media (min-width: 1500px) {
+  .earth-stage,
+  .earth-loading {
+    height: 360px;
+  }
+}
+@media (max-width: 800px) {
+  .earth-stage,
+  .earth-loading {
+    height: 290px;
+  }
+}
+@media (max-width: 520px) {
+  .earth-stage,
+  .earth-loading {
+    height: 260px;
+  }
+  .unified-header .header-actions {
+    flex-wrap: wrap;
+  }
+  .unified-header .theme-button {
+    padding: 8px;
+  }
+  .location-views button {
+    font-size: 11px;
+  }
+  .earth-intro {
+    font-size: 11px;
+    bottom: 80px;
+  }
+  .earth-tools {
+    gap: 2px;
+  }
+}

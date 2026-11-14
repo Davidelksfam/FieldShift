@@ -1,10 +1,12 @@
-import { ChartNoAxesCombined, Globe2 } from "lucide-react";
+import { ChartNoAxesCombined, Globe2, Moon, Sun } from "lucide-react";
 import { text } from "../i18n";
 export default function HeaderBar({
   lang,
   onLanguageChange,
   analyticsOpen,
   onAnalyticsToggle,
+  theme,
+  onThemeToggle,
 }) {
   const t = (en, ar) => text(lang, en, ar);
   return (
@@ -24,6 +26,15 @@ export default function HeaderBar({
         <a href="#comparison">{t("Compare plans", "مقارنة الخطط")}</a>
       </nav>
       <div className="header-actions">
+        <button
+          className="button theme-button"
+          onClick={onThemeToggle}
+          aria-label={t("Dark mode", "الوضع الداكن")}
+          aria-pressed={theme === "dark"}
+          title={t("Dark mode", "الوضع الداكن")}
+        >
+          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
         <button
           className={`button analytics-link ${analyticsOpen ? "selected" : ""}`}
           aria-expanded={analyticsOpen}

@@ -71,3 +71,7 @@ Codex implemented the three user-authorized UX changes: shared bilingual priorit
 ## 2026-11-14 — Unified illustrated farmer workspace
 
 Codex implemented the user-directed farmer UX redesign: bespoke crop and field SVG illustrations, accessible visual choice cards, visible context/measurement inputs, accurate Nili labeling, shared goal/sliders, a live plan summary and inline advanced analytics replacing the mode split. Updated the source-to-UI browser scenarios and added focused accessibility, state-preservation and visible-input checks. Source services, crop constants, scoring and Scientific V2 release gates are unchanged. SVGs are interface illustrations, not satellite imagery or agronomic evidence.
+
+## 2026-11-14 — Selective Earth and dark theme integration (issue #41)
+
+Codex compared the uploaded Next.js branch with current main, adapted its Earth textures, atmospheric palette, rotation and startup camera behavior to the root Vite workspace, and restored the previous plain globe as an option alongside the field map. Added a persisted optional semantic dark palette and documented the user-authorized design exception. The existing location callback, scientific engines, datasets, source acquisition and provenance remain authoritative. Added production browser coverage for view/theme state preservation, actual sphere selection and data requests, camera handoff, reduced motion, offline assets, mobile/RTL and WebGL recovery. Validation results are reported in the PR; this work makes no scientific-outcome or live-imagery claim.

@@ -67,7 +67,7 @@ input[type="checkbox"] {
   width: 18px;
   min-height: 18px;
   height: 18px;
-  accent-color: var(--fs-action-bg);
+  accent-color: var(--fs-action-ink);
 }
 :focus-visible {
   outline: 3px solid var(--fs-action-bg);
@@ -96,7 +96,7 @@ h3 {
   font-weight: 700;
 }
 a {
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
 }
 p {
   color: var(--fs-text-secondary);
@@ -221,7 +221,7 @@ small {
   height: 36px;
   border-radius: 9px;
   background: var(--fs-brand-soft);
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -261,7 +261,7 @@ small {
 .preset.active {
   background: var(--fs-brand-soft);
   border-color: var(--fs-focus);
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
   font-weight: 600;
 }
 .preset-dot {
@@ -327,13 +327,13 @@ small {
   padding: 2px 7px;
   min-width: 31px;
   text-align: center;
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
   border-radius: 5px;
   font-weight: 700;
 }
 .slider-label input {
   padding: 0;
-  accent-color: var(--fs-action-bg);
+  accent-color: var(--fs-action-ink);
   background: transparent;
   border: 0;
   min-height: 32px;
@@ -385,7 +385,7 @@ main {
 }
 .evidence-link {
   background: var(--fs-action-bg);
-  color: var(--fs-bg-surface);
+  color: var(--fs-action-text);
   border-color: var(--fs-action-bg);
 }
 .evidence-link:hover {
@@ -400,7 +400,7 @@ main {
   border-radius: 10px;
   padding: 12px 15px;
   margin-bottom: 20px;
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
 }
 .data-status > svg {
   flex-shrink: 0;
@@ -647,7 +647,7 @@ main {
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -1px;
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
 }
 .suitability > div > span + span {
   font-size: 12px;
@@ -691,7 +691,7 @@ main {
   height: 26px;
   border-radius: 50%;
   background: var(--fs-brand-soft);
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
   flex-shrink: 0;
 }
 .crop-timeline small {
@@ -756,7 +756,7 @@ main {
   color: var(--fs-text-secondary);
 }
 .strategy-metrics .water-saving {
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
 }
 .farm-total {
   font-size: 11px;
@@ -828,7 +828,7 @@ main {
 }
 .local-checks li svg {
   flex-shrink: 0;
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
   margin-top: 3px;
 }
 .local-warning {
@@ -847,7 +847,7 @@ main {
 }
 .comparison-note svg {
   flex-shrink: 0;
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
   margin-top: 3px;
 }
 .comparison-note p {
@@ -923,7 +923,7 @@ main {
 }
 .fusion-card > svg {
   flex-shrink: 0;
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
   margin-top: 3px;
 }
 .fusion-card p {
@@ -948,7 +948,7 @@ main {
   overflow-wrap: anywhere;
 }
 .source-card svg {
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
   margin-bottom: 4px;
 }
 .source-card span,
@@ -969,7 +969,7 @@ main {
   align-items: center;
   font-size: 12px;
   text-decoration: underline;
-  color: var(--fs-action-bg);
+  color: var(--fs-action-ink);
 }
 .table-scroll {
   overflow: auto;
@@ -1031,7 +1031,7 @@ caption {
   inset-inline-start: 15px;
   z-index: 10000;
   background: var(--fs-action-bg);
-  color: var(--fs-bg-surface);
+  color: var(--fs-action-text);
   padding: 12px 20px;
   border-radius: 9px;
 }
@@ -1715,13 +1715,13 @@ html[lang="ar"] .strategy-card h3 {
 }
 .button.primary {
   background: var(--fs-action-bg);
-  color: var(--fs-bg-surface);
+  color: var(--fs-action-text);
   border-color: var(--fs-action-bg);
   font-weight: 700;
 }
 .button.primary:hover {
   background: var(--fs-action-hover);
-  color: var(--fs-bg-surface);
+  color: var(--fs-action-text);
 }
 .button:disabled {
   cursor: default;
