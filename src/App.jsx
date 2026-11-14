@@ -324,20 +324,14 @@ export default function App() {
           aria-label={t("Find your field", "حدد أرضك")}
         >
           {entered && (
-            <div className="map-hero-heading" data-map-obstacle>
-              <span className="welcome-kicker">
-                {t("01 / YOUR PLACE ON EARTH", "٠١ / مكان أرضك")}
-              </span>
-              <h1 id="map-title" ref={mapTitleRef} tabIndex="-1">
-                {t("It starts with your land.", "البداية من أرضك.")}
-              </h1>
-              <p>
-                {t(
-                  "Explore Egypt. Choose a point. Make it your starting place.",
-                  "استكشف مصر. اختار نقطة أرضك. وابدأ منها خطتك.",
-                )}
-              </p>
-            </div>
+            <h1
+              id="map-title"
+              className="map-title-accessible"
+              ref={mapTitleRef}
+              tabIndex="-1"
+            >
+              {t("Choose your field", "اختار أرضك")}
+            </h1>
           )}
           {map}
           {!entered && <WelcomeScreen lang={lang} onEnter={enterProject} />}

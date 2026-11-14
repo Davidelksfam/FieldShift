@@ -132,3 +132,7 @@ Codex adapted the ZIP's welcome/full-screen presentation to current main: a bili
 The public satellite-imagery review exposed weak white-text contrast over bright desert tiles. Codex added a non-interactive upper-map shade and dark surfaces behind attribution/gesture hints, retaining controls and landmark hit targets above the shade. The welcome and layout geometry are unchanged; verification is reported in the follow-up release PR.
 
 The final mobile visual review also identified a legacy media rule hiding the analytics SVG after its text became visually hidden. Codex restored the icon in the immersive header and added an explicit Arabic/English mobile visibility assertion; accessible labels and existing analytics behavior are preserved.
+
+## Compact map and crop-selection revision
+
+At the user's request, Codex removed the visible map headline, shortened the navbar shade to 150px, moved existing location tools into a vertical side panel and redesigned crop choices as paired season panels with current-selection summaries and compact illustrated radio rows. Keyboard semantics, IDs, data callbacks, values and calculation behavior remain intact. Source recovery, mobile/RTL, crop changes and deployment checks are reported in the PR.

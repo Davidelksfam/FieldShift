@@ -36,45 +36,68 @@ export default function FieldInputs({ lang, inputs, setInputs, crops }) {
           </p>
         </div>
       </div>
-      {["Shitwi", "Seifi"].map((season) => (
-        <div className="season-question" key={season}>
-          <span className="season-marker">
-            {season === "Shitwi" ? <Snowflake size={16} /> : <Sun size={16} />}{" "}
-            {season === "Shitwi"
-              ? t("WINTER · SHITWI", "الموسم الشتوي")
-              : t("SUMMER · SEIFI", "الموسم الصيفي")}
-          </span>
-          <VisualChoice
-            lang={lang}
-            label={
-              season === "Shitwi"
-                ? t("Winter crop", "المحصول الشتوي")
-                : t("Summer crop", "المحصول الصيفي")
-            }
-            value={
-              inputs[
-                season === "Shitwi" ? "currentWinterId" : "currentSummerId"
-              ]
-            }
-            onChange={(v) =>
-              update(
-                season === "Shitwi" ? "currentWinterId" : "currentSummerId",
-                v,
-              )
-            }
-            testPrefix="crop-choice"
-            className="crop-question"
-            options={crops
-              .filter((c) => c.season === season)
-              .map((c) => ({
-                value: c.id,
-                en: names[c.id] ?? c.nameEn,
-                ar: c.nameAr,
-                visual: <CropIcon id={c.id} size={64} />,
-              }))}
-          />
-        </div>
-      ))}
+      <div className="rotation-seasons">
+        {["Shitwi", "Seifi"].map((season) => (
+          <div className="season-question" key={season}>
+            <span className="season-marker">
+              {season === "Shitwi" ? (
+                <Snowflake size={16} />
+              ) : (
+                <Sun size={16} />
+              )}{" "}
+              {season === "Shitwi"
+                ? t("WINTER · SHITWI", "الموسم الشتوي")
+                : t("SUMMER · SEIFI", "الموسم الصيفي")}
+            </span>
+            <p className="season-current">
+              {t("Currently growing", "المحصول الحالي")}
+              <strong>
+                {(() => {
+                  const c = crops.find(
+                    (c) =>
+                      c.id ===
+                      inputs[
+                        season === "Shitwi"
+                          ? "currentWinterId"
+                          : "currentSummerId"
+                      ],
+                  );
+                  return c ? t(names[c.id] ?? c.nameEn, c.nameAr) : "—";
+                })()}
+              </strong>
+            </p>
+            <VisualChoice
+              lang={lang}
+              label={
+                season === "Shitwi"
+                  ? t("Winter crop", "المحصول الشتوي")
+                  : t("Summer crop", "المحصول الصيفي")
+              }
+              value={
+                inputs[
+                  season === "Shitwi" ? "currentWinterId" : "currentSummerId"
+                ]
+              }
+              onChange={(v) =>
+                update(
+                  season === "Shitwi" ? "currentWinterId" : "currentSummerId",
+                  v,
+                )
+              }
+              testPrefix="crop-choice"
+              className="crop-question"
+              options={crops
+                .filter((c) => c.season === season)
+                .map((c) => ({
+                  value: c.id,
+                  en: names[c.id] ?? c.nameEn,
+                  ar: c.nameAr,
+                  visual: <CropIcon id={c.id} size={64} />,
+                }))}
+            />
+          </div>
+        ))}
+      </div>
       <div className="irrigation-question">
         <span className="season-marker">
           <Droplets size={16} />
