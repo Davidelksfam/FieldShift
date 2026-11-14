@@ -1,0 +1,110 @@
+[
+  {
+    "width": 390,
+    "lang": "ar",
+    "overflow": false,
+    "smallControls": [
+      {
+        "text": "شوف الخطط",
+        "w": 101.0625,
+        "h": 36
+      },
+      {
+        "text": "طبقات الخريطة",
+        "w": 98.0625,
+        "h": 17.046875
+      }
+    ],
+    "comparisonY": 4329.359375
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "overflow": false,
+    "smallControls": [
+      {
+        "text": "View plans",
+        "w": 99.65625,
+        "h": 36
+      },
+      {
+        "text": "Map layers",
+        "w": 85.796875,
+        "h": 17.046875
+      }
+    ],
+    "comparisonY": 4502.0625
+  },
+  {
+    "width": 768,
+    "lang": "ar",
+    "overflow": false,
+    "smallControls": [
+      {
+        "text": "طبقات الخريطة",
+        "w": 98.0625,
+        "h": 17.046875
+      },
+      {
+        "text": "استخدم الموقع ده",
+        "w": 99.125,
+        "h": 36
+      }
+    ],
+    "comparisonY": 3712.21875
+  },
+  {
+    "width": 768,
+    "lang": "en",
+    "overflow": false,
+    "smallControls": [
+      {
+        "text": "Map layers",
+        "w": 85.796875,
+        "h": 17.046875
+      },
+      {
+        "text": "Use this location",
+        "w": 110.03125,
+        "h": 36
+      }
+    ],
+    "comparisonY": 3722.078125
+  },
+  {
+    "width": 1440,
+    "lang": "ar",
+    "overflow": false,
+    "smallControls": [
+      {
+        "text": "طبقات الخريطة",
+        "w": 98.0625,
+        "h": 17.046875
+      },
+      {
+        "text": "استخدم الموقع ده",
+        "w": 99.125,
+        "h": 36
+      }
+    ],
+    "comparisonY": 2591.875
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "overflow": false,
+    "smallControls": [
+      {
+        "text": "Map layers",
+        "w": 85.796875,
+        "h": 17.046875
+      },
+      {
+        "text": "Use this location",
+        "w": 110.03125,
+        "h": 36
+      }
+    ],
+    "comparisonY": 2616.875
+  }
+]
