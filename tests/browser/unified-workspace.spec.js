@@ -1,6 +1,11 @@
 import { test, expect } from "@playwright/test";
 async function start(page) {
-  await page.route(/^https:\/\//, (r) => r.abort());
+  const appOrigin = new URL(test.info().project.use.baseURL).origin;
+  await page.route(/^https:\/\//, (route) =>
+    new URL(route.request().url()).origin === appOrigin
+      ? route.continue()
+      : route.abort(),
+  );
   await page.goto("/");
   await page.getByRole("button", { name: "English", exact: true }).click();
 }
