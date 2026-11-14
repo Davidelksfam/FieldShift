@@ -377,6 +377,14 @@ export default function EarthGlobe({
         const resize = () => {
           const { width, height } = container.getBoundingClientRect();
           if (!width || !height) return;
+          const dock = container
+            .closest(".map-hero")
+            ?.querySelector(".map-location-dock");
+          if (dock)
+            container.parentElement.style.setProperty(
+              "--map-dock-height",
+              `${dock.clientHeight}px`,
+            );
           camera.aspect = width / height;
           camera.updateProjectionMatrix();
           renderer.setSize(width, height);

@@ -260,8 +260,7 @@ html[data-theme="dark"] .map-location-dock .quick-locations button.active {
 .map-location-dock:has(details[open]) .location-controls {
   flex-basis: 100%;
 }
-.immersive-map:has(details[open])
-  :is(.earth-caption, .earth-hint, .earth-imagery-status) {
+.immersive-map:has(details[open]) :is(.earth-hint, .earth-imagery-status) {
   display: none;
 }
 .map-location-dock .geo-error {
@@ -586,7 +585,7 @@ html[dir="rtl"] .welcome-start svg {
   }
   .immersive-map .earth-caption {
     top: auto;
-    bottom: 296px;
+    bottom: calc(114px + var(--map-dock-height, 180px));
     inset-inline-start: 20px;
     inset-inline-end: auto;
     font-size: 10px;
