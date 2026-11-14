@@ -101,6 +101,7 @@ test("mobile entry and location controls fit Arabic and English with parameters 
   for (const lang of ["ar", "en"]) {
     if (lang === "en")
       await page.getByRole("button", { name: "English", exact: true }).click();
+    await expect(page.locator(".analytics-link svg")).toBeVisible();
     for (const selector of [
       ".map-location-dock",
       ".map-next",
