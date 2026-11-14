@@ -93,6 +93,9 @@ export default function App() {
     fetchUnifiedFarmData(location.lat, location.lon, location.presetId, {
       signal: controller.signal,
       timeoutMs: requestTimeout,
+      onDataUpdate: (result) => {
+        if (active) setData(result);
+      },
       onSourceUpdate: (event) => {
         if (active) setProgress((p) => ({ ...p, [event.key]: event }));
       },

@@ -27,7 +27,7 @@ try {
   await page.getByRole("button", { name: "Expert mode", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Retry sources", exact: true }),
-  ).toBeVisible({ timeout: 15000 });
+  ).toBeVisible({ timeout: 25000 });
   const status = await page.locator(".source-status-panel").innerText();
   const diagnostics = await page.locator(".diagnostics-grid").innerText();
   await page.getByLabel("Explore a conditional Nili cover").check();

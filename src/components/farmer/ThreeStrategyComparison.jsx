@@ -2,7 +2,11 @@ import CropIcon from "./CropIcon";
 import { forwardRef } from "react";
 import { Droplets, Sprout, Leaf } from "lucide-react";
 import { text, formatNumber } from "../../i18n";
-import { areaIsValid, warningLayers } from "../../presentation/farmerModel";
+import {
+  areaIsValid,
+  warningLayers,
+  comparisonSourceSupport,
+} from "../../presentation/farmerModel";
 const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
   {
     lang,
@@ -72,9 +76,22 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
           </h3>
           <p>
             {t(
-              "The three plans below need location-supported inputs. Numerical results are hidden while only illustrative fallback is available. You can retry the sources or explicitly explore the model with illustrative regional inputs.",
-              "الخطط الثلاث تحت محتاجة مدخلات مدعومة ببيانات الموقع. الأرقام مخفية لما المتاح مجرد بيانات توضيحية بديلة. تقدر تحاول جلب المصادر تاني أو تختار استكشاف النموذج بمدخلات إقليمية توضيحية.",
+              "Your location and crop selections are saved. Results need climate, soil and vegetation data. We fetch and retry automatically; if a source remains unavailable, you can explicitly explore an illustrative regional comparison.",
+              "الموقع والمحاصيل اللي اخترتها محفوظين. النتائج محتاجة بيانات المناخ والتربة والغطاء النباتي. بنجيبها وبنحاول تاني تلقائياً؛ ولو مصدر فضل غير متاح، تقدر تختار مقارنة إقليمية توضيحية.",
             )}
+          </p>
+          <p>
+            {t("Data still needed", "البيانات اللي لسه مطلوبة")}:{" "}
+            {comparisonSourceSupport(data)
+              .missing.map(
+                (key) =>
+                  ({
+                    climate: t("Climate", "المناخ"),
+                    soil: t("Soil", "التربة"),
+                    ndvi: t("Vegetation", "الغطاء النباتي"),
+                  })[key],
+              )
+              .join(t(", ", "، "))}
           </p>
           {!loading && (
             <button className="button" onClick={onShowExample}>
@@ -147,8 +164,8 @@ const ThreeStrategyComparison = forwardRef(function ThreeStrategyComparison(
                           : show
                             ? t("No additional crop", "بدون محصول إضافي")
                             : t(
-                                "Awaiting supported inputs",
-                                "في انتظار مدخلات مدعومة",
+                                "Awaiting location data",
+                                "في انتظار بيانات الموقع",
                               )}
                       </strong>
                     </li>

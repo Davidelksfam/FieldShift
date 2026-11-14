@@ -61,8 +61,8 @@ test("source progress reports each success/failure and mixed data requires illus
     illustrative: true,
   });
   assert.equal(progress.find((e) => e.key === "climate").status, "fulfilled");
-  assert.equal(progress.find((e) => e.key === "soil").status, "rejected");
-  assert.equal(progress.find((e) => e.key === "ndvi").status, "rejected");
+  assert.equal(progress.findLast((e) => e.key === "soil").status, "rejected");
+  assert.equal(progress.findLast((e) => e.key === "ndvi").status, "rejected");
 });
 test("configurable retry deadline is reported correctly and late source completion cannot masquerade as fresh data", async (t) => {
   let resolvePower;

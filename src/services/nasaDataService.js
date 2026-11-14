@@ -6,7 +6,7 @@ import ndviHistory from "../data/ndviHistory.json" with { type: "json" };
 
 import referenceEtDrivers from "../data/referenceEtDrivers.json" with { type: "json" };
 
-export const REQUEST_TIMEOUT_MS = 4500;
+export const REQUEST_TIMEOUT_MS = 20000;
 export const EXTENDED_REQUEST_TIMEOUT_MS = 20000;
 const CACHE_VERSION = "fieldshift-v2";
 const CACHE_MAX_AGE = 7 * 24 * 60 * 60 * 1000;
@@ -372,17 +372,107 @@ export function getInitialFarmData(lat, lon, presetId) {
   return initial;
 }
 
-async function fetchJson(url, signal) {
-  const response = await fetch(url, { signal });
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  return response.json();
+function abortError() {
+  return new DOMException("Cancelled", "AbortError");
+}
+
+function waitForRetry(ms, signal) {
+  return new Promise((resolve, reject) => {
+    if (signal.aborted) return reject(abortError());
+    const onAbort = () => {
+      clearTimeout(timer);
+      reject(abortError());
+    };
+    const timer = setTimeout(() => {
+      signal.removeEventListener("abort", onAbort);
+      resolve();
+    }, ms);
+    signal.addEventListener("abort", onAbort, { once: true });
+  });
+}
+
+async function fetchJson(url, signal, policy) {
+  const {
+    attemptTimeoutMs,
+    retryTimeoutMs,
+    retryDelayMs,
+    maxAttempts,
+    onRetry,
+  } = policy;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    if (signal.aborted) throw abortError();
+    const controller = new AbortController();
+    let timer,
+      onAbort,
+      retryAfterMs = 0;
+    try {
+      // Bound fetch AND body parsing, even when a client ignores AbortSignal.
+      const interrupted = new Promise((_, reject) => {
+        onAbort = () => {
+          controller.abort();
+          reject(abortError());
+        };
+        signal.addEventListener("abort", onAbort, { once: true });
+        timer = setTimeout(
+          () => {
+            controller.abort();
+            reject(new Error("Source request timed out"));
+          },
+          attempt === 1
+            ? attemptTimeoutMs
+            : Math.max(attemptTimeoutMs, retryTimeoutMs),
+        );
+      });
+      return await Promise.race([
+        (async () => {
+          const response = await fetch(url, { signal: controller.signal });
+          if (!response.ok) {
+            const error = new Error(`HTTP ${response.status}`);
+            error.retryable =
+              [408, 429].includes(response.status) || response.status >= 500;
+            const retryAfter = response.headers?.get("Retry-After");
+            if (retryAfter != null) {
+              const seconds = Number(retryAfter);
+              retryAfterMs = Number.isFinite(seconds)
+                ? Math.max(0, seconds * 1000)
+                : Math.max(0, Date.parse(retryAfter) - Date.now()) || 0;
+            }
+            throw error;
+          }
+          return response.json();
+        })(),
+        interrupted,
+      ]);
+    } catch (error) {
+      if (signal.aborted) throw abortError();
+      if (error.retryable === false || attempt === maxAttempts) throw error;
+      clearTimeout(timer);
+      signal.removeEventListener("abort", onAbort);
+      onRetry?.({ attempt: attempt + 1, reason: error.message });
+      await waitForRetry(
+        Math.max(retryDelayMs * 2 ** (attempt - 1), retryAfterMs),
+        signal,
+      );
+    } finally {
+      clearTimeout(timer);
+      signal.removeEventListener("abort", onAbort);
+    }
+  }
 }
 
 export async function fetchUnifiedFarmData(
   lat,
   lon,
   presetId,
-  { signal: parentSignal, timeoutMs = REQUEST_TIMEOUT_MS, onSourceUpdate } = {},
+  {
+    signal: parentSignal,
+    timeoutMs = REQUEST_TIMEOUT_MS,
+    onSourceUpdate,
+    onDataUpdate,
+    attemptTimeoutMs = 4500,
+    retryDelayMs = 500,
+    maxAttempts = 3,
+  } = {},
 ) {
   if (
     !validNumber(lat) ||
@@ -400,26 +490,49 @@ export async function fetchUnifiedFarmData(
   let timer;
   const data = getInitialFarmData(lat, lon, presetId);
   const { signal } = controller;
+  const settledSources = new Set();
+  const request = (url, key, overrides = {}) =>
+    fetchJson(url, signal, {
+      attemptTimeoutMs,
+      retryTimeoutMs: timeoutMs,
+      retryDelayMs,
+      maxAttempts,
+      onRetry: (event) => {
+        if (!signal.aborted && !settledSources.has(key))
+          onSourceUpdate?.({ key, status: "retrying", ...event });
+      },
+      ...overrides,
+    });
   const powerUrl = `https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=${lon}&latitude=${lat}&start=20250101&end=20251231&format=JSON`;
   const soilUrl = `https://api.pixelgust.com/v1/soil?lat=${lat}&lon=${lon}`;
   const isricUrl = `https://rest.isric.org/soilgrids/v2.0/properties/query?lon=${lon}&lat=${lat}&property=clay&property=sand&property=soc&property=nitrogen&property=phh2o&depth=0-5cm&depth=5-15cm&value=mean`;
   const modisUrl = `https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?latitude=${lat}&longitude=${lon}&band=250m_16_days_NDVI&startDate=A2025001&endDate=A2025365&kmAboveBelow=0&kmLeftRight=0`;
   const snapshots = [];
   const tasks = [
-    fetchJson(powerUrl, signal)
+    request(powerUrl, "climate")
       .then((payload) => parsePower(payload, { requireComplete: true }))
       .then((value) => ({ value, provider: "NASA POWER", url: powerUrl })),
     (async () => {
       try {
         return {
-          value: parsePixelGust(await fetchJson(soilUrl, signal)),
+          value: parsePixelGust(
+            await request(soilUrl, "soil", {
+              maxAttempts: 1,
+              attemptTimeoutMs: Math.min(attemptTimeoutMs, 2500),
+            }),
+          ),
           provider: "PixelGust / SoilGrids",
           url: soilUrl,
         };
       } catch {
         if (signal.aborted) throw new Error("Request timed out or cancelled");
+        onSourceUpdate?.({
+          key: "soil",
+          status: "retrying",
+          reason: "Trying the backup soil provider",
+        });
         return {
-          value: parseIsric(await fetchJson(isricUrl, signal)),
+          value: parseIsric(await request(isricUrl, "soil")),
           provider: "ISRIC SoilGrids",
           url: isricUrl,
         };
@@ -434,12 +547,12 @@ export async function fetchUnifiedFarmData(
             ["161", "305"],
             ["321", "353"],
           ].map(([start, end]) =>
-            fetchJson(
+            request(
               modisUrl
                 .replace("250m_16_days_NDVI", band)
                 .replace("A2025001", `A2025${start}`)
                 .replace("A2025365", `A2025${end}`),
-              signal,
+              "ndvi",
             ),
           ),
         ).then((chunks) => {
@@ -481,25 +594,35 @@ export async function fetchUnifiedFarmData(
   ].map((task, index) =>
     task.then(
       (value) => {
+        settledSources.add(["climate", "soil", "ndvi"][index]);
         snapshots[index] = { status: "fulfilled", value };
-        if (!controller.signal.aborted)
+        if (!controller.signal.aborted) {
+          const key = ["climate", "soil", "ndvi"][index];
+          if (key === "climate") Object.assign(data, value.value);
+          else data[key === "soil" ? "soil" : "ndviSeries"] = value.value;
+          data.sources[key] = {
+            status: "live",
+            kind: "observed",
+            provider: value.provider,
+            url: value.url,
+            retrievedAt: new Date().toISOString(),
+            period:
+              index === 1
+                ? "static soil prediction (not year-specific)"
+                : "2025",
+          };
+          writeCache(lat, lon, data);
           onSourceUpdate?.({
-            key: ["climate", "soil", "ndvi"][index],
+            key,
             status: "fulfilled",
-            source: {
-              status: "live",
-              kind: "observed",
-              provider: value.provider,
-              url: value.url,
-              period:
-                index === 1
-                  ? "static soil prediction (not year-specific)"
-                  : "2025",
-            },
+            source: { ...data.sources[key] },
           });
+          if (!signal.aborted) onDataUpdate?.(structuredClone(data));
+        }
         return value;
       },
       (reason) => {
+        settledSources.add(["climate", "soil", "ndvi"][index]);
         snapshots[index] = { status: "rejected", reason };
         if (!controller.signal.aborted)
           onSourceUpdate?.({
@@ -514,6 +637,9 @@ export async function fetchUnifiedFarmData(
   try {
     // A race enforces the deadline even if a fetch implementation ignores abort.
     const deadline = new Promise((resolve) => {
+      controller.signal.addEventListener("abort", () => resolve(null), {
+        once: true,
+      });
       timer = setTimeout(() => {
         controller.abort();
         resolve(null);
@@ -524,22 +650,7 @@ export async function fetchUnifiedFarmData(
       throw new DOMException("Cancelled", "AbortError");
     for (const [i, key] of ["climate", "soil", "ndvi"].entries()) {
       const result = results?.[i] ?? snapshots[i];
-      if (result?.status === "fulfilled") {
-        const { value, provider, url } = result.value;
-        if (key === "climate") Object.assign(data, value);
-        else data[key === "soil" ? "soil" : "ndviSeries"] = value;
-        data.sources[key] = {
-          status: "live",
-          kind: "observed",
-          provider,
-          url,
-          retrievedAt: new Date().toISOString(),
-          period:
-            key === "soil"
-              ? "static soil prediction (not year-specific)"
-              : "2025",
-        };
-      } else
+      if (result?.status !== "fulfilled")
         data.sources[key] = {
           ...data.sources[key],
           reason:
@@ -552,5 +663,6 @@ export async function fetchUnifiedFarmData(
   } finally {
     clearTimeout(timer);
     parentSignal?.removeEventListener("abort", onAbort);
+    controller.abort();
   }
 }

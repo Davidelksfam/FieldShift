@@ -26,8 +26,86 @@ async function coordinates(page, lat, lon) {
 async function waitSources(page) {
   await expect(
     page.getByRole("button", { name: "Retry sources", exact: true }),
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 25000 });
 }
+
+test("custom-location transient failures recover automatically without a Retry click or repeating successful requests", async ({
+  page,
+}) => {
+  const counts = new Map();
+  await page.route(/^https:\/\//, async (route) => {
+    if (firstParty(route)) return route.continue();
+    const url = route.request().url(),
+      payload = sourcePayload(url);
+    if (!payload) return route.abort();
+    const p = new URL(url).searchParams;
+    if (Number(p.get("latitude") ?? p.get("lat")) === 30.8) {
+      const count = (counts.get(url) ?? 0) + 1;
+      counts.set(url, count);
+      if (count === 1 && url.includes("power.larc"))
+        return route.fulfill({ status: 503, body: "Temporarily unavailable" });
+      if (count === 1 && url.includes("NDVI&startDate=A2025161"))
+        return route.abort();
+    }
+    return route.fulfill({ json: payload });
+  });
+  await page.goto("/");
+  await english(page);
+  await coordinates(page, 30.8, 31.2);
+  await expect(page.getByTestId("source-climate")).toContainText(
+    "Retrying automatically",
+  );
+  await waitSources(page);
+  for (const key of ["climate", "soil", "ndvi"])
+    await expect(page.getByTestId(`source-${key}`)).toContainText(
+      "Retrieved source data",
+    );
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
+  await expect(page.locator(".comparison-unavailable")).toHaveCount(0);
+  expect(counts.size).toBe(8);
+  expect([...counts.values()].reduce((sum, count) => sum + count, 0)).toBe(10);
+});
+
+test("a slow climate request and stalled primary soil provider recover automatically through timeout retry and backup", async ({
+  page,
+}) => {
+  let powerRequests = 0,
+    backupRequests = 0;
+  await page.route(/^https:\/\//, async (route) => {
+    if (firstParty(route)) return route.continue();
+    const url = route.request().url(),
+      payload = sourcePayload(url);
+    if (!payload) return route.abort();
+    const p = new URL(url).searchParams;
+    if (Number(p.get("latitude") ?? p.get("lat")) === 30.8) {
+      if (url.includes("rest.isric")) backupRequests++;
+      if (
+        url.includes("pixelgust") ||
+        (url.includes("power.larc") && ++powerRequests === 1)
+      ) {
+        await new Promise((resolve) => setTimeout(resolve, 4800));
+        return route.fulfill({ json: payload }).catch(() => {});
+      }
+    }
+    return route.fulfill({ json: payload });
+  });
+  await page.goto("/");
+  await english(page);
+  await coordinates(page, 30.8, 31.2);
+  await expect(page.getByTestId("source-soil")).toContainText(
+    "Retrieved source data",
+    { timeout: 4000 },
+  );
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("—");
+  await expect(page.getByTestId("source-climate")).toContainText(
+    "Retrying automatically",
+    { timeout: 5000 },
+  );
+  await waitSources(page);
+  await expect(page.getByTestId("farmer-water-baseline")).toHaveText("10,813");
+  expect(powerRequests).toBe(2);
+  expect(backupRequests).toBe(1);
+});
 
 test("map and all primary inputs share one page with three actual numerical strategy cards", async ({
   page,
@@ -270,7 +348,7 @@ test("complete custom-location HTTP responses feed the real service, diagnostics
   );
 });
 
-test("rapid map changes discard old source responses; stopping a retry preserves selected-location fallback status", async ({
+test("rapid map changes discard old source responses; stopping a retry retains sources already retrieved", async ({
   page,
 }) => {
   await page.route(/^https:\/\//, async (route) => {
@@ -316,7 +394,7 @@ test("rapid map changes discard old source responses; stopping a retry preserves
     .click();
   await waitSources(page);
   await expect(page.getByTestId("source-climate")).toContainText(
-    "Illustrative demo fixture",
+    "Retrieved source data",
   );
   await expect(page.getByTestId("farmer-water-baseline")).toHaveText("—");
 });
