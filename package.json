@@ -12,6 +12,7 @@
     "preview": "vite preview --host 0.0.0.0",
     "test": "node --test tests/unit/*.test.js",
     "test:browser": "playwright test",
+    "test:browser:pages": "vite build --base /FieldShift/ && playwright test --config playwright.pages.config.js",
     "check": "npm test && npm run build && python3 scripts/check_repository.py",
     "test:live": "node scripts/verify-live-demo.mjs",
     "build:scientific-v2": "node scripts/build-scientific-v2.mjs",

@@ -1,6 +1,8 @@
 # Field Shift Egypt
 
-**Live demo: [fieldshift-tau.vercel.app](https://fieldshift-tau.vercel.app)** · [Vercel release and verification](docs/delivery/VERCEL_RELEASE.md)
+**GitHub Pages: [davidelksfam.github.io/FieldShift](https://davidelksfam.github.io/FieldShift/)** · [Pages deployment and verification](docs/delivery/GITHUB_PAGES.md)
+
+[Vercel deployment](https://fieldshift-tau.vercel.app) · [Vercel release history](docs/delivery/VERCEL_RELEASE.md). Each host serves its last successful deployment; the Pages workflow publishes `main`.
 
 A bilingual crop-rotation planning prototype for Egyptian farmers: choose a field, describe its irrigation and current crops, then compare a baseline with water-smart and soil-recovery strategies. Historical NASA POWER, MODIS and SoilGrids inputs complement transparent rules and local agricultural expertise.
 

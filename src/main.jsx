@@ -19,7 +19,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 if (import.meta.env.PROD && "serviceWorker" in navigator)
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").catch(() => {
-      /* Cache fallback does not depend on SW availability. */
-    });
+    navigator.serviceWorker
+      .register(`${import.meta.env.BASE_URL}sw.js`)
+      .catch(() => {
+        /* Cache fallback does not depend on SW availability. */
+      });
   });
