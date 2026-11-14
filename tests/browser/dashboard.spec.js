@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { sourcePayload } from "../helpers/sourcePayloads.js";
+import { soilGridsPayload } from "../helpers/soilGridsPayloads.js";
 const firstParty = (route) =>
   new URL(route.request().url()).origin ===
   new URL(test.info().project.use.baseURL).origin;
@@ -30,6 +31,56 @@ async function waitSources(page) {
     page.getByRole("button", { name: "Retry sources", exact: true }),
   ).toBeVisible({ timeout: 25000 });
 }
+
+for (const zero of [false, true])
+  test(`native SoilGrids fallback ${zero ? "explains missing coverage" : "recovers soil evidence"} after point API failure`, async ({
+    page,
+  }) => {
+    let cells = 0;
+    await page.route(/^https:\/\//, (route) => {
+      if (firstParty(route)) return route.continue();
+      const url = route.request().url();
+      if (url.includes("pixelgust")) return route.fulfill({ status: 403 });
+      if (url.includes("rest.isric"))
+        return route.fulfill({ json: { properties: { layers: [] } } });
+      if (url.includes("maps.isric")) {
+        cells++;
+        return route.fulfill({
+          contentType: "image/tiff",
+          body: Buffer.from(soilGridsPayload(url, { zero })),
+        });
+      }
+      const payload = sourcePayload(url);
+      return payload ? route.fulfill({ json: payload }) : route.abort();
+    });
+    await page.goto("/");
+    await english(page);
+    await coordinates(page, 29.8682, 31.3133);
+    await waitSources(page);
+    const soil = page.getByTestId("source-soil");
+    if (zero) {
+      await expect(soil).toContainText("Unavailable · omitted from comparison");
+      await expect(soil).toContainText(
+        "SoilGrids has no usable prediction at these coordinates",
+      );
+      await page.getByRole("button", { name: "العربية", exact: true }).click();
+      await expect(soil).toContainText("لا توجد تقديرات تربة صالحة");
+    } else {
+      await expect(soil).toContainText("Retrieved source data");
+      await expert(page);
+      await expect(page.locator(".diagnostic-2")).toContainText("pH 8");
+      // The newly retrieved profile survives a failed refresh and is labeled cached.
+      await page.route("https://maps.isric.org/**", (route) => route.abort());
+      await page.reload();
+      await english(page);
+      await coordinates(page, 29.8682, 31.3133);
+      await waitSources(page);
+      await expect(soil).toContainText("Cached source data");
+    }
+    for (const id of ["baseline", "water", "soil"])
+      await expect(page.getByTestId(`farmer-water-${id}`)).not.toHaveText("—");
+    expect(cells).toBeGreaterThanOrEqual(10);
+  });
 
 test("custom-location transient failures recover automatically without a Retry click or repeating successful requests", async ({
   page,

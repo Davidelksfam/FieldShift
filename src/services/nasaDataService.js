@@ -398,6 +398,7 @@ async function fetchJson(url, signal, policy) {
     retryDelayMs,
     maxAttempts,
     onRetry,
+    readResponse = (response) => response.json(),
   } = policy;
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     if (signal.aborted) throw abortError();
@@ -439,7 +440,7 @@ async function fetchJson(url, signal, policy) {
             }
             throw error;
           }
-          return response.json();
+          return readResponse(response);
         })(),
         interrupted,
       ]);
@@ -531,11 +532,33 @@ export async function fetchUnifiedFarmData(
           status: "retrying",
           reason: "Trying the backup soil provider",
         });
-        return {
-          value: parseIsric(await request(isricUrl, "soil")),
-          provider: "ISRIC SoilGrids",
-          url: isricUrl,
-        };
+        try {
+          return {
+            value: parseIsric(
+              await request(isricUrl, "soil", {
+                // Leave time for the native raster service if the point API stalls.
+                maxAttempts: 1,
+              }),
+            ),
+            provider: "ISRIC SoilGrids",
+            url: isricUrl,
+          };
+        } catch {
+          if (signal.aborted) throw abortError();
+          onSourceUpdate?.({
+            key: "soil",
+            status: "retrying",
+            reason: "Trying native SoilGrids cells",
+          });
+          const { fetchSoilGridsWcs } = await import("./soilGridsWcs.js");
+          const result = await fetchSoilGridsWcs(lat, lon, (url) =>
+            request(url, "soil", {
+              maxAttempts: 2,
+              readResponse: (response) => response.arrayBuffer(),
+            }),
+          );
+          return { ...result, value: validateSoil(result.value) };
+        }
       }
     })(),
     // Retrieve QA alongside NDVI; never replace audited data with unscreened pixels.
@@ -606,6 +629,11 @@ export async function fetchUnifiedFarmData(
             provider: value.provider,
             url: value.url,
             retrievedAt: new Date().toISOString(),
+            ...(value.urls && {
+              urls: value.urls,
+              nativeBounds: value.nativeBounds,
+              dataNature: value.dataNature,
+            }),
             period:
               index === 1
                 ? "static soil prediction (not year-specific)"
@@ -656,6 +684,7 @@ export async function fetchUnifiedFarmData(
           reason:
             result?.reason?.message ??
             `${timeoutMs / 1000}-second deadline; using local fallback.`,
+          failureCode: result?.reason?.code ?? "SOURCE_UNAVAILABLE",
         };
     }
     writeCache(lat, lon, data);
