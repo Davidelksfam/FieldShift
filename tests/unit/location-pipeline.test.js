@@ -22,6 +22,7 @@ test("non-preset coordinates fetch all three source payloads and drive evaluatio
   assert.deepEqual(comparisonSourceSupport(data), {
     missing: [],
     illustrative: false,
+    blocked: false,
   });
   assert.equal(data.lat, 30.8);
   assert.equal(data.lon, 31.2);
@@ -47,7 +48,7 @@ test("non-preset coordinates fetch all three source payloads and drive evaluatio
   assert.equal(result.diagnostics.canopyAnomaly.status, "unavailable");
   assert.equal(result.strategies[0].grossWaterM3Feddan, 10813);
 });
-test("source progress reports each success/failure and mixed data requires illustrative acknowledgement", async (t) => {
+test("source progress reports each success/failure and optional-source outages do not block supported climate", async (t) => {
   const progress = [];
   t.mock.method(globalThis, "fetch", async (url) => {
     if (!url.includes("power.larc")) throw new Error("source unavailable");
@@ -59,6 +60,7 @@ test("source progress reports each success/failure and mixed data requires illus
   assert.deepEqual(comparisonSourceSupport(data), {
     missing: ["soil", "ndvi"],
     illustrative: true,
+    blocked: false,
   });
   assert.equal(progress.find((e) => e.key === "climate").status, "fulfilled");
   assert.equal(progress.findLast((e) => e.key === "soil").status, "rejected");

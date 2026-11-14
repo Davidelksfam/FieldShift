@@ -15,7 +15,7 @@ npm ci
 npm run dev
 ```
 
-Open the printed URL. Arabic RTL is the default; switch to English in the header. Select your field on the visible map and enter winter/summer crops, irrigation and goal together on one page. Three equal strategy cards show actual calculated water, difference from the current rotation, nitrogen index and cautions. Optional details include livestock, conditional Nili, lab ECe and whole-field area. Missing source data requires explicit acknowledgement before showing an illustrative comparison. Expert Mode retains manual weights, satellite evidence, raw scores and the pipeline. Region changes preserve your inputs. See the [farmer-first UX specification and dependency audit](docs/product/FARMER_FIRST_UX.md).
+Open the printed URL. Arabic RTL is the default; switch to English in the header. Select your field on the visible map and enter winter/summer crops, irrigation and goal together on one page. Three equal strategy cards show actual calculated water, difference from the current rotation, nitrogen index and cautions. Optional details include livestock, conditional Nili, lab ECe and whole-field area. Strategies load as soon as supported climate data is available; missing soil or vegetation checks stay unavailable and do not block the cards. Missing climate requires explicit acknowledgement before showing an illustrative comparison. Expert Mode retains manual weights, satellite evidence, raw scores and the pipeline. Region changes preserve your inputs. See the [farmer-first UX specification and dependency audit](docs/product/FARMER_FIRST_UX.md).
 
 ```bash
 npm run check

@@ -7,6 +7,12 @@ export const formatNumber = (value, lang = "en", options = {}) =>
         ...options,
       }).format(value);
 export const sourceLabel = (source, lang) => {
+  if (source?.usedInComparison === false)
+    return text(
+      lang,
+      "Unavailable · omitted from comparison",
+      "غير متاح · مستبعد من المقارنة",
+    );
   const labels = {
     live: ["Retrieved source data", "بيانات مصدر مسترجعة"],
     cached: ["Cached source data", "بيانات مصدر محفوظة"],

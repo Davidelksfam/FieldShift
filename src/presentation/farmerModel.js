@@ -53,7 +53,11 @@ export function warningLayers(strategy, data, diagnostics) {
       w.en,
     ),
   );
-  if (Object.values(data.sources).some((s) => s.kind === "synthetic"))
+  if (
+    Object.values(data.sources).some(
+      (s) => s.kind === "synthetic" && s.usedInComparison !== false,
+    )
+  )
     critical.unshift({
       en: "Some inputs are illustrative fallback data, not observations of your field. Review the evidence before planting.",
       ar: "بعض المدخلات بيانات توضيحية بديلة وليست أرصاداً لأرضك. راجع الأدلة قبل الزراعة.",
@@ -76,5 +80,31 @@ export function comparisonSourceSupport(data) {
   const missing = ["climate", "soil", "ndvi"].filter(
     (key) => data.sources?.[key]?.kind !== "observed",
   );
-  return { missing, illustrative: missing.length > 0 };
+  // Climate drives heat penalties. Soil and NDVI only support optional diagnostics.
+  return {
+    missing,
+    illustrative: missing.length > 0,
+    blocked: missing.includes("climate"),
+  };
+}
+
+export function prepareComparisonData(data, allowIllustrative = false) {
+  if (allowIllustrative) return data;
+  const result = { ...data, sources: { ...data.sources } };
+  if (data.sources.soil.kind !== "observed") {
+    result.soil = {
+      clay: null,
+      sand: null,
+      phh2o: null,
+      soc: null,
+      nitrogen: null,
+    };
+    result.sources.soil = { ...data.sources.soil, usedInComparison: false };
+  }
+  if (data.sources.ndvi.kind !== "observed") {
+    result.ndviSeries = [];
+    result.ndviHistory = null;
+    result.sources.ndvi = { ...data.sources.ndvi, usedInComparison: false };
+  }
+  return result;
 }
