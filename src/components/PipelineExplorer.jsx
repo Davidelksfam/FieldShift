@@ -17,11 +17,11 @@ export default function PipelineExplorer({ lang, data, evaluation }) {
     {
       name: t("2 · Candidates", "٢ · المرشحون"),
       input: t(
-        "Catalog seasons, crop exclusions and observed bare-soil duration.",
-        "مواسم الدليل والمحاصيل المستبعدة ومدة الانكشاف المرصودة.",
+        "Catalog seasons, crop exclusions and historical low-cover proxy.",
+        "مواسم الدليل والمحاصيل المستبعدة ومؤشر الغطاء المنخفض التاريخي.",
       ),
       formula:
-        "Shitwi × Seifi × [optional Nili]; BSW>32 → conditional cover required. Reject duplicate IDs, invalid water traits and farmer exclusions. Penalize cereals/salt/heat mismatches.",
+        "Shitwi × Seifi × [optional Nili]; Low-cover proxy>32 suggests exploration only; explicit farmer opt-in requires conditional cover. Reject duplicate IDs, invalid water traits and farmer exclusions. Penalize cereals/salt/heat mismatches.",
       output: {
         generated: evaluation.candidateAudit.generated,
         retained: evaluation.candidateAudit.retained,

@@ -1,3 +1,5 @@
+> Historical record of the earlier five-step proposal on PR #22. The user-approved unified workspace on main supersedes this interface. See [the current review](CURRENT_WORKSPACE_REVIEW.md) for the active layout and checks.
+
 # FieldShift journey audit and proposal
 
 Issue: [#20](https://github.com/Davidelksfam/FieldShift/issues/20). Baseline: main `792e186`.

@@ -245,3 +245,6 @@ web/playwright-report/
 # SPA verification artifacts
 /test-results/
 /playwright-report/
+
+# Separate experimental V2 verification build
+/dist-v2/

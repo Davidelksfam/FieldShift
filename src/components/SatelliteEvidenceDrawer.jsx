@@ -12,13 +12,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import {
-  ChevronDown,
-  Database,
-  Info,
-  Satellite,
-  ExternalLink,
-} from "lucide-react";
+import { ChevronDown, Database, Info, Satellite } from "lucide-react";
 import { text, sourceLabel } from "../i18n";
 
 const valid = (n) => typeof n === "number" && Number.isFinite(n);
@@ -116,7 +110,7 @@ export default function SatelliteEvidenceDrawer({
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart
                     data={vegetation}
-                    margin={{ top: 18, right: 12, bottom: 8, left: 0 }}
+                    margin={{ top: 18, right: 12, bottom: 8, left: -18 }}
                   >
                     <CartesianGrid vertical={false} stroke="var(--fs-border)" />
                     <XAxis
@@ -129,9 +123,9 @@ export default function SatelliteEvidenceDrawer({
                       tickFormatter={(d) =>
                         month(new Date(Date.UTC(2025, 0, d)).getUTCMonth() + 1)
                       }
-                      tick={{ fontSize: 12 }}
+                      tick={{ fontSize: 11 }}
                     />
-                    <YAxis domain={[-0.2, 1]} tick={{ fontSize: 12 }} />
+                    <YAxis domain={[-0.2, 1]} tick={{ fontSize: 11 }} />
                     <Tooltip
                       labelFormatter={(d) =>
                         new Date(Date.UTC(2025, 0, d))
@@ -139,14 +133,7 @@ export default function SatelliteEvidenceDrawer({
                           .slice(0, 10)
                       }
                     />
-                    <Legend
-                      wrapperStyle={{ fontSize: 12 }}
-                      formatter={(value) => (
-                        <span style={{ color: "var(--fs-text-secondary)" }}>
-                          {value}
-                        </span>
-                      )}
-                    />
+                    <Legend wrapperStyle={{ fontSize: 11 }} />
                     {(diagnostics?.bareSoilRuns ?? []).map((run) => (
                       <ReferenceArea
                         key={run.start}
@@ -173,7 +160,7 @@ export default function SatelliteEvidenceDrawer({
                       label={{
                         value: "0.22",
                         position: "insideTopRight",
-                        fontSize: 12,
+                        fontSize: 11,
                       }}
                     />
                     <Area
@@ -229,26 +216,19 @@ export default function SatelliteEvidenceDrawer({
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart
                     data={climate}
-                    margin={{ top: 18, right: 12, bottom: 8, left: 0 }}
+                    margin={{ top: 18, right: -14, bottom: 8, left: -18 }}
                   >
                     <CartesianGrid vertical={false} stroke="var(--fs-border)" />
-                    <XAxis dataKey="label" tick={{ fontSize: 12 }} />
-                    <YAxis yAxisId="flux" tick={{ fontSize: 12 }} />
+                    <XAxis dataKey="label" tick={{ fontSize: 11 }} />
+                    <YAxis yAxisId="flux" tick={{ fontSize: 11 }} />
                     <YAxis
                       yAxisId="wetness"
                       orientation="right"
                       domain={[0, 1]}
-                      tick={{ fontSize: 12 }}
+                      tick={{ fontSize: 11 }}
                     />
                     <Tooltip />
-                    <Legend
-                      wrapperStyle={{ fontSize: 12 }}
-                      formatter={(value) => (
-                        <span style={{ color: "var(--fs-text-secondary)" }}>
-                          {value}
-                        </span>
-                      )}
-                    />
+                    <Legend wrapperStyle={{ fontSize: 11 }} />
                     <Bar
                       yAxisId="flux"
                       dataKey="flux"
@@ -398,8 +378,7 @@ export default function SatelliteEvidenceDrawer({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {t("Source documentation", "توثيق المصدر")}{" "}
-                  <ExternalLink size={14} />
+                  {t("Source documentation", "توثيق المصدر")} ↗
                 </a>
               </div>
             ))}

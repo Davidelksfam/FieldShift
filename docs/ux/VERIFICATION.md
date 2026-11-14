@@ -1,3 +1,5 @@
+> Historical record of the earlier five-step proposal on PR #22. The user-approved unified workspace on main supersedes this interface. See [the current review](CURRENT_WORKSPACE_REVIEW.md) for the active layout and checks.
+
 # UX verification — 2026-11-13
 
 Scope: frontend-only redesign on `feat/ux-journey-redesign`, started from main `792e186` and integrated the concurrent crop-science update `af70509` (PR #21). No scoring, crop constants, data files, schemas, fetching semantics, service worker or production configuration changed.

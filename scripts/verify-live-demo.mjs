@@ -3,7 +3,11 @@ import { chromium, expect } from "@playwright/test";
 await mkdir("test-results/live", { recursive: true });
 const baseURL =
   process.env.DEMO_BASE_URL || "https://fieldshift-tau.vercel.app";
-const browser = await chromium.launch();
+const browser = await chromium.launch(
+  process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+    ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH }
+    : {},
+);
 try {
   const page = await browser.newPage({
     viewport: { width: 1440, height: 1000 },
@@ -20,19 +24,13 @@ try {
   );
   const response = await page.goto(baseURL, { waitUntil: "domcontentloaded" });
   await page.getByRole("button", { name: "English", exact: true }).click();
+  await page.getByRole("button", { name: "Expert mode", exact: true }).click();
   await expect(
-    page.getByRole("button", { name: "Refresh sources" }),
-  ).toBeEnabled({ timeout: 15000 });
-  const status = await page.locator(".data-status").innerText();
-  const navigate = (name) =>
-    page
-      .getByRole("navigation", { name: "Planning journey" })
-      .getByRole("button", { name, exact: true })
-      .click();
-  await navigate("Goals");
-  await page.getByLabel("Explore a conditional Nili cover").check();
-  await page.getByRole("button", { name: "Judge mode", exact: true }).click();
+    page.getByRole("button", { name: "Retry sources", exact: true }),
+  ).toBeVisible({ timeout: 25000 });
+  const status = await page.locator(".source-status-panel").innerText();
   const diagnostics = await page.locator(".diagnostics-grid").innerText();
+  await page.getByLabel("Explore a conditional Nili cover").check();
   const explorer = page.getByRole("region", {
     name: "Post-processing pipeline explorer",
   });
@@ -44,8 +42,6 @@ try {
   );
   if (result.hypotheticalSummerSwitch.modeledSavingsM3Feddan !== 1970)
     throw new Error("Counterfactual does not match the tested model");
-  await navigate("Field");
-  await page.getByText("Choose a point on the map", { exact: true }).click();
   await page.getByLabel("Satellite layer").selectOption("ndvi");
   try {
     await page

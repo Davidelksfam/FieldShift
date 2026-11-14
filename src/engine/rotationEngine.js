@@ -20,7 +20,11 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
   if (!Number.isFinite(feddans) || feddans <= 0)
     throw new Error("Enter a positive field area.");
   const ece = userInputs.soilEceDsm;
-  if (ece !== null && ece !== undefined && (typeof ece !== "number" || !Number.isFinite(ece) || ece < 0 || ece > 100))
+  if (
+    ece !== null &&
+    ece !== undefined &&
+    (typeof ece !== "number" || !Number.isFinite(ece) || ece < 0 || ece > 100)
+  )
     throw new Error("Measured soil ECe must be 0–100 dS/m, or left blank.");
   const winter = cropsCatalog.find(
     (c) => c.id === currentWinterId && c.season === "Shitwi",
@@ -36,7 +40,7 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
     ] ?? 0.55;
   const diagnostics = computeFieldIndices(nasaData, userInputs, cropsCatalog);
   const { heatStressDays, bareSoilDays, salinityRisk } = diagnostics;
-  const soilPh = nasaData.soil?.phh2o ?? 8;
+  const soilPh = nasaData.soil?.phh2o;
   const normalizedWeights = Object.fromEntries(
     ["water", "soil", "market"].map((k) => [
       k,
@@ -125,7 +129,11 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
           `${c.nameEn}: measured soil ECe ${salt.measuredEceDsm} dS/m exceeds the FAO reference ${salt.thresholdDsm} dS/m for ${salt.outcome}; verify locally.`,
           `${c.nameAr}: ملوحة التربة المقاسة ECe (${salt.measuredEceDsm}) تتجاوز مرجع FAO (${salt.thresholdDsm})؛ يلزم التحقق محلياً.`,
         );
-      } else if (salt.status === "unsupported" && ece !== null && ece !== undefined) {
+      } else if (
+        salt.status === "unsupported" &&
+        ece !== null &&
+        ece !== undefined
+      ) {
         addWarning(
           `${c.nameEn}: no outcome-matched quantitative FAO salinity response; no numerical salinity penalty.`,
           `${c.nameAr}: لا يوجد مرجع FAO رقمي مطابق لغرض المحصول؛ لا تُخصم نقاط للملوحة.`,
@@ -142,7 +150,7 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
           `${c.nameAr}: تعرض للإجهاد الحراري صيفاً.`,
         );
       }
-      if (soilPh < c.phMin || soilPh > c.phMax)
+      if (isNumber(soilPh) && (soilPh < c.phMin || soilPh > c.phMax))
         addWarning(
           `${c.nameEn}: pH outside catalog range; local review needed.`,
           `${c.nameAr}: الأس الهيدروجيني خارج نطاق الدليل؛ يلزم تقييم محلي.`,
@@ -186,7 +194,8 @@ export function evaluateFieldAndRotations(nasaData, userInputs, cropsCatalog) {
       crops,
       grossWaterM3Feddan,
       waterModelStatus: "prototype_uncalibrated",
-      waterModelNote: "Legacy baseWaterMm × legacy Kc / assumed irrigation efficiency; not FAO-verified ETc or measured irrigation water.",
+      waterModelNote:
+        "Legacy baseWaterMm × legacy Kc / assumed irrigation efficiency; not FAO-verified ETc or measured irrigation water.",
       totalFarmWaterM3: Math.round(grossWaterM3Feddan * feddans),
       nitrogenBalance,
       waterScore,
@@ -349,10 +358,7 @@ export function generateCandidateRotations(catalog, diagnostics, inputs) {
   const winter = catalog.filter((c) => c.season === "Shitwi");
   const summer = catalog.filter((c) => c.season === "Seifi");
   const covers = catalog.filter((c) => c.season === "Nili");
-  const coverOptions =
-    diagnostics.bareSoilDays > 32 || inputs.forceNiliCover
-      ? covers
-      : [null, ...covers];
+  const coverOptions = inputs.forceNiliCover ? covers : [null, ...covers];
   const candidates = [];
   const rejected = [];
   for (const w of winter)
@@ -382,8 +388,8 @@ export function generateCandidateRotations(catalog, diagnostics, inputs) {
     generated: candidates.length + rejected.length,
     retained: candidates.length,
     rejected,
-    coverRequired:
-      diagnostics.bareSoilDays > 32 || Boolean(inputs.forceNiliCover),
+    coverRequired: Boolean(inputs.forceNiliCover),
+    lowCoverExplorationSuggested: diagnostics.bareSoilDays > 32,
     candidates,
     calendarStatus:
       "Nili candidates are conditional, not hard-validated calendars; dates require local review.",

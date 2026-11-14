@@ -1,0 +1,2376 @@
+{
+  "capturedFrom": "3fcf71fa825f76e46aafab0d0e75cc121d4eb39e",
+  "purpose": "Legacy regression outputs, not scientific validation",
+  "scenarios": [
+    {
+      "id": "fayoum_etsa:water",
+      "location": {
+        "lat": 29.2315,
+        "lon": 30.7952,
+        "presetId": "fayoum_etsa"
+      },
+      "goal": "water",
+      "farmerInputs": {
+        "landType": "old_clay",
+        "irrigationType": "flood",
+        "canalPosition": "tail",
+        "salinityLevel": "moderate",
+        "feddans": 1,
+        "qirats": 0,
+        "currentWinterId": "wheat",
+        "currentSummerId": "maize",
+        "hasLivestock": false,
+        "soilEceDsm": null,
+        "forceNiliCover": false,
+        "weights": {
+          "water": 70,
+          "soil": 20,
+          "market": 10
+        }
+      },
+      "sources": {
+        "climate": {
+          "provider": "NASA POWER / MERRA-2",
+          "kind": "observed",
+          "dataNature": "gridded reanalysis",
+          "status": "snapshot",
+          "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.7952&latitude=29.2315&start=20250101&end=20251231&format=JSON",
+          "retrievedAt": "2026-11-13T18:53:12.951771+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedDays": 365,
+            "validByVariable": {
+              "tmax": 365,
+              "tmin": 365,
+              "precipitation": 365,
+              "evapotranspiration": 365,
+              "rootWetness": 365,
+              "topWetness": 365
+            },
+            "summerValidDays": 153,
+            "heatDaysAbove38C": 58,
+            "missingOrRejected": {},
+            "interpolated": 0,
+            "powerGridCentroid": [
+              30.795,
+              29.232,
+              65.57
+            ],
+            "nativeHeader": {
+              "title": "NASA/POWER Source Native Resolution Daily Data",
+              "api": {
+                "version": "v2.10.3",
+                "name": "POWER Daily API"
+              },
+              "sources": [
+                "MERRA2",
+                "POWER"
+              ],
+              "fill_value": -999,
+              "time_standard": "LST",
+              "start": "20250101",
+              "end": "20251231"
+            },
+            "units": {
+              "T2M_MAX": "C",
+              "T2M_MIN": "C",
+              "PRECTOTCORR": "mm/day",
+              "EVPTRNS": "MJ/m^2/day",
+              "GWETROOT": "1",
+              "GWETTOP": "1"
+            }
+          }
+        },
+        "soil": {
+          "provider": "ISRIC SoilGrids 2.0 / WCS",
+          "kind": "observed",
+          "dataNature": "model prediction (not in-field measurement)",
+          "status": "snapshot",
+          "url": "https://maps.isric.org/",
+          "retrievedAt": "2026-11-13T18:55:25.689920+00:00",
+          "period": "SoilGrids 2.0 static prediction",
+          "quality": {
+            "status": "accepted",
+            "reason": null,
+            "downloadedCells": 30,
+            "validCells": 30,
+            "expectedCells": 30,
+            "nativeBounds": [
+              3416750,
+              3254000,
+              3417000,
+              3254250
+            ],
+            "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+            "depthCm": [
+              0,
+              15
+            ],
+            "method": "Native 250m cell containing centroid; 0–5 and 5–15 cm means thickness-weighted 1:2. No spatial resampling.",
+            "uncertaintyFile": "data/processed/soil-profiles.json",
+            "pointApiCrossCheck": {
+              "matchedValues": 30,
+              "status": "all matched",
+              "note": "Two interfaces to the same model; not independent field validation."
+            }
+          }
+        },
+        "ndvi": {
+          "provider": "ORNL MOD13Q1 (Terra)",
+          "kind": "observed",
+          "dataNature": "QA-screened satellite reflectance index",
+          "status": "snapshot",
+          "url": "https://modis.ornl.gov/data/modis_webservice.html",
+          "retrievedAt": "2026-11-13T18:53:43.142779+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedComposites": 23,
+            "validComposites": 21,
+            "rejected": {
+              "qaRejected": 2
+            },
+            "autumnValidComposites": 5,
+            "autumnTotalComposites": 6,
+            "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+            "nativePixel": {
+              "xllcorner": "2988135.32",
+              "yllcorner": "3250370.36",
+              "cellsize": 231.656358264,
+              "nrows": 1,
+              "ncols": 1
+            },
+            "tiles": [
+              "h20v06"
+            ]
+          }
+        }
+      },
+      "evaluationSha256": "54111251901c31bdc17af2c69f63ce1547694db822e80257aba813db7b164e6b",
+      "expected": {
+        "rankedStrategyIds": [
+          "water",
+          "soil",
+          "baseline"
+        ],
+        "effectiveWeights": {
+          "water": 70,
+          "soil": 20,
+          "market": 10
+        },
+        "candidates": {
+          "generated": 32,
+          "retained": 32,
+          "coverRequired": false,
+          "waterIds": [
+            "faba_bean/sesame",
+            "faba_bean/sorghum",
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sorghum/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum",
+            "sugar_beet/soybean",
+            "sugar_beet/sorghum/cowpea_nili",
+            "sugar_beet/sesame",
+            "sugar_beet/sorghum",
+            "berseem/maize/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "wheat/sesame",
+            "wheat/sorghum",
+            "wheat/soybean",
+            "wheat/sesame/cowpea_nili",
+            "wheat/sorghum/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/soybean/cowpea_nili",
+            "sugar_beet/maize",
+            "wheat/maize",
+            "berseem/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "wheat/maize/cowpea_nili"
+          ],
+          "soilIds": [
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "faba_bean/sorghum/cowpea_nili",
+            "faba_bean/sesame",
+            "berseem/sesame",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum",
+            "berseem/maize/cowpea_nili",
+            "faba_bean/sorghum",
+            "sugar_beet/sorghum/cowpea_nili",
+            "sugar_beet/soybean",
+            "wheat/soybean/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/sesame",
+            "wheat/sesame/cowpea_nili",
+            "berseem/maize",
+            "sugar_beet/sorghum",
+            "wheat/sorghum/cowpea_nili",
+            "wheat/soybean",
+            "sugar_beet/maize/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/sesame",
+            "wheat/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize"
+          ]
+        },
+        "strategies": [
+          {
+            "id": "baseline",
+            "sequenceKey": "wheat/maize",
+            "rank": 3,
+            "grossWaterM3Feddan": 10813,
+            "totalFarmWaterM3": 10813,
+            "waterSavedM3Feddan": 0,
+            "nitrogenBalance": -5,
+            "waterScore": 10,
+            "soilScore": 15,
+            "marketForageScore": 85,
+            "finalSuitability": 10,
+            "penalty": 48
+          },
+          {
+            "id": "water",
+            "sequenceKey": "faba_bean/sesame",
+            "rank": 1,
+            "grossWaterM3Feddan": 4998,
+            "totalFarmWaterM3": 4998,
+            "waterSavedM3Feddan": 5815,
+            "nitrogenBalance": 2,
+            "waterScore": 37,
+            "soilScore": 79,
+            "marketForageScore": 89,
+            "finalSuitability": 51,
+            "penalty": 0
+          },
+          {
+            "id": "soil",
+            "sequenceKey": "faba_bean/soybean/cowpea_nili",
+            "rank": 2,
+            "grossWaterM3Feddan": 7904,
+            "totalFarmWaterM3": 7904,
+            "waterSavedM3Feddan": 2909,
+            "nitrogenBalance": 6,
+            "waterScore": 10,
+            "soilScore": 98,
+            "marketForageScore": 86,
+            "finalSuitability": 35,
+            "penalty": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "fayoum_etsa:soil",
+      "location": {
+        "lat": 29.2315,
+        "lon": 30.7952,
+        "presetId": "fayoum_etsa"
+      },
+      "goal": "soil",
+      "farmerInputs": {
+        "landType": "old_clay",
+        "irrigationType": "flood",
+        "canalPosition": "tail",
+        "salinityLevel": "moderate",
+        "feddans": 1,
+        "qirats": 0,
+        "currentWinterId": "wheat",
+        "currentSummerId": "maize",
+        "hasLivestock": false,
+        "soilEceDsm": null,
+        "forceNiliCover": false,
+        "weights": {
+          "water": 20,
+          "soil": 70,
+          "market": 10
+        }
+      },
+      "sources": {
+        "climate": {
+          "provider": "NASA POWER / MERRA-2",
+          "kind": "observed",
+          "dataNature": "gridded reanalysis",
+          "status": "snapshot",
+          "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.7952&latitude=29.2315&start=20250101&end=20251231&format=JSON",
+          "retrievedAt": "2026-11-13T18:53:12.951771+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedDays": 365,
+            "validByVariable": {
+              "tmax": 365,
+              "tmin": 365,
+              "precipitation": 365,
+              "evapotranspiration": 365,
+              "rootWetness": 365,
+              "topWetness": 365
+            },
+            "summerValidDays": 153,
+            "heatDaysAbove38C": 58,
+            "missingOrRejected": {},
+            "interpolated": 0,
+            "powerGridCentroid": [
+              30.795,
+              29.232,
+              65.57
+            ],
+            "nativeHeader": {
+              "title": "NASA/POWER Source Native Resolution Daily Data",
+              "api": {
+                "version": "v2.10.3",
+                "name": "POWER Daily API"
+              },
+              "sources": [
+                "MERRA2",
+                "POWER"
+              ],
+              "fill_value": -999,
+              "time_standard": "LST",
+              "start": "20250101",
+              "end": "20251231"
+            },
+            "units": {
+              "T2M_MAX": "C",
+              "T2M_MIN": "C",
+              "PRECTOTCORR": "mm/day",
+              "EVPTRNS": "MJ/m^2/day",
+              "GWETROOT": "1",
+              "GWETTOP": "1"
+            }
+          }
+        },
+        "soil": {
+          "provider": "ISRIC SoilGrids 2.0 / WCS",
+          "kind": "observed",
+          "dataNature": "model prediction (not in-field measurement)",
+          "status": "snapshot",
+          "url": "https://maps.isric.org/",
+          "retrievedAt": "2026-11-13T18:55:25.689920+00:00",
+          "period": "SoilGrids 2.0 static prediction",
+          "quality": {
+            "status": "accepted",
+            "reason": null,
+            "downloadedCells": 30,
+            "validCells": 30,
+            "expectedCells": 30,
+            "nativeBounds": [
+              3416750,
+              3254000,
+              3417000,
+              3254250
+            ],
+            "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+            "depthCm": [
+              0,
+              15
+            ],
+            "method": "Native 250m cell containing centroid; 0–5 and 5–15 cm means thickness-weighted 1:2. No spatial resampling.",
+            "uncertaintyFile": "data/processed/soil-profiles.json",
+            "pointApiCrossCheck": {
+              "matchedValues": 30,
+              "status": "all matched",
+              "note": "Two interfaces to the same model; not independent field validation."
+            }
+          }
+        },
+        "ndvi": {
+          "provider": "ORNL MOD13Q1 (Terra)",
+          "kind": "observed",
+          "dataNature": "QA-screened satellite reflectance index",
+          "status": "snapshot",
+          "url": "https://modis.ornl.gov/data/modis_webservice.html",
+          "retrievedAt": "2026-11-13T18:53:43.142779+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedComposites": 23,
+            "validComposites": 21,
+            "rejected": {
+              "qaRejected": 2
+            },
+            "autumnValidComposites": 5,
+            "autumnTotalComposites": 6,
+            "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+            "nativePixel": {
+              "xllcorner": "2988135.32",
+              "yllcorner": "3250370.36",
+              "cellsize": 231.656358264,
+              "nrows": 1,
+              "ncols": 1
+            },
+            "tiles": [
+              "h20v06"
+            ]
+          }
+        }
+      },
+      "evaluationSha256": "4655edde5a36524373bb726861e0fb5662308eabb6a0fb93fe132edd3c1a9410",
+      "expected": {
+        "rankedStrategyIds": [
+          "soil",
+          "water",
+          "baseline"
+        ],
+        "effectiveWeights": {
+          "water": 20,
+          "soil": 70,
+          "market": 10
+        },
+        "candidates": {
+          "generated": 32,
+          "retained": 32,
+          "coverRequired": false,
+          "waterIds": [
+            "faba_bean/sesame",
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "faba_bean/sorghum/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sorghum",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum",
+            "sugar_beet/sorghum/cowpea_nili",
+            "sugar_beet/soybean",
+            "berseem/maize/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/sesame",
+            "wheat/soybean/cowpea_nili",
+            "sugar_beet/sorghum",
+            "wheat/sesame/cowpea_nili",
+            "berseem/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/soybean",
+            "wheat/sorghum/cowpea_nili",
+            "wheat/sesame",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize",
+            "wheat/maize/cowpea_nili"
+          ],
+          "soilIds": [
+            "faba_bean/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/soybean",
+            "berseem/sorghum/cowpea_nili",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/sorghum/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sesame",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/maize/cowpea_nili",
+            "berseem/sorghum",
+            "wheat/soybean/cowpea_nili",
+            "sugar_beet/sorghum/cowpea_nili",
+            "faba_bean/sorghum",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/soybean",
+            "wheat/sesame/cowpea_nili",
+            "sugar_beet/sesame",
+            "berseem/maize",
+            "wheat/sorghum/cowpea_nili",
+            "wheat/soybean",
+            "sugar_beet/maize/cowpea_nili",
+            "sugar_beet/sorghum",
+            "faba_bean/maize",
+            "wheat/sesame",
+            "wheat/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize"
+          ]
+        },
+        "strategies": [
+          {
+            "id": "baseline",
+            "sequenceKey": "wheat/maize",
+            "rank": 3,
+            "grossWaterM3Feddan": 10813,
+            "totalFarmWaterM3": 10813,
+            "waterSavedM3Feddan": 0,
+            "nitrogenBalance": -5,
+            "waterScore": 10,
+            "soilScore": 15,
+            "marketForageScore": 85,
+            "finalSuitability": 10,
+            "penalty": 48
+          },
+          {
+            "id": "water",
+            "sequenceKey": "faba_bean/sesame",
+            "rank": 2,
+            "grossWaterM3Feddan": 4998,
+            "totalFarmWaterM3": 4998,
+            "waterSavedM3Feddan": 5815,
+            "nitrogenBalance": 2,
+            "waterScore": 37,
+            "soilScore": 79,
+            "marketForageScore": 89,
+            "finalSuitability": 72,
+            "penalty": 0
+          },
+          {
+            "id": "soil",
+            "sequenceKey": "faba_bean/soybean",
+            "rank": 1,
+            "grossWaterM3Feddan": 6437,
+            "totalFarmWaterM3": 6437,
+            "waterSavedM3Feddan": 4376,
+            "nitrogenBalance": 4,
+            "waterScore": 10,
+            "soilScore": 98,
+            "marketForageScore": 90,
+            "finalSuitability": 80,
+            "penalty": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "fayoum_etsa:market",
+      "location": {
+        "lat": 29.2315,
+        "lon": 30.7952,
+        "presetId": "fayoum_etsa"
+      },
+      "goal": "market",
+      "farmerInputs": {
+        "landType": "old_clay",
+        "irrigationType": "flood",
+        "canalPosition": "tail",
+        "salinityLevel": "moderate",
+        "feddans": 1,
+        "qirats": 0,
+        "currentWinterId": "wheat",
+        "currentSummerId": "maize",
+        "hasLivestock": false,
+        "soilEceDsm": null,
+        "forceNiliCover": false,
+        "weights": {
+          "water": 20,
+          "soil": 20,
+          "market": 60
+        }
+      },
+      "sources": {
+        "climate": {
+          "provider": "NASA POWER / MERRA-2",
+          "kind": "observed",
+          "dataNature": "gridded reanalysis",
+          "status": "snapshot",
+          "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.7952&latitude=29.2315&start=20250101&end=20251231&format=JSON",
+          "retrievedAt": "2026-11-13T18:53:12.951771+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedDays": 365,
+            "validByVariable": {
+              "tmax": 365,
+              "tmin": 365,
+              "precipitation": 365,
+              "evapotranspiration": 365,
+              "rootWetness": 365,
+              "topWetness": 365
+            },
+            "summerValidDays": 153,
+            "heatDaysAbove38C": 58,
+            "missingOrRejected": {},
+            "interpolated": 0,
+            "powerGridCentroid": [
+              30.795,
+              29.232,
+              65.57
+            ],
+            "nativeHeader": {
+              "title": "NASA/POWER Source Native Resolution Daily Data",
+              "api": {
+                "version": "v2.10.3",
+                "name": "POWER Daily API"
+              },
+              "sources": [
+                "MERRA2",
+                "POWER"
+              ],
+              "fill_value": -999,
+              "time_standard": "LST",
+              "start": "20250101",
+              "end": "20251231"
+            },
+            "units": {
+              "T2M_MAX": "C",
+              "T2M_MIN": "C",
+              "PRECTOTCORR": "mm/day",
+              "EVPTRNS": "MJ/m^2/day",
+              "GWETROOT": "1",
+              "GWETTOP": "1"
+            }
+          }
+        },
+        "soil": {
+          "provider": "ISRIC SoilGrids 2.0 / WCS",
+          "kind": "observed",
+          "dataNature": "model prediction (not in-field measurement)",
+          "status": "snapshot",
+          "url": "https://maps.isric.org/",
+          "retrievedAt": "2026-11-13T18:55:25.689920+00:00",
+          "period": "SoilGrids 2.0 static prediction",
+          "quality": {
+            "status": "accepted",
+            "reason": null,
+            "downloadedCells": 30,
+            "validCells": 30,
+            "expectedCells": 30,
+            "nativeBounds": [
+              3416750,
+              3254000,
+              3417000,
+              3254250
+            ],
+            "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+            "depthCm": [
+              0,
+              15
+            ],
+            "method": "Native 250m cell containing centroid; 0–5 and 5–15 cm means thickness-weighted 1:2. No spatial resampling.",
+            "uncertaintyFile": "data/processed/soil-profiles.json",
+            "pointApiCrossCheck": {
+              "matchedValues": 30,
+              "status": "all matched",
+              "note": "Two interfaces to the same model; not independent field validation."
+            }
+          }
+        },
+        "ndvi": {
+          "provider": "ORNL MOD13Q1 (Terra)",
+          "kind": "observed",
+          "dataNature": "QA-screened satellite reflectance index",
+          "status": "snapshot",
+          "url": "https://modis.ornl.gov/data/modis_webservice.html",
+          "retrievedAt": "2026-11-13T18:53:43.142779+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedComposites": 23,
+            "validComposites": 21,
+            "rejected": {
+              "qaRejected": 2
+            },
+            "autumnValidComposites": 5,
+            "autumnTotalComposites": 6,
+            "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+            "nativePixel": {
+              "xllcorner": "2988135.32",
+              "yllcorner": "3250370.36",
+              "cellsize": 231.656358264,
+              "nrows": 1,
+              "ncols": 1
+            },
+            "tiles": [
+              "h20v06"
+            ]
+          }
+        }
+      },
+      "evaluationSha256": "179ecd17a29199d2c919a96a15a5bb1dc672fea0839f4df9932541ea880e99ef",
+      "expected": {
+        "rankedStrategyIds": [
+          "water",
+          "soil",
+          "baseline"
+        ],
+        "effectiveWeights": {
+          "water": 20,
+          "soil": 20,
+          "market": 60
+        },
+        "candidates": {
+          "generated": 32,
+          "retained": 32,
+          "coverRequired": false,
+          "waterIds": [
+            "faba_bean/sesame",
+            "faba_bean/sorghum",
+            "faba_bean/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/soybean",
+            "faba_bean/sorghum/cowpea_nili",
+            "sugar_beet/soybean",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sesame",
+            "berseem/sorghum/cowpea_nili",
+            "sugar_beet/sesame",
+            "sugar_beet/sorghum/cowpea_nili",
+            "berseem/sorghum",
+            "sugar_beet/sorghum",
+            "faba_bean/maize/cowpea_nili",
+            "berseem/maize/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/soybean/cowpea_nili",
+            "berseem/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "wheat/soybean",
+            "wheat/sesame/cowpea_nili",
+            "wheat/sesame",
+            "wheat/sorghum/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize",
+            "wheat/maize/cowpea_nili"
+          ],
+          "soilIds": [
+            "faba_bean/soybean",
+            "faba_bean/soybean/cowpea_nili",
+            "faba_bean/sesame/cowpea_nili",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/soybean",
+            "berseem/sesame/cowpea_nili",
+            "faba_bean/sorghum/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sesame",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum",
+            "sugar_beet/soybean",
+            "berseem/maize/cowpea_nili",
+            "faba_bean/sorghum",
+            "sugar_beet/sorghum/cowpea_nili",
+            "wheat/soybean/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/sesame",
+            "wheat/sesame/cowpea_nili",
+            "berseem/maize",
+            "sugar_beet/sorghum",
+            "wheat/soybean",
+            "wheat/sorghum/cowpea_nili",
+            "sugar_beet/maize/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/sesame",
+            "wheat/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize"
+          ]
+        },
+        "strategies": [
+          {
+            "id": "baseline",
+            "sequenceKey": "wheat/maize",
+            "rank": 3,
+            "grossWaterM3Feddan": 10813,
+            "totalFarmWaterM3": 10813,
+            "waterSavedM3Feddan": 0,
+            "nitrogenBalance": -5,
+            "waterScore": 10,
+            "soilScore": 15,
+            "marketForageScore": 85,
+            "finalSuitability": 10,
+            "penalty": 48
+          },
+          {
+            "id": "water",
+            "sequenceKey": "faba_bean/sesame",
+            "rank": 1,
+            "grossWaterM3Feddan": 4998,
+            "totalFarmWaterM3": 4998,
+            "waterSavedM3Feddan": 5815,
+            "nitrogenBalance": 2,
+            "waterScore": 37,
+            "soilScore": 79,
+            "marketForageScore": 89,
+            "finalSuitability": 77,
+            "penalty": 0
+          },
+          {
+            "id": "soil",
+            "sequenceKey": "faba_bean/soybean",
+            "rank": 2,
+            "grossWaterM3Feddan": 6437,
+            "totalFarmWaterM3": 6437,
+            "waterSavedM3Feddan": 4376,
+            "nitrogenBalance": 4,
+            "waterScore": 10,
+            "soilScore": 98,
+            "marketForageScore": 90,
+            "finalSuitability": 76,
+            "penalty": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "delta_kafr_el_sheikh:water",
+      "location": {
+        "lat": 31.1107,
+        "lon": 30.9388,
+        "presetId": "delta_kafr_el_sheikh"
+      },
+      "goal": "water",
+      "farmerInputs": {
+        "landType": "old_clay",
+        "irrigationType": "modified_surface",
+        "canalPosition": "middle",
+        "salinityLevel": "high",
+        "feddans": 1,
+        "qirats": 0,
+        "currentWinterId": "wheat",
+        "currentSummerId": "maize",
+        "hasLivestock": false,
+        "soilEceDsm": null,
+        "forceNiliCover": false,
+        "weights": {
+          "water": 70,
+          "soil": 20,
+          "market": 10
+        }
+      },
+      "sources": {
+        "climate": {
+          "provider": "NASA POWER / MERRA-2",
+          "kind": "observed",
+          "dataNature": "gridded reanalysis",
+          "status": "snapshot",
+          "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.9388&latitude=31.1107&start=20250101&end=20251231&format=JSON",
+          "retrievedAt": "2026-11-13T18:53:12.825729+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedDays": 365,
+            "validByVariable": {
+              "tmax": 365,
+              "tmin": 365,
+              "precipitation": 365,
+              "evapotranspiration": 365,
+              "rootWetness": 365,
+              "topWetness": 365
+            },
+            "summerValidDays": 153,
+            "heatDaysAbove38C": 70,
+            "missingOrRejected": {},
+            "interpolated": 0,
+            "powerGridCentroid": [
+              30.939,
+              31.111,
+              4.96
+            ],
+            "nativeHeader": {
+              "title": "NASA/POWER Source Native Resolution Daily Data",
+              "api": {
+                "version": "v2.10.3",
+                "name": "POWER Daily API"
+              },
+              "sources": [
+                "MERRA2",
+                "POWER"
+              ],
+              "fill_value": -999,
+              "time_standard": "LST",
+              "start": "20250101",
+              "end": "20251231"
+            },
+            "units": {
+              "T2M_MAX": "C",
+              "T2M_MIN": "C",
+              "PRECTOTCORR": "mm/day",
+              "EVPTRNS": "MJ/m^2/day",
+              "GWETROOT": "1",
+              "GWETTOP": "1"
+            }
+          }
+        },
+        "soil": {
+          "provider": "SoilGrids",
+          "kind": "synthetic",
+          "status": "demo",
+          "regionalPreset": "delta_kafr_el_sheikh",
+          "reason": "Exact centroid SoilGrids profile is zero-filled and rejected; synthetic fallback is not a measurement."
+        },
+        "ndvi": {
+          "provider": "ORNL MOD13Q1 (Terra)",
+          "kind": "observed",
+          "dataNature": "QA-screened satellite reflectance index",
+          "status": "snapshot",
+          "url": "https://modis.ornl.gov/data/modis_webservice.html",
+          "retrievedAt": "2026-11-13T18:54:10.425718+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedComposites": 23,
+            "validComposites": 15,
+            "rejected": {
+              "qaRejected": 8
+            },
+            "autumnValidComposites": 5,
+            "autumnTotalComposites": 6,
+            "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+            "nativePixel": {
+              "xllcorner": "2945278.95",
+              "yllcorner": "3459324.44",
+              "cellsize": 231.656358264,
+              "nrows": 1,
+              "ncols": 1
+            },
+            "tiles": [
+              "h20v05"
+            ]
+          }
+        }
+      },
+      "evaluationSha256": "97fb8ad9e570c451b33bc0e89a06bfc10d7edbd90fdfff5b979e4e4de6c174f1",
+      "expected": {
+        "rankedStrategyIds": [
+          "water",
+          "soil",
+          "baseline"
+        ],
+        "effectiveWeights": {
+          "water": 70,
+          "soil": 20,
+          "market": 10
+        },
+        "candidates": {
+          "generated": 32,
+          "retained": 32,
+          "coverRequired": false,
+          "waterIds": [
+            "faba_bean/sesame",
+            "faba_bean/sorghum",
+            "sugar_beet/sesame",
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "berseem/sesame",
+            "sugar_beet/sorghum",
+            "faba_bean/sorghum/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "sugar_beet/sesame/cowpea_nili",
+            "sugar_beet/soybean",
+            "berseem/sorghum",
+            "sugar_beet/sorghum/cowpea_nili",
+            "berseem/maize/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "wheat/sesame",
+            "wheat/sorghum",
+            "wheat/soybean",
+            "wheat/sesame/cowpea_nili",
+            "wheat/sorghum/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/soybean/cowpea_nili",
+            "sugar_beet/maize",
+            "wheat/maize",
+            "berseem/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "wheat/maize/cowpea_nili"
+          ],
+          "soilIds": [
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/soybean",
+            "faba_bean/sesame",
+            "faba_bean/sorghum/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sorghum",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum",
+            "berseem/maize/cowpea_nili",
+            "sugar_beet/sorghum/cowpea_nili",
+            "sugar_beet/soybean",
+            "wheat/soybean/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/sesame",
+            "sugar_beet/sorghum",
+            "wheat/sesame/cowpea_nili",
+            "berseem/maize",
+            "wheat/sorghum/cowpea_nili",
+            "wheat/soybean",
+            "sugar_beet/maize/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/sesame",
+            "wheat/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize"
+          ]
+        },
+        "strategies": [
+          {
+            "id": "baseline",
+            "sequenceKey": "wheat/maize",
+            "rank": 3,
+            "grossWaterM3Feddan": 8746,
+            "totalFarmWaterM3": 8746,
+            "waterSavedM3Feddan": 0,
+            "nitrogenBalance": -5,
+            "waterScore": 10,
+            "soilScore": 15,
+            "marketForageScore": 85,
+            "finalSuitability": 10,
+            "penalty": 48
+          },
+          {
+            "id": "water",
+            "sequenceKey": "faba_bean/sesame",
+            "rank": 1,
+            "grossWaterM3Feddan": 4043,
+            "totalFarmWaterM3": 4043,
+            "waterSavedM3Feddan": 4703,
+            "nitrogenBalance": 2,
+            "waterScore": 62,
+            "soilScore": 79,
+            "marketForageScore": 89,
+            "finalSuitability": 68,
+            "penalty": 0
+          },
+          {
+            "id": "soil",
+            "sequenceKey": "faba_bean/sesame/cowpea_nili",
+            "rank": 2,
+            "grossWaterM3Feddan": 5228,
+            "totalFarmWaterM3": 5228,
+            "waterSavedM3Feddan": 3518,
+            "nitrogenBalance": 4,
+            "waterScore": 31,
+            "soilScore": 98,
+            "marketForageScore": 85,
+            "finalSuitability": 50,
+            "penalty": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "delta_kafr_el_sheikh:soil",
+      "location": {
+        "lat": 31.1107,
+        "lon": 30.9388,
+        "presetId": "delta_kafr_el_sheikh"
+      },
+      "goal": "soil",
+      "farmerInputs": {
+        "landType": "old_clay",
+        "irrigationType": "modified_surface",
+        "canalPosition": "middle",
+        "salinityLevel": "high",
+        "feddans": 1,
+        "qirats": 0,
+        "currentWinterId": "wheat",
+        "currentSummerId": "maize",
+        "hasLivestock": false,
+        "soilEceDsm": null,
+        "forceNiliCover": false,
+        "weights": {
+          "water": 20,
+          "soil": 70,
+          "market": 10
+        }
+      },
+      "sources": {
+        "climate": {
+          "provider": "NASA POWER / MERRA-2",
+          "kind": "observed",
+          "dataNature": "gridded reanalysis",
+          "status": "snapshot",
+          "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.9388&latitude=31.1107&start=20250101&end=20251231&format=JSON",
+          "retrievedAt": "2026-11-13T18:53:12.825729+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedDays": 365,
+            "validByVariable": {
+              "tmax": 365,
+              "tmin": 365,
+              "precipitation": 365,
+              "evapotranspiration": 365,
+              "rootWetness": 365,
+              "topWetness": 365
+            },
+            "summerValidDays": 153,
+            "heatDaysAbove38C": 70,
+            "missingOrRejected": {},
+            "interpolated": 0,
+            "powerGridCentroid": [
+              30.939,
+              31.111,
+              4.96
+            ],
+            "nativeHeader": {
+              "title": "NASA/POWER Source Native Resolution Daily Data",
+              "api": {
+                "version": "v2.10.3",
+                "name": "POWER Daily API"
+              },
+              "sources": [
+                "MERRA2",
+                "POWER"
+              ],
+              "fill_value": -999,
+              "time_standard": "LST",
+              "start": "20250101",
+              "end": "20251231"
+            },
+            "units": {
+              "T2M_MAX": "C",
+              "T2M_MIN": "C",
+              "PRECTOTCORR": "mm/day",
+              "EVPTRNS": "MJ/m^2/day",
+              "GWETROOT": "1",
+              "GWETTOP": "1"
+            }
+          }
+        },
+        "soil": {
+          "provider": "SoilGrids",
+          "kind": "synthetic",
+          "status": "demo",
+          "regionalPreset": "delta_kafr_el_sheikh",
+          "reason": "Exact centroid SoilGrids profile is zero-filled and rejected; synthetic fallback is not a measurement."
+        },
+        "ndvi": {
+          "provider": "ORNL MOD13Q1 (Terra)",
+          "kind": "observed",
+          "dataNature": "QA-screened satellite reflectance index",
+          "status": "snapshot",
+          "url": "https://modis.ornl.gov/data/modis_webservice.html",
+          "retrievedAt": "2026-11-13T18:54:10.425718+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedComposites": 23,
+            "validComposites": 15,
+            "rejected": {
+              "qaRejected": 8
+            },
+            "autumnValidComposites": 5,
+            "autumnTotalComposites": 6,
+            "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+            "nativePixel": {
+              "xllcorner": "2945278.95",
+              "yllcorner": "3459324.44",
+              "cellsize": 231.656358264,
+              "nrows": 1,
+              "ncols": 1
+            },
+            "tiles": [
+              "h20v05"
+            ]
+          }
+        }
+      },
+      "evaluationSha256": "f71b9b4650bc6bda131a57141fb825c5b107712732070946081cf15adfc673f1",
+      "expected": {
+        "rankedStrategyIds": [
+          "soil",
+          "water",
+          "baseline"
+        ],
+        "effectiveWeights": {
+          "water": 20,
+          "soil": 70,
+          "market": 10
+        },
+        "candidates": {
+          "generated": 32,
+          "retained": 32,
+          "coverRequired": false,
+          "waterIds": [
+            "faba_bean/sesame",
+            "faba_bean/sorghum",
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/sorghum/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "sugar_beet/sesame",
+            "berseem/sesame/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum",
+            "sugar_beet/soybean",
+            "sugar_beet/sorghum/cowpea_nili",
+            "sugar_beet/sorghum",
+            "berseem/maize/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "wheat/soybean/cowpea_nili",
+            "wheat/sesame/cowpea_nili",
+            "berseem/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/sesame",
+            "wheat/soybean",
+            "wheat/sorghum/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize",
+            "wheat/maize/cowpea_nili"
+          ],
+          "soilIds": [
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/sorghum/cowpea_nili",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/soybean",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sesame",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/maize/cowpea_nili",
+            "berseem/sorghum",
+            "faba_bean/sorghum",
+            "wheat/soybean/cowpea_nili",
+            "sugar_beet/sorghum/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/soybean",
+            "sugar_beet/sesame",
+            "wheat/sesame/cowpea_nili",
+            "berseem/maize",
+            "wheat/sorghum/cowpea_nili",
+            "sugar_beet/sorghum",
+            "wheat/soybean",
+            "sugar_beet/maize/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/sesame",
+            "wheat/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize"
+          ]
+        },
+        "strategies": [
+          {
+            "id": "baseline",
+            "sequenceKey": "wheat/maize",
+            "rank": 3,
+            "grossWaterM3Feddan": 8746,
+            "totalFarmWaterM3": 8746,
+            "waterSavedM3Feddan": 0,
+            "nitrogenBalance": -5,
+            "waterScore": 10,
+            "soilScore": 15,
+            "marketForageScore": 85,
+            "finalSuitability": 10,
+            "penalty": 48
+          },
+          {
+            "id": "water",
+            "sequenceKey": "faba_bean/sesame",
+            "rank": 2,
+            "grossWaterM3Feddan": 4043,
+            "totalFarmWaterM3": 4043,
+            "waterSavedM3Feddan": 4703,
+            "nitrogenBalance": 2,
+            "waterScore": 62,
+            "soilScore": 79,
+            "marketForageScore": 89,
+            "finalSuitability": 77,
+            "penalty": 0
+          },
+          {
+            "id": "soil",
+            "sequenceKey": "faba_bean/soybean",
+            "rank": 1,
+            "grossWaterM3Feddan": 5207,
+            "totalFarmWaterM3": 5207,
+            "waterSavedM3Feddan": 3539,
+            "nitrogenBalance": 4,
+            "waterScore": 31,
+            "soilScore": 98,
+            "marketForageScore": 90,
+            "finalSuitability": 84,
+            "penalty": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "delta_kafr_el_sheikh:market",
+      "location": {
+        "lat": 31.1107,
+        "lon": 30.9388,
+        "presetId": "delta_kafr_el_sheikh"
+      },
+      "goal": "market",
+      "farmerInputs": {
+        "landType": "old_clay",
+        "irrigationType": "modified_surface",
+        "canalPosition": "middle",
+        "salinityLevel": "high",
+        "feddans": 1,
+        "qirats": 0,
+        "currentWinterId": "wheat",
+        "currentSummerId": "maize",
+        "hasLivestock": false,
+        "soilEceDsm": null,
+        "forceNiliCover": false,
+        "weights": {
+          "water": 20,
+          "soil": 20,
+          "market": 60
+        }
+      },
+      "sources": {
+        "climate": {
+          "provider": "NASA POWER / MERRA-2",
+          "kind": "observed",
+          "dataNature": "gridded reanalysis",
+          "status": "snapshot",
+          "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.9388&latitude=31.1107&start=20250101&end=20251231&format=JSON",
+          "retrievedAt": "2026-11-13T18:53:12.825729+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedDays": 365,
+            "validByVariable": {
+              "tmax": 365,
+              "tmin": 365,
+              "precipitation": 365,
+              "evapotranspiration": 365,
+              "rootWetness": 365,
+              "topWetness": 365
+            },
+            "summerValidDays": 153,
+            "heatDaysAbove38C": 70,
+            "missingOrRejected": {},
+            "interpolated": 0,
+            "powerGridCentroid": [
+              30.939,
+              31.111,
+              4.96
+            ],
+            "nativeHeader": {
+              "title": "NASA/POWER Source Native Resolution Daily Data",
+              "api": {
+                "version": "v2.10.3",
+                "name": "POWER Daily API"
+              },
+              "sources": [
+                "MERRA2",
+                "POWER"
+              ],
+              "fill_value": -999,
+              "time_standard": "LST",
+              "start": "20250101",
+              "end": "20251231"
+            },
+            "units": {
+              "T2M_MAX": "C",
+              "T2M_MIN": "C",
+              "PRECTOTCORR": "mm/day",
+              "EVPTRNS": "MJ/m^2/day",
+              "GWETROOT": "1",
+              "GWETTOP": "1"
+            }
+          }
+        },
+        "soil": {
+          "provider": "SoilGrids",
+          "kind": "synthetic",
+          "status": "demo",
+          "regionalPreset": "delta_kafr_el_sheikh",
+          "reason": "Exact centroid SoilGrids profile is zero-filled and rejected; synthetic fallback is not a measurement."
+        },
+        "ndvi": {
+          "provider": "ORNL MOD13Q1 (Terra)",
+          "kind": "observed",
+          "dataNature": "QA-screened satellite reflectance index",
+          "status": "snapshot",
+          "url": "https://modis.ornl.gov/data/modis_webservice.html",
+          "retrievedAt": "2026-11-13T18:54:10.425718+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedComposites": 23,
+            "validComposites": 15,
+            "rejected": {
+              "qaRejected": 8
+            },
+            "autumnValidComposites": 5,
+            "autumnTotalComposites": 6,
+            "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+            "nativePixel": {
+              "xllcorner": "2945278.95",
+              "yllcorner": "3459324.44",
+              "cellsize": 231.656358264,
+              "nrows": 1,
+              "ncols": 1
+            },
+            "tiles": [
+              "h20v05"
+            ]
+          }
+        }
+      },
+      "evaluationSha256": "1f774c09b59f8c9f5fecdb9d58da54f971e2969282cbddf0ae70a0a45877befb",
+      "expected": {
+        "rankedStrategyIds": [
+          "water",
+          "soil",
+          "baseline"
+        ],
+        "effectiveWeights": {
+          "water": 20,
+          "soil": 20,
+          "market": 60
+        },
+        "candidates": {
+          "generated": 32,
+          "retained": 32,
+          "coverRequired": false,
+          "waterIds": [
+            "faba_bean/sesame",
+            "faba_bean/sorghum",
+            "sugar_beet/sesame",
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "sugar_beet/sorghum",
+            "berseem/sesame",
+            "faba_bean/sorghum/cowpea_nili",
+            "sugar_beet/soybean/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/soybean",
+            "sugar_beet/soybean",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "sugar_beet/sorghum/cowpea_nili",
+            "berseem/sorghum",
+            "faba_bean/maize/cowpea_nili",
+            "berseem/maize/cowpea_nili",
+            "wheat/sesame",
+            "faba_bean/maize",
+            "wheat/soybean/cowpea_nili",
+            "berseem/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "wheat/soybean",
+            "wheat/sesame/cowpea_nili",
+            "wheat/sorghum/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize",
+            "wheat/maize/cowpea_nili"
+          ],
+          "soilIds": [
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/soybean",
+            "faba_bean/sorghum/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sesame",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum",
+            "faba_bean/sorghum",
+            "sugar_beet/soybean",
+            "berseem/maize/cowpea_nili",
+            "sugar_beet/sorghum/cowpea_nili",
+            "wheat/soybean/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/sesame",
+            "wheat/sesame/cowpea_nili",
+            "sugar_beet/sorghum",
+            "berseem/maize",
+            "wheat/soybean",
+            "wheat/sorghum/cowpea_nili",
+            "sugar_beet/maize/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/sesame",
+            "wheat/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize"
+          ]
+        },
+        "strategies": [
+          {
+            "id": "baseline",
+            "sequenceKey": "wheat/maize",
+            "rank": 3,
+            "grossWaterM3Feddan": 8746,
+            "totalFarmWaterM3": 8746,
+            "waterSavedM3Feddan": 0,
+            "nitrogenBalance": -5,
+            "waterScore": 10,
+            "soilScore": 15,
+            "marketForageScore": 85,
+            "finalSuitability": 10,
+            "penalty": 48
+          },
+          {
+            "id": "water",
+            "sequenceKey": "faba_bean/sesame",
+            "rank": 1,
+            "grossWaterM3Feddan": 4043,
+            "totalFarmWaterM3": 4043,
+            "waterSavedM3Feddan": 4703,
+            "nitrogenBalance": 2,
+            "waterScore": 62,
+            "soilScore": 79,
+            "marketForageScore": 89,
+            "finalSuitability": 82,
+            "penalty": 0
+          },
+          {
+            "id": "soil",
+            "sequenceKey": "faba_bean/soybean",
+            "rank": 2,
+            "grossWaterM3Feddan": 5207,
+            "totalFarmWaterM3": 5207,
+            "waterSavedM3Feddan": 3539,
+            "nitrogenBalance": 4,
+            "waterScore": 31,
+            "soilScore": 98,
+            "marketForageScore": 90,
+            "finalSuitability": 80,
+            "penalty": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "west_delta_nubariya:water",
+      "location": {
+        "lat": 30.665,
+        "lon": 30.068,
+        "presetId": "west_delta_nubariya"
+      },
+      "goal": "water",
+      "farmerInputs": {
+        "landType": "new_sandy",
+        "irrigationType": "drip",
+        "canalPosition": "head",
+        "salinityLevel": "none",
+        "feddans": 1,
+        "qirats": 0,
+        "currentWinterId": "wheat",
+        "currentSummerId": "maize",
+        "hasLivestock": false,
+        "soilEceDsm": null,
+        "forceNiliCover": false,
+        "weights": {
+          "water": 70,
+          "soil": 20,
+          "market": 10
+        }
+      },
+      "sources": {
+        "climate": {
+          "provider": "NASA POWER / MERRA-2",
+          "kind": "observed",
+          "dataNature": "gridded reanalysis",
+          "status": "snapshot",
+          "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.068&latitude=30.665&start=20250101&end=20251231&format=JSON",
+          "retrievedAt": "2026-11-13T18:53:12.785624+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedDays": 365,
+            "validByVariable": {
+              "tmax": 365,
+              "tmin": 365,
+              "precipitation": 365,
+              "evapotranspiration": 365,
+              "rootWetness": 365,
+              "topWetness": 365
+            },
+            "summerValidDays": 153,
+            "heatDaysAbove38C": 28,
+            "missingOrRejected": {},
+            "interpolated": 0,
+            "powerGridCentroid": [
+              30.068,
+              30.665,
+              68.37
+            ],
+            "nativeHeader": {
+              "title": "NASA/POWER Source Native Resolution Daily Data",
+              "api": {
+                "version": "v2.10.3",
+                "name": "POWER Daily API"
+              },
+              "sources": [
+                "MERRA2",
+                "POWER"
+              ],
+              "fill_value": -999,
+              "time_standard": "LST",
+              "start": "20250101",
+              "end": "20251231"
+            },
+            "units": {
+              "T2M_MAX": "C",
+              "T2M_MIN": "C",
+              "PRECTOTCORR": "mm/day",
+              "EVPTRNS": "MJ/m^2/day",
+              "GWETROOT": "1",
+              "GWETTOP": "1"
+            }
+          }
+        },
+        "soil": {
+          "provider": "ISRIC SoilGrids 2.0 / WCS",
+          "kind": "observed",
+          "dataNature": "model prediction (not in-field measurement)",
+          "status": "snapshot",
+          "url": "https://maps.isric.org/",
+          "retrievedAt": "2026-11-13T18:55:32.844696+00:00",
+          "period": "SoilGrids 2.0 static prediction",
+          "quality": {
+            "status": "accepted",
+            "reason": null,
+            "downloadedCells": 30,
+            "validCells": 30,
+            "expectedCells": 30,
+            "nativeBounds": [
+              3346000,
+              3413500,
+              3346250,
+              3413750
+            ],
+            "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+            "depthCm": [
+              0,
+              15
+            ],
+            "method": "Native 250m cell containing centroid; 0–5 and 5–15 cm means thickness-weighted 1:2. No spatial resampling.",
+            "uncertaintyFile": "data/processed/soil-profiles.json"
+          }
+        },
+        "ndvi": {
+          "provider": "ORNL MOD13Q1 (Terra)",
+          "kind": "observed",
+          "dataNature": "QA-screened satellite reflectance index",
+          "status": "snapshot",
+          "url": "https://modis.ornl.gov/data/modis_webservice.html",
+          "retrievedAt": "2026-11-13T18:54:33.951558+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedComposites": 23,
+            "validComposites": 22,
+            "rejected": {
+              "qaRejected": 1
+            },
+            "autumnValidComposites": 6,
+            "autumnTotalComposites": 6,
+            "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+            "nativePixel": {
+              "xllcorner": "2875782.08",
+              "yllcorner": "3409749.90",
+              "cellsize": 231.656358264,
+              "nrows": 1,
+              "ncols": 1
+            },
+            "tiles": [
+              "h20v05"
+            ]
+          }
+        }
+      },
+      "evaluationSha256": "a0cd908bd9fb89d116697cffe9649a7ae8c5a1aaa4d98d0aab6614d8b23fa314",
+      "expected": {
+        "rankedStrategyIds": [
+          "water",
+          "soil",
+          "baseline"
+        ],
+        "effectiveWeights": {
+          "water": 70,
+          "soil": 20,
+          "market": 10
+        },
+        "candidates": {
+          "generated": 32,
+          "retained": 32,
+          "coverRequired": false,
+          "waterIds": [
+            "faba_bean/sesame",
+            "faba_bean/sorghum",
+            "faba_bean/soybean",
+            "sugar_beet/sesame",
+            "faba_bean/sesame/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sorghum/cowpea_nili",
+            "sugar_beet/sorghum",
+            "sugar_beet/sesame/cowpea_nili",
+            "sugar_beet/soybean",
+            "berseem/sorghum",
+            "faba_bean/soybean/cowpea_nili",
+            "sugar_beet/sorghum/cowpea_nili",
+            "berseem/soybean",
+            "berseem/sesame/cowpea_nili",
+            "wheat/sesame",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "wheat/sesame/cowpea_nili",
+            "wheat/soybean",
+            "faba_bean/maize",
+            "berseem/maize/cowpea_nili",
+            "wheat/sorghum/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "wheat/sorghum",
+            "wheat/soybean/cowpea_nili",
+            "sugar_beet/maize",
+            "wheat/maize",
+            "berseem/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "wheat/maize/cowpea_nili"
+          ],
+          "soilIds": [
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/soybean",
+            "faba_bean/sesame",
+            "faba_bean/sorghum/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "faba_bean/sorghum",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sorghum",
+            "sugar_beet/soybean",
+            "sugar_beet/sorghum/cowpea_nili",
+            "sugar_beet/sesame",
+            "berseem/maize/cowpea_nili",
+            "wheat/soybean/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/sorghum",
+            "wheat/sesame/cowpea_nili",
+            "wheat/soybean",
+            "berseem/maize",
+            "wheat/sorghum/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/sesame",
+            "sugar_beet/maize/cowpea_nili",
+            "wheat/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize"
+          ]
+        },
+        "strategies": [
+          {
+            "id": "baseline",
+            "sequenceKey": "wheat/maize",
+            "rank": 3,
+            "grossWaterM3Feddan": 6758,
+            "totalFarmWaterM3": 6758,
+            "waterSavedM3Feddan": 0,
+            "nitrogenBalance": -5,
+            "waterScore": 10,
+            "soilScore": 15,
+            "marketForageScore": 85,
+            "finalSuitability": 10,
+            "penalty": 48
+          },
+          {
+            "id": "water",
+            "sequenceKey": "faba_bean/sesame",
+            "rank": 1,
+            "grossWaterM3Feddan": 3124,
+            "totalFarmWaterM3": 3124,
+            "waterSavedM3Feddan": 3634,
+            "nitrogenBalance": 2,
+            "waterScore": 86,
+            "soilScore": 79,
+            "marketForageScore": 89,
+            "finalSuitability": 85,
+            "penalty": 0
+          },
+          {
+            "id": "soil",
+            "sequenceKey": "faba_bean/sesame/cowpea_nili",
+            "rank": 2,
+            "grossWaterM3Feddan": 4040,
+            "totalFarmWaterM3": 4040,
+            "waterSavedM3Feddan": 2718,
+            "nitrogenBalance": 4,
+            "waterScore": 62,
+            "soilScore": 98,
+            "marketForageScore": 85,
+            "finalSuitability": 72,
+            "penalty": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "west_delta_nubariya:soil",
+      "location": {
+        "lat": 30.665,
+        "lon": 30.068,
+        "presetId": "west_delta_nubariya"
+      },
+      "goal": "soil",
+      "farmerInputs": {
+        "landType": "new_sandy",
+        "irrigationType": "drip",
+        "canalPosition": "head",
+        "salinityLevel": "none",
+        "feddans": 1,
+        "qirats": 0,
+        "currentWinterId": "wheat",
+        "currentSummerId": "maize",
+        "hasLivestock": false,
+        "soilEceDsm": null,
+        "forceNiliCover": false,
+        "weights": {
+          "water": 20,
+          "soil": 70,
+          "market": 10
+        }
+      },
+      "sources": {
+        "climate": {
+          "provider": "NASA POWER / MERRA-2",
+          "kind": "observed",
+          "dataNature": "gridded reanalysis",
+          "status": "snapshot",
+          "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.068&latitude=30.665&start=20250101&end=20251231&format=JSON",
+          "retrievedAt": "2026-11-13T18:53:12.785624+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedDays": 365,
+            "validByVariable": {
+              "tmax": 365,
+              "tmin": 365,
+              "precipitation": 365,
+              "evapotranspiration": 365,
+              "rootWetness": 365,
+              "topWetness": 365
+            },
+            "summerValidDays": 153,
+            "heatDaysAbove38C": 28,
+            "missingOrRejected": {},
+            "interpolated": 0,
+            "powerGridCentroid": [
+              30.068,
+              30.665,
+              68.37
+            ],
+            "nativeHeader": {
+              "title": "NASA/POWER Source Native Resolution Daily Data",
+              "api": {
+                "version": "v2.10.3",
+                "name": "POWER Daily API"
+              },
+              "sources": [
+                "MERRA2",
+                "POWER"
+              ],
+              "fill_value": -999,
+              "time_standard": "LST",
+              "start": "20250101",
+              "end": "20251231"
+            },
+            "units": {
+              "T2M_MAX": "C",
+              "T2M_MIN": "C",
+              "PRECTOTCORR": "mm/day",
+              "EVPTRNS": "MJ/m^2/day",
+              "GWETROOT": "1",
+              "GWETTOP": "1"
+            }
+          }
+        },
+        "soil": {
+          "provider": "ISRIC SoilGrids 2.0 / WCS",
+          "kind": "observed",
+          "dataNature": "model prediction (not in-field measurement)",
+          "status": "snapshot",
+          "url": "https://maps.isric.org/",
+          "retrievedAt": "2026-11-13T18:55:32.844696+00:00",
+          "period": "SoilGrids 2.0 static prediction",
+          "quality": {
+            "status": "accepted",
+            "reason": null,
+            "downloadedCells": 30,
+            "validCells": 30,
+            "expectedCells": 30,
+            "nativeBounds": [
+              3346000,
+              3413500,
+              3346250,
+              3413750
+            ],
+            "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+            "depthCm": [
+              0,
+              15
+            ],
+            "method": "Native 250m cell containing centroid; 0–5 and 5–15 cm means thickness-weighted 1:2. No spatial resampling.",
+            "uncertaintyFile": "data/processed/soil-profiles.json"
+          }
+        },
+        "ndvi": {
+          "provider": "ORNL MOD13Q1 (Terra)",
+          "kind": "observed",
+          "dataNature": "QA-screened satellite reflectance index",
+          "status": "snapshot",
+          "url": "https://modis.ornl.gov/data/modis_webservice.html",
+          "retrievedAt": "2026-11-13T18:54:33.951558+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedComposites": 23,
+            "validComposites": 22,
+            "rejected": {
+              "qaRejected": 1
+            },
+            "autumnValidComposites": 6,
+            "autumnTotalComposites": 6,
+            "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+            "nativePixel": {
+              "xllcorner": "2875782.08",
+              "yllcorner": "3409749.90",
+              "cellsize": 231.656358264,
+              "nrows": 1,
+              "ncols": 1
+            },
+            "tiles": [
+              "h20v05"
+            ]
+          }
+        }
+      },
+      "evaluationSha256": "a1f254be4696f896e48a5e15565e6d08e3c2c41e3961d67dc1d19b34f9ccd6b3",
+      "expected": {
+        "rankedStrategyIds": [
+          "soil",
+          "water",
+          "baseline"
+        ],
+        "effectiveWeights": {
+          "water": 20,
+          "soil": 70,
+          "market": 10
+        },
+        "candidates": {
+          "generated": 32,
+          "retained": 32,
+          "coverRequired": false,
+          "waterIds": [
+            "faba_bean/sesame",
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/sorghum",
+            "faba_bean/sorghum/cowpea_nili",
+            "berseem/sesame",
+            "sugar_beet/sesame",
+            "sugar_beet/sesame/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/sorghum",
+            "sugar_beet/soybean",
+            "berseem/soybean",
+            "berseem/sesame/cowpea_nili",
+            "sugar_beet/soybean/cowpea_nili",
+            "sugar_beet/sorghum",
+            "sugar_beet/sorghum/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "wheat/sesame",
+            "wheat/sesame/cowpea_nili",
+            "berseem/maize/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "wheat/soybean",
+            "wheat/soybean/cowpea_nili",
+            "wheat/sorghum/cowpea_nili",
+            "faba_bean/maize",
+            "berseem/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize",
+            "wheat/maize/cowpea_nili"
+          ],
+          "soilIds": [
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/sorghum/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/sesame/cowpea_nili",
+            "berseem/soybean",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sesame",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum",
+            "berseem/maize/cowpea_nili",
+            "faba_bean/sorghum",
+            "sugar_beet/soybean",
+            "sugar_beet/sorghum/cowpea_nili",
+            "wheat/soybean/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/sesame",
+            "wheat/sesame/cowpea_nili",
+            "berseem/maize",
+            "sugar_beet/sorghum",
+            "wheat/sorghum/cowpea_nili",
+            "wheat/soybean",
+            "sugar_beet/maize/cowpea_nili",
+            "faba_bean/maize",
+            "wheat/sesame",
+            "wheat/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize"
+          ]
+        },
+        "strategies": [
+          {
+            "id": "baseline",
+            "sequenceKey": "wheat/maize",
+            "rank": 3,
+            "grossWaterM3Feddan": 6758,
+            "totalFarmWaterM3": 6758,
+            "waterSavedM3Feddan": 0,
+            "nitrogenBalance": -5,
+            "waterScore": 10,
+            "soilScore": 15,
+            "marketForageScore": 85,
+            "finalSuitability": 10,
+            "penalty": 48
+          },
+          {
+            "id": "water",
+            "sequenceKey": "faba_bean/sesame",
+            "rank": 2,
+            "grossWaterM3Feddan": 3124,
+            "totalFarmWaterM3": 3124,
+            "waterSavedM3Feddan": 3634,
+            "nitrogenBalance": 2,
+            "waterScore": 86,
+            "soilScore": 79,
+            "marketForageScore": 89,
+            "finalSuitability": 81,
+            "penalty": 0
+          },
+          {
+            "id": "soil",
+            "sequenceKey": "faba_bean/soybean",
+            "rank": 1,
+            "grossWaterM3Feddan": 4023,
+            "totalFarmWaterM3": 4023,
+            "waterSavedM3Feddan": 2735,
+            "nitrogenBalance": 4,
+            "waterScore": 63,
+            "soilScore": 98,
+            "marketForageScore": 90,
+            "finalSuitability": 90,
+            "penalty": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "west_delta_nubariya:market",
+      "location": {
+        "lat": 30.665,
+        "lon": 30.068,
+        "presetId": "west_delta_nubariya"
+      },
+      "goal": "market",
+      "farmerInputs": {
+        "landType": "new_sandy",
+        "irrigationType": "drip",
+        "canalPosition": "head",
+        "salinityLevel": "none",
+        "feddans": 1,
+        "qirats": 0,
+        "currentWinterId": "wheat",
+        "currentSummerId": "maize",
+        "hasLivestock": false,
+        "soilEceDsm": null,
+        "forceNiliCover": false,
+        "weights": {
+          "water": 20,
+          "soil": 20,
+          "market": 60
+        }
+      },
+      "sources": {
+        "climate": {
+          "provider": "NASA POWER / MERRA-2",
+          "kind": "observed",
+          "dataNature": "gridded reanalysis",
+          "status": "snapshot",
+          "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,T2M_MIN,PRECTOTCORR,EVPTRNS,GWETROOT,GWETTOP&community=AG&longitude=30.068&latitude=30.665&start=20250101&end=20251231&format=JSON",
+          "retrievedAt": "2026-11-13T18:53:12.785624+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedDays": 365,
+            "validByVariable": {
+              "tmax": 365,
+              "tmin": 365,
+              "precipitation": 365,
+              "evapotranspiration": 365,
+              "rootWetness": 365,
+              "topWetness": 365
+            },
+            "summerValidDays": 153,
+            "heatDaysAbove38C": 28,
+            "missingOrRejected": {},
+            "interpolated": 0,
+            "powerGridCentroid": [
+              30.068,
+              30.665,
+              68.37
+            ],
+            "nativeHeader": {
+              "title": "NASA/POWER Source Native Resolution Daily Data",
+              "api": {
+                "version": "v2.10.3",
+                "name": "POWER Daily API"
+              },
+              "sources": [
+                "MERRA2",
+                "POWER"
+              ],
+              "fill_value": -999,
+              "time_standard": "LST",
+              "start": "20250101",
+              "end": "20251231"
+            },
+            "units": {
+              "T2M_MAX": "C",
+              "T2M_MIN": "C",
+              "PRECTOTCORR": "mm/day",
+              "EVPTRNS": "MJ/m^2/day",
+              "GWETROOT": "1",
+              "GWETTOP": "1"
+            }
+          }
+        },
+        "soil": {
+          "provider": "ISRIC SoilGrids 2.0 / WCS",
+          "kind": "observed",
+          "dataNature": "model prediction (not in-field measurement)",
+          "status": "snapshot",
+          "url": "https://maps.isric.org/",
+          "retrievedAt": "2026-11-13T18:55:32.844696+00:00",
+          "period": "SoilGrids 2.0 static prediction",
+          "quality": {
+            "status": "accepted",
+            "reason": null,
+            "downloadedCells": 30,
+            "validCells": 30,
+            "expectedCells": 30,
+            "nativeBounds": [
+              3346000,
+              3413500,
+              3346250,
+              3413750
+            ],
+            "nativeCrs": "+proj=igh +datum=WGS84 +units=m +no_defs",
+            "depthCm": [
+              0,
+              15
+            ],
+            "method": "Native 250m cell containing centroid; 0–5 and 5–15 cm means thickness-weighted 1:2. No spatial resampling.",
+            "uncertaintyFile": "data/processed/soil-profiles.json"
+          }
+        },
+        "ndvi": {
+          "provider": "ORNL MOD13Q1 (Terra)",
+          "kind": "observed",
+          "dataNature": "QA-screened satellite reflectance index",
+          "status": "snapshot",
+          "url": "https://modis.ornl.gov/data/modis_webservice.html",
+          "retrievedAt": "2026-11-13T18:54:33.951558+00:00",
+          "period": "2025",
+          "quality": {
+            "expectedComposites": 23,
+            "validComposites": 22,
+            "rejected": {
+              "qaRejected": 1
+            },
+            "autumnValidComposites": 6,
+            "autumnTotalComposites": 6,
+            "qaPolicy": "pixel reliability == 0 (good); marginal/cloud/snow/fill masked to null; no interpolation",
+            "nativePixel": {
+              "xllcorner": "2875782.08",
+              "yllcorner": "3409749.90",
+              "cellsize": 231.656358264,
+              "nrows": 1,
+              "ncols": 1
+            },
+            "tiles": [
+              "h20v05"
+            ]
+          }
+        }
+      },
+      "evaluationSha256": "8cf8327b9b5f53043dfe55850b047e4db4a5541b0bbca8c6bb0bda34dad79258",
+      "expected": {
+        "rankedStrategyIds": [
+          "soil",
+          "water",
+          "baseline"
+        ],
+        "effectiveWeights": {
+          "water": 20,
+          "soil": 20,
+          "market": 60
+        },
+        "candidates": {
+          "generated": 32,
+          "retained": 32,
+          "coverRequired": false,
+          "waterIds": [
+            "faba_bean/sesame",
+            "faba_bean/sorghum",
+            "faba_bean/soybean",
+            "sugar_beet/sesame",
+            "faba_bean/sesame/cowpea_nili",
+            "berseem/sesame",
+            "faba_bean/sorghum/cowpea_nili",
+            "sugar_beet/sorghum",
+            "sugar_beet/soybean",
+            "sugar_beet/sesame/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "berseem/sorghum",
+            "sugar_beet/sorghum/cowpea_nili",
+            "berseem/soybean",
+            "berseem/sesame/cowpea_nili",
+            "sugar_beet/soybean/cowpea_nili",
+            "wheat/sesame",
+            "berseem/sorghum/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "wheat/soybean",
+            "wheat/sesame/cowpea_nili",
+            "faba_bean/maize",
+            "faba_bean/maize/cowpea_nili",
+            "berseem/maize/cowpea_nili",
+            "wheat/sorghum/cowpea_nili",
+            "wheat/soybean/cowpea_nili",
+            "berseem/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize",
+            "wheat/maize/cowpea_nili"
+          ],
+          "soilIds": [
+            "faba_bean/soybean",
+            "faba_bean/sesame/cowpea_nili",
+            "faba_bean/soybean/cowpea_nili",
+            "faba_bean/sorghum/cowpea_nili",
+            "sugar_beet/soybean/cowpea_nili",
+            "berseem/soybean",
+            "berseem/sesame/cowpea_nili",
+            "berseem/soybean/cowpea_nili",
+            "berseem/sesame",
+            "berseem/sorghum/cowpea_nili",
+            "faba_bean/sesame",
+            "sugar_beet/sesame/cowpea_nili",
+            "berseem/sorghum",
+            "faba_bean/sorghum",
+            "sugar_beet/soybean",
+            "sugar_beet/sorghum/cowpea_nili",
+            "berseem/maize/cowpea_nili",
+            "wheat/soybean/cowpea_nili",
+            "faba_bean/maize/cowpea_nili",
+            "sugar_beet/sesame",
+            "wheat/sesame/cowpea_nili",
+            "sugar_beet/sorghum",
+            "berseem/maize",
+            "wheat/soybean",
+            "wheat/sorghum/cowpea_nili",
+            "faba_bean/maize",
+            "sugar_beet/maize/cowpea_nili",
+            "wheat/sesame",
+            "wheat/maize/cowpea_nili",
+            "wheat/sorghum",
+            "sugar_beet/maize",
+            "wheat/maize"
+          ]
+        },
+        "strategies": [
+          {
+            "id": "baseline",
+            "sequenceKey": "wheat/maize",
+            "rank": 3,
+            "grossWaterM3Feddan": 6758,
+            "totalFarmWaterM3": 6758,
+            "waterSavedM3Feddan": 0,
+            "nitrogenBalance": -5,
+            "waterScore": 10,
+            "soilScore": 15,
+            "marketForageScore": 85,
+            "finalSuitability": 10,
+            "penalty": 48
+          },
+          {
+            "id": "water",
+            "sequenceKey": "faba_bean/sesame",
+            "rank": 2,
+            "grossWaterM3Feddan": 3124,
+            "totalFarmWaterM3": 3124,
+            "waterSavedM3Feddan": 3634,
+            "nitrogenBalance": 2,
+            "waterScore": 86,
+            "soilScore": 79,
+            "marketForageScore": 89,
+            "finalSuitability": 86,
+            "penalty": 0
+          },
+          {
+            "id": "soil",
+            "sequenceKey": "faba_bean/soybean",
+            "rank": 1,
+            "grossWaterM3Feddan": 4023,
+            "totalFarmWaterM3": 4023,
+            "waterSavedM3Feddan": 2735,
+            "nitrogenBalance": 4,
+            "waterScore": 63,
+            "soilScore": 98,
+            "marketForageScore": 90,
+            "finalSuitability": 86,
+            "penalty": 0
+          }
+        ]
+      }
+    }
+  ]
+}

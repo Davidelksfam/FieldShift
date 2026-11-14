@@ -1,3 +1,5 @@
+> Historical record of the earlier five-step proposal on PR #22. The user-approved unified workspace on main supersedes this interface. See [the current review](CURRENT_WORKSPACE_REVIEW.md) for the active layout and checks.
+
 # FieldShift planning workspace
 
 The product question is “What can I grow next, why, and what trade-offs should I consider?” The interface uses five freely navigable destinations rather than a mandatory wizard. Arabic remains the default. Canonical logo, colors, typefaces and CSS tokens are unchanged.
