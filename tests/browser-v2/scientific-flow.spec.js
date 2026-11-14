@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../helpers/plannerTest.js";
 test("historical inspector preserves missingness across Nili/goals and rejects malformed scenario", async ({
   page,
 }) => {

@@ -29,6 +29,8 @@ npm run test:browser
 
 A floating chat bubble (“Understand my results”) opens an Arabic/English calculation guide with three focused questions. The compact non-modal panel keeps the form usable while answers update. Answers follow the current priorities, sources, area and strategy outputs. A drip-irrigation what-if reruns the current crop rotation without changing the form. This is offline-capable guided help, with no LLM API or free-text chat.
 
+A fresh tab opens the [intro and full-screen 3D map](docs/product/IMMERSIVE_MAP_ENTRY.md). Enter to focus Egypt, choose your location, then use “Set up your field” to reach the crop parameters and comparisons below. Reloads in the same tab return directly to the map; GPS remains opt-in.
+
 ## Data and limits
 
 - The three exact benchmark centroids now load **audited historical source snapshots**: complete 2025 POWER, QA-screened MODIS, and native SoilGrids predictions where valid. Kafr El-Sheikh soil is unavailable (zero-filled profile rejected); its soil fallback stays explicitly synthetic. [Dataset quality report](data/processed/QUALITY_REPORT.md). Synthetic demo fixtures remain separate.

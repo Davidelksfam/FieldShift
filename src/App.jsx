@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CircleHelp } from "lucide-react";
+import { ArrowDown, CircleHelp } from "lucide-react";
 import crops from "./data/egyptCrops.json";
 import presets from "./data/demoPresets.json" with { type: "json" };
 import { evaluateFieldAndRotations } from "./engine/rotationEngine";
@@ -11,6 +11,7 @@ import {
 } from "./services/nasaDataService";
 import { text } from "./i18n";
 import HeaderBar from "./components/HeaderBar";
+import WelcomeScreen from "./components/WelcomeScreen";
 
 import VulnerabilityBanner from "./components/VulnerabilityBanner";
 import StrategyComparison from "./components/StrategyComparison";
@@ -49,6 +50,35 @@ const initialInputs = {
   weights: { ...GOALS.water.weights },
 };
 export default function App() {
+  const [entered, setEntered] = useState(() => {
+    try {
+      return sessionStorage.getItem("fieldshift-entered") === "1";
+    } catch {
+      return false;
+    }
+  });
+  const mapTitleRef = useRef(null),
+    parametersRef = useRef(null);
+  function enterProject() {
+    try {
+      sessionStorage.setItem("fieldshift-entered", "1");
+    } catch {
+      /* Entry works without storage. */
+    }
+    setEntered(true);
+  }
+  useEffect(() => {
+    if (entered) mapTitleRef.current?.focus({ preventScroll: true });
+  }, [entered]);
+  function showParameters() {
+    parametersRef.current?.focus({ preventScroll: true });
+    parametersRef.current?.scrollIntoView({
+      block: "start",
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
+  }
   const [theme, setTheme] = useState(() => {
     try {
       return localStorage.getItem("fieldshift-theme") === "dark"
@@ -119,6 +149,7 @@ export default function App() {
     };
   }, []);
   useEffect(() => {
+    if (!entered) return;
     const controller = new AbortController();
     requestRef.current = controller;
     let active = true;
@@ -148,7 +179,7 @@ export default function App() {
       active = false;
       controller.abort();
     };
-  }, [location, refresh, requestTimeout]);
+  }, [entered, location, refresh, requestTimeout]);
   const invalidMeasuredEce =
     inputs.soilEceDsm != null &&
     (!Number.isFinite(inputs.soilEceDsm) ||
@@ -216,11 +247,6 @@ export default function App() {
   }
   const validation = (
     <>
-      {error && (
-        <div className="error-message" role="alert">
-          {error}
-        </div>
-      )}
       {invalidMeasuredEce && (
         <div className="error-message" role="alert">
           {t(
@@ -241,6 +267,8 @@ export default function App() {
   );
   const map = (
     <FieldLocation
+      intro={!entered}
+      error={error}
       lang={lang}
       location={location}
       coordinates={coordinates}
@@ -267,11 +295,16 @@ export default function App() {
     />
   );
   return (
-    <>
-      <a className="skip-link" href="#comparison">
-        {t("Skip to comparison", "انتقل إلى المقارنة")}
-      </a>
+    <div
+      className={`field-experience ${entered ? "project-mode" : "intro-mode"}`}
+    >
+      {entered && (
+        <a className="skip-link" href="#comparison">
+          {t("Skip to comparison", "انتقل إلى المقارنة")}
+        </a>
+      )}
       <HeaderBar
+        intro={!entered}
         theme={theme}
         onThemeToggle={() =>
           setTheme((value) => (value === "dark" ? "light" : "dark"))
@@ -284,239 +317,262 @@ export default function App() {
           setEvidenceOpen(true);
         }}
       />
-      <div className="workspace farmer-workspace map-cards-workspace unified-workspace">
-        <main id="main">
-          <div className="planner-intro">
-            <div>
-              <span className="eyebrow">
-                {t("FIELD SHIFT / EGYPT", "فيلد شيفت / مصر")}
+      <main id="main">
+        <section
+          id="field-setup"
+          className="map-hero"
+          aria-label={t("Find your field", "حدد أرضك")}
+        >
+          {entered && (
+            <div className="map-hero-heading" data-map-obstacle>
+              <span className="welcome-kicker">
+                {t("01 / YOUR PLACE ON EARTH", "٠١ / مكان أرضك")}
               </span>
-              <h1>
-                {t(
-                  "Plan your next crop rotation.",
-                  "خطّط لدورتك الزراعية الجاية.",
-                )}
+              <h1 id="map-title" ref={mapTitleRef} tabIndex="-1">
+                {t("It starts with your land.", "البداية من أرضك.")}
               </h1>
               <p>
                 {t(
-                  "Tell us what you grow and what your field needs. Compare three paths for the seasons ahead.",
-                  "عرّفنا بمحاصيلك وظروف أرضك، وقارن ثلاث خطط للمواسم الجاية.",
+                  "Explore Egypt. Choose a point. Make it your starting place.",
+                  "استكشف مصر. اختار نقطة أرضك. وابدأ منها خطتك.",
                 )}
               </p>
             </div>
-            <div className="historical-context">
-              <span className="context-dot" />
+          )}
+          {map}
+          {!entered && <WelcomeScreen lang={lang} onEnter={enterProject} />}
+          {entered && (
+            <div className="map-next" data-map-obstacle>
+              <button onClick={showParameters}>
+                {t("Set up your field", "كمّل بيانات أرضك")}
+                <ArrowDown size={18} />
+              </button>
               <span>
-                {t("Historical evidence", "بيانات تاريخية")}
-                <strong>
-                  {t("NASA observations · 2025", "أرصاد ناسا · ٢٠٢٥")}
-                </strong>
+                {t(
+                  "Your crops, irrigation & priorities",
+                  "محاصيلك ونظام الري وأولوياتك",
+                )}
               </span>
             </div>
-          </div>
-          {validation}
-          <LivePlanSummary
-            lang={lang}
-            evaluation={evaluation}
-            visible={visible}
-            onCompare={compare}
-          />
-          <div id="field-setup" className="field-setup-grid">
-            <div className="location-workspace">
-              <div className="planner-section-heading">
-                <span className="section-number">01</span>
+          )}
+        </section>
+        {entered && (
+          <div className="workspace farmer-workspace map-cards-workspace unified-workspace">
+            <div className="planner-body">
+              <div className="planner-intro">
                 <div>
-                  <h2>{t("Start with your land", "ابدأ بأرضك")}</h2>
+                  <span className="eyebrow">
+                    {t("FIELD SHIFT / EGYPT", "فيلد شيفت / مصر")}
+                  </span>
+                  <h2>
+                    {t(
+                      "Plan your next crop rotation.",
+                      "خطّط لدورتك الزراعية الجاية.",
+                    )}
+                  </h2>
                   <p>
                     {t(
-                      "Choose a location on the map or use a saved example.",
-                      "حدد الموقع على الخريطة أو اختار مثال محفوظ.",
+                      "Tell us what you grow and what your field needs. Compare three paths for the seasons ahead.",
+                      "عرّفنا بمحاصيلك وظروف أرضك، وقارن ثلاث خطط للمواسم الجاية.",
                     )}
                   </p>
                 </div>
-              </div>
-              {map}
-              <div className="map-context-note">
-                <CircleHelp size={16} />
-                <p>
-                  {t(
-                    "A point locates the available evidence. It does not measure your field boundary.",
-                    "النقطة بتحدد مكان البيانات المتاحة، مش حدود أرضك.",
-                  )}
-                </p>
-              </div>
-            </div>
-            <FieldInputs
-              lang={lang}
-              inputs={inputs}
-              setInputs={setInputs}
-              crops={crops}
-            />
-          </div>
-          <AdditionalDetails
-            lang={lang}
-            inputs={inputs}
-            setInputs={setInputs}
-          />
-          <PriorityPanel
-            lang={lang}
-            inputs={inputs}
-            setInputs={setInputs}
-            onCompare={compare}
-            invalid={invalidMeasuredEce}
-          />
-          {sources}
-          <div id="comparison" tabIndex="-1">
-            <ThreeStrategyComparison
-              ref={comparisonRef}
-              lang={lang}
-              evaluation={evaluation}
-              data={comparisonData}
-              inputs={inputs}
-              visible={visible}
-              loading={loading}
-              illustrative={allowIllustrative && support.illustrative}
-              onShowExample={() => setAllowIllustrative(true)}
-            />
-          </div>
-          <CalculationGuide
-            lang={lang}
-            evaluation={evaluation}
-            data={comparisonData}
-            inputs={inputs}
-            visible={visible}
-            catalog={crops}
-            onCompare={compare}
-          />
-          {evaluation && visible && (
-            <details className="workspace-summary">
-              <summary>
-                {t("Read the field summary", "اقرأ ملخص حالة أرضك")}
-              </summary>
-              <FieldSummary
-                lang={lang}
-                data={comparisonData}
-                diagnostics={evaluation.diagnostics}
-                inputs={inputs}
-              />
-            </details>
-          )}
-          <div className="analytics-disclosure">
-            <div>
-              <h2>
-                {t(
-                  "Want to see what’s behind the plans?",
-                  "عايز تعرف إيه ورا الخطط؟",
-                )}
-              </h2>
-              <p>
-                {t(
-                  "Explore climate history, satellite evidence and the calculation steps here on this page.",
-                  "استعرض المناخ التاريخي وأدلة الأقمار الصناعية وخطوات الحساب هنا في نفس الصفحة.",
-                )}
-              </p>
-            </div>
-            <button
-              className="button"
-              aria-expanded={analyticsOpen}
-              aria-controls="advanced-analytics"
-              onClick={() => {
-                setAnalyticsOpen((open) => !open);
-                setEvidenceOpen(true);
-              }}
-            >
-              {t(
-                analyticsOpen
-                  ? "Hide evidence and calculations"
-                  : "Explore evidence and calculations",
-                analyticsOpen
-                  ? "إخفاء الأدلة والحسابات"
-                  : "استعرض الأدلة والحسابات",
-              )}
-            </button>
-          </div>
-          {analyticsOpen && (
-            <section
-              ref={analyticsRef}
-              tabIndex="-1"
-              id="advanced-analytics"
-              className="advanced-analytics"
-              aria-label={t("Advanced analytics", "التحليلات المتقدمة")}
-            >
-              <div className="advanced-heading">
-                <div>
-                  <span className="eyebrow">
-                    {t("THE EVIDENCE BEHIND YOUR PLAN", "الأدلة ورا خطتك")}
+                <div className="historical-context">
+                  <span className="context-dot" />
+                  <span>
+                    {t("Historical evidence", "بيانات تاريخية")}
+                    <strong>
+                      {t("NASA observations · 2025", "أرصاد ناسا · ٢٠٢٥")}
+                    </strong>
                   </span>
-                  <h2>{t("Advanced analytics", "التحليلات المتقدمة")}</h2>
+                </div>
+              </div>
+              {validation}
+              <LivePlanSummary
+                lang={lang}
+                evaluation={evaluation}
+                visible={visible}
+                onCompare={compare}
+              />
+              <section
+                id="parameters"
+                ref={parametersRef}
+                tabIndex="-1"
+                aria-label={t("Field parameters", "بيانات الأرض")}
+              >
+                <FieldInputs
+                  lang={lang}
+                  inputs={inputs}
+                  setInputs={setInputs}
+                  crops={crops}
+                />
+              </section>
+              <AdditionalDetails
+                lang={lang}
+                inputs={inputs}
+                setInputs={setInputs}
+              />
+              <PriorityPanel
+                lang={lang}
+                inputs={inputs}
+                setInputs={setInputs}
+                onCompare={compare}
+                invalid={invalidMeasuredEce}
+              />
+              {sources}
+              <div id="comparison" tabIndex="-1">
+                <ThreeStrategyComparison
+                  ref={comparisonRef}
+                  lang={lang}
+                  evaluation={evaluation}
+                  data={comparisonData}
+                  inputs={inputs}
+                  visible={visible}
+                  loading={loading}
+                  illustrative={allowIllustrative && support.illustrative}
+                  onShowExample={() => setAllowIllustrative(true)}
+                />
+              </div>
+              <CalculationGuide
+                lang={lang}
+                evaluation={evaluation}
+                data={comparisonData}
+                inputs={inputs}
+                visible={visible}
+                catalog={crops}
+                onCompare={compare}
+              />
+              {evaluation && visible && (
+                <details className="workspace-summary">
+                  <summary>
+                    {t("Read the field summary", "اقرأ ملخص حالة أرضك")}
+                  </summary>
+                  <FieldSummary
+                    lang={lang}
+                    data={comparisonData}
+                    diagnostics={evaluation.diagnostics}
+                    inputs={inputs}
+                  />
+                </details>
+              )}
+              <div className="analytics-disclosure">
+                <div>
+                  <h2>
+                    {t(
+                      "Want to see what’s behind the plans?",
+                      "عايز تعرف إيه ورا الخطط؟",
+                    )}
+                  </h2>
+                  <p>
+                    {t(
+                      "Explore climate history, satellite evidence and the calculation steps here on this page.",
+                      "استعرض المناخ التاريخي وأدلة الأقمار الصناعية وخطوات الحساب هنا في نفس الصفحة.",
+                    )}
+                  </p>
                 </div>
                 <button
                   className="button"
-                  onClick={() => setAnalyticsOpen(false)}
+                  aria-expanded={analyticsOpen}
+                  aria-controls="advanced-analytics"
+                  onClick={() => {
+                    setAnalyticsOpen((open) => !open);
+                    setEvidenceOpen(true);
+                  }}
                 >
-                  {t("Close analytics", "إغلاق التحليلات")}
+                  {t(
+                    analyticsOpen
+                      ? "Hide evidence and calculations"
+                      : "Explore evidence and calculations",
+                    analyticsOpen
+                      ? "إخفاء الأدلة والحسابات"
+                      : "استعرض الأدلة والحسابات",
+                  )}
                 </button>
               </div>
-              {evaluation && (
-                <>
-                  <VulnerabilityBanner
+              {analyticsOpen && (
+                <section
+                  ref={analyticsRef}
+                  tabIndex="-1"
+                  id="advanced-analytics"
+                  className="advanced-analytics"
+                  aria-label={t("Advanced analytics", "التحليلات المتقدمة")}
+                >
+                  <div className="advanced-heading">
+                    <div>
+                      <span className="eyebrow">
+                        {t("THE EVIDENCE BEHIND YOUR PLAN", "الأدلة ورا خطتك")}
+                      </span>
+                      <h2>{t("Advanced analytics", "التحليلات المتقدمة")}</h2>
+                    </div>
+                    <button
+                      className="button"
+                      onClick={() => setAnalyticsOpen(false)}
+                    >
+                      {t("Close analytics", "إغلاق التحليلات")}
+                    </button>
+                  </div>
+                  {evaluation && (
+                    <>
+                      <VulnerabilityBanner
+                        lang={lang}
+                        diagnostics={evaluation.diagnostics}
+                        data={comparisonData}
+                      />
+                      <FieldIndicesPanel
+                        lang={lang}
+                        diagnostics={evaluation.diagnostics}
+                      />
+                      <StrategyComparison
+                        lang={lang}
+                        strategies={evaluation.strategies}
+                        showTotals={areaIsValid(inputs)}
+                      />
+                    </>
+                  )}
+                  <SatelliteEvidenceDrawer
                     lang={lang}
-                    diagnostics={evaluation.diagnostics}
+                    diagnostics={evaluation?.diagnostics}
+                    hasRecommendedCover={evaluation?.strategies.some(
+                      (s) => s.id !== "baseline" && s.conditionalNili,
+                    )}
                     data={comparisonData}
+                    open={evidenceOpen}
+                    onToggle={setEvidenceOpen}
                   />
-                  <FieldIndicesPanel
-                    lang={lang}
-                    diagnostics={evaluation.diagnostics}
-                  />
-                  <StrategyComparison
-                    lang={lang}
-                    strategies={evaluation.strategies}
-                    showTotals={areaIsValid(inputs)}
-                  />
-                </>
+                  {SCIENTIFIC_V2_ENABLED && (
+                    <ScientificV2Inspector
+                      lang={lang}
+                      data={comparisonData}
+                      inputs={inputs}
+                      crops={crops}
+                      location={location}
+                    />
+                  )}
+                  {evaluation && (
+                    <PipelineExplorer
+                      lang={lang}
+                      data={comparisonData}
+                      evaluation={evaluation}
+                    />
+                  )}
+                </section>
               )}
-              <SatelliteEvidenceDrawer
-                lang={lang}
-                diagnostics={evaluation?.diagnostics}
-                hasRecommendedCover={evaluation?.strategies.some(
-                  (s) => s.id !== "baseline" && s.conditionalNili,
-                )}
-                data={comparisonData}
-                open={evidenceOpen}
-                onToggle={setEvidenceOpen}
-              />
-              {SCIENTIFIC_V2_ENABLED && (
-                <ScientificV2Inspector
-                  lang={lang}
-                  data={comparisonData}
-                  inputs={inputs}
-                  crops={crops}
-                  location={location}
-                />
-              )}
-              {evaluation && (
-                <PipelineExplorer
-                  lang={lang}
-                  data={comparisonData}
-                  evaluation={evaluation}
-                />
-              )}
-            </section>
-          )}
-          <footer className="page-footer">
-            <span dir="ltr">
-              fieldshift. <span>© 2026</span>
-            </span>
-            <p>
-              <CircleHelp size={15} />
-              {t(
-                "Historical evidence. Transparent calculations. Local review.",
-                "أدلة تاريخية. حسابات واضحة. مراجعة محلية.",
-              )}
-            </p>
-          </footer>
-        </main>
-      </div>
-    </>
+              <footer className="page-footer">
+                <span dir="ltr">
+                  fieldshift. <span>© 2026</span>
+                </span>
+                <p>
+                  <CircleHelp size={15} />
+                  {t(
+                    "Historical evidence. Transparent calculations. Local review.",
+                    "أدلة تاريخية. حسابات واضحة. مراجعة محلية.",
+                  )}
+                </p>
+              </footer>
+            </div>
+          </div>
+        )}
+      </main>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../helpers/plannerTest.js";
 test("experimental inspection is explicit, bilingual and cannot change legacy comparison or source fallback", async ({
   page,
 }) => {

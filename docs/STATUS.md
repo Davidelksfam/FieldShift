@@ -67,3 +67,7 @@ The later user review makes textured 3D Earth the only normal location view. Sta
 ### Progressive 3D imagery and region zoom
 
 The user-reported close-up pixelation is addressed with progressively detailed Esri satellite tiles on the 3D globe. Valid point/preset/GPS/coordinate choices zoom to the selected region, and View Egypt returns to the overview. Field-scale navigation changes altitude smoothly, with explicit image-source attribution and offline/failure fallback. See the latest refinement in [decision 0004](decisions/0004-selective-earth-dark-theme.md). This affects orientation imagery only; scientific source resolution and calculations are unchanged.
+
+### Intro and full-screen map
+
+The user's later ZIP-inspired layout request adds a welcome screen over the same 3D globe, followed by a viewport-sized Egypt map with location controls and the existing parameters/results below. Current calculation chat, area simplification, canal removal and source recovery are retained. See [decision 0006](decisions/0006-immersive-map-entry.md) and the [interaction contract](product/IMMERSIVE_MAP_ENTRY.md). Hosted status and verification are recorded in the release PR.

@@ -286,7 +286,8 @@ export class EarthImagery {
       if (!this.disposed) {
         this.refresh();
         this.prune();
-        this.onRender();
+        // A failed request changes status only; the existing surface is intact.
+        if (record.state === "ready") this.onRender();
         this.pump();
       }
     }

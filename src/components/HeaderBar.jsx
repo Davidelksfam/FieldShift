@@ -8,10 +8,11 @@ export default function HeaderBar({
   onAnalyticsToggle,
   theme,
   onThemeToggle,
+  intro = false,
 }) {
   const t = (en, ar) => text(lang, en, ar);
   return (
-    <header className="header-bar unified-header">
+    <header className="header-bar unified-header" data-map-obstacle>
       <a className="brand" href="#main" aria-label="Field Shift">
         <img
           src={siteLogo}
@@ -24,13 +25,15 @@ export default function HeaderBar({
           <small>GROW WITH CLARITY</small>
         </span>
       </a>
-      <nav
-        className="workspace-nav"
-        aria-label={t("Workspace navigation", "التنقل في مساحة التخطيط")}
-      >
-        <a href="#field-setup">{t("Your field", "أرضك")}</a>
-        <a href="#comparison">{t("Compare plans", "مقارنة الخطط")}</a>
-      </nav>
+      {!intro && (
+        <nav
+          className="workspace-nav"
+          aria-label={t("Workspace navigation", "التنقل في مساحة التخطيط")}
+        >
+          <a href="#field-setup">{t("Your field", "أرضك")}</a>
+          <a href="#comparison">{t("Compare plans", "مقارنة الخطط")}</a>
+        </nav>
+      )}
       <div className="header-actions">
         <button
           className="button theme-button"
@@ -41,22 +44,34 @@ export default function HeaderBar({
         >
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        <button
-          className={`button analytics-link ${analyticsOpen ? "selected" : ""}`}
-          aria-expanded={analyticsOpen}
-          aria-controls="advanced-analytics"
-          onClick={onAnalyticsToggle}
-        >
-          <ChartNoAxesCombined size={17} />
-          {t(
-            analyticsOpen
-              ? "Hide advanced analytics"
-              : "Show advanced analytics",
-            analyticsOpen
-              ? "إخفاء التحليلات المتقدمة"
-              : "عرض التحليلات المتقدمة",
-          )}
-        </button>
+        {!intro && (
+          <button
+            className={`button analytics-link ${analyticsOpen ? "selected" : ""}`}
+            aria-expanded={analyticsOpen}
+            aria-controls="advanced-analytics"
+            aria-label={t(
+              analyticsOpen
+                ? "Hide advanced analytics"
+                : "Show advanced analytics",
+              analyticsOpen
+                ? "إخفاء التحليلات المتقدمة"
+                : "عرض التحليلات المتقدمة",
+            )}
+            onClick={onAnalyticsToggle}
+          >
+            <ChartNoAxesCombined size={17} />
+            <span>
+              {t(
+                analyticsOpen
+                  ? "Hide advanced analytics"
+                  : "Show advanced analytics",
+                analyticsOpen
+                  ? "إخفاء التحليلات المتقدمة"
+                  : "عرض التحليلات المتقدمة",
+              )}
+            </span>
+          </button>
+        )}
         <button
           className="button language-button"
           onClick={() => onLanguageChange(lang === "ar" ? "en" : "ar")}

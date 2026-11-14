@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../helpers/plannerTest.js";
 test.use({ hasTouch: true, viewport: { width: 390, height: 844 } });
 test("pinch zoom in and out does not change the selected field", async ({
   page,

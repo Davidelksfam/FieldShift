@@ -11,6 +11,7 @@ import "../docs/brand/tokens.css";
 import "./styles.css";
 import "./workspace.css";
 import "./earth-theme.css";
+import "./immersive.css";
 import App from "./App";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

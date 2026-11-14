@@ -124,3 +124,7 @@ Codex implemented the user’s requested chat-bubble presentation: a persistent 
 ## Chat refinement
 
 Codex reduced visible prompts to three (recommendation, water savings, drip scenario), softened the chat styling and added a short presentation-only typing indicator and progressive answer reveal. Reduced-motion users receive immediate answers. Timers cancel when inputs change or the widget closes. Calculation formulas and data requests are unchanged.
+
+## 2026-11-14 — Immersive intro and full-screen map
+
+Codex adapted the ZIP's welcome/full-screen presentation to current main: a bilingual welcome over the existing 3D canvas, camera handoff to Egypt, viewport map with a compact location dock, and existing parameter/results/chat sections below. Added keyboard focus/scroll handoff, per-tab entry memory with storage-denial recovery, deferred farmer-source acquisition until entry, overlay-aware landmark placement and efficient preferred-label placement. Preserved current formulas, source callbacks, missingness, imagery refinement, logo/theme, canal removal, automatic totals and calculation chat. Added fresh-entry/mobile/fallback coverage; existing planner scenarios explicitly start after entry through a shared test fixture. Actual test and hosted results are recorded in the PR.
