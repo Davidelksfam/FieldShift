@@ -598,6 +598,9 @@ html[dir="rtl"] .welcome-start svg {
     width: 44px;
     max-width: 44px;
   }
+  .field-experience .unified-header .analytics-link svg {
+    display: block;
+  }
   .field-experience .unified-header .analytics-link span,
   .field-experience .unified-header .language-button svg {
     display: none;
